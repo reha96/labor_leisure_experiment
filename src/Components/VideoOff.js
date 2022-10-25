@@ -91,7 +91,7 @@ function VideoOff({ src }) {
         <div className='video'>
             {!isVisible ? stopVideo() : null}
             <video
-                // playsInline
+                playsInline
                 //autoPlay
                 //muted
                 //onClick={!playing ? null : stopVideo()}

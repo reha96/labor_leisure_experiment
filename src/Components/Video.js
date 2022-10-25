@@ -77,7 +77,7 @@ function Video({src}) {
     <div className='video'>
              {!isVisible ? stopVideo() :  playVideo()}
         <video 
-        // playsInline
+        playsInline
         // autoPlay
         //muted
         // onClick={!playing ? playVideo : stopVideo}
