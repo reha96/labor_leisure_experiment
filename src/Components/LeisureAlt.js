@@ -12,6 +12,16 @@ const LeisureAlt = () => {
             'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
           }
         />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid1.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid3.mp4'
+          }
+        />
         {/* <VideoOff src={ImportVid[50]} />
       <VideoOff src={ImportVid[30]} />
       <VideoOff src={ImportVid[12]} />

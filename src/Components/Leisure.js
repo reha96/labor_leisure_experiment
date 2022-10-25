@@ -12,6 +12,16 @@ const Leisure = () => {
             'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
           }
         />
+        <Video
+          src={
+            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid1.mp4'
+          }
+        />
+        <Video
+          src={
+            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid3.mp4'
+          }
+        />
         {/* <Video
           src={
             importVid[]'
