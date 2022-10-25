@@ -1,13 +1,18 @@
-import React from 'react'
-import VideoOff from './VideoOff'
-import './Leisure.css'
+import React from 'react';
+import VideoOff from './VideoOff';
+import './Leisure.css';
 import ImportVid from './vids/ImportVid.js';
 
 const LeisureAlt = () => {
   return (
-    <div className='Leisure'>
-      <div className='video__app'>
-      <VideoOff src={ImportVid[50]} />
+    <div className="Leisure">
+      <div className="video__app">
+        <VideoOff
+          src={
+            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+          }
+        />
+        {/* <VideoOff src={ImportVid[50]} />
       <VideoOff src={ImportVid[30]} />
       <VideoOff src={ImportVid[12]} />
       <VideoOff src={ImportVid[7]} />
@@ -72,10 +77,10 @@ const LeisureAlt = () => {
       <VideoOff src={ImportVid[51]} />
       <VideoOff src={ImportVid[8]} />
       <VideoOff src={ImportVid[62]} />
-      <VideoOff src={ImportVid[11]} />
+      <VideoOff src={ImportVid[11]} /> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LeisureAlt
+export default LeisureAlt;

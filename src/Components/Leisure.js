@@ -7,16 +7,26 @@ const Leisure = () => {
   return (
     <div className="Leisure">
       <div className="video__app">
-        <Video src={ImportVid[0]} />
-        <Video src={ImportVid[1]} />
-        <Video src={ImportVid[2]} />
-        <Video src={ImportVid[3]} />
-        <Video src={ImportVid[4]} />
-        <Video src={ImportVid[5]} />
-        <Video src={ImportVid[6]} />
-        <Video src={ImportVid[7]} />
-        <Video src={ImportVid[8]} />
-        <Video src={ImportVid[9]} />
+        <Video
+          src={
+            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+          }
+        />
+        {/* <Video
+          src={
+            importVid[]'
+          }
+        />
+        <Video
+          src={
+            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid3.mp4'
+          }
+        />
+        <Video
+          src={
+            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+          }
+        /> */}
         {/* <Video src={ImportVid[50]} />
         <Video src={ImportVid[30]} />
         <Video src={ImportVid[12]} />
