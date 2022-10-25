@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+/* Styling for the Home component main div */
+.App{
+  background-color: #F3F6FF;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Page{
+  /* width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px; */
+  background-color: #F3F6FF;
+  /* height: 100vh; */
+}
+.Page2{
+  /* width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; */
+  background-color: #F3F6FF;
+  /* height: 120vh; */
+}
+.HomePage{
+  width: 100%;
+  height: 96vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background-color: #F3F6FF;
+}
+.HomePage_p{
+  margin-left: 10%!important;
+  margin-right: 10%!important;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
-.App-link {
-  color: #61dafb;
+.HomePage button{
+display: grid;
+place-items: center;
+left: 0; 
+right: 0; 
+margin-left: auto; 
+margin-right: auto; 
+/* width: 100px;  */
+/* border-radius: 10px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.slider{
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+/* Styling for the Search & List component main div */
+/* .Labor, .Leisure{
+  width: 60%;
+  height: 40%;
+  background-color: #294198;
+} */
+
+/* .test {
+  border:solid 
+  1px blue;
+  border-top: 0;
+} */
+/* Styling for the Home component main div */
+
+/* Styling for the App component nav element 
+and Course component course-nav div */
+/* .App nav, .tasks-nav{
+  background: lightgrey;
+  height: 4vh;
+  min-width: 50%;
+  /* border-radius: 10px; */
+  /* text-align: center;
+  border-bottom: 2px solid black;
+} */
+  
+/* Styling for App component nav element anchor 
+tag and Course component nav element anchor tag */
+/* .App nav a, .tasks-nav a{
+  padding: 20px 20px;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+} */
+
+/* Styling for Course component 
+course-nav div anchor tag */
+/* .tasks-nav a{
+  color: black;
+} */
