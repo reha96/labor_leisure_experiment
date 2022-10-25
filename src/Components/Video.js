@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
 import './video.css'
-import ImportVid from './vids/ImportVid.js';
+
 
 function Video({src}) {
     // const [mute, setMute] = useState(0);
@@ -77,7 +77,7 @@ function Video({src}) {
     <div className='video'>
              {!isVisible ? stopVideo() :  playVideo()}
         <video 
-        playsInline
+        // playsInline
         // autoPlay
         //muted
         // onClick={!playing ? playVideo : stopVideo}

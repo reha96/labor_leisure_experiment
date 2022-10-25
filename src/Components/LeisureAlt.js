@@ -1,25 +1,149 @@
 import React from 'react';
 import VideoOff from './VideoOff';
 import './Leisure.css';
-import ImportVid from './vids/ImportVid.js';
 
 const LeisureAlt = () => {
   return (
     <div className="Leisure">
       <div className="video__app">
-        <VideoOff
+      <VideoOff
           src={
-            'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid50.mp4'
           }
         />
         <VideoOff
           src={
-            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid1.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid30.mp4'
           }
         />
         <VideoOff
           src={
-            'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid3.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid12.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid7.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid33.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid32.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid60.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid17.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid54.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid4.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid52.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid25.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid24.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid53.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid27.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid46.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid55.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid26.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid28.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid36.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid42.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid0.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid29.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid18.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid13.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid56.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid40.mp4'
+          }
+        />
+        <VideoOff
+          src={
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid23.mp4'
           }
         />
         {/* <VideoOff src={ImportVid[50]} />
