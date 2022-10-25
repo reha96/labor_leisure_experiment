@@ -9,72 +9,72 @@ const Leisure = () => {
       <div className="video__app">
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid50.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid50.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid30.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid30.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid12.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid12.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid7.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid7.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid33.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid33.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid32.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid32.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid60.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid60.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid17.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid17.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid54.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid54.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid4.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid4.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid52.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid52.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid25.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid25.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid24.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid24.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/main/src/Components/vids/vid53.mp4'
+            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid53.mp4'
           }
         />                
 
