@@ -1,15 +1,15 @@
 // import v1 from './vid1.mp4';
 
-import v1 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid1.mp4';
-import v2 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid2.mp4';
-import v3 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid3.mp4';
-import v4 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid4.mp4';
-import v5 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid5.mp4';
-import v6 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid6.mp4';
-import v7 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid7.mp4';
-import v8 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid8.mp4';
-import v9 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid9.mp4';
-import v10 from 'https://github.com/svdpmukherjee/test_reha/blob/master/src/Components/vids/vid10.mp4';
+import v1 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid1.mp4';
+import v2 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid2.mp4';
+import v3 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid3.mp4';
+import v4 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid4.mp4';
+import v5 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid5.mp4';
+import v6 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid6.mp4';
+import v7 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid7.mp4';
+import v8 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid8.mp4';
+import v9 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid9.mp4';
+import v10 from 'https://media.githubusercontent.com/media/svdpmukherjee/test_reha/master/src/Components/vids/vid10.mp4';
 //
 // import v11 from './vid11.mp4';
 // import v12 from './vid12.mp4';
