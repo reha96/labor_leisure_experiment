@@ -4,9 +4,9 @@ import Container from 'react-bootstrap/Container';
 import '../App.css';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Labor from '../Components/Labor';
-import Leisure from '../Components/Leisure';
 import TimerPractice from '../Components/TimerPractice';
+import LaborPractice from '../Components/LaborPractice';
+import LeisurePractice from '../Components/LeisurePractice';
 
 
 const TasksPractice = () => {
@@ -101,10 +101,10 @@ const TasksPractice = () => {
         // mountOnEnter='true' can be interesting for future
         >
           <Tab eventKey="1" title={<strong>Work</strong>} onClick={savelabor}>
-            <Labor />
+            <LaborPractice />
           </Tab>
           <Tab eventKey="2" title={<strong>Leisure</strong>} onClick={saveleisure}>
-            <Leisure />
+            <LeisurePractice />
           </Tab>
         </Tabs>
         <Outlet />

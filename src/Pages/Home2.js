@@ -54,21 +54,21 @@ const Home2 = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                <Typography variant='h2' className="center">First Part</Typography>
+                <Typography variant='h4' className="center">First Part</Typography>
                 <p className="HomePage_p">
-                    In this study there are two types of tasks. Depending on your decisions about how you allocate your time for each of the tasks, you may earn money for yourself.
+                    In this study there are two types of tasks. Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself.
                 </p>
-                <Typography variant='h4' className="HomePage_p">Task 1: Transcribing</Typography>
+                <Typography variant='h5' className="HomePage_p">Task 1: Transcribing</Typography>
                 <p className="HomePage_p">
                     The first task requires you to exert some effort.
                     You will transcribe sentences taken from the English translation of Homer’s Iliad.
                     Each transcribed sentence should have at least <strong>75 percent accuracy</strong> in order to be valid.
-                    For example, if a sentence contains a total of 20 characters (letters and punctuation marks), you should correclty transcribe at least 15.
-                    In addition, you are required to complete at least <strong>one transcription per minute</strong>.
+                    For example, if a sentence contains a total of 20 characters (letters and punctuation marks), you should correctly transcribe at least 15.
                     Each second you spend on this task will earn you a wage, fixed at <strong>3 cents per second</strong>.
+                    You are required to complete at least<strong> one transcription per minute</strong> to get paid.
                     {/* This task represents your willingness to work for a given wage. */}
                 </p>
-                <Typography variant='h4' className="HomePage_p">Task 2: Watching Short Videos</Typography>
+                <Typography variant='h5' className="HomePage_p">Task 2: Watching Short Videos</Typography>
                 <p className="HomePage_p">
                     The second task is watching some popular short videos found on TikTok and YouTube.
                     On this page you will decide how long you want to watch the avaliable videos.
@@ -83,13 +83,13 @@ const Home2 = () => {
                     {/* There is enough content to cover the entire study duration. */}
                 </p>
 
-                <Typography variant='h4' className="HomePage_p">Task Switching</Typography>
+                <Typography variant='h5' className="HomePage_p">Task Switching</Typography>
                 <p className="HomePage_p">
                     You can switch between the two tasks at any moment using the tabs within the study interface.
                     As you select one tab, your progress in the other will be automatically saved.
                     For example, if you worked on a transcription and decide to watch short videos before submitting it, your text will remain when switching back.
                 </p>   
-                <Typography variant='h4' className="HomePage_p">Practice</Typography>
+                <Typography variant='h5' className="HomePage_p">Practice</Typography>
                 <p className="HomePage_p">
                     Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
@@ -99,7 +99,7 @@ const Home2 = () => {
                 </p>
 
                 <div className='center'>
-                    <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "next/tasksaltp" : "next/tasksp"}>
+                    <Link underline="none" href={'/next/tasksp'}>
                         <ButtonM variant='contained' color='secondary' type="button" onClick={nextPage}>
                         <strong>Next Page</strong>
                         </ButtonM>
