@@ -9,6 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useState } from "react";
+import Alert from '@mui/material/Alert';
 
 
 
@@ -58,7 +59,8 @@ const Home = () => {
         <p className="HomePage_p">
           Thank you for participating in this study.
           Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
-
+          
+          <Alert className="HomePage_p" severity="warning"> Please use Firefox or a Chromium (Chrome, Brave, Edge) based browser for the study. Other browsers are not allowed. </Alert>
         {/* <p className="HomePage_p">
           Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
           After the details of the study have been explained to you, you may decline to participate if you so wish.
@@ -75,9 +77,8 @@ const Home = () => {
 
         <Typography variant='h5' className="HomePage_p">Data Collected</Typography>
         <p className="HomePage_p">
-          In the survey, we will ask you to share some information about yourself, i.e. birth year, gender, income, employment, and educational background.
+          In the survey, we will ask you to share some information about yourself, i.e. birth year, gender, income, employment, educational background and the browser used for the study.
           <strong> All your personal data will be anonymized.</strong> Your choices (from the decision-making tasks and survey) will be stored in a secured server in University of Luxembourg.
-          During the online study, your device type shall be recorded and will be pseudonymized before storing it in the same server.
           Only the researchers working on this study will have the access to these data.
           The data collected during the study will only be used for the research project.
           <strong> The data will be used for publications without personally identifying you.</strong>
@@ -107,7 +108,7 @@ const Home = () => {
         <FormGroup className="center">
           <FormControlLabel control={<Checkbox checked={checked}
             onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give my consent" />
+            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give my consent." />
         </FormGroup>
 
         <div className='center'>
