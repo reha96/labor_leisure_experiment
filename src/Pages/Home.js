@@ -42,12 +42,12 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid='sm'>
-        <Typography variant="h2" className='center'>Welcome!</Typography>
+        <Typography variant="h3" className='center'>Hello</Typography>
         <p className="HomePage_p">
           Thank you for participating in this study.  </p>
         <p className="HomePage_p">Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
         <p className="HomePage_p">
-          Participation in this study is voluntary and will take no more than 15 minutes of your time.
+          Participation in this study is voluntary and will take no more than <strong>15 minutes</strong> of your time.
           All responses will be processed anonymously.
           After the details of the study have been explained to you, you may decline to participate if you so wish.
           {/* Please note that if you choose not to fully participate, you will not be eligible to receive payment. */}
