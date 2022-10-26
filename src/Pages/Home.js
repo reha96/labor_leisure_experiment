@@ -5,6 +5,9 @@ import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
 import Typography from '@mui/material/Typography';
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 const Home = () => {
@@ -16,7 +19,7 @@ const Home = () => {
             background-color: white ;
             padding-bottom:5vh!important;;
             max-width: 720px;
-            height:100vh;
+            height:auto;
           }
           .button {
             background-color: purple;
@@ -42,38 +45,59 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid='sm'>
-        <Typography variant="h3" className='center'>Hello</Typography>
+        <Typography variant="h4" className='center'>Welcome</Typography>
         <p className="HomePage_p">
-          Thank you for participating in this study.  </p>
-        <p className="HomePage_p">Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
+          Thank you for participating in this study.
+          Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
 
-        <p className="HomePage_p">
+        {/* <p className="HomePage_p">
           Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
           After the details of the study have been explained to you, you may decline to participate if you so wish.
+        </p> */}
+
+        <Typography variant='h5' className="HomePage_p">Study Description</Typography>
+        <p className="HomePage_p">
+          You are about to choose how long you want to perform a task that requires effort and a task that is purely for leisure.
+          Your compensation in this study depends on your decisions. 
+          The maximum amount you can earn is <strong>20€</strong>.
+          After the decision-making tasks, you will be asked to complete a brief questionnaire.
+          The total duration of the study is no more than <strong>22 minutes.</strong>
         </p>
 
+        <Typography variant='h5' className="HomePage_p">Data Collected</Typography>
         <p className="HomePage_p">
-          In the survey, we will ask you to share some information about yourself, e.g. birth year, gender, native language, qualification, and educational background.
-          <strong>All your personal data will be anonymized.</strong> Your answers (both from the online test and survey) will be stored in a secured server in University of Luxembourg.
-          During the online test, IP address of your test-taking device along with the device type shall be recorded and be strictly pseudonymized before storing it in the same server.
-          Only the researchers working on this study will have the access to these data. The data collected during the study will only be used for the research project.
-          <strong>The data will be used for publications without personally identifying you.</strong>
+          In the survey, we will ask you to share some information about yourself, i.e. birth year, gender, income, employment, and educational background.
+          <strong> All your personal data will be anonymized.</strong> Your choices (from the decision-making tasks and survey) will be stored in a secured server in University of Luxembourg.
+          During the online study, your device type shall be recorded and will be pseudonymized before storing it in the same server.
+          Only the researchers working on this study will have the access to these data.
+          The data collected during the study will only be used for the research project.
+          <strong> The data will be used for publications without personally identifying you.</strong>
           {/* Please note that if you choose not to fully participate, you will not be eligible to receive payment. */}
         </p>
-        <p className="HomePage_p">This study consists of two parts.
-          In the first part, you will choose how long you want to perform a task that requires effort and a task that is purely for leisure.
-          In the second part, you will be asked to complete a brief questionnaire.
-        </p>
-        <p className="HomePage_p">
+
+        {/* <p className="HomePage_p">
           Your compensation depends your decisions throughout the first part of this study.
           The maximum amount you can earn in this study is <strong>20€</strong>.
           After all the answers are collected, we will pay all participants their earnings.
-          {/* , plus a flat participation fee of 2€ */}
-        </p>
+          
+        </p> */}
+
+        <Typography variant='h5' className="HomePage_p">Contact Information</Typography>
         <p className="HomePage_p">This study is conducted by Reha Tuncer, PhD student at the University of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy and Dr. Ernesto Reuben.
           The objective is to better understand individual decision-making.
           Please contact reha.tuncer@uni.lu if you have any questions about the study.
         </p>
+
+        <Typography variant='h5' className="HomePage_p">Your Consent</Typography>
+        <p className="HomePage_p">
+        I have been informed in writing on how the study will be carried out.
+        I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
+        I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
+        </p>
+
+        <FormGroup className="center">
+      <FormControlLabel control={<Checkbox />} label="Yes, I give my consent" />
+</FormGroup>
 
         <div className='center'>
           <Link underline="none" href='/next'>

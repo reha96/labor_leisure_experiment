@@ -28,7 +28,7 @@ const Home2 = () => {
             background-color: white ;
             padding-bottom:5vh!important;;
             max-width: 720px;
-            height:100vh;
+            height:auto;
           }
           .button {
             background-color: purple;
