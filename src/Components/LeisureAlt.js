@@ -258,11 +258,6 @@ const LeisureAlt = () => {
         />
         <VideoOff
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid65.mp4'
-          }
-        />
-        <VideoOff
-          src={
             'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid35.mp4'
           }
         />

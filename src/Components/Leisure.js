@@ -259,11 +259,6 @@ const Leisure = () => {
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid65.mp4'
-          }
-        />
-        <Video
-          src={
             'https://media.githubusercontent.com/media/reha96/labor_leisure/master/src/Components/vids/vid35.mp4'
           }
         />
