@@ -46,10 +46,18 @@ const Home = () => {
         <p className="HomePage_p">
           Thank you for participating in this study.  </p>
         <p className="HomePage_p">Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
+
         <p className="HomePage_p">
-          Participation in this study is voluntary and will take no more than <strong>15 minutes</strong> of your time.
-          All responses will be processed anonymously.
+          Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
           After the details of the study have been explained to you, you may decline to participate if you so wish.
+        </p>
+
+        <p className="HomePage_p">
+          In the survey, we will ask you to share some information about yourself, e.g. birth year, gender, native language, qualification, and educational background.
+          <strong>All your personal data will be anonymized.</strong> Your answers (both from the online test and survey) will be stored in a secured server in University of Luxembourg.
+          During the online test, IP address of your test-taking device along with the device type shall be recorded and be strictly pseudonymized before storing it in the same server.
+          Only the researchers working on this study will have the access to these data. The data collected during the study will only be used for the research project.
+          <strong>The data will be used for publications without personally identifying you.</strong>
           {/* Please note that if you choose not to fully participate, you will not be eligible to receive payment. */}
         </p>
         <p className="HomePage_p">This study consists of two parts.
