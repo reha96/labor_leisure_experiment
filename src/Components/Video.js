@@ -6,7 +6,7 @@ function Video({src}) {
     // const [mute, setMute] = useState(0);
     // const [count, setCount] = useState(0);
     
-    const [playing,setPlaying] = useState(false);
+    // const [playing,setPlaying] = useState(false);
     const videoRef = useRef(null);
     const endRef = useRef(null);
 

@@ -8,9 +8,18 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useState } from "react";
+
 
 
 const Home = () => {
+
+  const [checked, setChecked] = useState(false);
+  const [btnStatus, setBtnStatus] = useState(true);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+
+  };
   return (
     <div className='Page'>
       <style type="text/css">
@@ -58,7 +67,7 @@ const Home = () => {
         <Typography variant='h5' className="HomePage_p">Study Description</Typography>
         <p className="HomePage_p">
           You are about to choose how long you want to perform a task that requires effort and a task that is purely for leisure.
-          Your compensation in this study depends on your decisions. 
+          Your compensation in this study depends on your decisions.
           The maximum amount you can earn is <strong>20€</strong>.
           After the decision-making tasks, you will be asked to complete a brief questionnaire.
           The total duration of the study is no more than <strong>22 minutes.</strong>
@@ -90,21 +99,27 @@ const Home = () => {
 
         <Typography variant='h5' className="HomePage_p">Your Consent</Typography>
         <p className="HomePage_p">
-        I have been informed in writing on how the study will be carried out.
-        I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
-        I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
+          I have been informed in writing on how the study will be carried out.
+          I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
+          I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
         </p>
 
         <FormGroup className="center">
-      <FormControlLabel control={<Checkbox />} label="Yes, I give my consent" />
-</FormGroup>
+          <FormControlLabel control={<Checkbox checked={checked}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give my consent" />
+        </FormGroup>
 
         <div className='center'>
-          <Link underline="none" href='/next'>
-            <ButtonM variant='contained' color='secondary' type="button">
+          {!checked ?
+            <ButtonM disabled variant='contained' color='secondary' type="button">
               <strong>Next Page</strong>
             </ButtonM>
-          </Link>
+            : <Link underline="none" href='/next'>
+              <ButtonM disabled={!checked} variant='contained' color='secondary' type="button">
+                <strong>Next Page</strong>
+              </ButtonM>
+            </Link>}
         </div>
       </Container>
     </div>
