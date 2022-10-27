@@ -94,16 +94,16 @@ const TasksPractice = () => {
         `}
         </style>
         <Tabs
-          defaultActiveKey=""
+          defaultActiveKey="1"
           id="mytab"
           className="mb-0"
           fill
         // mountOnEnter='true' can be interesting for future
         >
-          <Tab eventKey="1" title={<strong>Work</strong>} onClick={savelabor}>
+          <Tab eventKey="1" title={<strong>Transcribe</strong>} onClick={savelabor}>
             <LaborPractice />
           </Tab>
-          <Tab eventKey="2" title={<strong>Leisure</strong>} onClick={saveleisure}>
+          <Tab eventKey="2" title={<strong>Watch Videos</strong>} onClick={saveleisure}>
             <LeisurePractice />
           </Tab>
         </Tabs>

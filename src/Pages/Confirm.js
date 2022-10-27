@@ -14,7 +14,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { ImportantDevices } from '@mui/icons-material';
-
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 const Confirm = () => {
 
@@ -46,6 +47,21 @@ const Confirm = () => {
         setOpen(false);
     };
 
+
+    const marks = [
+        {
+            value: 0,
+            label: 'No Transcribing',
+        },
+        // {
+        //     value: 50,
+        //     label: 'Transcribe half of the time',
+        // },
+        {
+            value: 100,
+            label: 'Only Transcribe',
+        },
+    ];
     return (
         <div className='Page2'>
             <style type="text/css">
@@ -54,7 +70,7 @@ const Confirm = () => {
             background-color: white ;
             padding-bottom:5vh!important;
             max-width: 720px;
-            height:100vh;
+            height:auto;
           }
           .button {
             background-color: purple;
@@ -80,42 +96,42 @@ const Confirm = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                <h3 className="HomePage_p">End of Pratice</h3>
+                <Typography variant='h5' className="HomePage_p">End of Pratice</Typography>
                 <p className="HomePage_p">
                     The practice session is over.
                     Decisions you make will now have financial consequences.
                 </p>
 
-                <h3 className="HomePage_p">Objective</h3>
+                <Typography variant='h5' className="HomePage_p">Objective</Typography>
                 <p className="HomePage_p">
-                    Your objective is to choose how much of the <strong>12 minutes</strong> time you are given you allocate for <strong>Work</strong> and for <strong>Leisure</strong>.
+                    Choose how much of the <strong>10 minutes</strong> time you are given you  <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
                     You can choose to allocate your time however you like, using the slider on the bottom of this page.
+                    <strong> For the first 2 minutes, you are obliged to transcribe.</strong>
                 </p>
 
-
+                <Typography variant='h5' className="HomePage_p">Allocation</Typography>
                 <p className="HomePage_p">
-                    Please carefully consider what proportion of your time you would allocate for <strong>Work</strong> and for <strong>Leisure</strong> using the slider below.
-                    The number on the slider shows the percentage of your time allocated to <strong>Work</strong>.
-                    You can repeat this step as many times you like.
+                    Please use the slider below to choose what proportion of your time you would <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
+                    The number on the slider shows the percentage of your time allocated to <strong>Transcribing.</strong>
                 </p>
-
-                <Stack spacing={0} direction="row" sx={{ mt: 6, mb: 3 }} alignItems="center">
-                    <h3 className="slider">Work</h3>
+                <Box sx={{
+                    mx: 10,
+                    my: 5
+                }}>
                     <Slider
+                        // className="HomePage_p"
                         aria-label="Small steps"
                         defaultValue={50}
                         getAriaValueText={valuetext}
                         step={1}
                         track="normal"
-                        // marks
+                        marks={marks}
                         min={0}
                         max={100}
                         valueLabelDisplay="on"
                     />
-                    <h3 className="slider">Leisure</h3>
-                </Stack>
+                </Box>
 
-                {/* <h1 className="HomePage_p">Confirmation</h1> */}
                 <ConfirmUpdate />
 
                 <h3 className="HomePage_p">Attention</h3>
@@ -126,7 +142,7 @@ const Confirm = () => {
                 </p>
                 <div className='center'>
                     <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                        <strong>Confirm and Begin Study</strong>
+                        <strong>Begin Study</strong>
                     </ButtonM>
                 </div>
 
@@ -141,26 +157,26 @@ const Confirm = () => {
                     </DialogTitle>
                     <DialogContent>
                         {/* <DialogContentText id="alert-dialog-description"> */}
-                        <p><strong>{window.localStorage.getItem('division')}%</strong> of your budget is allocated to <strong>Work</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your budget is allocated to <strong>Leisure</strong>.</p>
+                        <p><strong>{window.localStorage.getItem('division')}%</strong> of your budget is allocated to <strong>Transcribing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your budget is allocated to <strong>Watching Videos</strong>.</p>
                         <p>You earn <strong>{(((window.localStorage.getItem('division') / 100) * 600 * 3) / 100).toPrecision(2)}</strong> Euros.</p>
 
-                        <p>You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds of <strong>Work</strong> time.</p>
+                        <p>You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Transcribe.</strong></p>
 
-                        <p>You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds of <strong>Leisure</strong> time.</p>
+                        <p>You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong></p>
                         {/* </DialogContentText> */}
                     </DialogContent>
-                    <DialogActions>  
-                        <ButtonM color="error" onClick={handleClose}><strong>Change Allocation</strong></ButtonM>
+                    <DialogActions>
+                        <ButtonM color="error" onClick={handleClose}><strong>Change</strong></ButtonM>
                         <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "tasksalt" : "tasks"}>
                             <ButtonM color="success" onClick={handleClose} autoFocus>
-                                <strong>Confirm Allocation</strong>
+                                <strong>Confirm</strong>
                             </ButtonM>
-                        </Link>              
+                        </Link>
                     </DialogActions>
                 </Dialog>
 
             </Container>
-        </div>
+        </div >
     )
 }
 

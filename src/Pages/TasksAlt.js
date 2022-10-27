@@ -100,10 +100,10 @@ const TasksAlt = () => {
           fill
         // mountOnEnter='true' can be interesting for future
         >
-          <Tab eventKey="1" title={<strong>Work</strong>} onClick={savelabor}>
+          <Tab eventKey="1" title={<strong>Transcribe</strong>} onClick={savelabor}>
             <Labor />
           </Tab>
-          <Tab eventKey="2" title={<strong>Leisure</strong>} onClick={saveleisure}>
+          <Tab eventKey="2" title={<strong>Watch Videos</strong>} onClick={saveleisure}>
             <LeisureAlt />
           </Tab>
         </Tabs>

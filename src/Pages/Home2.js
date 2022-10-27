@@ -68,7 +68,7 @@ const Home2 = () => {
                     You are required to complete at least<strong> one transcription per minute</strong> to get paid.
                     {/* This task represents your willingness to work for a given wage. */}
                 </p>
-                <Typography variant='h5' className="HomePage_p">Task 2: Watching Short Videos</Typography>
+                <Typography variant='h5' className="HomePage_p">Task 2: Watching Videos</Typography>
                 <p className="HomePage_p">
                     The second task is watching some popular short videos found on TikTok and YouTube.
                     On this page you will decide how long you want to watch the avaliable videos.
