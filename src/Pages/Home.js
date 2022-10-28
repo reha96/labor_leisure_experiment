@@ -27,7 +27,8 @@ const Home = () => {
         {`
         .container-sm{
             background-color: white ;
-            padding-bottom:5vh!important;;
+            padding-top:5vh!important;
+            padding-bottom:5vh!important;
             max-width: 720px;
             height:auto;
           }
@@ -55,12 +56,12 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid='sm'>
-        <Typography variant="h4" className='center'>Welcome</Typography>
+        {/* <Typography variant="h4" className='center'>Welcome</Typography>
         <p className="HomePage_p">
           Thank you for participating in this study.
-          Please read and follow the instructions carefully as they contain everything you need to know to participate.</p>
+          Please read and follow the instructions carefully as they contain everything you need to know to participate.</p> */}
           
-          <Alert className="HomePage_p" severity="warning"> Please use Firefox or a Chromium (Chrome, Brave, Edge) based browser for the study. Other browsers are not allowed. </Alert>
+          <Alert className="HomePage_p" severity="warning"> Please use Firefox or a Chromium (Chrome, Brave, Edge) based browser for the study. <strong>Safari is not allowed. </strong></Alert>
         {/* <p className="HomePage_p">
           Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
           After the details of the study have been explained to you, you may decline to participate if you so wish.
@@ -68,10 +69,10 @@ const Home = () => {
 
         <Typography variant='h5' className="HomePage_p">Study Description</Typography>
         <p className="HomePage_p">
-          You are about to choose how long you want to perform a task that requires effort and a task that is purely for leisure.
+          You are about to choose how long you want to perform two tasks: Watching videos or typing.
           Your compensation in this study depends on your decisions.
-          The maximum amount you can earn is <strong>20€</strong>.
-          After the decision-making tasks, you will be asked to complete a brief questionnaire.
+          The maximum amount of <strong>bonus</strong> you can earn is <strong>8€</strong>.
+          After the decision-making part, you will be asked to complete a brief questionnaire.
           The total duration of the study is no more than <strong>22 minutes.</strong>
         </p>
 
@@ -114,11 +115,11 @@ const Home = () => {
         <div className='center'>
           {!checked ?
             <ButtonM disabled variant='contained' color='secondary' type="button">
-              <strong>Next Page</strong>
+              <strong>Continue</strong>
             </ButtonM>
             : <Link underline="none" href='/next'>
               <ButtonM disabled={!checked} variant='contained' color='secondary' type="button">
-                <strong>Next Page</strong>
+                <strong>Continue</strong>
               </ButtonM>
             </Link>}
         </div>

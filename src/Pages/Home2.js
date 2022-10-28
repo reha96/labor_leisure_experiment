@@ -26,6 +26,7 @@ const Home2 = () => {
                 {`
         .container-sm{
             background-color: white ;
+            padding-top:5vh!important;
             padding-bottom:5vh!important;;
             max-width: 720px;
             height:auto;
@@ -54,24 +55,26 @@ const Home2 = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                <Typography variant='h4' className="center">First Part</Typography>
+                {/* <Typography variant='h4' className="center">First Part</Typography> */}
                 <p className="HomePage_p">
-                    In this study there are two types of tasks. Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself.
+                    In this study there are two tasks. 
+                    {/* Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself. */}
                 </p>
-                <Typography variant='h5' className="HomePage_p">Task 1: Transcribing</Typography>
+                <Typography variant='h5' className="HomePage_p">Task 1: Type</Typography>
                 <p className="HomePage_p">
-                    The first task requires you to exert some effort.
-                    You will transcribe sentences taken from the English translation of Homer’s Iliad.
-                    Each transcribed sentence should have at least <strong>75 percent accuracy</strong> in order to be valid.
-                    For example, if a sentence contains a total of 20 characters (letters and punctuation marks), you should correctly transcribe at least 15.
-                    Each second you spend on this task will earn you a wage, fixed at <strong>3 cents per second</strong>.
-                    You are required to complete at least<strong> one transcription per minute</strong> to get paid.
+                    {/* The first task requires you to exert some effort. */}
+                    For this task you retype sentences taken from the English translation of Homer’s Iliad.
+                    Each second you spend on this task will be your bonus, fixed at <strong>1 cents per second</strong>.
+                    Each transcribed sentence should have at least <strong>70 percent accuracy</strong> in order to be valid.
+                    For example, if a sentence contains a total of 10 characters (letters and punctuation marks), you should correctly retype at least 7.
+                    
+                    You are required to complete at least<strong> one sentence per minute</strong> to get paid.
                     {/* This task represents your willingness to work for a given wage. */}
                 </p>
-                <Typography variant='h5' className="HomePage_p">Task 2: Watching Videos</Typography>
+                <Typography variant='h5' className="HomePage_p">Task 2: Watch Videos</Typography>
                 <p className="HomePage_p">
                     The second task is watching some popular short videos found on TikTok and YouTube.
-                    On this page you will decide how long you want to watch the avaliable videos.
+                    On this page you will decide how long you want to watch the available videos.
                     The study interface will automatically take you to the next videos, meaning you are not able to skip or switch between videos yourself.
                     Each second you spend on this task will earn you a wage, fixed at <strong>1 cents per second</strong>.
                     {/* You will not earn a wage for this task, but the videos are meant to be fun and enjoyable compared to the first task. */}
