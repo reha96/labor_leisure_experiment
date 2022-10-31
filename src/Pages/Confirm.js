@@ -51,7 +51,7 @@ const Confirm = () => {
     const marks = [
         {
             value: 0,
-            label: 'No Transcribing',
+            label: 'No Typing',
         },
         // {
         //     value: 50,
@@ -59,7 +59,7 @@ const Confirm = () => {
         // },
         {
             value: 100,
-            label: 'Only Transcribe',
+            label: 'Only Typing',
         },
     ];
     return (
@@ -69,6 +69,7 @@ const Confirm = () => {
         .container-sm{
             background-color: white ;
             padding-bottom:5vh!important;
+            padding-top:2vh!important;
             max-width: 720px;
             height:auto;
           }
@@ -96,24 +97,23 @@ const Confirm = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                <Typography variant='h5' className="HomePage_p">End of Pratice</Typography>
+                {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
                 <p className="HomePage_p">
                     The practice session is over.
-                    Decisions you make will now have financial consequences.
+                    We now ask you to decide how you would like to spend the next <strong>10 minutes</strong> based on what you saw in the practice session.
                 </p>
 
-                <Typography variant='h5' className="HomePage_p">Objective</Typography>
+                <Typography variant='h6' className="center">Time Choice</Typography>
                 <p className="HomePage_p">
-                    Choose how much of the <strong>10 minutes</strong> time you are given you  <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
-                    You can choose to allocate your time however you like, using the slider on the bottom of this page.
-                    <strong> For the first 2 minutes, you are obliged to transcribe.</strong>
+                    Please indicate how much of the <strong>10 minutes</strong> you have you want to spend on <strong>Typing</strong> and on <strong>Watching Videos</strong>.
+                    Distribute your time however you like using the slider below.
                 </p>
 
-                <Typography variant='h5' className="HomePage_p">Allocation</Typography>
+                {/* <Typography variant='h6' className="center">Allocation</Typography>
                 <p className="HomePage_p">
                     Please use the slider below to choose what proportion of your time you would <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
                     The number on the slider shows the percentage of your time allocated to <strong>Transcribing.</strong>
-                </p>
+                </p> */}
                 <Box sx={{
                     mx: 10,
                     my: 5
@@ -134,12 +134,14 @@ const Confirm = () => {
 
                 <ConfirmUpdate />
 
-                <h3 className="HomePage_p">Attention</h3>
+                <Typography variant='h6' className="center">Attention</Typography>
                 <p className="HomePage_p">
                     We will randomly select 10 percent of the participants and pay their earnings according to their allocation.
                     If you are among the 10 percent of the selected participants your earnings will be paid immediately as if you have worked for the allocated time.
                     All remaining participants will realize their choices themselves.
                 </p>
+                <strong> For the first 2 minutes, you are obliged to transcribe.</strong>
+
                 <div className='center'>
                     <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
                         <strong>Begin Study</strong>

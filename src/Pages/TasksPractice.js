@@ -7,6 +7,8 @@ import Tabs from 'react-bootstrap/Tabs';
 import TimerPractice from '../Components/TimerPractice';
 import LaborPractice from '../Components/LaborPractice';
 import LeisurePractice from '../Components/LeisurePractice';
+import Typography from '@mui/material/Typography';
+
 
 
 const TasksPractice = () => {
@@ -30,7 +32,7 @@ const TasksPractice = () => {
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
-        <p style={{ display: 'flex', justifyContent: 'center' }}>Choose a task:</p>
+        <Typography variant='h6' className="center">Choose task</Typography>
         <style type="text/css">
           {`
         .bg-info {
@@ -100,10 +102,10 @@ const TasksPractice = () => {
           fill
         // mountOnEnter='true' can be interesting for future
         >
-          <Tab eventKey="1" title={<strong>Transcribe</strong>} onClick={savelabor}>
+          <Tab eventKey="1" title={<Typography variant='h6' className="center">Type</Typography>} onClick={savelabor}>
             <LaborPractice />
           </Tab>
-          <Tab eventKey="2" title={<strong>Watch Videos</strong>} onClick={saveleisure}>
+          <Tab eventKey="2" title={<Typography variant='h6' className="center">Watch Videos</Typography>} onClick={saveleisure}>
             <LeisurePractice />
           </Tab>
         </Tabs>

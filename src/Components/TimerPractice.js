@@ -39,7 +39,7 @@ const TimerPractice = (props) => {
       <LinearProgress variant="determinate" value={parseInt(window.localStorage.getItem('progress'))} />
       {minutes <= 0 && seconds <= 0
         ? navigate('/confirm')
-        : <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}> Time Remaining {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; <QueryBuilderRoundedIcon fontSize='small' /></p>
+        : <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}> <QueryBuilderRoundedIcon fontSize='small' /> {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; </p>
       }
       
     </div>

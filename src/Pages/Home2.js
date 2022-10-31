@@ -57,7 +57,7 @@ const Home2 = () => {
                 {/* <Typography variant='h4' className="center">First Part</Typography> */}
                 <p className="HomePage_p">
                     In this study there are two tasks.
-                    The amount of your compensation depends on how long you perform each task.
+                    The amount of your compensation will depend on how long you perform each task.
                     {/* Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself. */}
                 </p>
                 <Typography variant='h6' className="center">Task 1: Typing</Typography>
@@ -105,7 +105,7 @@ const Home2 = () => {
                     Once the practice session is over, you will be taken back to the rest of the study.
                 </p>
                 <div className='center'>
-                    <Link underline="none" href={'/next/tasksp'}>
+                    <Link underline="none" href={'/next/practice'}>
                         <ButtonM variant='contained' color='secondary' type="button" onClick={nextPage}>
                             <strong>Begin Practice</strong>
                         </ButtonM>
