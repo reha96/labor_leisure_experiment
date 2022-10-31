@@ -10,7 +10,7 @@
   align-items: center;
   gap: 15px; */
   background-color: #F3F6FF;
-  /* height: 100vh; */
+  height: 100vh;
 }
 .Page2{
   /* width: 100%;
@@ -19,7 +19,7 @@
   align-items: center;
   gap: 15px; */
   background-color: #F3F6FF;
-  /* height: 120vh; */
+  height: 100vh;
 }
 .HomePage{
   width: 100%;

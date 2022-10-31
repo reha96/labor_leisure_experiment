@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 const Home2 = () => {
 
     var input = [];
-
     localStorage.setItem('treatment', Math.random());
 
     const nextPage = (event) => {
@@ -57,26 +56,34 @@ const Home2 = () => {
             <Container className="p-1" fluid='sm'>
                 {/* <Typography variant='h4' className="center">First Part</Typography> */}
                 <p className="HomePage_p">
-                    In this study there are two tasks. 
+                    In this study there are two tasks.
+                    The amount of your compensation depends on how long you perform each task.
                     {/* Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself. */}
                 </p>
-                <Typography variant='h5' className="HomePage_p">Task 1: Type</Typography>
+                <Typography variant='h6' className="center">Task 1: Typing</Typography>
                 <p className="HomePage_p">
                     {/* The first task requires you to exert some effort. */}
-                    For this task you retype sentences taken from the English translation of Homer’s Iliad.
-                    Each second you spend on this task will be your bonus, fixed at <strong>1 cents per second</strong>.
-                    Each transcribed sentence should have at least <strong>70 percent accuracy</strong> in order to be valid.
-                    For example, if a sentence contains a total of 10 characters (letters and punctuation marks), you should correctly retype at least 7.
-                    
-                    You are required to complete at least<strong> one sentence per minute</strong> to get paid.
-                    {/* This task represents your willingness to work for a given wage. */}
+                    For this task you type sentences taken from Homer’s Iliad in English.
+                    Each second you work on this task will be paid as a bonus, fixed at <strong>0.5 cents per second</strong>.
+                    Typing faster in this task will not earn you a higher bonus.
+                    However, there are minimum quality requirements to get the typing bonus.
                 </p>
-                <Typography variant='h5' className="HomePage_p">Task 2: Watch Videos</Typography>
+
+                <Typography variant='h6' className="center">Requirements</Typography>
                 <p className="HomePage_p">
-                    The second task is watching some popular short videos found on TikTok and YouTube.
-                    On this page you will decide how long you want to watch the available videos.
-                    The study interface will automatically take you to the next videos, meaning you are not able to skip or switch between videos yourself.
-                    Each second you spend on this task will earn you a wage, fixed at <strong>1 cents per second</strong>.
+                    To get your typing bonus, you are required to type <strong>at least 1 sentence per minute</strong>.
+                    Each sentence you type should also have <strong>at least 70 percent accuracy</strong>.
+                    For example, if a sentence contains a total of 10 characters (letters and punctuation marks), you should correctly retype at least 7.
+                </p>
+                {/* This task represents your willingness to work for a given wage. */}
+
+                <Typography variant='h6' className="center">Task 2: Watching Videos</Typography>
+                <p className="HomePage_p">
+                    The second task is watching popular short videos from TikTok and YouTube.
+                    For this task you only decide how long you want to watch the available videos.
+                    The study interface will automatically take you to the next videos.
+                    You will not able to skip or switch between videos yourself.
+                    Each second you spend on this task will earn you <strong>0.25 cents per second</strong>.
                     {/* You will not earn a wage for this task, but the videos are meant to be fun and enjoyable compared to the first task. */}
                     {/* Naturally, the shorter time you allocate for the first task, the longer you can enjoy the videos. */}
                     {/* This task represents how much you value leisure, instead of working for a given wage. */}
@@ -86,25 +93,21 @@ const Home2 = () => {
                     {/* There is enough content to cover the entire study duration. */}
                 </p>
 
-                <Typography variant='h5' className="HomePage_p">Task Switching</Typography>
+                <Typography variant='h6' className="center">Switching Tasks</Typography>
                 <p className="HomePage_p">
-                    You can switch between the two tasks at any moment using the tabs within the study interface.
+                    You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
                     As you select one tab, your progress in the other will be automatically saved.
-                    For example, if you worked on a transcription and decide to watch short videos before submitting it, your text will remain when switching back.
-                </p>   
-                <Typography variant='h5' className="HomePage_p">Practice</Typography>
+                    For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
+                </p>
+                <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">
                     Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
                 </p>
-                <p className="HomePage_p">
-                    Please note that practice session is not paid.
-                </p>
-
                 <div className='center'>
                     <Link underline="none" href={'/next/tasksp'}>
                         <ButtonM variant='contained' color='secondary' type="button" onClick={nextPage}>
-                        <strong>Next Page</strong>
+                            <strong>Begin Practice</strong>
                         </ButtonM>
                     </Link>
                 </div>

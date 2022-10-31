@@ -67,18 +67,19 @@ const Home = () => {
           After the details of the study have been explained to you, you may decline to participate if you so wish.
         </p> */}
 
-        <Typography variant='h5' className="HomePage_p">Study Description</Typography>
+        <Typography variant='h6' className="center">Study Description</Typography>
         <p className="HomePage_p">
           You are about to choose how long you want to perform two tasks: Watching videos or typing.
-          Your compensation in this study depends on your decisions.
-          The maximum amount of <strong>bonus</strong> you can earn is <strong>8€</strong>.
+          The amount of your compensation in this study depends on your decisions.
+          The base amount you earn for participation is <strong>4.5€</strong>.
+          You can earn <strong>up to 3€</strong> in addition to the show-up fee as your <strong>bonus</strong>
           After the decision-making part, you will be asked to complete a brief questionnaire.
           The total duration of the study is no more than <strong>22 minutes.</strong>
         </p>
 
-        <Typography variant='h5' className="HomePage_p">Data Collected</Typography>
+        <Typography variant='h6' className="center">Data Collected</Typography>
         <p className="HomePage_p">
-          In the survey, we will ask you to share some information about yourself, i.e. birth year, gender, income, employment, educational background and the browser used for the study.
+          In the survey, we collect information about yourself, i.e. birth year, gender, income, employment, educational background and the browser used for the study.
           <strong> All your personal data will be anonymized.</strong> Your choices (from the decision-making tasks and survey) will be stored in a secured server in University of Luxembourg.
           Only the researchers working on this study will have the access to these data.
           The data collected during the study will only be used for the research project.
@@ -93,13 +94,13 @@ const Home = () => {
           
         </p> */}
 
-        <Typography variant='h5' className="HomePage_p">Contact Information</Typography>
+        <Typography variant='h6' className="center">Contact Information</Typography>
         <p className="HomePage_p">This study is conducted by Reha Tuncer, PhD student at the University of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy and Dr. Ernesto Reuben.
           The objective is to better understand individual decision-making.
           Please contact reha.tuncer@uni.lu if you have any questions about the study.
         </p>
 
-        <Typography variant='h5' className="HomePage_p">Your Consent</Typography>
+        <Typography variant='h6' className="center">Your Consent</Typography>
         <p className="HomePage_p">
           I have been informed in writing on how the study will be carried out.
           I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
