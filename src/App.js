@@ -5,6 +5,7 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home';
 import Home2 from './Pages/Home2';
+import Home3 from './Pages/Home3';
 import Confirm from './Pages/Confirm';
 import Tasks from './Pages/Tasks';
 import Labor from './Components/Labor';
@@ -28,7 +29,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/next" element={<Home2 />} />
-          <Route path="/next/practice" element={<TasksPractice />}>
+          <Route path="/next2/" element={<Home3 />} />
+          <Route path="/practice" element={<TasksPractice />}>
             <Route path="leisure" element={<LeisurePractice />} />
             <Route path="labor" element={<LaborPractice/>}/>
           </Route>

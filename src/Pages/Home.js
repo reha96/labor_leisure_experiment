@@ -15,6 +15,7 @@ import Alert from '@mui/material/Alert';
 
 const Home = () => {
 
+  localStorage.setItem('attentionFail', 0)
   const [checked, setChecked] = useState(false);
   const [btnStatus, setBtnStatus] = useState(true);
   const handleChange = (event) => {

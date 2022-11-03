@@ -1,23 +1,84 @@
-import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import '../App.css';
 import Link from '@mui/material/Link';
 import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
 import Typography from '@mui/material/Typography';
+import * as React from 'react';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormLabel from '@mui/material/FormLabel';
+import { useState } from "react";
+
 
 const Home2 = () => {
 
-    var input = [];
-    localStorage.setItem('treatment', Math.random());
+    const [value, setValue] = React.useState('');
+    const [error, setError] = React.useState(false);
+    const [helperText, setHelperText] = React.useState('Choose your answer');
 
-    const nextPage = (event) => {
-        localStorage.setItem('localcount', 0)
-        localStorage.setItem('lastmin', 1)
-        localStorage.setItem('lastsec', 59)
-        localStorage.setItem('transc', JSON.stringify(input))
-        window.localStorage.setItem('progress', 0)
-    }
+    const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail')));
+    var Fail = 0;
+
+
+
+
+
+    const handleRadioChange = (event) => {
+        event.preventDefault();
+        setValue(event.target.value);   
+        if (value === '1') {
+            // setHelperText('You got it!');
+            setError(false);
+
+        }
+        else if (value === '2' || value === 'no') {
+            // setHelperText('Sorry, wrong answer!');
+            Fail = parseInt(counter) + 1;
+            setError(true);
+            setCounter(Fail);
+            localStorage.setItem('attentionFail', Fail);
+        }
+        else {
+            // setHelperText('Please select an option.');
+            setError(true);
+            setCounter(Fail);
+            localStorage.setItem('attentionFail', Fail);
+        }
+        
+        
+        // setHelperText(' ');
+        // setError(false);
+    };
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (value === '1') {
+            setHelperText('You got it!');
+            setError(false);
+
+        }
+        else if (value === '2' || value === 'no') {
+            setHelperText('Sorry, wrong answer!');
+            Fail = parseInt(counter) + 1;
+            setError(true);
+            setCounter(Fail);
+            localStorage.setItem('attentionFail', Fail);
+        }
+        else {
+            setHelperText('Please select an option.');
+            setError(true);
+            setCounter(Fail);
+            localStorage.setItem('attentionFail', Fail);
+        }
+
+    };
+    var input = [];
+
 
     return (
         <div className='Page2'>
@@ -77,6 +138,23 @@ const Home2 = () => {
                 </p>
                 {/* This task represents your willingness to work for a given wage. */}
 
+                <form onSubmit={handleSubmit} className="HomePage_p">
+                    <FormControl error={error} variant="standard">
+                        <p>To get the typing bonus, you need to type ... </p>
+                        <RadioGroup
+                            aria-labelledby="demo-error-radios"
+                            name="quiz"
+                            value={value}
+                            onChange={handleRadioChange}
+                        >
+                            <FormControlLabel value="no" control={<Radio />} label="no sentences." />
+                            <FormControlLabel value="1" control={<Radio />} label="at least 1 sentence per minute." />
+                            <FormControlLabel value="2" control={<Radio />} label="at least 2 sentences per minute." />
+
+                        </RadioGroup>
+                        <FormHelperText>{helperText}</FormHelperText>
+                    </FormControl>
+                </form>
                 <Typography variant='h6' className="center">Task 2: Watching Videos</Typography>
                 <p className="HomePage_p">
                     The second task is watching popular short videos from TikTok and YouTube.
@@ -96,21 +174,30 @@ const Home2 = () => {
                 <Typography variant='h6' className="center">Switching Tasks</Typography>
                 <p className="HomePage_p">
                     You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
-                    As you select one tab, your progress in the other will be automatically saved.
+                    As you switch tabs, your progress is automatically saved.
                     For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
                 </p>
-                <Typography variant='h6' className="center">Practice</Typography>
+                {/* <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">
                     Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
-                </p>
+                </p> */}
                 <div className='center'>
-                    <Link underline="none" href={'/next/practice'}>
-                        <ButtonM variant='contained' color='secondary' type="button" onClick={nextPage}>
-                            <strong>Begin Practice</strong>
-                        </ButtonM>
-                    </Link>
+                    {!error ? 
+                    
+                    <ButtonM variant='contained' color='secondary' type="button">
+                        <strong>Continue</strong>
+                    </ButtonM>
+                        : <Link underline="none" href='/next2'>
+                            <ButtonM variant='contained' color='secondary' type="button">
+                                <strong>Continue</strong>
+                            </ButtonM>
+                        </Link>}
+                    {/* <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit}>
+                            <strong>Continue</strong>
+                        </ButtonM> */}
                 </div>
+
             </Container>
         </div>
     )

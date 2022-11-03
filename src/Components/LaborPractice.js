@@ -136,7 +136,7 @@ const LaborPractice = () => {
           </div>
         );
       })}
-      <p style={{ display: 'flex', justifyContent: 'center' }}>Please transcribe the text above:</p>
+      <p style={{ display: 'flex', justifyContent: 'center' }}>Please type the text above:</p>
       <textarea className='textarea'
         type="text"
         value={typedValue}
@@ -144,10 +144,10 @@ const LaborPractice = () => {
         placeholder=""
       />
       <div className='container'>
-        <p style={{ display: 'flex', justifyContent: 'center'}}> <CheckCircleOutlineRoundedIcon/>  <strong>&nbsp;{window.localStorage.getItem('localcount')}&nbsp;</strong> transcriptions submitted </p> 
+        <p style={{ display: 'flex', justifyContent: 'center'}}> <CheckCircleOutlineRoundedIcon/>  <strong>&nbsp;{window.localStorage.getItem('localcount')}&nbsp;</strong> sentences submitted </p> 
       </div>
       <div className='container'> 
-      <ButtonM variant='contained' color='secondary' onClick={handleSubmit}><strong>Submit Transcription</strong></ButtonM>
+      <ButtonM variant='contained' color='secondary' onClick={handleSubmit}><strong>Submit</strong></ButtonM>
       </div>
      
       {/* <div>&nbsp;</div> */}
