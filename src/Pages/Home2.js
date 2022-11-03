@@ -4,79 +4,64 @@ import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
+
 import { useState } from "react";
 
 
 const Home2 = () => {
 
-    const [value, setValue] = React.useState('');
-    const [error, setError] = React.useState(false);
-    const [helperText, setHelperText] = React.useState('Choose your answer');
-
     const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail')));
+
     var Fail = 0;
 
-
-
-
+    const [value, setValue] = React.useState('');
+    const [error, setError] = React.useState(true);
+    const [helperText, setHelperText] = React.useState('You have 2 opportunities to get this question right.');
 
     const handleRadioChange = (event) => {
-        event.preventDefault();
-        setValue(event.target.value);   
-        if (value === '1') {
-            // setHelperText('You got it!');
+        setValue(event.target.value);
+        console.log(event.target.value);
+
+        if (event.target.value === '1-70') {
+            setHelperText('You got it!');
             setError(false);
-
-        }
-        else if (value === '2' || value === 'no') {
-            // setHelperText('Sorry, wrong answer!');
+            localStorage.setItem('stop', 'true');
+            console.log(localStorage.getItem('stop'));
+        } else if ((event.target.value === '1') || (event.target.value === 'fast')) {
+            setHelperText('Sorry, wrong answer!');
+            setError(true);
             Fail = parseInt(counter) + 1;
-            setError(true);
             setCounter(Fail);
             localStorage.setItem('attentionFail', Fail);
-        }
-        else {
-            // setHelperText('Please select an option.');
+        } else {
+            setHelperText('Please select an option.');
             setError(true);
-            setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
         }
-        
-        
-        // setHelperText(' ');
-        // setError(false);
+        setHelperText(' ');
+        setError(false);
     };
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (value === '1') {
+        if (value === '1-70') {
             setHelperText('You got it!');
-            setError(false);
-
-        }
-        else if (value === '2' || value === 'no') {
+        } else if ((value === '1') || (value === 'fast')) {
             setHelperText('Sorry, wrong answer!');
-            Fail = parseInt(counter) + 1;
             setError(true);
-            setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
-        }
-        else {
+        } else {
             setHelperText('Please select an option.');
             setError(true);
-            setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
         }
-
     };
+
     var input = [];
 
 
@@ -138,23 +123,32 @@ const Home2 = () => {
                 </p>
                 {/* This task represents your willingness to work for a given wage. */}
 
-                <form onSubmit={handleSubmit} className="HomePage_p">
-                    <FormControl error={error} variant="standard">
-                        <p>To get the typing bonus, you need to type ... </p>
-                        <RadioGroup
-                            aria-labelledby="demo-error-radios"
-                            name="quiz"
-                            value={value}
-                            onChange={handleRadioChange}
-                        >
-                            <FormControlLabel value="no" control={<Radio />} label="no sentences." />
-                            <FormControlLabel value="1" control={<Radio />} label="at least 1 sentence per minute." />
-                            <FormControlLabel value="2" control={<Radio />} label="at least 2 sentences per minute." />
+                <Box className="center" sx={{ display: 'flex' }}>
 
-                        </RadioGroup>
-                        <FormHelperText>{helperText}</FormHelperText>
-                    </FormControl>
-                </form>
+                    <form onSubmit={handleSubmit}>
+                        <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                            <FormLabel id="demo-error-radios">To get the typing bonus ...</FormLabel>
+                            <RadioGroup
+                                aria-labelledby="demo-error-radios"
+                                name="quiz"
+                                value={value}
+                                onChange={handleRadioChange}
+                            >
+                                <FormControlLabel value="fast" control={<Radio />} label="type as fast as possible." />
+                                <FormControlLabel value="1" control={<Radio />} label="type at least 1 sentence per minute." />
+                                <FormControlLabel value="1-70" control={<Radio />} label="type at least 1 sentence per minute with 70 percent accuracy." />
+
+                            </RadioGroup>
+                            <FormHelperText>{helperText}</FormHelperText>
+
+                        </FormControl>
+                    </form>
+
+                    {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
+                        Check Answer
+                    </ButtonM> */}
+                </Box>
+
                 <Typography variant='h6' className="center">Task 2: Watching Videos</Typography>
                 <p className="HomePage_p">
                     The second task is watching popular short videos from TikTok and YouTube.
@@ -183,19 +177,16 @@ const Home2 = () => {
                     Once the practice session is over, you will be taken back to the rest of the study.
                 </p> */}
                 <div className='center'>
-                    {!error ? 
-                    
-                    <ButtonM variant='contained' color='secondary' type="button">
-                        <strong>Continue</strong>
-                    </ButtonM>
-                        : <Link underline="none" href='/next2'>
-                            <ButtonM variant='contained' color='secondary' type="button">
+                    {!(localStorage.getItem('stop') === 'true') ?
+                        <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit} >
+                            <strong>Continue</strong>
+                        </ButtonM>
+                        :
+                        <Link underline="none" href='/next2'>
+                            <ButtonM variant='contained' color='secondary' type="button" >
                                 <strong>Continue</strong>
                             </ButtonM>
                         </Link>}
-                    {/* <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit}>
-                            <strong>Continue</strong>
-                        </ButtonM> */}
                 </div>
 
             </Container>
