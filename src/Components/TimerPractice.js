@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QueryBuilderRoundedIcon from '@mui/icons-material/QueryBuilderRounded';
 import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 
 const TimerPractice = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
@@ -39,7 +40,8 @@ const TimerPractice = (props) => {
       <LinearProgress variant="determinate" value={parseInt(window.localStorage.getItem('progress'))} />
       {minutes <= 0 && seconds <= 0
         ? navigate('/confirm')
-        : <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}> <QueryBuilderRoundedIcon fontSize='small' /> {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; </p>
+        : <Typography variant='h6' sx={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}><QueryBuilderRoundedIcon/> {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp;</Typography>
+        // <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}>  {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; </p>
       }
       
     </div>

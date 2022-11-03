@@ -71,17 +71,21 @@ const Home3 = () => {
                 <Typography variant='h6' className="center">Switching Tasks</Typography>
                 <p className="HomePage_p">
                     You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
-                    As you switch tabs, your progress is automatically saved.
-                    For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
+                    As you switch tabs, your progress is automatically saved.</p>
+                <p className="HomePage_p">For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
                 </p>
 
                 <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">
-                    Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
+                    {/* Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
-                    <strong> The practice session will not give you a typing bonus.</strong>
+                    <strong> The practice session will not give you a typing bonus.</strong> */}
+                    Clicking the next button will bring you to a 2 minute practice session (no bonus payment here) to familiarize you with the tasks. </p>
+                    
+                    <p className="HomePage_p"> Once the practice session is over, you will start the study.
+
                 </p>
-                
+
                 <div className='center'>
                     <Link underline="none" href='/practice'>
                         <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>

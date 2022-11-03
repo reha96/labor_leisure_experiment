@@ -8,7 +8,8 @@ import TimerPractice from '../Components/TimerPractice';
 import LaborPractice from '../Components/LaborPractice';
 import LeisurePractice from '../Components/LeisurePractice';
 import Typography from '@mui/material/Typography';
-
+import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
+import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 
 const TasksPractice = () => {
@@ -32,7 +33,7 @@ const TasksPractice = () => {
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
-        <Typography variant='h6' className="center">Choose task</Typography>
+        <Typography variant='h6' color='secondary' className="center">Choose Task</Typography>
         <style type="text/css">
           {`
         .bg-info {
@@ -102,10 +103,10 @@ const TasksPractice = () => {
           fill
         // mountOnEnter='true' can be interesting for future
         >
-          <Tab eventKey="1" title={<Typography variant='h6' className="center">Type</Typography>} onClick={savelabor}>
+          <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon/> Type</Typography>} onClick={savelabor}>
             <LaborPractice />
           </Tab>
-          <Tab eventKey="2" title={<Typography variant='h6' className="center">Watch Videos</Typography>} onClick={saveleisure}>
+          <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon/> Watch </Typography>} onClick={saveleisure}>
             <LeisurePractice />
           </Tab>
         </Tabs>
