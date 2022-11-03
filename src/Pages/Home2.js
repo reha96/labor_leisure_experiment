@@ -22,7 +22,7 @@ const Home2 = () => {
     var Fail = 0;
 
     const [value, setValue] = React.useState('');
-    const [error, setError] = React.useState(true);
+    const [error, setError] = React.useState(false);
     const [helperText, setHelperText] = React.useState('You have 2 opportunities to get this question right.');
 
     const handleRadioChange = (event) => {
@@ -40,9 +40,11 @@ const Home2 = () => {
             Fail = parseInt(counter) + 1;
             setCounter(Fail);
             localStorage.setItem('attentionFail', Fail);
+            localStorage.setItem('stop', 'false');
         } else {
             setHelperText('Please select an option.');
             setError(true);
+            localStorage.setItem('stop', 'false');
         }
         setHelperText(' ');
         setError(false);
@@ -124,7 +126,6 @@ const Home2 = () => {
                 {/* This task represents your willingness to work for a given wage. */}
 
                 <Box className="center" sx={{ display: 'flex' }}>
-
                     <form onSubmit={handleSubmit}>
                         <FormControl sx={{ m: 3 }} error={error} variant="standard">
                             <FormLabel id="demo-error-radios">To get the typing bonus ...</FormLabel>
@@ -165,12 +166,7 @@ const Home2 = () => {
                     {/* There is enough content to cover the entire study duration. */}
                 </p>
 
-                <Typography variant='h6' className="center">Switching Tasks</Typography>
-                <p className="HomePage_p">
-                    You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
-                    As you switch tabs, your progress is automatically saved.
-                    For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
-                </p>
+
                 {/* <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">
                     Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.

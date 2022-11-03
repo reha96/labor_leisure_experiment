@@ -1,6 +1,7 @@
 /* Styling for the Home component main div */
 .App{
   background-color: #F3F6FF;
+  min-height: 100vh;
 }
 
 .Page{
