@@ -9,206 +9,207 @@ const LeisurePractice = () => {
       <div className="video__app">
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid11.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid11.mp4'
+            
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid62.mp4'
-          }
-        />
-
-        <Video
-          src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid8.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid62.mp4'
           }
         />
 
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid51.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid8.mp4'
           }
         />
 
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid57.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid51.mp4'
           }
         />
 
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid5.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid57.mp4'
+          }
+        />
+
+        <Video
+          src={
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid5.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid34.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid34.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid63.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid63.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid6.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid6.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid16.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid16.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid35.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid35.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid58.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid58.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid61.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid61.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid41.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid41.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid64.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid64.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid22.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid22.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid19.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid19.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid47.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid47.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid39.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid39.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid49.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid49.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid14.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid14.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid10.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid10.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid20.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid20.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid9.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid9.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid37.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid37.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid31.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid31.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid59.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid59.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid44.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid44.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid38.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid38.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid1.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid1.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid48.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid48.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid21.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid21.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid2.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid2.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid3.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid3.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid23.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid23.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid40.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid40.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid56.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid56.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid13.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid13.mp4'
           }
         />
         <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid18.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid18.mp4'
           }
         />
                 <Video
           src={
-            'https://media.githubusercontent.com/media/reha96/video_storage/master/src/Components/vids/vid29.mp4'
+            'https://d26ctpn7twdgoy.cloudfront.net/vids/vid29.mp4'
           }
         />
       </div>

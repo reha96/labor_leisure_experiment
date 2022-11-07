@@ -78,13 +78,13 @@ const TimerPractice = (props) => {
         </DialogTitle> */}
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            By clicking Agree you switch to watching videos.
+            Press OK to watch videos.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           {/* <Button onClick={handleClose}>Disagree</Button> */}
           <Button onClick={handleClose} autoFocus>
-            Agree
+            OK
           </Button>
         </DialogActions>
       </Dialog>

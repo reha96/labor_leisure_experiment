@@ -17,6 +17,7 @@ const Home = () => {
 
   localStorage.setItem('stop', false)
   localStorage.setItem('attentionFail', 0)
+  localStorage.setItem('treatment', Math.random())
   const [checked, setChecked] = useState(false);
 
   const handleChange = (event) => {
