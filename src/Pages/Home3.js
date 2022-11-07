@@ -34,7 +34,7 @@ const Home3 = () => {
 
 
     return (
-        <div className='Page'>
+        <div className='Page2'>
             <style type="text/css">
                 {`
         .container-sm{
@@ -80,10 +80,9 @@ const Home3 = () => {
                     {/* Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
                     <strong> The practice session will not give you a typing bonus.</strong> */}
-                    Clicking the next button will bring you to a 2 minute practice session (no bonus payment here) to familiarize you with the tasks. </p>
-                    
+                    Clicking the next button will bring you to a 2 minute practice session to familiarize you with the tasks.
+                    <strong> You have 1 minute for each task and there is no bonus payment in the practice session.</strong> </p>
                     <p className="HomePage_p"> Once the practice session is over, you will start the study.
-
                 </p>
 
                 <div className='center'>

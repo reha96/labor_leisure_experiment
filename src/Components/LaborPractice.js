@@ -136,7 +136,7 @@ const LaborPractice = () => {
           </div>
         );
       })}
-      <p style={{ display: 'flex', justifyContent: 'center' }}>Please type the text above:</p>
+      <p style={{ display: 'flex', justifyContent: 'center' }}>Type the sentence:</p>
       <textarea className='textarea'
         type="text"
         value={typedValue}

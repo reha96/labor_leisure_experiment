@@ -39,7 +39,7 @@ const TasksPractice = () => {
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
-        <Typography variant='h6' color='secondary' className="center">Choose Task</Typography>
+        <Typography variant='h6' color='secondary' className="center">Practice Session</Typography>
         <style type="text/css">
           {`
         .bg-info {

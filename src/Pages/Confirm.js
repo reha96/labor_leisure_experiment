@@ -169,7 +169,7 @@ const Confirm = () => {
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        {"Do you confirm your allocation?"}
+                        {"Confirm choice?"}
                     </DialogTitle>
                     <DialogContent>
                         {/* <DialogContentText id="alert-dialog-description"> */}
