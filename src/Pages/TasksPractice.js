@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect,useState } from "react";
 import { Outlet } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
@@ -14,20 +15,25 @@ import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutl
 
 const TasksPractice = () => {
 
+   
+
   // const [pcounter, setPcounter] = useState(() => {
   //   console.log("page refreshed, localcount is " + localStorage.getItem('localcount'))
   //   return localStorage.getItem('localcount')
   // });
 
-  const savelabor = (event) => {
+  // const savelabor = (event) => {
     // setPcounter(window.localStorage.getItem('localcount'))
     // console.log("clicked labor task")
-  };
+  // };
 
-  const saveleisure = (event) => {
+  // const saveleisure = (event) => {
     // setPcounter(window.localStorage.getItem('localcount'))
     // console.log("clicked leisure task")
-  };
+  // };
+
+  
+  
 
   return (
     <div className='Pagetasks'>
@@ -97,22 +103,36 @@ const TasksPractice = () => {
         `}
         </style>
         <Tabs
-          defaultActiveKey="1"
+          // defaultActiveKey={'1'}
+          defaultActiveKey={(localStorage.getItem('lastmin') >= 1) ? "1" : "2"}
           id="mytab"
           className="mb-0"
           fill
         // mountOnEnter='true' can be interesting for future
-        >
-          <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon/> Type</Typography>} onClick={savelabor}>
+        >{(localStorage.getItem('lastmin') >= 1) ?
+          <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} >
             <LaborPractice />
           </Tab>
-          <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon/> Watch </Typography>} onClick={saveleisure}>
-            <LeisurePractice />
-          </Tab>
+          : <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} disabled>
+            <LaborPractice />
+          </Tab>}
+
+          {(localStorage.getItem('lastmin') >= 1) ?
+            <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
+              <LeisurePractice />
+            </Tab>
+            : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
+              <LeisurePractice />
+            </Tab>
+          }
+
+          {/* window.location.reload(true)  */}
         </Tabs>
         <Outlet />
+        
       </Container>
     </div>
+
   )
 }
 
