@@ -19,6 +19,7 @@ const Home3 = () => {
     const nextPage = (event) => {
         setOpen(true)
         localStorage.setItem('localcount', 0)
+        localStorage.setItem('clickedOKtoswitch', 'false')
         localStorage.setItem('lastmin', 1)
         localStorage.setItem('lastsec', 59)
         localStorage.setItem('transc', JSON.stringify(input))
@@ -68,12 +69,12 @@ const Home3 = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                <Typography variant='h6' className="center">Switching Tasks</Typography>
+                {/* <Typography variant='h6' className="center">Switching Tasks</Typography>
                 <p className="HomePage_p">
                     You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
                     As you switch tabs, your progress is automatically saved.</p>
                 <p className="HomePage_p">For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
-                </p>
+                </p> */}
 
                 <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">

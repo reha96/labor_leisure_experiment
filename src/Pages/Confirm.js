@@ -22,17 +22,17 @@ const Confirm = () => {
     var input = [];
 
     const nextPage = (event) => {
-        setOpen(true)
-        localStorage.setItem('localcount', 0)
-        localStorage.setItem('lastmin', 9)
-        localStorage.setItem('lastsec', 59)
-        localStorage.setItem('transc', JSON.stringify(input))
-        window.localStorage.setItem('progress', 0)
+        // setOpen(true)
+        localStorage.setItem('stop2', false)
+        // localStorage.setItem('lastmin', 9)
+        // localStorage.setItem('lastsec', 59)
+        // localStorage.setItem('transc', JSON.stringify(input))
+        // window.localStorage.setItem('progress', 0)
     }
 
 
     function valuetext(value) {
-        localStorage.setItem('division', value);
+        localStorage.setItem('time_choice', value);
         return;
     }
 
@@ -53,10 +53,6 @@ const Confirm = () => {
             value: 0,
             label: 'No Typing',
         },
-        // {
-        //     value: 50,
-        //     label: 'Transcribe half of the time',
-        // },
         {
             value: 100,
             label: 'Only Typing',
@@ -139,58 +135,28 @@ const Confirm = () => {
 
                 <Typography variant='h6' className="center">Lottery</Typography>
                 <p className="HomePage_p">
-                    We will now randomly select 1 out of each 10 participants and pay them the above indicated sum.
+                    We will now randomly select 1 out of each 20 participants and pay them the above indicated sum.
                     <strong> If you are among the selected participants your bonus is paid immediately as if you have worked for the above chosen time. </strong>
                     All remaining participants get a bonus equal to the amount they will work meeting the quality criteria.
                     {/* All remaining participants realize their choices themselves and get a bonus equal to the amount they work meeting the quality criteria.
                      */}
                 </p>
 
-                <Typography variant='h6' className="center">Attention</Typography>
+                {/* <Typography variant='h6' className="center">Attention</Typography>
                 <p className="HomePage_p">
                     On the next page you will spend 12 minutes.
                     <strong> For the first 2 minutes, you are obliged to type. </strong>
                     In the remaining 10 minutes, you can switch between the tasks as you want.
                     Your bonus is equal to the amount you work meeting the quality criteria.
-                </p>
-
-
+                </p> */}
 
                 <div className='center'>
+                    <Link underline="none" href={localStorage.getItem('lottery') >= 0.95 ? "lotw" : "lotl"}>
                     <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                        <strong>Begin Study</strong>
+                        <strong>Participate in Lottery</strong>
                     </ButtonM>
+                    </Link>
                 </div>
-
-                <Dialog
-                    open={open}
-                    onClose={null}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Confirm choice?"}
-                    </DialogTitle>
-                    <DialogContent>
-                        {/* <DialogContentText id="alert-dialog-description"> */}
-                        {/* <p className="HomePage_p">You spend <strong>{window.localStorage.getItem('division')}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your time on <strong>Watching Videos</strong>:</p>
-
-                        <p className="HomePage_p">You earn <strong>{((((window.localStorage.getItem('division') / 100) * 600 * 0.75) / 100) + ((((100 - window.localStorage.getItem('division')) / 100) * 600 * 0.25) / 100) + 3).toPrecision(2)}</strong> Euros.</p>
-
-                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Type.</strong></p>
-
-                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong></p> */}
-                     <ConfirmUpdate />
-                    </DialogContent>
-                    <DialogActions>
-                        <ButtonM color="error" onClick={handleClose}><strong>Change</strong></ButtonM>
-                        <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "tasksalt" : "tasks"}>
-                            <ButtonM color="success" onClick={handleClose} autoFocus>
-                                <strong>Confirm</strong>
-                            </ButtonM>
-                        </Link>
-                    </DialogActions>
-                </Dialog>
 
             </Container>
         </div >

@@ -11,7 +11,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
-
 import { useState } from "react";
 
 
@@ -37,9 +36,9 @@ const Home2 = () => {
         } else if ((event.target.value === '1') || (event.target.value === 'fast')) {
             setHelperText('Sorry, wrong answer!');
             setError(true);
-            Fail = parseInt(counter) + 1;
-            setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
+            // Fail = parseInt(counter) + 1;
+            // setCounter(Fail);
+            // localStorage.setItem('attentionFail', Fail);
             localStorage.setItem('stop', 'false');
         } else {
             setHelperText('Please select an option.');
@@ -58,6 +57,9 @@ const Home2 = () => {
         } else if ((value === '1') || (value === 'fast')) {
             setHelperText('Sorry, wrong answer!');
             setError(true);
+            Fail = parseInt(counter) + 1;
+            setCounter(Fail);
+            localStorage.setItem('attentionFail', Fail);
         } else {
             setHelperText('Please select an option.');
             setError(true);
@@ -112,8 +114,8 @@ const Home2 = () => {
                 <Typography variant='h6' className="center">Task 1: Typing</Typography>
                 <p className="HomePage_p">
                     {/* The first task requires you to exert some effort. */}
-                    You type sentences taken from Homer’s Iliad in English.
-                    <br></br>
+                    You type sentences taken from Homer’s Iliad in English.</p>
+                <p className="HomePage_p">
                     <strong>Each second you work on this task will be paid as a bonus fixed at 0.5 cents per second, if the quality criteria are met:</strong>
                     <ul class="a">
                         <li>Type at least 1 sentence per minute you spend on this task.</li>
@@ -151,53 +153,50 @@ const Home2 = () => {
                 {/* The study interface will automatically take you to the next videos. */}
 
 
-            <Box className="center" sx={{ display: 'flex' }}>
-                <form onSubmit={handleSubmit}>
-                    <FormControl sx={{ m: 3 }} error={error} variant="standard">
-                        <FormLabel id="demo-error-radios">To get the typing bonus ...</FormLabel>
-                        <RadioGroup
-                            aria-labelledby="demo-error-radios"
-                            name="quiz"
-                            value={value}
-                            onChange={handleRadioChange}
-                        >
-                            <FormControlLabel value="fast" control={<Radio />} label="type as fast as possible." />
-                            <FormControlLabel value="1" control={<Radio />} label="type at least 1 sentence per minute." />
-                            <FormControlLabel value="1-70" control={<Radio />} label="type at least 1 sentence per minute with 70 percent accuracy." />
+                <Box className="center" sx={{ display: 'flex' }}>
+                    <form onSubmit={handleSubmit}>
+                        <FormControl sx={{ m: 3 }} error={error} variant="standard">
+                            <FormLabel id="demo-error-radios">To get the typing bonus ...</FormLabel>
+                            <RadioGroup
+                                aria-labelledby="demo-error-radios"
+                                name="quiz"
+                                value={value}
+                                onChange={handleRadioChange}
+                            >
+                                <FormControlLabel value="fast" control={<Radio />} label="type as fast as possible." />
+                                <FormControlLabel value="1" control={<Radio />} label="type at least 1 sentence per minute." />
+                                <FormControlLabel value="1-70" control={<Radio />} label="type at least 1 sentence per minute with 70 percent accuracy." />
 
-                        </RadioGroup>
-                        <FormHelperText>{helperText}</FormHelperText>
+                            </RadioGroup>
+                            <FormHelperText>{helperText}</FormHelperText>
 
-                    </FormControl>
-                </form>
+                        </FormControl>
+                    </form>
 
-                {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
+                    {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
                         Check Answer
                     </ButtonM> */}
-            </Box>
+                </Box>
 
-
-
-
-            {/* <Typography variant='h6' className="center">Practice</Typography>
+                {/* <Typography variant='h6' className="center">Practice</Typography>
                 <p className="HomePage_p">
                     Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
                 </p> */}
-            <div className='center'>
-                {!(localStorage.getItem('stop') === 'true') ?
-                    <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit} >
-                        <strong>Continue</strong>
-                    </ButtonM>
-                    :
-                    <Link underline="none" href='/next2'>
-                        <ButtonM variant='contained' color='secondary' type="button" >
+                <div className='center'>
+                    {!(localStorage.getItem('stop') === 'true') ?
+                        <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit} >
                             <strong>Continue</strong>
                         </ButtonM>
-                    </Link>}
-            </div>
+                        :
+                        <Link underline="none" href='/next2'>
+                            <ButtonM variant='contained' color='secondary' type="button" >
+                                <strong>Continue</strong>
+                            </ButtonM>
+                        </Link>}
+                </div>
 
-        </Container>
+            </Container>
         </div >
     )
 }

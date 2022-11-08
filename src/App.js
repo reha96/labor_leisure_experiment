@@ -20,30 +20,36 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-  
+import LotteryWin from './Pages/LotteryWin';
+import LotteryLose from './Pages/LotteryLose';
+
 function App() {
   
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/next" element={<Home2 />} />
-          <Route path="/next2/" element={<Home3 />} />
-          <Route path="/practice" element={<TasksPractice />}>
+          <Route path="" element={<Home />} />
+          <Route path="next" element={<Home2 />} />
+          <Route path="next2" element={<Home3 />} />
+          <Route path="practice" element={<TasksPractice />}>
             <Route path="leisure" element={<LeisurePractice />} />
             <Route path="labor" element={<LaborPractice/>}/>
           </Route>
-          <Route path="/confirm" element={<Confirm />} />
-          <Route path="/tasks" element={<Tasks />}>
+          
+          <Route path="confirm" element={<Confirm />} />
+          <Route path='lotl' element={<LotteryLose/>}/>
+          <Route path="tasks" element={<Tasks />}>
             <Route path="leisure" element={<Leisure />} />
             <Route path="labor" element={<Labor/>}/>
           </Route>
-          <Route path="/tasksalt" element={<TasksAlt />}>
+          <Route path="tasksalt" element={<TasksAlt />}>
             <Route path="leisurealt" element={<LeisureAlt />} />
             <Route path="labor" element={<Labor/>}/>
           </Route>
-          <Route path='/end' element={<End/>}/>
+          <Route path='end' element={<End/>}/>
+          <Route path='lotwin' element={<LotteryWin/>}/>
+          <Route path='lotl' element={<LotteryLose/>}/>
         </Routes>
      </Router>
     </div>

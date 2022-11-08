@@ -11,7 +11,7 @@ const LaborPractice = () => {
 
   const data = [
     {
-      src: require("./transcriptions/trcp_99.jpeg"),
+      src: require("./transcriptions/trcp_59.jpeg"),
       key: 0
     },
     {
