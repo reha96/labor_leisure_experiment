@@ -16,7 +16,8 @@ import Alert from '@mui/material/Alert';
 const Home = () => {
 
   localStorage.setItem('stop', false)
-  localStorage.setItem('attentionFail', 0)
+  localStorage.setItem('attentionFail1', 0)
+  localStorage.setItem('attentionFail2', 0)
   localStorage.setItem('treatment', Math.random())
   localStorage.setItem('lottery', Math.random())
   const [checked, setChecked] = useState(false);
@@ -65,7 +66,7 @@ const Home = () => {
           Thank you for participating in this study.
           Please read and follow the instructions carefully as they contain everything you need to know to participate.</p> */}
 
-        <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning"> Please use Firefox or a Chromium (Chrome, Brave, Edge) based browser. <strong>Safari is not allowed for this study. </strong></Alert>
+        <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning"> Please use a Chromium (Chrome, Brave, Edge) based browser. <strong>Safari and Firefox are not allowed for this study. </strong></Alert>
         {/* <p className="HomePage_p">
           Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
           After the details of the study have been explained to you, you may decline to participate if you so wish.

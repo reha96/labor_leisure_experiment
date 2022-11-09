@@ -9,9 +9,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
-
 
 const TimerPractice = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
@@ -67,9 +64,8 @@ const TimerPractice = (props) => {
         
       </Button> */}
       <Dialog
-
         open={open}
-        onClose={handleClose}
+        onClose={null}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -78,13 +74,13 @@ const TimerPractice = (props) => {
         </DialogTitle> */}
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Press OK to watch videos.
+            Click to switch to the next task.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           {/* <Button onClick={handleClose}>Disagree</Button> */}
           <Button onClick={handleClose} autoFocus>
-            OK
+            Continue
           </Button>
         </DialogActions>
       </Dialog>

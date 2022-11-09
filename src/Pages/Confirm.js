@@ -22,7 +22,7 @@ const Confirm = () => {
     var input = [];
 
     const nextPage = (event) => {
-        // setOpen(true)
+        setOpen(true)
         localStorage.setItem('stop2', false)
         // localStorage.setItem('lastmin', 9)
         // localStorage.setItem('lastsec', 59)
@@ -142,21 +142,41 @@ const Confirm = () => {
                      */}
                 </p>
 
-                {/* <Typography variant='h6' className="center">Attention</Typography>
-                <p className="HomePage_p">
-                    On the next page you will spend 12 minutes.
-                    <strong> For the first 2 minutes, you are obliged to type. </strong>
-                    In the remaining 10 minutes, you can switch between the tasks as you want.
-                    Your bonus is equal to the amount you work meeting the quality criteria.
-                </p> */}
-
                 <div className='center'>
-                    <Link underline="none" href={localStorage.getItem('lottery') >= 0.95 ? "lotw" : "lotl"}>
                     <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                        <strong>Participate in Lottery</strong>
+                        <strong>Continue</strong>
                     </ButtonM>
-                    </Link>
                 </div>
+
+                <Dialog
+                    open={open}
+                    onClose={null}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Confirm choice?"}
+                    </DialogTitle>
+                    <DialogContent>
+                        {/* <DialogContentText id="alert-dialog-description"> */}
+                        {/* <p className="HomePage_p">You spend <strong>{window.localStorage.getItem('division')}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your time on <strong>Watching Videos</strong>:</p>
+
+                        <p className="HomePage_p">You earn <strong>{((((window.localStorage.getItem('division') / 100) * 600 * 0.75) / 100) + ((((100 - window.localStorage.getItem('division')) / 100) * 600 * 0.25) / 100) + 3).toPrecision(2)}</strong> Euros.</p>
+
+                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Type.</strong></p>
+
+                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong></p> */}
+                     <ConfirmUpdate />
+                    </DialogContent>
+                    <DialogActions>
+                        <ButtonM color="error" onClick={handleClose}><strong>Change</strong></ButtonM>
+                        <Link underline="none" href={localStorage.getItem('lottery') >= 0.95 ? "lotw" : "lotl"}>
+                            <ButtonM color="success" onClick={handleClose} autoFocus>
+                                <strong>Confirm</strong>
+                            </ButtonM>
+                        </Link>
+                    </DialogActions>
+                </Dialog>
 
             </Container>
         </div >

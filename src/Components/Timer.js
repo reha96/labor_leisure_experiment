@@ -3,13 +3,25 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QueryBuilderRoundedIcon from '@mui/icons-material/QueryBuilderRounded';
 import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 
 const Timer = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
   const navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
 
+
+  const handleClose = () => {
+    setOpen(false);
+    window.location.reload(true);
+  };
 
   useEffect(() => {
 
@@ -24,12 +36,15 @@ const Timer = (props) => {
           setMinutes(minutes - 1);
           setSeconds(59);
         }
+        if (minutes === 10) {
+          setOpen(true)
+        }
       }
     }, 1000)
     return () => {
       window.localStorage.setItem('lastmin', minutes);
       window.localStorage.setItem('lastsec', seconds);
-      window.localStorage.setItem('progress', 100 - Math.round((parseInt(window.localStorage.getItem('lastmin') * 60) + parseInt(window.localStorage.getItem('lastsec'))) / 6));
+      window.localStorage.setItem('progress', 100 - Math.round((parseInt(window.localStorage.getItem('lastmin') * 60) + parseInt(window.localStorage.getItem('lastsec'))) / 7.2));
 
       clearInterval(myInterval);
     };
@@ -39,9 +54,29 @@ const Timer = (props) => {
       <LinearProgress variant="determinate" value={parseInt(window.localStorage.getItem('progress'))} />
       {minutes <= 0 && seconds <= 0
         ? navigate('/end')
-        : <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}> Time Remaining {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; <QueryBuilderRoundedIcon fontSize='small' /></p>
+        : <Typography variant='h6' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}><QueryBuilderRoundedIcon /> {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp;</Typography>
       }
-      
+      <Dialog
+        open={open}
+        onClose={null}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        {/* <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle> */}
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Now you can switch freely between tasks.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Button onClick={handleClose}>Disagree</Button> */}
+          <Button onClick={handleClose} autoFocus>
+            Continue
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }

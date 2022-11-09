@@ -21,16 +21,16 @@ const Lottery = () => {
 
     var input = [];
 
-    const nextPage = (event) => {
-        setOpen(true)
-        localStorage.setItem('localcount', 0)
-        localStorage.setItem('lastmin', 11)
-        localStorage.setItem('lastsec', 59)
-        localStorage.setItem('transc', JSON.stringify(input))
-        window.localStorage.setItem('progress', 0)
-    }
+    // const nextPage = (event) => {
+    //     // setOpen(true)
+    //     localStorage.setItem('localcount', 0)
+    //     localStorage.setItem('lastmin', 11)
+    //     localStorage.setItem('lastsec', 59)
+    //     localStorage.setItem('transc', JSON.stringify(input))
+    //     window.localStorage.setItem('progress', 0)
+    // }
 
-    const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail')));
+    const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail2')));
 
     var Fail = 0;
 
@@ -52,7 +52,7 @@ const Lottery = () => {
             setError(true);
             // Fail = parseInt(counter) + 1;
             // setCounter(Fail);
-            // localStorage.setItem('attentionFail', Fail);
+            // localStorage.setItem('attentionFail2', Fail);
             localStorage.setItem('stop2', 'false');
         } else {
             setHelperText('Please select an option.');
@@ -73,11 +73,16 @@ const Lottery = () => {
             setError(true);
             Fail = parseInt(counter) + 1;
             setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
+            localStorage.setItem('attentionFail2', Fail);
         } else {
             setHelperText('Please select an option.');
             setError(true);
         }
+        localStorage.setItem('localcount', 0)
+        localStorage.setItem('lastmin', 11)
+        localStorage.setItem('lastsec', 59)
+        localStorage.setItem('transc', JSON.stringify(input))
+        window.localStorage.setItem('progress', 0)
     };
 
     const [open, setOpen] = React.useState(false);
@@ -171,7 +176,7 @@ const Lottery = () => {
                         </ButtonM>
                         :
                         <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "tasks" : "tasksalt"}>
-                            <ButtonM variant='contained' color='secondary' type="button" >
+                            <ButtonM variant='contained' color='secondary' type="button">
                                 <strong>begin</strong>
                             </ButtonM>
                         </Link>}

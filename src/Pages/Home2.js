@@ -16,7 +16,7 @@ import { useState } from "react";
 
 const Home2 = () => {
 
-    const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail')));
+    const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail1')));
 
     var Fail = 0;
 
@@ -38,7 +38,7 @@ const Home2 = () => {
             setError(true);
             // Fail = parseInt(counter) + 1;
             // setCounter(Fail);
-            // localStorage.setItem('attentionFail', Fail);
+            // localStorage.setItem('attentionFail1', Fail);
             localStorage.setItem('stop', 'false');
         } else {
             setHelperText('Please select an option.');
@@ -59,7 +59,7 @@ const Home2 = () => {
             setError(true);
             Fail = parseInt(counter) + 1;
             setCounter(Fail);
-            localStorage.setItem('attentionFail', Fail);
+            localStorage.setItem('attentionFail1', Fail);
         } else {
             setHelperText('Please select an option.');
             setError(true);

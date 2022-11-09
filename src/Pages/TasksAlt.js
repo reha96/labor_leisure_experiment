@@ -7,6 +7,9 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Labor from '../Components/Labor';
 import LeisureAlt from '../Components/LeisureAlt';
+import Typography from '@mui/material/Typography';
+import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
+import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 
 const TasksAlt = () => {
@@ -16,21 +19,21 @@ const TasksAlt = () => {
   //   return localStorage.getItem('localcount')
   // });
 
-  const savelabor = (event) => {
-    // setPcounter(window.localStorage.getItem('localcount'))
-    // console.log("clicked labor task")
-  };
+  // const savelabor = (event) => {
+  // setPcounter(window.localStorage.getItem('localcount'))
+  // console.log("clicked labor task")
+  // };
 
-  const saveleisure = (event) => {
-    // setPcounter(window.localStorage.getItem('localcount'))
-    // console.log("clicked leisure task")
-  };
+  // const saveleisure = (event) => {
+  // setPcounter(window.localStorage.getItem('localcount'))
+  // console.log("clicked leisure task")
+  // };
 
   return (
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <Timer initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
-        <p style={{ display: 'flex', justifyContent: 'center' }}>Choose a task:</p>
+        <Typography variant='h6' color='secondary' className="center">Choose Task</Typography>
         <style type="text/css">
           {`
         .bg-info {
@@ -94,18 +97,23 @@ const TasksAlt = () => {
         `}
         </style>
         <Tabs
-          defaultActiveKey=""
+          defaultActiveKey="1"
           id="mytab"
           className="mb-0"
           fill
         // mountOnEnter='true' can be interesting for future
         >
-          <Tab eventKey="1" title={<strong>Transcribe</strong>} onClick={savelabor}>
+          <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>}>
             <Labor />
           </Tab>
-          <Tab eventKey="2" title={<strong>Watch Videos</strong>} onClick={saveleisure}>
-            <LeisureAlt />
-          </Tab>
+          {(localStorage.getItem('lastmin') >= 10) ?
+            <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
+              <LeisureAlt />
+            </Tab>
+            : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
+              <LeisureAlt />
+            </Tab>
+          }
         </Tabs>
         <Outlet />
       </Container>
