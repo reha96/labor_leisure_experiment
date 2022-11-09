@@ -416,6 +416,7 @@ const Labor = () => {
 
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
+  // console.log(typedValue)
 
   const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('localcount')));
 

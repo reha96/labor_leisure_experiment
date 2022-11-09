@@ -38,10 +38,10 @@ function App() {
             <Route path="leisure" element={<LeisurePractice />} />
             <Route path="labor" element={<LaborPractice/>}/>
           </Route>
-          <Route path="practicealt" element={<TasksPracticeAlt />}>
+          {/* <Route path="practicealt" element={<TasksPracticeAlt />}>
             <Route path="leisurealt" element={<LeisurePracticeAlt />} />
             <Route path="labor" element={<LaborPractice/>}/>
-          </Route>
+          </Route> */}
           
           <Route path="confirm" element={<Confirm />} />
           <Route path='lotl' element={<LotteryLose/>}/>
@@ -49,10 +49,10 @@ function App() {
             <Route path="leisure" element={<Leisure />} />
             <Route path="labor" element={<Labor/>}/>
           </Route>
-          <Route path="tasksalt" element={<TasksAlt />}>
+          {/* <Route path="tasksalt" element={<TasksAlt />}>
             <Route path="leisurealt" element={<LeisureAlt />} />
             <Route path="labor" element={<Labor/>}/>
-          </Route>
+          </Route> */}
           <Route path='end' element={<End/>}/>
           <Route path='lotwin' element={<LotteryWin/>}/>
           <Route path='lotl' element={<LotteryLose/>}/>

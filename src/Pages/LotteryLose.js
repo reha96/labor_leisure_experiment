@@ -166,7 +166,7 @@ const Lottery = () => {
                             <strong>begin</strong>
                         </ButtonM>
                         :
-                        <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "tasks" : "tasksalt"}>
+                        <Link underline="none" href={"tasks"}>
                             <ButtonM variant='contained' color='secondary' type="button">
                                 <strong>begin</strong>
                             </ButtonM>

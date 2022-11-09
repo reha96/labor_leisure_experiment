@@ -8,13 +8,21 @@ import Tabs from 'react-bootstrap/Tabs';
 import TimerPractice from '../Components/TimerPractice';
 import LaborPractice from '../Components/LaborPractice';
 import LeisurePractice from '../Components/LeisurePractice';
+import LeisurePracticeAlt from  '../Components/LeisurePracticeAlt';
 import Typography from '@mui/material/Typography';
 import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 
 const TasksPractice = () => {
+  const [refresh, setRefresh] = useState(window.localStorage.getItem('clickedOKtoswitch'));
+  
+  if (localStorage.getItem('clickedOKtoswitch') === 'yes') {
+    setRefresh(window.localStorage.getItem('clickedOKtoswitch'))
+  }
+ 
   return (
+    
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
@@ -98,7 +106,7 @@ const TasksPractice = () => {
 
           {(localStorage.getItem('lastmin') >= 1) ?
             <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
-              <LeisurePractice />
+            <LeisurePractice/>
             </Tab>
             : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
               <LeisurePractice />

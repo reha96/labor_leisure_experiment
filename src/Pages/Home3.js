@@ -19,7 +19,7 @@ const Home3 = () => {
     const nextPage = (event) => {
         setOpen(true)
         localStorage.setItem('localcount', 0)
-        localStorage.setItem('clickedOKtoswitch', 'false')
+        localStorage.setItem('clickedOKtoswitch', 'no')
         localStorage.setItem('lastmin', 1)
         localStorage.setItem('lastsec', 59)
         localStorage.setItem('transc', JSON.stringify(input))
@@ -87,7 +87,7 @@ const Home3 = () => {
                 </p>
 
                 <div className='center'>
-                    <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "practice" : "practicealt"}>
+                    <Link underline="none" href={"practice"}>
                         <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
                             <strong>Begin Practice</strong>
                         </ButtonM>

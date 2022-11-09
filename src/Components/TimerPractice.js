@@ -12,11 +12,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import TasksPractice from '../Pages/TasksPractice';
 
 const TimerPractice = (props) => {
-  const { initialMinute = 0, initialSeconds = 0 } = props;
+  const { initialMinute = 0, initialSeconds = 0, typedValue } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -24,6 +24,8 @@ const TimerPractice = (props) => {
 
   const handleClose = () => {
     setOpen(false);
+    localStorage.setItem('clickedOKtoswitch', typedValue);
+  
     window.location.reload(true);
 
   };
