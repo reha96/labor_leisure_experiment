@@ -21,15 +21,11 @@ const Lottery = () => {
 
     var input = [];
 
-    // const nextPage = (event) => {
-    //     // setOpen(true)
-    //     localStorage.setItem('localcount', 0)
-    //     localStorage.setItem('lastmin', 11)
-    //     localStorage.setItem('lastsec', 59)
-    //     localStorage.setItem('transc', JSON.stringify(input))
-    //     window.localStorage.setItem('progress', 0)
-    // }
-
+    localStorage.setItem('localcount', 0)
+    localStorage.setItem('lastmin', 11)
+    localStorage.setItem('lastsec', 59)
+    localStorage.setItem('transc', JSON.stringify(input))
+    window.localStorage.setItem('progress', 0)
     const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail2')));
 
     var Fail = 0;
@@ -78,11 +74,6 @@ const Lottery = () => {
             setHelperText('Please select an option.');
             setError(true);
         }
-        localStorage.setItem('localcount', 0)
-        localStorage.setItem('lastmin', 11)
-        localStorage.setItem('lastsec', 59)
-        localStorage.setItem('transc', JSON.stringify(input))
-        window.localStorage.setItem('progress', 0)
     };
 
     const [open, setOpen] = React.useState(false);
