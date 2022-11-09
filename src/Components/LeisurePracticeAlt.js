@@ -6,7 +6,7 @@ import VideoOff from './VideoOff';
 const LeisurePracticeAlt = () => {
   return (
     <div className="Leisure">
-      <div className="Video__app">
+      <div className="video__app">
         <VideoOff
           src={
             'https://d26ctpn7twdgoy.cloudfront.net/vids/vid11.mp4'

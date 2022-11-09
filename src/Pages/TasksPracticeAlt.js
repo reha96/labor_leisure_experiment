@@ -11,6 +11,7 @@ import LeisurePractice from '../Components/LeisurePractice';
 import Typography from '@mui/material/Typography';
 import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
+import LeisurePracticeAlt from '../Components/LeisurePracticeAlt';
 
 
 const TasksPractice = () => {
@@ -114,10 +115,10 @@ const TasksPractice = () => {
 
           {(localStorage.getItem('lastmin') >= 1) ?
             <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
-              <LeisurePractice />
+              <LeisurePracticeAlt />
             </Tab>
             : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
-              <LeisurePractice />
+              <LeisurePracticeAlt />
             </Tab>
           }
 

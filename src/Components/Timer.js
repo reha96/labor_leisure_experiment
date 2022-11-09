@@ -17,7 +17,6 @@ const Timer = (props) => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
-
   const handleClose = () => {
     setOpen(false);
     window.location.reload(true);

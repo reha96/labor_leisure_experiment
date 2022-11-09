@@ -14,27 +14,6 @@ import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutl
 
 
 const TasksPractice = () => {
-
-   
-
-  // const [pcounter, setPcounter] = useState(() => {
-  //   console.log("page refreshed, localcount is " + localStorage.getItem('localcount'))
-  //   return localStorage.getItem('localcount')
-  // });
-
-  // const savelabor = (event) => {
-    // setPcounter(window.localStorage.getItem('localcount'))
-    // console.log("clicked labor task")
-  // };
-
-  // const saveleisure = (event) => {
-    // setPcounter(window.localStorage.getItem('localcount'))
-    // console.log("clicked leisure task")
-  // };
-
-  
-  
-
   return (
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
