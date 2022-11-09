@@ -87,7 +87,7 @@ const Home3 = () => {
                 </p>
 
                 <div className='center'>
-                    <Link underline="none" href='/practice'>
+                    <Link underline="none" href={localStorage.getItem('treatment') >= 0.5 ? "practice" : "practicealt"}>
                         <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
                             <strong>Begin Practice</strong>
                         </ButtonM>

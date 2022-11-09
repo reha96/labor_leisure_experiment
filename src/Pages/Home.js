@@ -15,16 +15,16 @@ import Alert from '@mui/material/Alert';
 
 const Home = () => {
 
-  localStorage.setItem('stop', false)
-  localStorage.setItem('attentionFail1', 0)
-  localStorage.setItem('attentionFail2', 0)
-  localStorage.setItem('treatment', Math.random())
-  localStorage.setItem('lottery', Math.random())
+
   const [checked, setChecked] = useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
-
+    localStorage.setItem('stop', false)
+    localStorage.setItem('attentionFail1', 0)
+    localStorage.setItem('attentionFail2', 0)
+    localStorage.setItem('treatment', Math.random())
+    localStorage.setItem('lottery', Math.random())
   };
   return (
     <div className='Page'>
