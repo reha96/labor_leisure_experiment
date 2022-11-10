@@ -15,6 +15,17 @@ import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutl
 
 const Tasks = () => {
 
+  const [refresh, setRefresh] = useState(localStorage.getItem('clickedOKtoswitch'));
+  useEffect(() => {
+
+    let myInterval = setInterval(() => {
+      setRefresh(localStorage.getItem('clickedOKtoswitch'))
+    }, 1000)
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
+
   return (
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>

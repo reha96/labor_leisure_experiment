@@ -19,7 +19,8 @@ const Timer = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    window.location.reload(true);
+    localStorage.setItem('clickedOKtoswitch', 'yes');
+    // window.location.reload(true);
   };
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
@@ -8,21 +8,27 @@ import Tabs from 'react-bootstrap/Tabs';
 import TimerPractice from '../Components/TimerPractice';
 import LaborPractice from '../Components/LaborPractice';
 import LeisurePractice from '../Components/LeisurePractice';
-import LeisurePracticeAlt from  '../Components/LeisurePracticeAlt';
+import LeisurePracticeAlt from '../Components/LeisurePracticeAlt';
 import Typography from '@mui/material/Typography';
 import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
 
 
 const TasksPractice = () => {
-  const [refresh, setRefresh] = useState(window.localStorage.getItem('clickedOKtoswitch'));
+  // const [refresh, setRefresh] = useState(localStorage.getItem('clickedOKtoswitch'));
+  // useEffect(() => {
+
+  //   let myInterval = setInterval(() => {
+  //     setRefresh(localStorage.getItem('clickedOKtoswitch'))
+  //   }, 1000)
+  //   return () => {
+  //     clearInterval(myInterval);
+  //   };
+  // });
+  // localStorage.setItem('clickedOKtoswitch', 'yes');
   
-  if (localStorage.getItem('clickedOKtoswitch') === 'yes') {
-    setRefresh(window.localStorage.getItem('clickedOKtoswitch'))
-  }
- 
   return (
-    
+
     <div className='Pagetasks'>
       <Container className="p-1" fluid='sm'>
         <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
@@ -89,34 +95,34 @@ const TasksPractice = () => {
 
         `}
         </style>
-        <Tabs
-          // defaultActiveKey={'1'}
-          defaultActiveKey={(localStorage.getItem('lastmin') >= 1) ? "1" : "2"}
-          id="mytab"
-          className="mb-0"
-          fill
-        // mountOnEnter='true' can be interesting for future
-        >{(localStorage.getItem('lastmin') >= 1) ?
-          <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} >
-            <LaborPractice />
-          </Tab>
-          : <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} disabled>
-            <LaborPractice />
-          </Tab>}
-
-          {(localStorage.getItem('lastmin') >= 1) ?
-            <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
-            <LeisurePractice/>
+          <Tabs
+            // defaultActiveKey={'1'}
+            defaultActiveKey={(localStorage.getItem('lastmin') >= 1) ? "1" : "2"}
+            id="mytab"
+            className="mb-0"
+            fill
+          // mountOnEnter='true' can be interesting for future
+          >{(localStorage.getItem('lastmin') >= 1) ?
+            <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} >
+              <LaborPractice />
             </Tab>
-            : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
-              <LeisurePractice />
-            </Tab>
-          }
+            : <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} disabled>
+              <LaborPractice />
+            </Tab>}
 
-          {/* window.location.reload(true)  */}
-        </Tabs>
+            {(localStorage.getItem('lastmin') >= 1) ?
+              <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
+                <LeisurePractice />
+              </Tab>
+              : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
+                <LeisurePractice />
+              </Tab>
+            }
+
+            {/* window.location.reload(true)  */}
+          </Tabs>
         <Outlet />
-        
+
       </Container>
     </div>
 
