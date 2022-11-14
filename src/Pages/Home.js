@@ -18,14 +18,26 @@ const Home = () => {
 
   const [checked, setChecked] = useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem('stop', false)
     localStorage.setItem('attentionFail1', 0)
     localStorage.setItem('attentionFail2', 0)
     localStorage.setItem('treatment', Math.random())
     localStorage.setItem('lottery', Math.random())
-  };
+    let passvalue = {
+      Attention_Check_1: localStorage.getItem('attentionFail1'),
+      Attention_Check_2: localStorage.getItem('attentionFail2'),
+      Treatment: localStorage.getItem('treatment')
+    }
+    let response = await fetch('http://localhost:5001/record/add', {
+      method: 'POST',
+      body: 'fucku',
+    });
+    console.log(JSON.stringify(passvalue))
+  }
+   
+  
   return (
     <div className='Page'>
       <style type="text/css">
