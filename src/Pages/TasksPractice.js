@@ -8,7 +8,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import TimerPractice from '../Components/TimerPractice';
 import LaborPractice from '../Components/LaborPractice';
 import LeisurePractice from '../Components/LeisurePractice';
-import LeisurePracticeAlt from '../Components/LeisurePracticeAlt';
 import Typography from '@mui/material/Typography';
 import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
 import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';

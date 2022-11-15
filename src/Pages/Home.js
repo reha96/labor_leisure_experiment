@@ -4,22 +4,58 @@ import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
 import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { useState } from "react";
 import Alert from '@mui/material/Alert';
-
-
+import * as Bowser from "bowser";
 
 const Home = () => {
 
-  const [checked, setChecked] = useState(false);
+  // const isMobile = navigator.userAgentData.mobile;
+  const browser = Bowser.parse(window.navigator.userAgent);
+  // console.log(browser["browser"])
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
+const onClick = async (event) => {
+    localStorage.setItem('attentionFail1', 0)
+    localStorage.setItem('attentionFail2', 0)
+    localStorage.setItem('treatment', Math.random())
+    localStorage.setItem('lottery', Math.random())
+    let treatment = ""
+    if (localStorage.getItem('treatment') >= 0.5) {
+      treatment = 'autoplayOn'
+    }
+    else {
+      treatment = 'autoplayOff'
+    }
+    let lottery = ""
+    if (localStorage.getItem('lottery') >= 0.95) {
+      lottery = 'lotteryWin'
+    }
+    else {
+      lottery = 'lotteryLose'
+    }
+    let passvalue = {
+      attention1: localStorage.getItem('attentionFail1'),
+      attention2: localStorage.getItem('attentionFail2'),
+      timeStart: new Date().toISOString(),
+      treatment: treatment,
+      lottery: lottery,
+      platform: browser['platform'],
+      browser: browser['browser'],
+      ProlificId: ""
+    }
+    let response = await fetch('http://localhost:5001/record/add', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(passvalue),
+    })
+      .catch(error => {
+        window.alert(error);
+        return;
+      });
+    console.log(JSON.stringify(passvalue))
   }
-   
+  
   return (
     <div className='Page'>
       <style type="text/css">
@@ -104,30 +140,19 @@ const Home = () => {
           After all the answers are collected, we will pay all participants their earnings.
           
         </p> */}
-
-        <Typography variant='h6' className="center">Your Consent</Typography>
-        <p className="HomePage_p">
-          I have been informed in writing on how the study will be carried out.
-          I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
-          I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
-        </p>
-
+        {/* 
         <FormGroup className="center">
           <FormControlLabel control={<Checkbox checked={checked}
             onChange={handleChange}
             inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give my consent." />
-        </FormGroup>
+        </FormGroup> */}
 
         <div className='center'>
-          {!checked ?
-            <ButtonM disabled variant='contained' color='secondary' type="button">
-              <strong>Continue</strong>
-            </ButtonM>
-            : <Link underline="none" href='/id'>
-              <ButtonM disabled={!checked} variant='contained' color='secondary' type="button">
+          <Link underline="none" href='/id'>
+              <ButtonM variant='contained' color='secondary' type="button" onClick={onClick}>
                 <strong>Continue</strong>
               </ButtonM>
-            </Link>}
+            </Link>
         </div>
       </Container>
     </div>

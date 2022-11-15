@@ -1,5 +1,4 @@
 import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Link from '@mui/material/Link';
 import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
@@ -9,25 +8,23 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useState } from "react";
-import Alert from '@mui/material/Alert';
-
-
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 const Home1 = () => {
 
   const [checked, setChecked] = useState(false);
+  const [typedValue, setTypedValue] = useState("");
+  // console.log(typedValue)
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem('stop', false)
-    localStorage.setItem('attentionFail1', 0)
-    localStorage.setItem('attentionFail2', 0)
-    localStorage.setItem('treatment', Math.random())
-    localStorage.setItem('lottery', Math.random())
+  }
+
+  const onClick = async (event) => {
     let passvalue = {
-      attention1: localStorage.getItem('attentionFail1'),
-      attention2: localStorage.getItem('attentionFail2'),
-      treatment: localStorage.getItem('treatment')
+      ID: typedValue
     }
     let response = await fetch('http://localhost:5001/record/add', {
       method: 'POST',
@@ -42,7 +39,6 @@ const Home1 = () => {
       });
     console.log(JSON.stringify(passvalue))
   }
-
 
   return (
     <div className='Page'>
@@ -79,24 +75,38 @@ const Home1 = () => {
           `}
       </style>
       <Container className="p-1" fluid='sm'>
-        <Typography variant='h6' className="center">Your Prolific ID</Typography>
+
+        <Typography variant='h6' className="center">Your Consent</Typography>
         <p className="HomePage_p">
-          Please enter your Prolific ID below:
+          I have been informed in writing on how the study will be carried out.
+          I have also been informed about the anonymity of my personal data and processing of it without revealing my identity, under the conditions detailed in the GDPR.
+          I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
         </p>
+
+        <Box
+          className="center"
+          sx={{ m: 2.5 }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField id="outlined-basic" label="Prolific ID" variant="outlined" onChange={(event) => setTypedValue(event.target.value)} />
+        </Box>
 
         <FormGroup className="center">
           <FormControlLabel control={<Checkbox checked={checked}
             onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }} />} label="I understand that this is a research study and no activities of mine as a part of it pose any threat to my Prolific membership." />
+            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give consent." />
         </FormGroup>
 
+
+
         <div className='center'>
-          {!checked ?
+          {typedValue === "" ?
             <ButtonM disabled variant='contained' color='secondary' type="button">
               <strong>Continue</strong>
             </ButtonM>
             : <Link underline="none" href='/next'>
-              <ButtonM disabled={!checked} variant='contained' color='secondary' type="button">
+              <ButtonM disabled={!checked} variant='contained' color='secondary' type="button" onClick={onClick}>
                 <strong>Continue</strong>
               </ButtonM>
             </Link>}

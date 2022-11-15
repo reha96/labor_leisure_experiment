@@ -45,6 +45,11 @@ recordRoutes.route("/record/add").post(function (req, response) {
     attention1: req.body.attention1,
     attention2: req.body.attention2,
     treatment: req.body.treatment,
+    lottery: req.body.lottery,
+    timeStart: req.body.timeStart,
+    platform: req.body.platform,
+    browser: req.body.browser,
+    ID: req.body.ProlificId
   };
   //  console.log(data)
   console.log(myobj)

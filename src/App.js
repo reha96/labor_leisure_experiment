@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Link, 
+import {BrowserRouter as Router,  
   Routes, Route} from 'react-router-dom'
 import './App.css';
 import './App.scss';
@@ -12,12 +12,8 @@ import Labor from './Components/Labor';
 import LaborPractice from './Components/LaborPractice';
 import Leisure from './Components/Leisure';
 import LeisurePractice from './Components/LeisurePractice';
-// import LeisurePracticeAlt from './Components/LeisurePracticeAlt';
 import End from './Pages/End';
-// import TasksAlt from './Pages/TasksAlt';
-// import LeisureAlt from './Components/LeisureAlt';
 import TasksPractice from './Pages/TasksPractice';
-// import TasksPracticeAlt from './Pages/TasksPracticeAlt';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
