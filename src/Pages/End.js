@@ -41,7 +41,7 @@ const End = () => {
     <Container className="p-1" fluid='sm'>
         <Typography variant='h6' className="center">End Survey</Typography>
         <p className="HomePage_p">
-          Please <a href="https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq">click</a> on the link to complete the end survey.
+          Please <a href="https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq">click here</a> to complete the end survey.
           
         </p>
 

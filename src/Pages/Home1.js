@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 
 
 
-const Home = () => {
+const Home1 = () => {
 
   const [checked, setChecked] = useState(false);
 
@@ -158,4 +158,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home1
