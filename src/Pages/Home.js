@@ -1,5 +1,4 @@
 import React from 'react'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Link from '@mui/material/Link';
 import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
@@ -17,33 +16,10 @@ const Home = () => {
 
   const [checked, setChecked] = useState(false);
 
-  const handleChange = async (event) => {
+  const handleChange = (event) => {
     setChecked(event.target.checked);
-    localStorage.setItem('stop', false)
-    localStorage.setItem('attentionFail1', 0)
-    localStorage.setItem('attentionFail2', 0)
-    localStorage.setItem('treatment', Math.random())
-    localStorage.setItem('lottery', Math.random())
-    let passvalue = {
-      attention1: localStorage.getItem('attentionFail1'),
-      attention2: localStorage.getItem('attentionFail2'),
-      treatment: localStorage.getItem('treatment')
-    }
-    let response = await fetch('http://localhost:5001/record/add', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(passvalue),
-    })
-    .catch(error => {
-      window.alert(error);
-      return;
-    });
-    console.log(JSON.stringify(passvalue))
   }
    
-  
   return (
     <div className='Page'>
       <style type="text/css">
@@ -147,7 +123,7 @@ const Home = () => {
             <ButtonM disabled variant='contained' color='secondary' type="button">
               <strong>Continue</strong>
             </ButtonM>
-            : <Link underline="none" href='/next'>
+            : <Link underline="none" href='/id'>
               <ButtonM disabled={!checked} variant='contained' color='secondary' type="button">
                 <strong>Continue</strong>
               </ButtonM>
