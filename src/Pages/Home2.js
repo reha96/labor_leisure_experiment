@@ -4,6 +4,8 @@ import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 import Box from '@mui/material/Box';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -11,7 +13,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
-import { useState } from "react";
 
 
 const Home2 = () => {
@@ -36,9 +37,6 @@ const Home2 = () => {
         } else if ((event.target.value === '1') || (event.target.value === 'fast')) {
             setHelperText('Sorry, wrong answer!');
             setError(true);
-            // Fail = parseInt(counter) + 1;
-            // setCounter(Fail);
-            // localStorage.setItem('attentionFail1', Fail);
             localStorage.setItem('stop', 'false');
         } else {
             setHelperText('Please select an option.');
@@ -68,6 +66,42 @@ const Home2 = () => {
 
     var input = [];
 
+
+    const [form, setForm] = useState({
+        name: "",
+        position: "",
+        level: "",
+        records: [],
+      });
+      const params = useParams();
+      const navigate = useNavigate();
+      
+      useEffect(() => {
+        async function fetchData() {
+          const id = params.id.toString();
+          const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
+      
+          if (!response.ok) {
+            const message = `An error has occurred: ${response.statusText}`;
+            window.alert(message);
+            return;
+          }
+      
+          const record = await response.json();
+          if (!record) {
+            window.alert(`Record with id ${id} not found`);
+            navigate("/");
+            return;
+          }
+      
+          setForm(record);
+        }
+      
+        fetchData();
+        return;
+    }, [params.id, navigate]);
+
+   console.log(form)
 
     return (
         <div className='Page2'>
@@ -104,16 +138,11 @@ const Home2 = () => {
           `}
             </style>
             <Container className="p-1" fluid='sm'>
-                {/* <Typography variant='h4' className="center">First Part</Typography> */}
                 <p className="HomePage_p">
                     In this study there are two tasks that you can choose to do for 10 minutes.
-                    {/* In this study there are two tasks. */}
-                    {/* The amount of your compensation will depend on how long you perform each task. */}
-                    {/* Depending on your decisions about how you allocate your time for each of the tasks, you earn money for yourself. */}
                 </p>
                 <Typography variant='h6' className="center">Task 1: Typing</Typography>
                 <p className="HomePage_p">
-                    {/* The first task requires you to exert some effort. */}
                     You type sentences taken from Homer’s Iliad in English.</p>
                 <p className="HomePage_p">
                     <strong>Each second you work on this task will be paid as a bonus fixed at 0.5 cents per second, if the quality criteria are met:</strong>
@@ -125,15 +154,6 @@ const Home2 = () => {
                     <strong>Typing faster in this task will not earn you a higher bonus.</strong>
                 </p>
 
-                {/* <Typography variant='h6' className="center">Requirements</Typography>
-                <p className="HomePage_p">
-                    To get your typing bonus, you are required to 
-                    Each 
-                    
-                </p> */}
-                {/* This task represents your willingness to work for a given wage. */}
-
-
                 <Typography variant='h6' className="center">Task 2: Watching Videos</Typography>
                 <p className="HomePage_p">
                     You watch popular short videos from TikTok and YouTube.
@@ -142,17 +162,6 @@ const Home2 = () => {
                 <p className="HomePage_p">
                     <strong>Each second you spend on this task will earn you 0.25 cents per second.</strong>
                 </p>
-                {/* You will not earn a wage for this task, but the videos are meant to be fun and enjoyable compared to the first task. */}
-                {/* Naturally, the shorter time you allocate for the first task, the longer you can enjoy the videos. */}
-                {/* This task represents how much you value leisure, instead of working for a given wage. */}
-                {/* You can scroll between different videos and start watching the videos you like.
-                    You are not limited to watch the videos from the beginning to end.
-                    You can switch between videos as you please. */}
-                {/* There is enough content to cover the entire study duration. */}
-                {/* For this task you only decide how long you want to watch the available videos. */}
-                {/* The study interface will automatically take you to the next videos. */}
-
-
                 <Box className="center" sx={{ display: 'flex' }}>
                     <form onSubmit={handleSubmit}>
                         <FormControl sx={{ m: 3 }} error={error} variant="standard">
@@ -173,16 +182,7 @@ const Home2 = () => {
                         </FormControl>
                     </form>
 
-                    {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
-                        Check Answer
-                    </ButtonM> */}
                 </Box>
-
-                {/* <Typography variant='h6' className="center">Practice</Typography>
-                <p className="HomePage_p">
-                    Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
-                    Once the practice session is over, you will be taken back to the rest of the study.
-                </p> */}
                 <div className='center'>
                     {!(localStorage.getItem('stop') === 'true') ?
                         <ButtonM variant='contained' color='secondary' type="button" onClick={handleSubmit} >

@@ -5,56 +5,12 @@ import Container from 'react-bootstrap/Container';
 import '../App.css';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
-import * as Bowser from "bowser";
 
 const Home = () => {
 
   // const isMobile = navigator.userAgentData.mobile;
-  const browser = Bowser.parse(window.navigator.userAgent);
   // console.log(browser["browser"])
 
-const onClick = async (event) => {
-    localStorage.setItem('attentionFail1', 0)
-    localStorage.setItem('attentionFail2', 0)
-    localStorage.setItem('treatment', Math.random())
-    localStorage.setItem('lottery', Math.random())
-    let treatment = ""
-    if (localStorage.getItem('treatment') >= 0.5) {
-      treatment = 'autoplayOn'
-    }
-    else {
-      treatment = 'autoplayOff'
-    }
-    let lottery = ""
-    if (localStorage.getItem('lottery') >= 0.95) {
-      lottery = 'lotteryWin'
-    }
-    else {
-      lottery = 'lotteryLose'
-    }
-    let passvalue = {
-      attention1: localStorage.getItem('attentionFail1'),
-      attention2: localStorage.getItem('attentionFail2'),
-      timeStart: new Date().toISOString(),
-      treatment: treatment,
-      lottery: lottery,
-      platform: browser['platform'],
-      browser: browser['browser'],
-      ProlificId: ""
-    }
-    let response = await fetch('http://localhost:5001/record/add', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(passvalue),
-    })
-      .catch(error => {
-        window.alert(error);
-        return;
-      });
-    console.log(JSON.stringify(passvalue))
-  }
   
   return (
     <div className='Page'>
@@ -149,7 +105,7 @@ const onClick = async (event) => {
 
         <div className='center'>
           <Link underline="none" href='/id'>
-              <ButtonM variant='contained' color='secondary' type="button" onClick={onClick}>
+              <ButtonM variant='contained' color='secondary' type="button">
                 <strong>Continue</strong>
               </ButtonM>
             </Link>

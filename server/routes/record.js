@@ -39,17 +39,20 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 // This section will help you create a new record.
 recordRoutes.route("/record/add").post(function (req, response) {
   let db_connect = dbo.getDb();
-  //  const data = req.body;
-
   let myobj = {
-    attention1: req.body.attention1,
-    attention2: req.body.attention2,
     treatment: req.body.treatment,
     lottery: req.body.lottery,
     timeStart: req.body.timeStart,
     platform: req.body.platform,
     browser: req.body.browser,
-    ID: req.body.ProlificId
+    ID: req.body.ProlificId,
+    attention1: req.body.attention1,
+    attention2: req.body.attention2,
+    clikcedOkToSwitch: req.body.clikcedOkToSwitch,
+    timeChoice: req.body.timeChoice,
+    leisureTime: req.body.leisureTime,
+    laborTime: req.body.laborTime,
+    transcription: req.body.transcription
   };
   //  console.log(data)
   console.log(myobj)
@@ -66,9 +69,13 @@ recordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId(req.params.id) };
   let newvalues = {
     $set: {
-      name: req.body.name,
-      position: req.body.position,
-      level: req.body.level,
+      attention1: req.body.attention1,
+      attention2: req.body.attention2,
+      clikcedOkToSwitch: req.body.clikcedOkToSwitch,
+      timeChoice: req.body.timeChoice,
+      leisureTime: req.body.leisureTime,
+      laborTime: req.body.laborTime,
+      transcription: req.body.transcription
     },
   };
   db_connect

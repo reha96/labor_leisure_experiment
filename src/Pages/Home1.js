@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from '@mui/material/Link';
 import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
@@ -7,14 +6,16 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useState } from "react";
+import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import * as Bowser from "bowser";
 
 const Home1 = () => {
 
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
+  const browser = Bowser.parse(window.navigator.userAgent);
   // console.log(typedValue)
 
   const handleChange = async (event) => {
@@ -23,8 +24,39 @@ const Home1 = () => {
   }
 
   const onClick = async (event) => {
+    localStorage.setItem('attentionFail1', 0)
+    localStorage.setItem('attentionFail2', 0)
+    localStorage.setItem('treatment', Math.random())
+    localStorage.setItem('lottery', Math.random())
+    localStorage.setItem('ID', typedValue)
+    let treatment = ""
+    if (localStorage.getItem('treatment') >= 0.5) {
+      treatment = 'autoplayOn'
+    }
+    else {
+      treatment = 'autoplayOff'
+    }
+    let lottery = ""
+    if (localStorage.getItem('lottery') >= 0.95) {
+      lottery = 'lotteryWin'
+    }
+    else {
+      lottery = 'lotteryLose'
+    }
     let passvalue = {
-      ID: typedValue
+      attention1: localStorage.getItem('attentionFail1'),
+      attention2: localStorage.getItem('attentionFail2'),
+      timeStart: new Date().toISOString(),
+      treatment: treatment,
+      lottery: lottery,
+      platform: browser['platform'],
+      browser: browser['browser'],
+      ProlificId: typedValue,
+      clikcedOkToSwitch:"",
+      timeChoice: 0,
+      leisureTime: 0,
+      laborTime:0,
+      transcription:""
     }
     let response = await fetch('http://localhost:5001/record/add', {
       method: 'POST',
@@ -83,6 +115,13 @@ const Home1 = () => {
           I am aware that I may withdraw my consent any time and I do not need to give reasons for my withdrawal and that there will be no negative consequences.
         </p>
 
+        <FormGroup className="center">
+          <FormControlLabel control={<Checkbox checked={checked}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give consent." />
+        </FormGroup>
+
+
         <Box
           className="center"
           sx={{ m: 2.5 }}
@@ -91,13 +130,6 @@ const Home1 = () => {
         >
           <TextField id="outlined-basic" label="Prolific ID" variant="outlined" onChange={(event) => setTypedValue(event.target.value)} />
         </Box>
-
-        <FormGroup className="center">
-          <FormControlLabel control={<Checkbox checked={checked}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'controlled' }} />} label="Yes, I give consent." />
-        </FormGroup>
-
 
 
         <div className='center'>
