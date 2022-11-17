@@ -17,6 +17,8 @@ import FormLabel from '@mui/material/FormLabel';
 
 const Home2 = () => {
 
+    // const { userId } = useParams()
+    // console.log(userId)
     const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('attentionFail1')));
 
     var Fail = 0;
@@ -73,33 +75,33 @@ const Home2 = () => {
         level: "",
         records: [],
       });
-      const params = useParams();
-      const navigate = useNavigate();
+    //   const params = useParams();
+    //   const navigate = useNavigate();
       
-      useEffect(() => {
-        async function fetchData() {
-          const id = params.id.toString();
-          const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
+    //   useEffect(() => {
+    //     async function fetchData() {
+    //       const id = params.id.toString();
+    //       const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
       
-          if (!response.ok) {
-            const message = `An error has occurred: ${response.statusText}`;
-            window.alert(message);
-            return;
-          }
+    //       if (!response.ok) {
+    //         const message = `An error has occurred: ${response.statusText}`;
+    //         window.alert(message);
+    //         return;
+    //       }
       
-          const record = await response.json();
-          if (!record) {
-            window.alert(`Record with id ${id} not found`);
-            navigate("/");
-            return;
-          }
+    //       const record = await response.json();
+    //       if (!record) {
+    //         window.alert(`Record with id ${id} not found`);
+    //         navigate("/");
+    //         return;
+    //       }
       
-          setForm(record);
-        }
+    //       setForm(record);
+    //     }
       
-        fetchData();
-        return;
-    }, [params.id, navigate]);
+    //     fetchData();
+    //     return;
+    // }, [params.id, navigate]);
 
    console.log(form)
 
@@ -189,7 +191,7 @@ const Home2 = () => {
                             <strong>Continue</strong>
                         </ButtonM>
                         :
-                        <Link underline="none" href='/next2'>
+                        <Link underline="none" href={'next2'}>
                             <ButtonM variant='contained' color='secondary' type="button" >
                                 <strong>Continue</strong>
                             </ButtonM>

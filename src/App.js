@@ -23,37 +23,27 @@ import LotteryLose from './Pages/LotteryLose';
 import Home1 from './Pages/Home1';
 
 function App() {
-  
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="id" element={<Home1 />} />
-          <Route path="next" element={<Home2 />} />
-          <Route path="next2" element={<Home3 />} />
-          <Route path="practice" element={<TasksPractice />}>
-            <Route path="leisure" element={<LeisurePractice />} />
-            <Route path="labor" element={<LaborPractice/>}/>
+          <Route path=":userId/next" element={<Home2 />} />
+          <Route path=":userId/next2" element={<Home3 />} />
+          <Route path=":userId/practice" element={<TasksPractice />}>
+            <Route path=":userId/leisure" element={<LeisurePractice />} />
+            <Route path=":userId/labor" element={<LaborPractice/>}/>
           </Route>
-          {/* <Route path="practicealt" element={<TasksPracticeAlt />}>
-            <Route path="leisurealt" element={<LeisurePracticeAlt />} />
-            <Route path="labor" element={<LaborPractice/>}/>
-          </Route> */}
-          
-          <Route path="confirm" element={<Confirm />} />
-          <Route path='lotl' element={<LotteryLose/>}/>
-          <Route path="tasks" element={<Tasks />}>
-            <Route path="leisure" element={<Leisure />} />
-            <Route path="labor" element={<Labor/>}/>
+          <Route path=":userId/confirm" element={<Confirm />} />
+          <Route path=':userId/lotl' element={<LotteryLose/>}/>
+          <Route path=":userId/tasks" element={<Tasks />}>
+            <Route path=":userId/tasks/leisure" element={<Leisure />} />
+            <Route path=":userId/tasks/labor" element={<Labor/>}/>
           </Route>
-          {/* <Route path="tasksalt" element={<TasksAlt />}>
-            <Route path="leisurealt" element={<LeisureAlt />} />
-            <Route path="labor" element={<Labor/>}/>
-          </Route> */}
-          <Route path='end' element={<End/>}/>
-          <Route path='lotwin' element={<LotteryWin/>}/>
-          <Route path='lotl' element={<LotteryLose/>}/>
+          <Route path=':userId/end' element={<End/>}/>
+          <Route path=':userId/lotwin' element={<LotteryWin/>}/>
+          <Route path=':userId/lotl' element={<LotteryLose/>}/>
         </Routes>
      </Router>
     </div>

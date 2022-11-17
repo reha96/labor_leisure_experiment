@@ -10,8 +10,14 @@ import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import * as Bowser from "bowser";
+// import { useParams} from "react-router";
+
 
 const Home1 = () => {
+
+
+  // const { userId } = useParams()
+  // console.log(userId)
 
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
@@ -137,7 +143,7 @@ const Home1 = () => {
             <ButtonM disabled variant='contained' color='secondary' type="button">
               <strong>Continue</strong>
             </ButtonM>
-            : <Link underline="none" href='/next'>
+            : <Link underline="none" href={typedValue.toString()+"/next"}>
               <ButtonM disabled={!checked} variant='contained' color='secondary' type="button" onClick={onClick}>
                 <strong>Continue</strong>
               </ButtonM>

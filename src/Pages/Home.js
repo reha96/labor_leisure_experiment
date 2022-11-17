@@ -47,27 +47,10 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid='sm'>
-        {/* <Typography variant="h4" className='center'>Welcome</Typography>
-        <p className="HomePage_p">
-          Thank you for participating in this study.
-          Please read and follow the instructions carefully as they contain everything you need to know to participate.</p> */}
-
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning"> Please use a Chromium (Chrome, Brave, Edge) based browser. <strong>Safari and Firefox are not allowed for this study. </strong></Alert>
-        {/* <p className="HomePage_p">
-          Participation in this study is voluntary and will take no more than <strong>25 minutes</strong> of your time.
-          After the details of the study have been explained to you, you may decline to participate if you so wish.
-        </p> */}
 
         <Typography variant='h6' className="center">Study Description</Typography>
         <p className="HomePage_p">
-          {/* You are about to choose how long you want to perform two tasks: <strong>Watching Videos</strong> or <strong>Typing</strong>. <br></br>
-
-          {/* The amount of your compensation in this study depends on your decisions.
-          The base amount you earn for participation is <strong>4.5€</strong>.
-          You can earn <strong>up to 3€</strong> in addition to the show-up fee as your <strong>bonus</strong>.
-          After the decision-making part, you will be asked to complete a brief questionnaire.
-          The total duration of the study is no more than <strong>22 minutes.</strong> */}
-
           In this study you will:</p>
         <p className="HomePage_p">
           <ul class="a">
