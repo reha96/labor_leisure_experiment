@@ -1,8 +1,4 @@
 const express = require("express");
-
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /record.
 const recordRoutes = express.Router();
 
 // This will help us connect to the database
@@ -10,7 +6,6 @@ const dbo = require("../db/conn");
 
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
-
 
 // This section will help you get a list of all the records.
 recordRoutes.route("/record").get(function (req, res) {
@@ -52,15 +47,17 @@ recordRoutes.route("/record/add").post(function (req, response) {
     timeChoice: req.body.timeChoice,
     leisureTime: req.body.leisureTime,
     laborTime: req.body.laborTime,
-    transcription: req.body.transcription
+    transcription: req.body.transcription,
   };
   //  console.log(data)
-  console.log(myobj)
+  console.log(myobj);
 
-  db_connect.collection("participant_info").insertOne(myobj, function (err, res) {
-    if (err) throw err;
-    response.json(res);
-  });
+  db_connect
+    .collection("participant_info")
+    .insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      response.json(res);
+    });
 });
 
 // This section will help you update a record by id.
@@ -75,7 +72,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
       timeChoice: req.body.timeChoice,
       leisureTime: req.body.leisureTime,
       laborTime: req.body.laborTime,
-      transcription: req.body.transcription
+      transcription: req.body.transcription,
     },
   };
   db_connect
@@ -91,11 +88,13 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("participant_info").deleteOne(myquery, function (err, obj) {
-    if (err) throw err;
-    console.log("1 document deleted");
-    response.json(obj);
-  });
+  db_connect
+    .collection("participant_info")
+    .deleteOne(myquery, function (err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      response.json(obj);
+    });
 });
 
 module.exports = recordRoutes;
