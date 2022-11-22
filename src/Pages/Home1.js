@@ -19,6 +19,7 @@ const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
+  const [error, setError] = useState(null);
   // console.log(typedValue)
 
   const handleChange = async (event) => {
@@ -26,7 +27,9 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
 
-  const onClick = async (event) => {
+  const onClick = async (e) => {
+    // use only when need to stop page from loading next page
+    // e.preventDefault()
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
@@ -52,24 +55,28 @@ const Home1 = () => {
       lottery: lottery,
       platform: browser["platform"],
       browser: browser["browser"],
-      ProlificId: typedValue,
-      clikcedOkToSwitch: "",
+      ID: typedValue,
+      clikcedOkToSwitch: "not yet",
       timeChoice: 0,
       leisureTime: 0,
       laborTime: 0,
-      transcription: "",
+      transcription: {},
     };
-    let response = await fetch("http://localhost:5001/record/add", {
+    const response = await fetch("/api/participants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(passvalue),
-    }).catch((error) => {
-      window.alert(error);
-      return;
     });
-    console.log(JSON.stringify(passvalue));
+    const json = await response.json();
+    if (!response) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      setError(null);
+      console.log("new participant added", json);
+    }
   };
 
   return (

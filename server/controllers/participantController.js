@@ -1,5 +1,8 @@
 const Participant = require("../models/participantModel");
+const mongoose = require("mongoose");
 
+
+// create entry
 const createParticipant = async (req, res) => {
   const {
     treatment,
@@ -36,7 +39,55 @@ const createParticipant = async (req, res) => {
   }
 };
 
+// get entries
+const getParticipants = async (req, res) => {
+  const participants = await Participant.find({}).sort({ createdAt: -1 });
+  res.status(200).json(participants);
+};
+
+
+// get a single entry
+const getParticipant = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such participant" });
+  }
+
+  const participant = await Participant.findById(id);
+
+  if (!participant) {
+    return res.status(404).json({ error: "No such participant" });
+  }
+
+  res.status(200).json(participant);
+};
+
+// update one entry (example which can be modified by editing the fields)
+const updateParticipant = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such participant" });
+  }
+
+  const participant = await Participant.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    }
+  );
+
+  if (!participant) {
+    return res.status(404).json({ error: "No such participant" });
+  }
+
+  res.status(200).json(participant);
+};
 
 module.exports = {
-    createParticipant
-}
+  createParticipant,
+  getParticipants,
+  getParticipant,
+  updateParticipant,
+};

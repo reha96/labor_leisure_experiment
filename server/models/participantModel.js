@@ -6,7 +6,7 @@ const ParticipantSchema = new Schema(
   {
     treatment: { type: String, required: true },
     lottery: { type: String, required: true },
-    platform: { type: Object,required: true },
+    platform: { type: Object, required: true },
     browser: { type: Object, required: true },
     ID: { type: String, required: true },
     attention1: { type: Number, required: true },
