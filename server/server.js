@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 
 app.use(cors());
 app.use(express.json());
-// app.use(require("./routes/record"));
 
 // get driver connection
 // const dbo = require("./db/conn");
