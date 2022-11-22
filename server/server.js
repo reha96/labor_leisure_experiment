@@ -6,7 +6,7 @@ require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT || 4000;
 const mongoose = require("mongoose");
 
-app.use(cors());
+app.use(cors({origin: '*'}));
 app.use(express.json());
 // app.use(require("./routes/record"));
 
