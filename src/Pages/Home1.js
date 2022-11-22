@@ -61,7 +61,7 @@ const Home1 = () => {
       laborTime: 0,
       transcription: {},
     };
-    const response = await fetch("http://localhost:5001/api/participants", {
+    const response = await fetch("/api/participants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
