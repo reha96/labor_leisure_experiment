@@ -50,7 +50,6 @@ const Home1 = () => {
     let passvalue = {
       attention1: localStorage.getItem("attentionFail1"),
       attention2: localStorage.getItem("attentionFail2"),
-      timeStart: new Date().toISOString(),
       treatment: treatment,
       lottery: lottery,
       platform: browser["platform"],
