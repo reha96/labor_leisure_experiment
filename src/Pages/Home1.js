@@ -29,7 +29,7 @@ const Home1 = () => {
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
-    // e.preventDefault()
+    e.preventDefault()
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
@@ -61,7 +61,7 @@ const Home1 = () => {
       laborTime: 0,
       transcription: {},
     };
-    const response = await fetch("/api/participants", {
+    const response = await fetch("http://localhost:5001/api/participants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 const mongoose = require("mongoose");
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({origin: '*'}));
 
 // get driver connection
 // const dbo = require("./db/conn");
