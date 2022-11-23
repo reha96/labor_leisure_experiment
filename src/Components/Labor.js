@@ -1,414 +1,413 @@
-import React from 'react'
-import './Labor.css'
+import React from "react";
+import "./Labor.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import ButtonM from '@mui/material/Button';
-import Container from 'react-bootstrap/Container';
-import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import ButtonM from "@mui/material/Button";
+import Container from "react-bootstrap/Container";
+import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 
 const Labor = () => {
-
   const data = [
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_0.jpeg"),
-      key: 0
+      key: 0,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_1.jpeg"),
-      key: 1
+      key: 1,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_2.jpeg"),
-      key: 2
+      key: 2,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_3.jpeg"),
-      key: 3
+      key: 3,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_4.jpeg"),
-      key: 4
+      key: 4,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_5.jpeg"),
-      key: 5
+      key: 5,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_6.jpeg"),
-      key: 6
+      key: 6,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_7.jpeg"),
-      key: 7
+      key: 7,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_8.jpeg"),
-      key: 8
+      key: 8,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_9.jpeg"),
-      key: 9
+      key: 9,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_10.jpeg"),
-      key: 10
+      key: 10,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_11.jpeg"),
-      key: 11
+      key: 11,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_12.jpeg"),
-      key: 12
+      key: 12,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_13.jpeg"),
-      key: 13
+      key: 13,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_14.jpeg"),
-      key: 14
+      key: 14,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_15.jpeg"),
-      key: 15
+      key: 15,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_16.jpeg"),
-      key: 16
+      key: 16,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_17.jpeg"),
-      key: 17
+      key: 17,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_18.jpeg"),
-      key: 18
+      key: 18,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_19.jpeg"),
-      key: 19
+      key: 19,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_20.jpeg"),
-      key: 20
+      key: 20,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_21.jpeg"),
-      key: 21
+      key: 21,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_22.jpeg"),
-      key: 22
+      key: 22,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_23.jpeg"),
-      key: 23
+      key: 23,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_24.jpeg"),
-      key: 24
+      key: 24,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_25.jpeg"),
-      key: 25
+      key: 25,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_26.jpeg"),
-      key: 26
+      key: 26,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_27.jpeg"),
-      key: 27
+      key: 27,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_28.jpeg"),
-      key: 28
+      key: 28,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_29.jpeg"),
-      key: 29
+      key: 29,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_30.jpeg"),
-      key: 30
+      key: 30,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_31.jpeg"),
-      key: 31
+      key: 31,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_32.jpeg"),
-      key: 32
+      key: 32,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_33.jpeg"),
-      key: 33
+      key: 33,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_34.jpeg"),
-      key: 34
+      key: 34,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_35.jpeg"),
-      key: 35
+      key: 35,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_36.jpeg"),
-      key: 36
+      key: 36,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_37.jpeg"),
-      key: 37
+      key: 37,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_38.jpeg"),
-      key: 38
+      key: 38,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_39.jpeg"),
-      key: 39
+      key: 39,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_40.jpeg"),
-      key: 40
+      key: 40,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_41.jpeg"),
-      key: 41
+      key: 41,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_42.jpeg"),
-      key: 42
+      key: 42,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_43.jpeg"),
-      key: 43
+      key: 43,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_44.jpeg"),
-      key: 44
+      key: 44,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_45.jpeg"),
-      key: 45
+      key: 45,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_46.jpeg"),
-      key: 46
+      key: 46,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_47.jpeg"),
-      key: 47
+      key: 47,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_48.jpeg"),
-      key: 48
+      key: 48,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_49.jpeg"),
-      key: 49
+      key: 49,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_50.jpeg"),
-      key: 50
+      key: 50,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_51.jpeg"),
-      key: 51
+      key: 51,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_52.jpeg"),
-      key: 52
+      key: 52,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_53.jpeg"),
-      key: 53
+      key: 53,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_54.jpeg"),
-      key: 54
+      key: 54,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_55.jpeg"),
-      key: 55
+      key: 55,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_56.jpeg"),
-      key: 56
+      key: 56,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_57.jpeg"),
-      key: 57
+      key: 57,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_58.jpeg"),
-      key: 58
+      key: 58,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_59.jpeg"),
-      key: 59
+      key: 59,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_60.jpeg"),
-      key: 60
+      key: 60,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_61.jpeg"),
-      key: 61
+      key: 61,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_62.jpeg"),
-      key: 62
+      key: 62,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_63.jpeg"),
-      key: 63
+      key: 63,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_64.jpeg"),
-      key: 64
+      key: 64,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_65.jpeg"),
-      key: 65
+      key: 65,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_66.jpeg"),
-      key: 66
+      key: 66,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_67.jpeg"),
-      key: 67
+      key: 67,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_68.jpeg"),
-      key: 68
+      key: 68,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_69.jpeg"),
-      key: 69
+      key: 69,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_70.jpeg"),
-      key: 70
+      key: 70,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_71.jpeg"),
-      key: 71
+      key: 71,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_72.jpeg"),
-      key: 72
+      key: 72,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_73.jpeg"),
-      key: 73
+      key: 73,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_74.jpeg"),
-      key: 74
+      key: 74,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_75.jpeg"),
-      key: 75
+      key: 75,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_76.jpeg"),
-      key: 76
+      key: 76,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_77.jpeg"),
-      key: 77
+      key: 77,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_78.jpeg"),
-      key: 78
+      key: 78,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_79.jpeg"),
-      key: 79
+      key: 79,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_80.jpeg"),
-      key: 80
+      key: 80,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_81.jpeg"),
-      key: 81
+      key: 81,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_82.jpeg"),
-      key: 82
+      key: 82,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_83.jpeg"),
-      key: 83
+      key: 83,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_84.jpeg"),
-      key: 84
+      key: 84,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_85.jpeg"),
-      key: 85
+      key: 85,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_86.jpeg"),
-      key: 86
+      key: 86,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_87.jpeg"),
-      key: 87
+      key: 87,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_88.jpeg"),
-      key: 88
+      key: 88,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_89.jpeg"),
-      key: 89
+      key: 89,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_90.jpeg"),
-      key: 90
+      key: 90,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_91.jpeg"),
-      key: 91
+      key: 91,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_92.jpeg"),
-      key: 92
+      key: 92,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_93.jpeg"),
-      key: 93
+      key: 93,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_94.jpeg"),
-      key: 94
+      key: 94,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_95.jpeg"),
-      key: 95
+      key: 95,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_96.jpeg"),
-      key: 96
+      key: 96,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_97.jpeg"),
-      key: 97
+      key: 97,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_98.jpeg"),
-      key: 98
+      key: 98,
     },
     {
       src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_99.jpeg"),
-      key: 99
-    }
+      key: 99,
+    },
   ];
 
   let location = useLocation();
@@ -417,19 +416,21 @@ const Labor = () => {
   const [typedValue, setTypedValue] = useState("");
   // console.log(typedValue)
 
-  const [counter, setCounter] = useState(parseInt(window.localStorage.getItem('localcount')));
+  const [counter, setCounter] = useState(
+    parseInt(window.localStorage.getItem("localcount"))
+  );
 
   const handleSubmit = (event) => {
     setInput([...input, typedValue]);
     const items = JSON.parse(localStorage.getItem("transc"));
-    const newItems = JSON.stringify([...items, typedValue])
+    const newItems = JSON.stringify([...items, typedValue]);
     localStorage.setItem("transc", newItems);
     console.log(input);
 
     setTypedValue("");
     if (isNaN(counter)) {
       var Image = 0;
-      console.log('counter is NaN')
+      console.log("counter is NaN");
     } else {
       Image = parseInt(counter) + 1;
       if (Image >= data.length) {
@@ -438,41 +439,58 @@ const Labor = () => {
     }
     setCounter(Image);
     console.log(Image + "  Image value after submit");
-    window.localStorage.setItem('localcount', Image);
-    console.log(window.localStorage.getItem('localcount') + "  localcount value after submit");
-    console.log(window.localStorage.getItem('transc') + "  transc value after submit")
+    window.localStorage.setItem("localcount", Image);
+    console.log(
+      window.localStorage.getItem("localcount") +
+        "  localcount value after submit"
+    );
+    console.log(
+      window.localStorage.getItem("transc") + "  transc value after submit"
+    );
   };
 
   return (
-    <Container fluid='sm'>
+    <Container fluid="sm">
       {data.map(({ src, key }) => {
         return (
           <div>
             {counter === key ? (
               <Container>
-                <img src={src} alt={key} className='photo'/>
+                <img src={src} alt={key} className="photo" />
               </Container>
             ) : null}
           </div>
         );
       })}
-      <p style={{ display: 'flex', justifyContent: 'center' }}>Type the sentence:</p>
-      <textarea className='textarea'
+      <p style={{ display: "flex", justifyContent: "center" }}>
+        Type the sentence:
+      </p>
+      <textarea
+        className="textarea"
         type="text"
         value={typedValue}
         onChange={(event) => setTypedValue(event.target.value)}
         placeholder=""
       />
-      <div className='container'>
-        <p style={{ display: 'flex', justifyContent: 'center'}}> <CheckCircleOutlineRoundedIcon/>  <strong>&nbsp;{window.localStorage.getItem('localcount')}&nbsp;</strong> transcriptions submitted </p> 
+      <div className="container">
+        <p style={{ display: "flex", justifyContent: "center" }}>
+          {" "}
+          <CheckCircleOutlineRoundedIcon />{" "}
+          <strong>
+            &nbsp;{window.localStorage.getItem("localcount")}&nbsp;
+          </strong>{" "}
+          transcriptions submitted{" "}
+        </p>
       </div>
-      <div className='container'> 
-      <ButtonM variant='contained' color='secondary' onClick={handleSubmit}><strong>Submit</strong></ButtonM>
+      <div className="container">
+        <ButtonM variant="contained" color="secondary" onClick={handleSubmit}>
+          <strong>Submit</strong>
+        </ButtonM>
       </div>
-     
+
       {/* <div>&nbsp;</div> */}
     </Container>
   );
-}
+};
 
-export default Labor
+export default Labor;

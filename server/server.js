@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 const mongoose = require("mongoose");
 
 app.use(cors());
-app.use(express.json({origin: '*'}));
+app.use(express.json());
 
 mongoose
   .connect(process.env.ATLAS_URI)
