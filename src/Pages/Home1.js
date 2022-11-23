@@ -21,7 +21,7 @@ const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   // console.log(typedValue)
 
       axios
@@ -82,21 +82,21 @@ const Home1 = () => {
         console.log("Unable to add with AXIOS: ", e);
       });
 
-    const response = await fetch("/api/participants", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(passvalue),
-    });
-    const json = await response.json();
-    if (!response) {
-      setError(json.error);
-    }
-    if (response.ok) {
-      setError(null);
-      console.log("new participant added", json);
-    }
+    // const response = await fetch("/api/participants", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(passvalue),
+    // });
+    // const json = await response.json();
+    // if (!response) {
+    //   setError(json.error);
+    // }
+    // if (response.ok) {
+    //   setError(null);
+    //   console.log("new participant added", json);
+    // }
   };
 
   return (
