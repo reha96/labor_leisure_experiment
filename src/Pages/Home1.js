@@ -24,6 +24,15 @@ const Home1 = () => {
   const [error, setError] = useState(null);
   // console.log(typedValue)
 
+      axios
+      .get("/api/participants")
+      .then(res => {
+        console.log("new participant added with AXIOS", res.data);
+      })
+      .catch((e) => {
+        console.log("Unable to add with AXIOS: ", e);
+      });
+
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
