@@ -9,8 +9,6 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json({origin: '*'}));
 
-// get driver connection
-// const dbo = require("./db/conn");
 mongoose
   .connect(process.env.ATLAS_URI)
   .then(() => {
@@ -28,11 +26,3 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/participants", participantRoutes);
-
-// app.listen(port, () => {
-//   // perform a database connection when server starts
-//   dbo.connectToServer(function (err) {
-//     if (err) console.error(err);
-//   });
-//   console.log(`Server is running on port: ${port}`);
-// });

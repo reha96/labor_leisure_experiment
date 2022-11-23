@@ -12,26 +12,11 @@ import Box from "@mui/material/Box";
 import * as Bowser from "bowser";
 import axios from "axios";
 
-// import { useParams} from "react-router";
-
 const Home1 = () => {
-  // const { userId } = useParams()
-  // console.log(userId)
-
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
-  const [error, setError] = useState(null);
-  // console.log(typedValue)
-
-      axios
-      .get("/api/participants")
-      .then(res => {
-        console.log("new participant added with AXIOS", res.data);
-      })
-      .catch((e) => {
-        console.log("Unable to add with AXIOS: ", e);
-      });
+  // const [error, setError] = useState(null);
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);
@@ -72,7 +57,7 @@ const Home1 = () => {
       laborTime: 0,
       transcription: {},
     };
-
+    // test POST request
     axios
       .post("/api/participants", passvalue)
       .then(() => {
@@ -81,23 +66,31 @@ const Home1 = () => {
       .catch((e) => {
         console.log("Unable to add with AXIOS: ", e);
       });
-
-    const response = await fetch("/api/participants", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(passvalue),
-    });
-    const json = await response.json();
-    if (!response) {
-      setError(json.error);
-    }
-    if (response.ok) {
-      setError(null);
-      console.log("new participant added", json);
-    }
+    // test GET request
+    axios
+      .get("/api/participants")
+      .then((res) => {
+        console.log("get participants with AXIOS", res);
+      })
+      .catch((e) => {
+        console.log("Unable to get participants with AXIOS: ", e);
+      });
   };
+  //   const response = await fetch("/api/participants", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(passvalue),
+  //   });
+  //   const json = await response.json();
+  //   if (!response) {
+  //     setError(json.error);
+  //   }
+  //   if (response.ok) {
+  //     setError(null);
+  //     console.log("new participant added", json);
+  //   }
 
   return (
     <div className="Page">
