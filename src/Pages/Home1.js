@@ -10,6 +10,8 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import * as Bowser from "bowser";
+import axios from "axios";
+
 // import { useParams} from "react-router";
 
 const Home1 = () => {
@@ -29,7 +31,7 @@ const Home1 = () => {
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
-    e.preventDefault()
+    e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
@@ -61,6 +63,16 @@ const Home1 = () => {
       laborTime: 0,
       transcription: {},
     };
+
+    axios
+      .post("/api/participants", passvalue)
+      .then(() => {
+        console.log("new participant added with AXIOS");
+      })
+      .catch((e) => {
+        console.log("Unable to add with AXIOS: ", e);
+      });
+
     const response = await fetch("/api/participants", {
       method: "POST",
       headers: {
