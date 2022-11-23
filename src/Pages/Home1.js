@@ -97,7 +97,7 @@ const Home1 = () => {
     //   setError(null);
     //   console.log("new participant added", json);
     // }
-  };
+  };  
 
   return (
     <div className="Page">
