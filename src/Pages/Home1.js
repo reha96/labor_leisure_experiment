@@ -25,7 +25,7 @@ const Home1 = () => {
   // console.log(typedValue)
 
       axios
-      .get("http://watchortype.vercel.app/api/participants")
+      .get("https://watchortype.vercel.app/api/participants")
       .then(res => {
         console.log("new participant added with AXIOS", res.data);
       })
