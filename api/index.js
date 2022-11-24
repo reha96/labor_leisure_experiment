@@ -41,4 +41,5 @@ export default function handler(request, response) {
     query: request.query,
     cookies: request.cookies,
   });
+  console.log(request.path, request.method);
 }
