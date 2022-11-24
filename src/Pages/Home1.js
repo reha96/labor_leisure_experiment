@@ -25,7 +25,7 @@ const Home1 = () => {
   // console.log(typedValue)
 
       axios
-      .get("/api/participants")
+      .get("http://localhost:5001/api/participants")
       .then(res => {
         console.log("new participant added with AXIOS", res.data);
       })
@@ -74,7 +74,7 @@ const Home1 = () => {
     };
 
     axios
-      .post("/api/participants", passvalue)
+      .post("http://localhost:5001/api/participants", passvalue)
       .then(() => {
         console.log("new participant added with AXIOS");
       })
