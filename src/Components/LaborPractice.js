@@ -10,83 +10,83 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 const LaborPractice = () => {
   const data = [
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_59.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_59.jpeg",
       key: 0,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_98.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_98.jpeg",
       key: 1,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_97.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_97.jpeg",
       key: 2,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_96.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_96.jpeg",
       key: 3,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_95.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_95.jpeg",
       key: 4,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_94.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_94.jpeg",
       key: 5,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_93.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_93.jpeg",
       key: 6,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_92.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_92.jpeg",
       key: 7,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_91.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_91.jpeg",
       key: 8,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_90.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_90.jpeg",
       key: 9,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_89.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_89.jpeg",
       key: 10,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_88.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_88.jpeg",
       key: 11,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_87.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_87.jpeg",
       key: 12,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_86.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_86.jpeg",
       key: 13,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_85.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_85.jpeg",
       key: 14,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_84.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_84.jpeg",
       key: 15,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_83.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_83.jpeg",
       key: 16,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_82.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_82.jpeg",
       key: 17,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_81.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_81.jpeg",
       key: 18,
     },
     {
-      src: require("https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_80.jpeg"),
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_80.jpeg",
       key: 19,
     },
   ];
