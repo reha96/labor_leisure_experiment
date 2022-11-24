@@ -27,10 +27,10 @@ const Home1 = () => {
   axios
     .get("/api/participants")
     .then((res) => {
-      console.log("new participant added with AXIOS", res.data);
+      console.log("Succesful test: GET participants", res.data);
     })
     .catch((e) => {
-      console.log("Unable to add with AXIOS: ", e);
+      console.log("Test not succesful: Unable to GET: ", e);
     });
 
   const handleChange = async (event) => {
@@ -76,10 +76,10 @@ const Home1 = () => {
     axios
       .post("/api/participants", passvalue)
       .then(() => {
-        console.log("new participant added with AXIOS");
+        console.log("new participant added");
       })
       .catch((e) => {
-        console.log("Unable to add with AXIOS: ", e);
+        console.log("Unable to add new participant: ", e);
       });
 
     // const response = await fetch("/api/participants", {
