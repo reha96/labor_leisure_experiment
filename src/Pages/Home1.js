@@ -25,7 +25,7 @@ const Home1 = () => {
   // console.log(typedValue)
 
       axios
-      .get("https://watchortype.vercel.app/api/participants")
+      .get("/api/participants")
       .then(res => {
         console.log("new participant added with AXIOS", res.data);
       })
@@ -74,7 +74,7 @@ const Home1 = () => {
     };
 
     axios
-      .post("https://watchortype.vercel.app/api/participants", passvalue)
+      .post("/api/participants", passvalue)
       .then(() => {
         console.log("new participant added with AXIOS");
       })
