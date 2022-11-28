@@ -11,7 +11,7 @@ const ParticipantSchema = new Schema(
     ID: { type: String, required: true },
     attention1: { type: Number, required: true },
     attention2: { type: Number, required: true },
-    clickOkToSwitch: { type: String, required: true },
+    clickedOkToSwitch: { type: String, required: true },
     lookedAtSomethingElse: {type: Object, required: true},
     timeChoice: { type: Number, required: true },
     leisureTime: { type: Number, required: true },

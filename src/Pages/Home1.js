@@ -24,14 +24,19 @@ const Home1 = () => {
   // const [error, setError] = useState(null);
   // console.log(typedValue)
 
-  axios
-    .get("/api/participants")
-    .then((res) => {
-      console.log("Succesful test: GET participants", res.data);
-    })
-    .catch((e) => {
-      console.log("Test not succesful: Unable to GET: ", e);
-    });
+  // axios
+  //   .get("/api/participants", {
+  //     proxy: {
+  //       host: "localhost",
+  //       port: 5001,
+  //     },
+  //   })
+  //   .then((res) => {
+  //     console.log("Succesful test: GET participants", res.data);
+  //   })
+  //   .catch((e) => {
+  //     console.log("Test not succesful: Unable to GET: ", e);
+  //   });
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);
@@ -66,7 +71,7 @@ const Home1 = () => {
       platform: browser["platform"],
       browser: browser["browser"],
       ID: typedValue,
-      clikcedOkToSwitch: "not yet",
+      clickedOkToSwitch: "not yet",
       lookedAtSomethingElse: {},
       timeChoice: 0,
       leisureTime: 0,

@@ -28,7 +28,7 @@ const TimerPractice = (props) => {
     window.location.reload(true);
 
     let passvalue = {
-      clickOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
+      clickedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
     };
 
     const link = "/api/participants/" + localStorage.getItem("ID");
