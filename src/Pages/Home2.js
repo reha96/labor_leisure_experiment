@@ -4,8 +4,7 @@ import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -13,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
+import axios from "axios";
 
 const Home2 = () => {
   // const { userId } = useParams()
@@ -66,45 +66,22 @@ const Home2 = () => {
       setHelperText("Please select an option.");
       setError(true);
     }
+
+    let passvalue = {
+      attention1: localStorage.getItem("attentionFail1"),
+    };
+
+    const link = "/api/participants/" + localStorage.getItem("ID")
+
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Update AttentionFail1");
+      })
+      .catch((e) => {
+        console.log("Unable to update AttentionFail1: ", e);
+      });
   };
-
-  var input = [];
-
-  const [form, setForm] = useState({
-    name: "",
-    position: "",
-    level: "",
-    records: [],
-  });
-  //   const params = useParams();
-  //   const navigate = useNavigate();
-
-  //   useEffect(() => {
-  //     async function fetchData() {
-  //       const id = params.id.toString();
-  //       const response = await fetch(`http://localhost:5001/record/${params.id.toString()}`);
-
-  //       if (!response.ok) {
-  //         const message = `An error has occurred: ${response.statusText}`;
-  //         window.alert(message);
-  //         return;
-  //       }
-
-  //       const record = await response.json();
-  //       if (!record) {
-  //         window.alert(`Record with id ${id} not found`);
-  //         navigate("/");
-  //         return;
-  //       }
-
-  //       setForm(record);
-  //     }
-
-  //     fetchData();
-  //     return;
-  // }, [params.id, navigate]);
-
-  console.log(form);
 
   return (
     <div className="Page2">

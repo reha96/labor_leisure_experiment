@@ -1,5 +1,5 @@
 {
-  "proxy": "https://watchortype.vercel.app",
+  "proxy": "http://localhost:5001",
   "name": "test_reha",
   "version": "0.1.0",
   "private": true,

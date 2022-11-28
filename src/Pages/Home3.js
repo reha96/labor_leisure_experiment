@@ -1,43 +1,34 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import '../App.css';
-import Container from 'react-bootstrap/Container';
-import ButtonM from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import DialogContentText from '@mui/material/DialogContentText';
-
+import * as React from "react";
+import Link from "@mui/material/Link";
+import "../App.css";
+import Container from "react-bootstrap/Container";
+import ButtonM from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
 
 const Home3 = () => {
+  var input = [];
 
-    var input = [];
+  const nextPage = (event) => {
+    setOpen(true);
+    localStorage.setItem("localcount", 0);
+    localStorage.setItem("clickedOKtoswitch", "no");
+    localStorage.setItem("lastmin", 1);
+    localStorage.setItem("lastsec", 59);
+    localStorage.setItem("transc", JSON.stringify(input));
+    window.localStorage.setItem("progress", 0);
+  };
 
-    const nextPage = (event) => {
-        setOpen(true)
-        localStorage.setItem('localcount', 0)
-        localStorage.setItem('clickedOKtoswitch', 'no')
-        localStorage.setItem('lastmin', 1)
-        localStorage.setItem('lastsec', 59)
-        localStorage.setItem('transc', JSON.stringify(input))
-        window.localStorage.setItem('progress', 0)
-    }
+  const [open, setOpen] = React.useState(false);
 
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-
-    return (
-        <div className='Page2'>
-            <style type="text/css">
-                {`
+  return (
+    <div className="Page2">
+      <style type="text/css">
+        {`
         .container-sm{
             background-color: white ;
             padding-bottom:5vh!important;
@@ -67,35 +58,56 @@ const Home3 = () => {
             margin-bottom: auto;
           }
           `}
-            </style>
-            <Container className="p-1" fluid='sm'>
-                {/* <Typography variant='h6' className="center">Switching Tasks</Typography>
+      </style>
+      <Container className="p-1" fluid="sm">
+        {/* <Typography variant='h6' className="center">Switching Tasks</Typography>
                 <p className="HomePage_p">
                     You can <strong>switch between the two tasks at any moment</strong> using the tabs within the study interface.
                     As you switch tabs, your progress is automatically saved.</p>
                 <p className="HomePage_p">For example, if you did not finish typing a sentence and decide to watch videos before submitting it, the text you typed will remain when switching back.
                 </p> */}
 
-                <Typography variant='h6' className="center">Practice</Typography>
-                <p className="HomePage_p">
-                    {/* Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
+        <Typography variant="h6" className="center">
+          Practice
+        </Typography>
+        <p className="HomePage_p">
+          {/* Clicking the next button will bring you to a <strong>2 minute practice session</strong> to allow you to familiarize with the tasks and the study interface.
                     Once the practice session is over, you will be taken back to the rest of the study.
                     <strong> The practice session will not give you a typing bonus.</strong> */}
-                    Clicking the next button will bring you to a 2 minute practice session to familiarize you with the tasks.
-                    <strong> You have 1 minute for each task and there is no bonus payment in the practice session.</strong> </p>
-                    <p className="HomePage_p"> Once the practice session is over, you will start the study.
-                </p>
+          Clicking the next button will bring you to a 2 minute practice session
+          to familiarize you with the tasks.
+          <strong>
+            {" "}
+            You have 1 minute for each task and there is no bonus payment in the
+            practice session.
+          </strong>{" "}
+        </p>
+        <p className="HomePage_p">
+          {" "}
+          Once the practice session is over, you will start the study.
+        </p>
 
-                <div className='center'>
-                    <Link underline="none" href={"practice"}>
-                        <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                            <strong>Begin Practice</strong>
-                        </ButtonM>
-                    </Link>
-                </div>
-            </Container>
-        </div >
-    )
-}
+        <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
+          {" "}
+          Please make sure you are in an environment where you can comfortably watch the videos.{" "}
+          <strong>Do not forget to turn on the sound of your device. </strong>
+        </Alert>
 
-export default Home3
+        <div className="center">
+          <Link underline="none" href={"practice"}>
+            <ButtonM
+              color="secondary"
+              variant="contained"
+              type="button"
+              onClick={nextPage}
+            >
+              <strong>Begin Practice</strong>
+            </ButtonM>
+          </Link>
+        </div>
+      </Container>
+    </div>
+  );
+};
+
+export default Home3;

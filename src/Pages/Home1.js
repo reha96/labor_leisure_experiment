@@ -40,7 +40,7 @@ const Home1 = () => {
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
-    e.preventDefault();
+    // e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
@@ -67,6 +67,7 @@ const Home1 = () => {
       browser: browser["browser"],
       ID: typedValue,
       clikcedOkToSwitch: "not yet",
+      lookedAtSomethingElse: {},
       timeChoice: 0,
       leisureTime: 0,
       laborTime: 0,
@@ -81,22 +82,6 @@ const Home1 = () => {
       .catch((e) => {
         console.log("Unable to add new participant: ", e);
       });
-
-    // const response = await fetch("/api/participants", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(passvalue),
-    // });
-    // const json = await response.json();
-    // if (!response) {
-    //   setError(json.error);
-    // }
-    // if (response.ok) {
-    //   setError(null);
-    //   console.log("new participant added", json);
-    // }
   };
 
   return (

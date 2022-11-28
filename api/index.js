@@ -35,11 +35,12 @@ app.use("/api/participants", participantRoutes);
 //   res.sendFile(path.join(__dirname, "index.html"));
 // });
 
-export default function handler(request, response) {
-  response.status(200).json({
-    body: request.body,
-    query: request.query,
-    cookies: request.cookies,
-  });
-  console.log(request.path, request.method);
-}
+// export default function handler(request, response) {
+//   console.log('Testing')
+//   response.status(200).json({
+//     body: request.body,
+//     query: request.query,
+//     cookies: request.cookies,
+//   });
+// }
+// module.exports = app

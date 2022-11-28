@@ -50,11 +50,11 @@ const getParticipants = async (req, res) => {
 const getParticipant = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such participant" });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.status(404).json({ error: "No such participant" });
+  // }
 
-  const participant = await Participant.findById(id);
+  const participant = await Participant.find({$text: {$search: id}});
 
   if (!participant) {
     return res.status(404).json({ error: "No such participant" });
@@ -67,12 +67,12 @@ const getParticipant = async (req, res) => {
 const updateParticipant = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such participant" });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.status(404).json({ error: "No such participant" });
+  // }
 
   const participant = await Participant.findOneAndUpdate(
-    { _id: id },
+    { ID: id },
     {
       ...req.body,
     }
