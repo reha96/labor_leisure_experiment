@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import QueryBuilderRoundedIcon from "@mui/icons-material/QueryBuilderRounded";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
@@ -15,7 +14,6 @@ const TimerPractice = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   // const handleClickOpen = () => {
@@ -25,23 +23,24 @@ const TimerPractice = (props) => {
   const handleClose = () => {
     setOpen(false);
     localStorage.setItem("clickedOKtoswitch", "yes");
-    window.location.reload(true);
-
     let passvalue = {
-      clickedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
+      clikcedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
     };
-
     const link = "/api/participants/" + localStorage.getItem("ID");
-
     axios
       .patch(link, passvalue)
       .then(() => {
         console.log("Succesfully recorded the click to close practice popup");
       })
       .catch((e) => {
-        console.log("Unable to recorded the click to close practice popup: ", e);
+        console.log(
+          "Unable to recorded the click to close practice popup: ",
+          e
+        );
       });
+    window.location.reload(true);
   };
+
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -57,15 +56,13 @@ const TimerPractice = (props) => {
           // localStorage.setItem('popup', true);
         }
       }
+      document.addEventListener("visibilitychange", (event) => {
+        if (document.visibilityState === "visible") {
+        } else {
+          console.log("tab is inactive");
+        }
+      });
     }, 1000);
-
-    document.addEventListener("visibilitychange", (event) => {
-      if (document.visibilityState === "visible") {
-        console.log("tab is active");
-      } else {
-        console.log("tab is inactive");
-      }
-    });
 
     return () => {
       window.localStorage.setItem("lastmin", minutes);

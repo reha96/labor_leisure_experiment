@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect, useState } from "react";
 import { Outlet } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import '../App.css';
@@ -14,17 +13,6 @@ import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutl
 
 
 const TasksPractice = () => {
-  // const [refresh, setRefresh] = useState(localStorage.getItem('clickedOKtoswitch'));
-  // useEffect(() => {
-
-  //   let myInterval = setInterval(() => {
-  //     setRefresh(localStorage.getItem('clickedOKtoswitch'))
-  //   }, 1000)
-  //   return () => {
-  //     clearInterval(myInterval);
-  //   };
-  // });
-  // localStorage.setItem('clickedOKtoswitch', 'yes');
   
   return (
 

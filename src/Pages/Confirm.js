@@ -1,67 +1,71 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Link from '@mui/material/Link';
-import '../App.css';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Slider from '@mui/material/Slider';
-import Stack from '@mui/material/Stack';
-import ConfirmUpdate from '../Components/ConfirmUpdate';
-import ButtonM from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { ImportantDevices } from '@mui/icons-material';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import * as React from "react";
+import Link from "@mui/material/Link";
+import "../App.css";
+import Container from "react-bootstrap/Container";
+import Slider from "@mui/material/Slider";
+import ConfirmUpdate from "../Components/ConfirmUpdate";
+import ButtonM from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import axios from "axios";
 
 const Confirm = () => {
+  var input = [];
 
-    var input = [];
+  const nextPage = (event) => {
+    setOpen(true);
+    localStorage.setItem("stop2", false);
+    // localStorage.setItem('lastmin', 9)
+    // localStorage.setItem('lastsec', 59)
+    // localStorage.setItem('transc', JSON.stringify(input))
+    // window.localStorage.setItem('progress', 0)
+  };
 
-    const nextPage = (event) => {
-        setOpen(true)
-        localStorage.setItem('stop2', false)
-        // localStorage.setItem('lastmin', 9)
-        // localStorage.setItem('lastsec', 59)
-        // localStorage.setItem('transc', JSON.stringify(input))
-        // window.localStorage.setItem('progress', 0)
-    }
+  function valuetext(value) {
+    localStorage.setItem("time_choice", value);
+    return;
+  }
 
+  const [open, setOpen] = React.useState(false);
 
-    function valuetext(value) {
-        localStorage.setItem('time_choice', value);
-        return;
-    }
+  // const handleClickOpen = () => {
+  //     setOpen(true);
+  // };
 
-
-    const [open, setOpen] = React.useState(false);
-
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    // };
-
-    const handleClose = () => {
-        setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    let passvalue = {
+      timeChoice: localStorage.getItem("time_choice"),
     };
+    const link = "/api/participants/" + localStorage.getItem("ID");
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Succesfully recorded time_choice (Typing)");
+      })
+      .catch((e) => {
+        console.log("Unable to record time_choice (Typing): ", e);
+      });
+  };
 
-
-    const marks = [
-        {
-            value: 0,
-            label: 'No Typing',
-        },
-        {
-            value: 100,
-            label: 'Only Typing',
-        },
-    ];
-    return (
-        <div className='Page2'>
-            <style type="text/css">
-                {`
+  const marks = [
+    {
+      value: 0,
+      label: "No Typing",
+    },
+    {
+      value: 100,
+      label: "Only Typing",
+    },
+  ];
+  return (
+    <div className="Page2">
+      <style type="text/css">
+        {`
         .container-sm{
             background-color: white ;
             padding-bottom:5vh!important;
@@ -91,96 +95,118 @@ const Confirm = () => {
             margin-bottom: auto;
           }
           `}
-            </style>
-            <Container className="p-1" fluid='sm'>
-                {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
-                <p className="HomePage_p">
-                    The practice session is over.
-                    We now ask you to decide how you would like to spend the next <strong>10 minutes</strong> based on what you saw in the practice session.
-                </p>
+      </style>
+      <Container className="p-1" fluid="sm">
+        {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
+        <p className="HomePage_p">
+          The practice session is over. We now ask you to decide how you would
+          like to spend the next <strong>10 minutes</strong> based on what you
+          saw in the practice session.
+        </p>
 
-                <Typography variant='h6' className="center">Time Choice</Typography>
-                <p className="HomePage_p">
-                    Please indicate how much of the <strong>10 minutes</strong> you have you want to spend on <strong>Typing</strong> and on <strong>Watching Videos</strong>.
-                    {/* Distribute your time however you like using the slider below. */}
-                </p>
-                <p className="HomePage_p">
-                    You can <strong>move the slider</strong> to change your choice.
-                </p>
+        <Typography variant="h6" className="center">
+          Time Choice
+        </Typography>
+        <p className="HomePage_p">
+          Please indicate how much of the <strong>10 minutes</strong> you have
+          you want to spend on <strong>Typing</strong> and on{" "}
+          <strong>Watching Videos</strong>.
+          {/* Distribute your time however you like using the slider below. */}
+        </p>
+        <p className="HomePage_p">
+          You can <strong>move the slider</strong> to change your choice.
+        </p>
 
-                {/* <Typography variant='h6' className="center">Allocation</Typography>
+        {/* <Typography variant='h6' className="center">Allocation</Typography>
                 <p className="HomePage_p">
                     Please use the slider below to choose what proportion of your time you would <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
                     The number on the slider shows the percentage of your time allocated to <strong>Transcribing.</strong>
                 </p> */}
-                <Box sx={{
-                    mx: 10,
-                    my: 5
-                }}>
-                    <Slider
-                        // className="HomePage_p"
-                        aria-label="Small steps"
-                        defaultValue={50}
-                        getAriaValueText={valuetext}
-                        step={1}
-                        track="normal"
-                        marks={marks}
-                        min={0}
-                        max={100}
-                        valueLabelDisplay="on"
-                    />
-                </Box>
+        <Box
+          sx={{
+            mx: 10,
+            my: 5,
+          }}
+        >
+          <Slider
+            // className="HomePage_p"
+            aria-label="Small steps"
+            defaultValue={50}
+            getAriaValueText={valuetext}
+            step={1}
+            track="normal"
+            marks={marks}
+            min={0}
+            max={100}
+            valueLabelDisplay="on"
+          />
+        </Box>
 
-                <ConfirmUpdate />
+        <ConfirmUpdate />
 
-                <Typography variant='h6' className="center">Lottery</Typography>
-                <p className="HomePage_p">
-                    We will now randomly select 1 out of each 20 participants and pay them the above indicated sum.
-                    <strong> If you are among the selected participants your bonus is paid immediately as if you have worked for the above chosen time. </strong>
-                    All remaining participants get a bonus equal to the amount they will work meeting the quality criteria.
-                    {/* All remaining participants realize their choices themselves and get a bonus equal to the amount they work meeting the quality criteria.
-                     */}
-                </p>
+        <Typography variant="h6" className="center">
+          Lottery
+        </Typography>
+        <p className="HomePage_p">
+          We will now randomly select 1 out of each 20 participants and pay them
+          the above indicated sum.
+          <strong>
+            {" "}
+            If you are among the selected participants your bonus is paid
+            immediately as if you have worked for the above chosen time.{" "}
+          </strong>
+          All remaining participants get a bonus equal to the amount they will
+          work meeting the quality criteria.
+          {/* All remaining participants realize their choices themselves and get a bonus equal to the amount they work meeting the quality criteria.
+           */}
+        </p>
 
-                <div className='center'>
-                    <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                        <strong>Continue</strong>
-                    </ButtonM>
-                </div>
+        <div className="center">
+          <ButtonM
+            color="secondary"
+            variant="contained"
+            type="button"
+            onClick={nextPage}
+          >
+            <strong>Continue</strong>
+          </ButtonM>
+        </div>
 
-                <Dialog
-                    open={open}
-                    onClose={null}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Confirm choice?"}
-                    </DialogTitle>
-                    <DialogContent>
-                        {/* <DialogContentText id="alert-dialog-description"> */}
-                        {/* <p className="HomePage_p">You spend <strong>{window.localStorage.getItem('division')}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your time on <strong>Watching Videos</strong>:</p>
+        <Dialog
+          open={open}
+          onClose={null}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Confirm choice?"}</DialogTitle>
+          <DialogContent>
+            {/* <DialogContentText id="alert-dialog-description"> */}
+            {/* <p className="HomePage_p">You spend <strong>{window.localStorage.getItem('division')}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your time on <strong>Watching Videos</strong>:</p>
 
                         <p className="HomePage_p">You earn <strong>{((((window.localStorage.getItem('division') / 100) * 600 * 0.75) / 100) + ((((100 - window.localStorage.getItem('division')) / 100) * 600 * 0.25) / 100) + 3).toPrecision(2)}</strong> Euros.</p>
 
                         <p className="HomePage_p">You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Type.</strong></p>
 
                         <p className="HomePage_p">You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong></p> */}
-                     <ConfirmUpdate />
-                    </DialogContent>
-                    <DialogActions>
-                        <ButtonM color="error" onClick={handleClose}><strong>Change</strong></ButtonM>
-                        <Link underline="none" href={localStorage.getItem('lottery') >= 0.95 ? "lotw" : "lotl"}>
-                            <ButtonM color="success" onClick={handleClose} autoFocus>
-                                <strong>Confirm</strong>
-                            </ButtonM>
-                        </Link>
-                    </DialogActions>
-                </Dialog>
+            <ConfirmUpdate />
+          </DialogContent>
+          <DialogActions>
+            <ButtonM color="error" onClick={handleClose}>
+              <strong>Change</strong>
+            </ButtonM>
+            <Link
+              underline="none"
+              href={localStorage.getItem("lottery") >= 0.95 ? "lotw" : "lotl"}
+            >
+              <ButtonM color="success" onClick={handleClose} autoFocus>
+                <strong>Confirm</strong>
+              </ButtonM>
+            </Link>
+          </DialogActions>
+        </Dialog>
+      </Container>
+    </div>
+  );
+};
 
-            </Container>
-        </div >
-    )
-}
-
-export default Confirm
+export default Confirm;

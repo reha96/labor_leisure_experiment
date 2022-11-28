@@ -1,8 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { QueryBuilderRoundedIcon } from '@mui/icons-material/QueryBuilderRounded';
-import LinearProgress from '@mui/material/LinearProgress';
 import Alert from '@mui/material/Alert';
 
 const ConfirmUpdate = (props) => {

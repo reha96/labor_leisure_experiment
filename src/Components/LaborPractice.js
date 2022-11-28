@@ -104,6 +104,7 @@ const LaborPractice = () => {
       count = count + 1;
       setSec(count);
       console.log("Practice session sec elapsed: ", count);
+      // localStorage.setItem("seconds")
     }, 1000);
     return () => clearInterval(interval);
   }, []);
