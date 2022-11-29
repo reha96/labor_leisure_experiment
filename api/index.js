@@ -6,6 +6,7 @@ require("dotenv").config({ path: "./.env" });
 const port = process.env.PORT;
 const mongoose = require("mongoose");
 
+// test
 app.use(cors());
 app.use(express.json());
 
