@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const participantRoutes = require("./routes/participants");
 require("dotenv").config({ path: "./.env" });
-const port = 3000;
+const port = process.env.PORT;
 const mongoose = require("mongoose");
 
 app.use(cors());
