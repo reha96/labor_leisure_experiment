@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from "axios";
 
-// axios.defaults.baseURL = 'http://localhost:5001'
+axios.defaults.baseURL = 'https://watchortypebe-reha96.vercel.app/'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
