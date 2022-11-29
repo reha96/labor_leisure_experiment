@@ -26,7 +26,7 @@ const Home1 = () => {
 
   axios
     // .get("/api/participants") 
-    .get("https://watchortypebe-reha96.vercel.app/api/test")
+    .get("https://watchortypebe-reha96.vercel.app/api")
     .then((res) => {
       console.log("Succesful test: GET participants", res.data);
     })
