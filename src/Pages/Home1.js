@@ -25,7 +25,8 @@ const Home1 = () => {
   // console.log(typedValue)
 
   axios
-    .get("/api/participants")
+    // .get("/api/participants") 
+    .get("https://spotify-backend.vercel.app/artists")
     .then((res) => {
       console.log("Succesful test: GET participants", res.data);
     })
