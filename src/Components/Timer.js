@@ -17,7 +17,7 @@ const Timer = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    localStorage.setItem("clickedOKtoswitch", "yes");
+    localStorage.setItem("clickedOKtoswitch2", "yes");
     // window.location.reload(true);
   };
 

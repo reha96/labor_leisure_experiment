@@ -14,11 +14,11 @@ import SlowMotionVideoOutlinedIcon from "@mui/icons-material/SlowMotionVideoOutl
 
 const Tasks = () => {
   const [refresh, setRefresh] = useState(
-    localStorage.getItem("clickedOKtoswitch") // NEED TO CREATE CLICKED 2 
+    localStorage.getItem("clickedOKtoswitch2") // NEED TO CREATE CLICKED 2 
   );
   useEffect(() => {
     let myInterval = setInterval(() => {
-      setRefresh(localStorage.getItem("clickedOKtoswitch"));
+      setRefresh(localStorage.getItem("clickedOKtoswitch2"));
     }, 1000);
     return () => {
       clearInterval(myInterval);

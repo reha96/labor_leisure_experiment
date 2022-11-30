@@ -12,7 +12,7 @@ const Home3 = () => {
   const nextPage = (event) => {
     setOpen(true);
     localStorage.setItem("localcount", 0);
-    localStorage.setItem("clickedOKtoswitch", "no");
+    localStorage.setItem("clickedOKtoswitch2", "no");
     localStorage.setItem("lastmin", 1);
     localStorage.setItem("lastsec", 59);
     localStorage.setItem("transc", JSON.stringify(input));
