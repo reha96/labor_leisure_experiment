@@ -21,7 +21,6 @@ const TimerPractice = (props) => {
   // };
 
   const handleClose = () => {
-    setOpen(false);
     localStorage.setItem("clickedOKtoswitch", "yesPractice");
     let passvalue = {
       clikcedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
@@ -39,6 +38,7 @@ const TimerPractice = (props) => {
         );
       });
     window.location.reload(true);
+    setOpen(false);
   };
 
   useEffect(() => {
