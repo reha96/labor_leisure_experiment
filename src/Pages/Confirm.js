@@ -14,15 +14,9 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 
 const Confirm = () => {
-  var input = [];
-
   const nextPage = (event) => {
     setOpen(true);
     localStorage.setItem("stop2", false);
-    // localStorage.setItem('lastmin', 9)
-    // localStorage.setItem('lastsec', 59)
-    // localStorage.setItem('transc', JSON.stringify(input))
-    // window.localStorage.setItem('progress', 0)
   };
 
   function valuetext(value) {
@@ -31,10 +25,6 @@ const Confirm = () => {
   }
 
   const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //     setOpen(true);
-  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -116,12 +106,6 @@ const Confirm = () => {
         <p className="HomePage_p">
           You can <strong>move the slider</strong> to change your choice.
         </p>
-
-        {/* <Typography variant='h6' className="center">Allocation</Typography>
-                <p className="HomePage_p">
-                    Please use the slider below to choose what proportion of your time you would <strong>ideally</strong> allocate for <strong>Transcribing</strong> and for <strong>Watching Videos</strong>.
-                    The number on the slider shows the percentage of your time allocated to <strong>Transcribing.</strong>
-                </p> */}
         <Box
           sx={{
             mx: 10,
@@ -180,14 +164,6 @@ const Confirm = () => {
         >
           <DialogTitle id="alert-dialog-title">{"Confirm choice?"}</DialogTitle>
           <DialogContent>
-            {/* <DialogContentText id="alert-dialog-description"> */}
-            {/* <p className="HomePage_p">You spend <strong>{window.localStorage.getItem('division')}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - window.localStorage.getItem('division')}%</strong> of your time on <strong>Watching Videos</strong>:</p>
-
-                        <p className="HomePage_p">You earn <strong>{((((window.localStorage.getItem('division') / 100) * 600 * 0.75) / 100) + ((((100 - window.localStorage.getItem('division')) / 100) * 600 * 0.25) / 100) + 3).toPrecision(2)}</strong> Euros.</p>
-
-                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round(((window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Type.</strong></p>
-
-                        <p className="HomePage_p">You get <strong>{Math.floor((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (window.localStorage.getItem('division') / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong></p> */}
             <ConfirmUpdate />
           </DialogContent>
           <DialogActions>
