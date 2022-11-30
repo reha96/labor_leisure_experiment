@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import * as Bowser from "bowser";
@@ -29,15 +29,18 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
 
-  const onClick = async (e) => {
+  useEffect(() => {
     axios
-    .get("/api")
-    .then((res) => {
-      console.log("Succesful test: GET participants");
-    })
-    .catch((e) => {
-      console.log("Test not succesful: Unable to GET: ", e);
-    });
+      .get("/api")
+      .then((res) => {
+        console.log("Succesful test: GET participants");
+      })
+      .catch((e) => {
+        console.log("Test not succesful: Unable to GET: ", e);
+      });
+  }, []);
+
+  const onClick = async (e) => {
     // use only when need to stop page from loading next page
     // e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
