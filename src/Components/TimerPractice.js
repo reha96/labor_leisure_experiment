@@ -21,22 +21,7 @@ const TimerPractice = (props) => {
   // };
 
   const handleClose = () => {
-    localStorage.setItem("clickedOKtoswitch", "yesPractice");
-    let passvalue = {
-      "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
-    };
-    const link = "/api/" + localStorage.getItem("ID");
-    axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Succesfully recorded the click to close practice popup");
-      })
-      .catch((e) => {
-        console.log(
-          "Unable to recorded the click to close practice popup: ",
-          e
-        );
-      });
+    localStorage.setItem("clickedOKtoswitch", "yes");
     setOpen(false);
     window.location.reload(true);
   };

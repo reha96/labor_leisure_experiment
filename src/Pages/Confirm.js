@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Link from "@mui/material/Link";
 import "../App.css";
 import Container from "react-bootstrap/Container";
@@ -23,6 +23,24 @@ const Confirm = () => {
     localStorage.setItem("time_choice", value);
     return;
   }
+
+  useEffect(() => {
+    let passvalue = {
+      "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
+    };
+    const link = "/api/" + localStorage.getItem("ID");
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Succesfully recorded the click to close practice popup");
+      })
+      .catch((e) => {
+        console.log(
+          "Unable to recorded the click to close practice popup: ",
+          e
+        );
+      });
+  }, []);
 
   const [open, setOpen] = React.useState(false);
 
