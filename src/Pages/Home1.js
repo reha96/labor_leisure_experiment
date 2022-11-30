@@ -24,15 +24,14 @@ const Home1 = () => {
   // const [error, setError] = useState(null);
   // console.log(typedValue)
 
-  axios
-    // .get("/api/participants") 
-    .get("/api")
-    .then((res) => {
-      console.log("Succesful test: GET participants", res.data);
-    })
-    .catch((e) => {
-      console.log("Test not succesful: Unable to GET: ", e);
-    });
+  // axios
+  //   .get("/api")
+  //   .then((res) => {
+  //     console.log("Succesful test: GET participants", res.data);
+  //   })
+  //   .catch((e) => {
+  //     console.log("Test not succesful: Unable to GET: ", e);
+  //   });
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);

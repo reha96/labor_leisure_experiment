@@ -71,7 +71,7 @@ const Home2 = () => {
       attention1: localStorage.getItem("attentionFail1"),
     };
 
-    const link = "/api/participants/" + localStorage.getItem("ID")
+    const link = "/api/" + localStorage.getItem("ID");
 
     axios
       .patch(link, passvalue)

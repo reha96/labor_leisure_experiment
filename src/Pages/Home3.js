@@ -89,7 +89,8 @@ const Home3 = () => {
 
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Please make sure you are in an environment where you can comfortably watch the videos.{" "}
+          Please make sure you are in an environment where you can comfortably
+          watch the videos.{" "}
           <strong>Do not forget to turn on the sound of your device. </strong>
         </Alert>
 
