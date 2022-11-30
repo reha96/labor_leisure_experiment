@@ -30,14 +30,14 @@ const Home1 = () => {
   };
 
   const onClick = async (e) => {
-    // axios
-    // .get("/api")
-    // .then((res) => {
-    //   console.log("Succesful test: GET participants", res.data);
-    // })
-    // .catch((e) => {
-    //   console.log("Test not succesful: Unable to GET: ", e);
-    // });
+    axios
+    .get("/api")
+    .then((res) => {
+      console.log("Succesful test: GET participants");
+    })
+    .catch((e) => {
+      console.log("Test not succesful: Unable to GET: ", e);
+    });
     // use only when need to stop page from loading next page
     // e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
