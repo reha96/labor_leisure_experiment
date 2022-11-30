@@ -10,7 +10,7 @@ const Home3 = () => {
   var input = [];
 
   const nextPage = (event) => {
-    setOpen(true);
+    // setOpen(true);
     localStorage.setItem("localcount", 0);
     localStorage.setItem("clickedOKtoswitch2", "no");
     localStorage.setItem("lastmin", 1);
@@ -19,11 +19,11 @@ const Home3 = () => {
     window.localStorage.setItem("progress", 0);
   };
 
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div className="Page2">
