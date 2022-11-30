@@ -29,16 +29,9 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/api")
-  //     .then((res) => {
-  //       console.log("Succesful test: GET participants");
-  //     })
-  //     .catch((e) => {
-  //       console.log("Test not succesful: Unable to GET: ", e);
-  //     });
-  // }, []);
+  useEffect(() => {
+    console.log(browser);
+  }, []);
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
@@ -61,18 +54,20 @@ const Home1 = () => {
       lottery = "lotteryLose";
     }
     let passvalue = {
-      attention1: localStorage.getItem("attentionFail1")
-      // attention2: localStorage.getItem("attentionFail2"),
-      // treatment: treatment,
-      // lottery: lottery,
-      // platform: browser["platform"],
-      // browser: browser["browser"],
-      // ID: typedValue,
-      // clikcedOkToSwitch: [],
-      // timeChoice: 0,
-      // leisureTime: 0,
-      // laborTime: 0,
-      // transcription: [],
+      attention1: localStorage.getItem("attentionFail1"),
+      attention2: localStorage.getItem("attentionFail2"),
+      treatment: treatment,
+      lottery: lottery,
+      platform: browser["platform"],
+      browser: browser["browser"],
+      // platform: ["platform"],
+      // browser: ["browser"],
+      ID: typedValue,
+      clikcedOkToSwitch: [],
+      timeChoice: 0,
+      leisureTime: 0,
+      laborTime: 0,
+      transcription: [],
     };
 
     axios
