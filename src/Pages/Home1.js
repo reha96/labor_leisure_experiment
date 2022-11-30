@@ -68,10 +68,10 @@ const Home1 = () => {
       platform: browser["platform"],
       browser: browser["browser"],
       ID: typedValue,
-      popUps: {},
+      clikcedOkToSwitch: {},
       timeChoice: 0,
-      leisureTime: {},
-      laborTime: {},
+      leisureTime: 0,
+      laborTime: 0,
       transcription: {},
     };
 
