@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
+import axios from "axios";
 
 const Labor = () => {
   const data = [
@@ -447,6 +448,21 @@ const Labor = () => {
     console.log(
       window.localStorage.getItem("transc") + "  transc value after submit"
     );
+
+    let passvalue = {
+      "browser.userTranscription": localStorage.getItem("transc"),
+    };
+
+    const link = "/api/" + localStorage.getItem("ID");
+
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Update browser.userTranscription");
+      })
+      .catch((e) => {
+        console.log("Unable to update browser.userTranscription: ", e);
+      });
   };
 
   return (

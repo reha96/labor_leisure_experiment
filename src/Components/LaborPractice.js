@@ -92,22 +92,22 @@ const LaborPractice = () => {
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
 
-  const [sec, setSec] = useState(0);
+  // const [sec, setSec] = useState(0);
 
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("localcount"))
   );
 
-  useEffect(() => {
-    let count = 0;
-    const interval = setInterval(() => {
-      count = count + 1;
-      setSec(count);
-      console.log("Practice session sec elapsed: ", count);
-      // localStorage.setItem("seconds")
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   let count = 0;
+  //   const interval = setInterval(() => {
+  //     count = count + 1;
+  //     setSec(count);
+  //     console.log("Practice session sec elapsed: ", count);
+  //     // localStorage.setItem("seconds")
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const handleSubmit = (event) => {
     setInput([...input, typedValue]);

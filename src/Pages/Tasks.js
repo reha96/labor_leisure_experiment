@@ -14,11 +14,12 @@ import SlowMotionVideoOutlinedIcon from "@mui/icons-material/SlowMotionVideoOutl
 
 const Tasks = () => {
   const [refresh, setRefresh] = useState(
-    localStorage.getItem("clickedOKtoswitch2") // NEED TO CREATE CLICKED 2 
+    localStorage.getItem("clickedOKtoswitch2")
   );
   useEffect(() => {
     let myInterval = setInterval(() => {
       setRefresh(localStorage.getItem("clickedOKtoswitch2"));
+      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
     }, 1000);
     return () => {
       clearInterval(myInterval);
