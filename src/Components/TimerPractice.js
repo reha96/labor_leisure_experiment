@@ -37,8 +37,8 @@ const TimerPractice = (props) => {
           e
         );
       });
-    window.location.reload(true);
     setOpen(false);
+    window.location.reload(true);
   };
 
   useEffect(() => {
