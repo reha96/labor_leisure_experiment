@@ -31,13 +31,13 @@ const Home2 = () => {
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
 
     if (event.target.value === "1-70") {
       setHelperText("You got it!");
       setError(false);
       localStorage.setItem("stop", "true");
-      console.log(localStorage.getItem("stop"));
+      // console.log(localStorage.getItem("stop"));
     } else if (event.target.value === "1" || event.target.value === "fast") {
       setHelperText("Sorry, wrong answer!");
       setError(true);

@@ -1,21 +1,15 @@
-import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Link from '@mui/material/Link';
-import '../App.css';
-import Container from 'react-bootstrap/Container';
-import ConfirmUpdate from '../Components/ConfirmUpdate';
-import ButtonM from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useState, useEffect } from 'react';
-
+import * as React from "react";
+import "../App.css";
+import Container from "react-bootstrap/Container";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 const LotteryWin = () => {
-
-    const [divi, setDivi] = useState(window.localStorage.getItem('time_choice'));
-    return (
-        <div className='Page2'>
-            <style type="text/css">
-                {`
+  const [divi, setDivi] = useState(window.localStorage.getItem("time_choice"));
+  return (
+    <div className="Page2">
+      <style type="text/css">
+        {`
         .container-sm{
             background-color: white ;
             padding-bottom:5vh!important;
@@ -45,32 +39,46 @@ const LotteryWin = () => {
             margin-bottom: auto;
           }
           `}
-            </style>
-            <Container className="p-1" fluid='sm'>
+      </style>
+      <Container className="p-1" fluid="sm">
+        <Typography variant="h6" className="center">
+          You have won the lottery!
+        </Typography>
+        <p className="HomePage_p">
+          The study ends here for you. Thank you for your participation.
+        </p>
+        <p className="HomePage_p">
+          <strong>
+            Your total earning is{" "}
+            {(
+              ((divi / 100) * 600 * 0.75) / 100 +
+              (((100 - divi) / 100) * 600 * 0.25) / 100 +
+              3
+            ).toPrecision(2)}{" "}
+            €.
+          </strong>
+        </p>
 
-                <Typography variant='h6' className="center">You have won the lottery!</Typography>
-                <p className="HomePage_p">
-                    The study ends here for you. Thank you for your participation.
-                </p>
-                <p className="HomePage_p">
-                    <strong>Your total earning is {((((divi / 100) * 600 * 0.75) / 100) + ((((100 - divi) / 100) * 600 * 0.25) / 100) + 3).toPrecision(2)} €.</strong>
-                </p>
+        <Typography variant="h6" className="center">
+          Contact Information
+        </Typography>
+        <p className="HomePage_p">
+          This study is conducted by Reha Tuncer, PhD student at the University
+          of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy,
+          Dr. Ernesto Reuben, and Dr. Vincent Koenig. The objective is to better
+          understand individual decision-making. Please contact{" "}
+          <strong>reha.tuncer@uni.lu</strong> if you have any questions about
+          the study.
+        </p>
 
-                <Typography variant='h6' className="center">Contact Information</Typography>
-                <p className="HomePage_p">This study is conducted by Reha Tuncer, PhD student at the University of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy and Dr. Ernesto Reuben.
-                    The objective is to better understand individual decision-making.
-                    Please contact <strong>reha.tuncer@uni.lu</strong> if you have any questions about the study.
-                </p>
-
-                {/* <div className='center'>
+        {/* <div className='center'>
                     <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
                         <strong>Begin Study</strong>
                     </ButtonM>
                 </div> */}
+      </Container>
+    </div>
+  );
+};
 
-            </Container>
-        </div >
-    )
-}
-
-export default LotteryWin
+export default LotteryWin;
