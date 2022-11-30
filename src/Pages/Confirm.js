@@ -44,13 +44,13 @@ const Confirm = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClose = () => {
+  const handleClose = async () => {
     setOpen(false);
     let passvalue = {
       timeChoice: localStorage.getItem("time_choice"),
     };
     const link = "/api/" + localStorage.getItem("ID");
-    axios
+    await axios
       .patch(link, passvalue)
       .then(() => {
         console.log("Succesfully recorded time_choice (Typing)");
