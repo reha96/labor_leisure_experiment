@@ -22,7 +22,7 @@ const Home1 = () => {
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   // const [error, setError] = useState(null);
-  // console.log(typedValue)
+  console.log(typedValue)
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);
