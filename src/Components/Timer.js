@@ -20,7 +20,7 @@ const Timer = (props) => {
     setOpen(false);
     localStorage.setItem("clickedOKtoswitch2", "yes12min");
     let passvalue = {
-      "browser.clickedOKtoswitch2": localStorage.getItem("clickedOKtoswitch2"),
+      "clikcedOKtoswitch.secondPopUp": localStorage.getItem("clickedOKtoswitch2"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
@@ -28,10 +28,10 @@ const Timer = (props) => {
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update browser.clickedOKtoswitch2");
+        console.log("Update clikcedOKtoswitch.secondPopUp");
       })
       .catch((e) => {
-        console.log("Unable to update browser.clickedOKtoswitch2: ", e);
+        console.log("Unable to update clikcedOKtoswitch.secondPopUp: ", e);
       });
     // window.location.reload(true);
   };

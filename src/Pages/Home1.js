@@ -29,16 +29,16 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
 
-  useEffect(() => {
-    axios
-      .get("/api")
-      .then((res) => {
-        console.log("Succesful test: GET participants");
-      })
-      .catch((e) => {
-        console.log("Test not succesful: Unable to GET: ", e);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api")
+  //     .then((res) => {
+  //       console.log("Succesful test: GET participants");
+  //     })
+  //     .catch((e) => {
+  //       console.log("Test not succesful: Unable to GET: ", e);
+  //     });
+  // }, []);
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
@@ -68,10 +68,10 @@ const Home1 = () => {
       platform: browser["platform"],
       browser: browser["browser"],
       ID: typedValue,
-      clikcedOkToSwitch: "no",
+      clikcedOkToSwitch: {},
       timeChoice: 0,
-      leisureTime: 0,
-      laborTime: 0,
+      leisureTime: {},
+      laborTime: {},
       transcription: {},
     };
 

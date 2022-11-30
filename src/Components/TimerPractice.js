@@ -23,7 +23,7 @@ const TimerPractice = (props) => {
   const handleClose = () => {
     localStorage.setItem("clickedOKtoswitch", "yesPractice");
     let passvalue = {
-      clikcedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
+      "clikcedOkToSwitch.firstPopUp": localStorage.getItem("clickedOKtoswitch"),
     };
     const link = "/api/" + localStorage.getItem("ID");
     axios
