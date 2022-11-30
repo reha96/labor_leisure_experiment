@@ -12,7 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Lottery = () => {
@@ -28,6 +28,21 @@ const Lottery = () => {
   );
 
   var Fail = 0;
+
+  useEffect(() => {
+    let passvalue = {
+      timeChoice: localStorage.getItem("time_choice"),
+    };
+    const link = "/api/" + localStorage.getItem("ID");
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Succesfully recorded time_choice (Typing Task)");
+      })
+      .catch((e) => {
+        console.log("Unable to record time_choice (Typing Task): ", e);
+      });
+  }, []);
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);

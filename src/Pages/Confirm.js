@@ -44,20 +44,8 @@ const Confirm = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClose = async () => {
+  const handleClose = () => {
     setOpen(false);
-    let passvalue = {
-      timeChoice: localStorage.getItem("time_choice"),
-    };
-    const link = "/api/" + localStorage.getItem("ID");
-    await axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Succesfully recorded time_choice (Typing)");
-      })
-      .catch((e) => {
-        console.log("Unable to record time_choice (Typing): ", e);
-      });
   };
 
   const marks = [

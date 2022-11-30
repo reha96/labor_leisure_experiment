@@ -2,10 +2,27 @@ import * as React from "react";
 import "../App.css";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const LotteryWin = () => {
   const [divi, setDivi] = useState(window.localStorage.getItem("time_choice"));
+
+  useEffect(() => {
+    let passvalue = {
+      timeChoice: localStorage.getItem("time_choice"),
+    };
+    const link = "/api/" + localStorage.getItem("ID");
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Succesfully recorded time_choice (Typing Task)");
+      })
+      .catch((e) => {
+        console.log("Unable to record time_choice (Typing Task): ", e);
+      });
+  }, []);
+
   return (
     <div className="Page2">
       <style type="text/css">
