@@ -37,13 +37,13 @@ const Lottery = () => {
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
 
     if (event.target.value === "true") {
       setHelperText("You got it!");
       setError(false);
       localStorage.setItem("stop2", "true");
-      console.log(localStorage.getItem("stop2"));
+      // console.log(localStorage.getItem("stop2"));
     } else if (event.target.value === "1" || event.target.value === "fast") {
       setHelperText("Sorry, wrong answer!");
       setError(true);
