@@ -41,7 +41,7 @@ const Confirm = () => {
     let passvalue = {
       timeChoice: localStorage.getItem("time_choice"),
     };
-    const link = "/api/participants/" + localStorage.getItem("ID");
+    const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {

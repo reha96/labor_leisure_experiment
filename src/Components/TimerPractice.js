@@ -26,7 +26,7 @@ const TimerPractice = (props) => {
     let passvalue = {
       clikcedOkToSwitch: localStorage.getItem("clickedOKtoswitch"),
     };
-    const link = "/api/participants/" + localStorage.getItem("ID");
+    const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
