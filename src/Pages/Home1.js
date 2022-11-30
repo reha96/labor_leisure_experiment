@@ -35,7 +35,7 @@ const Home1 = () => {
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
-    e.preventDefault();
+    // e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
