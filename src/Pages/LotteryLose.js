@@ -80,7 +80,7 @@ const Lottery = () => {
       attention2: localStorage.getItem("attentionFail2"),
     };
 
-    const link = "/api/participants/" + localStorage.getItem("ID");
+    const link = "/api/" + localStorage.getItem("ID");
 
     axios
       .patch(link, passvalue)
