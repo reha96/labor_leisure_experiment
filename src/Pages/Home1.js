@@ -61,8 +61,8 @@ const Home1 = () => {
       lottery = "lotteryLose";
     }
     let passvalue = {
-      attention1: localStorage.getItem("attentionFail1"),
-      attention2: localStorage.getItem("attentionFail2"),
+      attention1: Number.localStorage.getItem("attentionFail1"),
+      attention2: Number.localStorage.getItem("attentionFail2"),
       treatment: treatment,
       lottery: lottery,
       platform: browser["platform"],
