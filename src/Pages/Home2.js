@@ -4,7 +4,7 @@ import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -13,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
+import * as Bowser from "bowser";
 
 const Home2 = () => {
   // const { userId } = useParams()
@@ -20,6 +21,33 @@ const Home2 = () => {
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail1"))
   );
+
+  const browser = Bowser.parse(window.navigator.userAgent);
+
+  useEffect(() => {
+    let passvalue = {
+      attention1: localStorage.getItem("attentionFail1"),
+      attention2: localStorage.getItem("attentionFail2"),
+      treatment: localStorage.getItem("treatment"),
+      lottery: localStorage.getItem("lottery"),
+      platform: browser["platform"],
+      browser: browser["browser"],
+      ID: localStorage.getItem("ID"),
+      clikcedOkToSwitch: {},
+      timeChoice: 0,
+      leisureTime: 0,
+      laborTime: 0,
+      transcription: {},
+    };
+    axios
+      .post("/api", passvalue)
+      .then(() => {
+        console.log("new participant added");
+      })
+      .catch((e) => {
+        console.log("Unable to add new participant: ", e);
+      });
+  }, []);
 
   var Fail = 0;
 
