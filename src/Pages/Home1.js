@@ -42,7 +42,7 @@ const Home1 = () => {
 
   const onClick = async (e) => {
     // use only when need to stop page from loading next page
-    // e.preventDefault();
+    e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
@@ -61,18 +61,18 @@ const Home1 = () => {
       lottery = "lotteryLose";
     }
     let passvalue = {
-      attention1: localStorage.getItem("attentionFail1"),
-      attention2: localStorage.getItem("attentionFail2"),
-      treatment: treatment,
-      lottery: lottery,
-      platform: browser["platform"],
-      browser: browser["browser"],
-      ID: typedValue,
-      clikcedOkToSwitch: [],
-      timeChoice: 0,
-      leisureTime: 0,
-      laborTime: 0,
-      transcription: [],
+      attention1: localStorage.getItem("attentionFail1")
+      // attention2: localStorage.getItem("attentionFail2"),
+      // treatment: treatment,
+      // lottery: lottery,
+      // platform: browser["platform"],
+      // browser: browser["browser"],
+      // ID: typedValue,
+      // clikcedOkToSwitch: [],
+      // timeChoice: 0,
+      // leisureTime: 0,
+      // laborTime: 0,
+      // transcription: [],
     };
 
     axios
