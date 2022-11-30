@@ -1,7 +1,6 @@
 import React from "react";
 import "./Labor.css";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
@@ -410,8 +409,6 @@ const Labor = () => {
       key: 99,
     },
   ];
-
-  let location = useLocation();
 
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
