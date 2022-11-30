@@ -8,6 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
+import axios from "axios";
 
 const Timer = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
@@ -17,7 +18,21 @@ const Timer = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    localStorage.setItem("clickedOKtoswitch2", "yes");
+    localStorage.setItem("clickedOKtoswitch2", "yes12min");
+    let passvalue = {
+      "browser.clickedOKtoswitch2": localStorage.getItem("clickedOKtoswitch2"),
+    };
+
+    const link = "/api/" + localStorage.getItem("ID");
+
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Update browser.clickedOKtoswitch2");
+      })
+      .catch((e) => {
+        console.log("Unable to update browser.clickedOKtoswitch2: ", e);
+      });
     // window.location.reload(true);
   };
 
