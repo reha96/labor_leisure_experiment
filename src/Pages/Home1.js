@@ -24,21 +24,20 @@ const Home1 = () => {
   // const [error, setError] = useState(null);
   // console.log(typedValue)
 
-  // axios
-  //   .get("/api")
-  //   .then((res) => {
-  //     console.log("Succesful test: GET participants", res.data);
-  //   })
-  //   .catch((e) => {
-  //     console.log("Test not succesful: Unable to GET: ", e);
-  //   });
-
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
   };
 
   const onClick = async (e) => {
+    // axios
+    // .get("/api")
+    // .then((res) => {
+    //   console.log("Succesful test: GET participants", res.data);
+    // })
+    // .catch((e) => {
+    //   console.log("Test not succesful: Unable to GET: ", e);
+    // });
     // use only when need to stop page from loading next page
     // e.preventDefault();
     localStorage.setItem("attentionFail1", 0);
@@ -66,7 +65,7 @@ const Home1 = () => {
       platform: browser["platform"],
       browser: browser["browser"],
       ID: typedValue,
-      clikcedOkToSwitch: "not yet",
+      clikcedOkToSwitch: "no",
       timeChoice: 0,
       leisureTime: 0,
       laborTime: 0,
