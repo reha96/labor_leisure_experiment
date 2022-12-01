@@ -16,16 +16,16 @@ const Tasks = () => {
   const [refresh, setRefresh] = useState(
     localStorage.getItem("clickedOKtoswitch2")
   );
-  const [laborcount, setLaborcount] = useState(
+  let [laborcount, setLaborcount] = useState(
     localStorage.getItem("laborTime")
   );
-  const [leisurecount, setLeisurecount] = useState(
+  let [leisurecount, setLeisurecount] = useState(
     localStorage.getItem("leisureTime")
   );
-  const [inactivelabor, setInactivelabor] = useState(
+  let [inactivelabor, setInactivelabor] = useState(
     localStorage.getItem("inactiveLabor")
   );
-  const [inactiveleisure, setInactiveleisure] = useState(
+  let [inactiveleisure, setInactiveleisure] = useState(
     localStorage.getItem("inactiveLabor")
   );
 
@@ -44,20 +44,20 @@ const Tasks = () => {
       document.addEventListener("visibilitychange", (event) => {
         if (document.visibilityState === "visible") {
           if (localStorage.getItem("activeTab") === "Labor") {
-            setLaborcount(Number.laborcount + 1);
+            setLaborcount(parseInt(laborcount) + 1);
             localStorage.setItem("laborTime", laborcount);
           }
           if (localStorage.getItem("activeTab") === "Leisure") {
-            setLeisurecount(Number.leisurecount + 1);
+            setLeisurecount(parseInt(leisurecount) + 1);
             localStorage.setItem("leisureTime", leisurecount);
           }
         } else {
           if (localStorage.getItem("activeTab") === "Labor") {
-            setInactivelabor(Number.inactivelabor + 1);
+            setInactivelabor(parseInt(inactivelabor) + 1);
             localStorage.setItem("inactiveLabor", inactivelabor);
           }
           if (localStorage.getItem("activeTab") === "Leisure") {
-            setInactiveleisure(Number.inactiveleisure + 1);
+            setInactiveleisure(parseInt(inactiveleisure) + 1);
             localStorage.setItem("inactiveLabor", inactiveleisure);
           } else {
             console.log("uncaught if statement");
