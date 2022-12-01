@@ -16,10 +16,54 @@ const Tasks = () => {
   const [refresh, setRefresh] = useState(
     localStorage.getItem("clickedOKtoswitch2")
   );
+  const [laborcount, setLaborcount] = useState(
+    localStorage.getItem("laborTime")
+  );
+  const [leisurecount, setLeisurecount] = useState(
+    localStorage.getItem("leisureTime")
+  );
+  const [inactivelabor, setInactivelabor] = useState(
+    localStorage.getItem("inactiveLabor")
+  );
+  const [inactiveleisure, setInactiveleisure] = useState(
+    localStorage.getItem("inactiveLabor")
+  );
+
+  const onClickLabor = (event) => {
+    localStorage.setItem("activeTab", "Labor");
+  };
+
+  const onClickLeisure = (event) => {
+    localStorage.setItem("activeTab", "Leisure");
+  };
+
   useEffect(() => {
     let myInterval = setInterval(() => {
       setRefresh(localStorage.getItem("clickedOKtoswitch2"));
       // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
+      document.addEventListener("visibilitychange", (event) => {
+        if (document.visibilityState === "visible") {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setLaborcount(laborcount + 1);
+            localStorage.setItem("laborTime", laborcount);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            setLeisurecount(leisurecount + 1);
+            localStorage.setItem("leisureTime", leisurecount);
+          }
+        } else {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setInactivelabor(inactivelabor + 1);
+            localStorage.setItem("inactiveLabor", inactivelabor);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            setInactiveleisure(inactiveleisure + 1);
+            localStorage.setItem("inactiveLabor", inactiveleisure);
+          } else {
+            console.log("uncaught if statement");
+          }
+        }
+      });
     }, 1000);
     return () => {
       clearInterval(myInterval);
@@ -113,6 +157,7 @@ const Tasks = () => {
                 <KeyboardOutlinedIcon /> Type
               </Typography>
             }
+            onClick={onClickLabor}
           >
             <Labor />
           </Tab>
@@ -138,6 +183,7 @@ const Tasks = () => {
                   <SlowMotionVideoOutlinedIcon /> Watch{" "}
                 </Typography>
               }
+              onClick={onClickLeisure}
             >
               <Leisure />
             </Tab>

@@ -19,6 +19,7 @@ const Timer = (props) => {
   const handleClose = () => {
     setOpen(false);
     localStorage.setItem("clickedOKtoswitch2", "yes12min");
+    localStorage.setItem("activeTab", "Labor");
     let passvalue = {
       "clikcedOkToSwitch.secondPopUp": localStorage.getItem("clickedOKtoswitch2"),
     };

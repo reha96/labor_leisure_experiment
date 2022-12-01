@@ -8,7 +8,6 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import axios from "axios";
 
 const TimerPractice = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
@@ -41,12 +40,6 @@ const TimerPractice = (props) => {
           // localStorage.setItem('popup', true);
         }
       }
-      document.addEventListener("visibilitychange", (event) => {
-        if (document.visibilityState === "visible") {
-        } else {
-          console.log("tab is inactive");
-        }
-      });
     }, 1000);
 
     return () => {
