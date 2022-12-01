@@ -44,20 +44,20 @@ const Tasks = () => {
       document.addEventListener("visibilitychange", (event) => {
         if (document.visibilityState === "visible") {
           if (localStorage.getItem("activeTab") === "Labor") {
-            setLaborcount(laborcount + 1);
+            setLaborcount(Number.laborcount + 1);
             localStorage.setItem("laborTime", laborcount);
           }
           if (localStorage.getItem("activeTab") === "Leisure") {
-            setLeisurecount(leisurecount + 1);
+            setLeisurecount(Number.leisurecount + 1);
             localStorage.setItem("leisureTime", leisurecount);
           }
         } else {
           if (localStorage.getItem("activeTab") === "Labor") {
-            setInactivelabor(inactivelabor + 1);
+            setInactivelabor(Number.inactivelabor + 1);
             localStorage.setItem("inactiveLabor", inactivelabor);
           }
           if (localStorage.getItem("activeTab") === "Leisure") {
-            setInactiveleisure(inactiveleisure + 1);
+            setInactiveleisure(Number.inactiveleisure + 1);
             localStorage.setItem("inactiveLabor", inactiveleisure);
           } else {
             console.log("uncaught if statement");
