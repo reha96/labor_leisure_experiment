@@ -16,12 +16,26 @@ const Timer = (props) => {
   const [seconds, setSeconds] = useState(initialSeconds);
   const [open, setOpen] = React.useState(false);
 
+  const [laborcount, setLaborcount] = useState(
+    localStorage.getItem("laborTime")
+  );
+  const [leisurecount, setLeisurecount] = useState(
+    parseInt(localStorage.getItem("leisureTime"))
+  );
+  const [inactivelabor, setInactivelabor] = useState(
+    parseInt(localStorage.getItem("inactiveLabor"))
+  );
+  const [inactiveleisure, setInactiveleisure] = useState(
+    parseInt(localStorage.getItem("inactiveLabor"))
+  );
+
   const handleClose = () => {
     setOpen(false);
     localStorage.setItem("clickedOKtoswitch2", "yes12min");
-    localStorage.setItem("activeTab", "Labor");
+    // localStorage.setItem("activeTab", "Labor");
     let passvalue = {
-      "clikcedOkToSwitch.secondPopUp": localStorage.getItem("clickedOKtoswitch2"),
+      "clikcedOkToSwitch.secondPopUp":
+        localStorage.getItem("clickedOKtoswitch2"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
@@ -53,8 +67,34 @@ const Timer = (props) => {
           setOpen(true);
         }
       }
+      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
+        if (localStorage.getItem("visible") === "isVisible") {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setLaborcount(parseInt(laborcount) + 1);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            setLeisurecount(parseInt(leisurecount) + 1);
+          }
+        } else {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setInactivelabor(parseInt(inactivelabor) + 1);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            setInactiveleisure(parseInt(inactiveleisure) + 1);
+          }
+        }
     }, 1000);
     return () => {
+      localStorage.setItem("laborTime", laborcount);
+      localStorage.setItem("leisureTime", leisurecount);
+      localStorage.setItem("inactiveLabor", inactivelabor);
+      localStorage.setItem("inactiveLabor", inactiveleisure);
+      // console.log(laborcount);
+      // console.log(leisurecount);
+      // console.log(inactivelabor);
+      // console.log(inactiveleisure);
+      // added stuff
+
       window.localStorage.setItem("lastmin", minutes);
       window.localStorage.setItem("lastsec", seconds);
       window.localStorage.setItem(

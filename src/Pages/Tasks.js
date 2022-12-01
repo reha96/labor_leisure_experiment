@@ -16,18 +16,6 @@ const Tasks = () => {
   const [refresh, setRefresh] = useState(
     localStorage.getItem("clickedOKtoswitch2")
   );
-  let [laborcount, setLaborcount] = useState(
-    localStorage.getItem("laborTime")
-  );
-  let [leisurecount, setLeisurecount] = useState(
-    localStorage.getItem("leisureTime")
-  );
-  let [inactivelabor, setInactivelabor] = useState(
-    localStorage.getItem("inactiveLabor")
-  );
-  let [inactiveleisure, setInactiveleisure] = useState(
-    localStorage.getItem("inactiveLabor")
-  );
 
   const onClickLabor = (event) => {
     localStorage.setItem("activeTab", "Labor");
@@ -40,35 +28,24 @@ const Tasks = () => {
   useEffect(() => {
     let myInterval = setInterval(() => {
       setRefresh(localStorage.getItem("clickedOKtoswitch2"));
-      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
-      document.addEventListener("visibilitychange", (event) => {
-        if (document.visibilityState === "visible") {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setLaborcount(parseInt(laborcount) + 1);
-            localStorage.setItem("laborTime", laborcount);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            setLeisurecount(parseInt(leisurecount) + 1);
-            localStorage.setItem("leisureTime", leisurecount);
-          }
-        } else {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setInactivelabor(parseInt(inactivelabor) + 1);
-            localStorage.setItem("inactiveLabor", inactivelabor);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            setInactiveleisure(parseInt(inactiveleisure) + 1);
-            localStorage.setItem("inactiveLabor", inactiveleisure);
-          } else {
-            console.log("uncaught if statement");
-          }
-        }
-      });
     }, 1000);
     return () => {
+      document.addEventListener("visibilitychange", (event) => {
+        if (document.visibilityState === "visible") {
+          console.log("isVisible")
+          localStorage.setItem("visible", "isVisible")
+        }
+        else{
+          console.log("notVisible")
+          localStorage.setItem("visible", "notVisible")
+        }
+      });
       clearInterval(myInterval);
     };
   });
+
+
+
 
   return (
     <div className="Pagetasks">

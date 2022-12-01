@@ -34,10 +34,6 @@ const Home1 = () => {
 
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
-    localStorage.setItem("laborTime", 0);
-    localStorage.setItem("leisureTime", 0);
-    localStorage.setItem("inactiveLabor", 0);
-    localStorage.setItem("inactiveLeisure", 0);
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
     localStorage.setItem("ID", typedValue);

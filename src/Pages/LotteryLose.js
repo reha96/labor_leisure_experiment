@@ -17,7 +17,13 @@ import axios from "axios";
 
 const Lottery = () => {
   var input = [];
-
+  localStorage.setItem("laborTime", 0);
+  localStorage.setItem("leisureTime", 0);
+  localStorage.setItem("inactiveLabor", 0);
+  localStorage.setItem("inactiveLeisure", 0);
+  localStorage.setItem("activeTab", "");
+  localStorage.setItem("visible", "");
+  localStorage.setItem("clickedOKtoswitch2", "no");
   localStorage.setItem("localcount", 0);
   localStorage.setItem("lastmin", 11);
   localStorage.setItem("lastsec", 59);

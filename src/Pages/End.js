@@ -1,9 +1,33 @@
-import React from 'react'; 
+import React, {useEffect} from 'react'; 
 import Typography from '@mui/material/Typography';
 import ButtonM from '@mui/material/Button';
 import Container from 'react-bootstrap/Container';
+import axios from 'axios';
   
 const End = () => {
+
+useEffect(() => {
+  let passvalue = {
+    "browser.timespentTyping": localStorage.getItem("laborTime"),
+    "browser.timespentWatching": localStorage.getItem("leisureTime"),
+    "browser.timespentNotTyping":localStorage.getItem("inactiveLabor"),
+    "browser.timespentNotWatching":localStorage.getItem("inactiveLeisure"),
+  };
+
+  const link = "/api/" + localStorage.getItem("ID");
+
+  axios
+    .patch(link, passvalue)
+    .then(() => {
+      console.log("Update TimeSpent in both tasks");
+    })
+    .catch((e) => {
+      console.log("Unable to update TimeSpent in both tasks: ", e);
+    });
+
+}, [])
+
+
   return (
     <div className='Page'>
     <style type="text/css">

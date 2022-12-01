@@ -36,7 +36,7 @@ const Confirm = () => {
       })
       .catch((e) => {
         console.log(
-          "Unable to recorded the click to close practice popup: ",
+          "Unable to record the click to close practice popup: ",
           e
         );
       });
