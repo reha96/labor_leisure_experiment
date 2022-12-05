@@ -18,6 +18,7 @@ const Timer = (props) => {
     initialLeisure = 0,
     initialLaborNot = 0,
     initialLeisureNot = 0,
+    initialVideoPausedFor = 0,
   } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
@@ -27,6 +28,7 @@ const Timer = (props) => {
   const [leisurecount, setLeisurecount] = useState(initialLeisure);
   const [inactivelabor, setInactivelabor] = useState(initialLaborNot);
   const [inactiveleisure, setInactiveleisure] = useState(initialLeisureNot);
+  const [videoPausedFor, setVideoPausedFor] = useState(initialVideoPausedFor);
 
   const handleClose = () => {
     setOpen(false);
@@ -56,6 +58,12 @@ const Timer = (props) => {
         if (localStorage.getItem("activeTab") === "Leisure") {
           setLeisurecount(parseInt(leisurecount) + 1);
         }
+        if (
+          localStorage.getItem("activeTab") === "Leisure" &&
+          localStorage.getItem("videoPaused") === "yes"
+        ) {
+          setVideoPausedFor(parseInt(videoPausedFor) + 1);
+        }
       }
       if (document.visibilityState !== "visible") {
         if (localStorage.getItem("activeTab") === "Labor") {
@@ -72,6 +80,7 @@ const Timer = (props) => {
       localStorage.setItem("leisureTime", leisurecount);
       localStorage.setItem("inactiveLabor", inactivelabor);
       localStorage.setItem("inactiveLeisure", inactiveleisure);
+      localStorage.setItem("VideoPausedFor", videoPausedFor);
       window.localStorage.setItem("lastmin", minutes);
       window.localStorage.setItem("lastsec", seconds);
       window.localStorage.setItem(

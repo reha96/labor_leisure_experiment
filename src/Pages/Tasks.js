@@ -53,6 +53,7 @@ const Tasks = () => {
           initialLeisure={localStorage.getItem("leisureTime")}
           initialLaborNot={localStorage.getItem("inactiveLabor")}
           initialLeisureNot={localStorage.getItem("inactiveLeisure")}
+          initialVideoPausedFor={localStorage.getItem("VideoPausedFor")}
         />
         <Typography variant="h6" color="secondary" className="center">
           Choose Task

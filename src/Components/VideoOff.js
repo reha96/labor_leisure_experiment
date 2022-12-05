@@ -32,6 +32,7 @@ function VideoOff({ src }) {
   const playVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       //   localStorage.setItem("activeTab", "Leisure");
+      localStorage.setItem("videoPaused", "no");
       // videoRef.current.play();
       // setPlaying(true);
       //setMute(0);
@@ -42,6 +43,7 @@ function VideoOff({ src }) {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
       //   localStorage.setItem("activeTab", "Labor");
+      localStorage.setItem("videoPaused", "yes");
       // setPlaying(false);
       //setMute(1);
     }
@@ -82,7 +84,7 @@ function VideoOff({ src }) {
 
   return (
     <div className="video">
-      {!isVisible ? stopVideo() : null}
+      {!isVisible ? stopVideo() : playVideo()}
       <video
         // playsInline
         //autoPlay

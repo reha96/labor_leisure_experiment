@@ -35,7 +35,7 @@ function Video({ src }) {
   const playVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.play();
-      //   localStorage.setItem("activeTab", "Leisure");
+        localStorage.setItem("videoPaused", "no");
       // setPlaying(true);
       //setMute(0);
     }
@@ -44,7 +44,7 @@ function Video({ src }) {
   const stopVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
-      //   localStorage.setItem("activeTab", "Labor");
+        localStorage.setItem("videoPaused", "yes");
       // setPlaying(false);
       //setMute(1);
     }
