@@ -17,13 +17,22 @@ const Tasks = () => {
     localStorage.getItem("clickedOKtoswitch2")
   );
 
-  const onClickLabor = (event) => {
-    localStorage.setItem("activeTab", "Labor");
+  const handleSelect = (key) => {
+    if (key === "1") {
+      localStorage.setItem("activeTab", "Labor");
+    }
+    if (key === "2") {
+      localStorage.setItem("activeTab", "Leisure");
+    }
   };
 
-  const onClickLeisure = (event) => {
-    localStorage.setItem("activeTab", "Leisure");
-  };
+  // const onClickLabor = (event) => {
+  //   localStorage.setItem("activeTab", "Labor");
+  // };
+
+  // const onClickLeisure = (event) => {
+  //   localStorage.setItem("activeTab", "Leisure");
+  // };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -115,6 +124,7 @@ const Tasks = () => {
           id="mytab"
           className="mb-0"
           fill
+          onSelect={handleSelect}
           // mountOnEnter='true' can be interesting for future
         >
           <Tab
@@ -125,7 +135,7 @@ const Tasks = () => {
                 <KeyboardOutlinedIcon /> Type
               </Typography>
             }
-            onClick={onClickLabor}
+            // onClick={onClickLabor}
           >
             <Labor />
           </Tab>
@@ -151,7 +161,7 @@ const Tasks = () => {
                   <SlowMotionVideoOutlinedIcon /> Watch{" "}
                 </Typography>
               }
-              onClick={onClickLeisure}
+              // onClick={onClickLeisure}
             >
               <Leisure />
             </Tab>

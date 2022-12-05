@@ -49,16 +49,6 @@ const Timer = (props) => {
           setOpen(true);
         }
       }
-      document.addEventListener("visibilitychange", (event) => {
-        if (document.visibilityState !== "visible") {
-          localStorage.setItem("visible", "notVisible");
-          // console.log(localStorage.getItem("visible"))
-        }
-        if (document.visibilityState === "visible") {
-          localStorage.setItem("visible", "isVisible");
-        }
-      });
-      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
       if (document.visibilityState === "visible") {
         if (localStorage.getItem("activeTab") === "Labor") {
           setLaborcount(parseInt(laborcount) + 1);
@@ -66,13 +56,14 @@ const Timer = (props) => {
         if (localStorage.getItem("activeTab") === "Leisure") {
           setLeisurecount(parseInt(leisurecount) + 1);
         }
-      } 
-      if(localStorage.getItem("visible") === "notVisible") {
+      }
+      if (document.visibilityState !== "visible") {
         if (localStorage.getItem("activeTab") === "Labor") {
           setInactivelabor(parseInt(inactivelabor) + 1);
         }
-        if (localStorage.getItem("activeTab") === "Leisure") {
-          setInactiveleisure(parseInt(inactiveleisure) + 1);
+        if (document.visibilityState !== "visible") {
+          if (localStorage.getItem("activeTab") === "Leisure")
+            setInactiveleisure(parseInt(inactiveleisure) + 1);
         }
       }
     }, 1000);
@@ -81,12 +72,6 @@ const Timer = (props) => {
       localStorage.setItem("leisureTime", leisurecount);
       localStorage.setItem("inactiveLabor", inactivelabor);
       localStorage.setItem("inactiveLeisure", inactiveleisure);
-      // console.log("laborcount ", laborcount);
-      // console.log(leisurecount);
-      // console.log("Inactive Labor ", inactivelabor);
-      // console.log(inactiveleisure);
-      // added stuff
-
       window.localStorage.setItem("lastmin", minutes);
       window.localStorage.setItem("lastsec", seconds);
       window.localStorage.setItem(
