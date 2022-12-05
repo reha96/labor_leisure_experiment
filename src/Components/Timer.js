@@ -8,47 +8,29 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import axios from "axios";
 
 const Timer = (props) => {
-  const { initialMinute = 0, initialSeconds = 0 } = props;
+  localStorage.setItem("visible", "isVisible");
+  const {
+    initialMinute = 0,
+    initialSeconds = 0,
+    initialLabor = 0,
+    initialLeisure = 0,
+    initialLaborNot = 0,
+    initialLeisureNot = 0,
+  } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
   const [open, setOpen] = React.useState(false);
 
-  const [laborcount, setLaborcount] = useState(
-    localStorage.getItem("laborTime")
-  );
-  const [leisurecount, setLeisurecount] = useState(
-    parseInt(localStorage.getItem("leisureTime"))
-  );
-  const [inactivelabor, setInactivelabor] = useState(
-    parseInt(localStorage.getItem("inactiveLabor"))
-  );
-  const [inactiveleisure, setInactiveleisure] = useState(
-    parseInt(localStorage.getItem("inactiveLabor"))
-  );
+  const [laborcount, setLaborcount] = useState(initialLabor);
+  const [leisurecount, setLeisurecount] = useState(initialLeisure);
+  const [inactivelabor, setInactivelabor] = useState(initialLaborNot);
+  const [inactiveleisure, setInactiveleisure] = useState(initialLeisureNot);
 
   const handleClose = () => {
     setOpen(false);
-    localStorage.setItem("clickedOKtoswitch2", "yes12min");
-    // localStorage.setItem("activeTab", "Labor");
-    let passvalue = {
-      "clikcedOkToSwitch.secondPopUp":
-        localStorage.getItem("clickedOKtoswitch2"),
-    };
-
-    const link = "/api/" + localStorage.getItem("ID");
-
-    axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Update clikcedOkToSwitch.secondPopUp");
-      })
-      .catch((e) => {
-        console.log("Unable to update clikcedOkToSwitch.secondPopUp: ", e);
-      });
-    // window.location.reload(true);
+    localStorage.setItem("clickedOKtoswitch2", "intermediate");
   };
 
   useEffect(() => {
@@ -67,31 +49,41 @@ const Timer = (props) => {
           setOpen(true);
         }
       }
-      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
-        if (localStorage.getItem("visible") === "isVisible") {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setLaborcount(parseInt(laborcount) + 1);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            setLeisurecount(parseInt(leisurecount) + 1);
-          }
-        } else {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setInactivelabor(parseInt(inactivelabor) + 1);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            setInactiveleisure(parseInt(inactiveleisure) + 1);
-          }
+      document.addEventListener("visibilitychange", (event) => {
+        if (document.visibilityState !== "visible") {
+          localStorage.setItem("visible", "notVisible");
+          // console.log(localStorage.getItem("visible"))
         }
+        if (document.visibilityState === "visible") {
+          localStorage.setItem("visible", "isVisible");
+        }
+      });
+      // need to add counter with IF tab active and IF user is lookign THEN start counting FOR each tab
+      if (document.visibilityState === "visible") {
+        if (localStorage.getItem("activeTab") === "Labor") {
+          setLaborcount(parseInt(laborcount) + 1);
+        }
+        if (localStorage.getItem("activeTab") === "Leisure") {
+          setLeisurecount(parseInt(leisurecount) + 1);
+        }
+      } 
+      if(localStorage.getItem("visible") === "notVisible") {
+        if (localStorage.getItem("activeTab") === "Labor") {
+          setInactivelabor(parseInt(inactivelabor) + 1);
+        }
+        if (localStorage.getItem("activeTab") === "Leisure") {
+          setInactiveleisure(parseInt(inactiveleisure) + 1);
+        }
+      }
     }, 1000);
     return () => {
       localStorage.setItem("laborTime", laborcount);
       localStorage.setItem("leisureTime", leisurecount);
       localStorage.setItem("inactiveLabor", inactivelabor);
-      localStorage.setItem("inactiveLabor", inactiveleisure);
-      // console.log(laborcount);
+      localStorage.setItem("inactiveLeisure", inactiveleisure);
+      // console.log("laborcount ", laborcount);
       // console.log(leisurecount);
-      // console.log(inactivelabor);
+      // console.log("Inactive Labor ", inactivelabor);
       // console.log(inactiveleisure);
       // added stuff
 

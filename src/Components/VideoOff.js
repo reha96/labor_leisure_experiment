@@ -1,109 +1,103 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
-import './video.css'
-import ButtonM from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import React, { useRef, useState, useMemo, useEffect } from "react";
+import "./video.css";
 
 function VideoOff({ src }) {
-    const [playing, setPlaying] = useState(false);
-    const videoRef = useRef(null);
-    const endRef = useRef(null);
-    const [open, setOpen] = React.useState(false);
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const endRef = useRef(null);
 
-    const [isVisible, setIsVisible] = useState(false);
-    const callbackFunction = entries => {
-        const [entry] = entries; // const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
+  const [isVisible, setIsVisible] = useState(false);
+  const callbackFunction = (entries) => {
+    const [entry] = entries; // const entry = entries[0];
+    setIsVisible(entry.isIntersecting);
+  };
+
+  const options = useMemo(() => {
+    return {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(callbackFunction, options);
+    const currentTarget = videoRef.current;
+    if (currentTarget) observer.observe(currentTarget);
+    return () => {
+      if (currentTarget) observer.unobserve(currentTarget);
+    };
+  }, [videoRef, options]);
+
+  const playVideo = () => {
+    if (videoRef !== null && videoRef.current !== null) {
+      localStorage.setItem("activeTab", "Leisure");
+      // videoRef.current.play();
+      // setPlaying(true);
+      //setMute(0);
     }
+  };
 
-    const options = useMemo(() => {
-        return {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1,
-        }
-    }, []);
+  const stopVideo = () => {
+    if (videoRef !== null && videoRef.current !== null) {
+      videoRef.current.pause();
+      localStorage.setItem("activeTab", "Labor");
+      // setPlaying(false);
+      //setMute(1);
+    }
+  };
 
+  // const onVideoPress = () => {
+  //     if (playing){
+  //         setPlaying(false);
+  //         console.log("play status: " + playing)
+  //         videoRef.current.pause();
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(callbackFunction, options);
-        const currentTarget = videoRef.current;
-        if (currentTarget) observer.observe(currentTarget);
-        return () => {
-            if (currentTarget) observer.unobserve(currentTarget);
-        }
-    }, [videoRef, options]);
+  //     } else {
+  //         setPlaying(true);
+  //         console.log("play status: " + playing)
+  //         videoRef.current.play();
+  //     }
+  // };
 
-    const playVideo = () => {
-        if (videoRef !== null && videoRef.current !== null) {
-            videoRef.current.play();
-            // setPlaying(true);
-            //setMute(0);
-        }
-    };
+  const handleVideoEnded = () => {
+    console.log("Video ended!");
+    endRef.current.scrollIntoView({ behavior: "smooth" });
+    // setOpen(true)
+  };
 
-    const stopVideo = () => {
-        if (videoRef !== null && videoRef.current !== null) {
-            videoRef.current.pause();
-            // setPlaying(false);
-            //setMute(1);
-        }
-    };
+  // const handleClose = () => {
+  //     setOpen(false)
+  // };
 
-    // const onVideoPress = () => {  
-    //     if (playing){
-    //         setPlaying(false);
-    //         console.log("play status: " + playing)
-    //         videoRef.current.pause();
+  // const handleCloseReplay = () => {
+  //     setOpen(false);
+  //     videoRef.current.play();
+  // };
 
-    //     } else {
-    //         setPlaying(true);
-    //         console.log("play status: " + playing)
-    //         videoRef.current.play();
-    //     }
-    // };
+  // const handleCloseNext = () => {
+  //     setOpen(false);
+  //     endRef.current.scrollIntoView({ behavior: "smooth" });
+  // };
 
-    const handleVideoEnded = () => {
-        console.log('Video ended!');
-        endRef.current.scrollIntoView({ behavior: "smooth" });
-        // setOpen(true)
+  return (
+    <div className="video">
+      {!isVisible ? stopVideo() : null}
+      <video
+        // playsInline
+        //autoPlay
+        //muted
+        //onClick={!playing ? null : stopVideo()}
+        controls={true}
+        className="video__player"
+        ref={videoRef}
+        // loop
+        src={src}
+        type="video/mp4"
+        onEnded={handleVideoEnded}
+      ></video>
 
-    };
-
-    // const handleClose = () => {
-    //     setOpen(false)
-    // };
-
-    // const handleCloseReplay = () => {
-    //     setOpen(false);
-    //     videoRef.current.play();
-    // };
-
-    // const handleCloseNext = () => {
-    //     setOpen(false);
-    //     endRef.current.scrollIntoView({ behavior: "smooth" });
-    // };
-
-    return (
-        <div className='video'>
-            {!isVisible ? stopVideo() : null}
-            <video
-                // playsInline
-                //autoPlay
-                //muted
-                //onClick={!playing ? null : stopVideo()}
-                controls={true}
-                className='video__player'
-                ref={videoRef}
-                // loop
-                src={src} type='video/mp4'
-                onEnded={handleVideoEnded}
-            ></video>
-            
-            {/* <Dialog
+      {/* <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="responsive-dialog-title"
@@ -113,7 +107,7 @@ function VideoOff({ src }) {
                 {/* <DialogTitle id="responsive-dialog-title">
                     {"Keep watching?"}
                 </DialogTitle> */}
-                {/* <DialogContent>
+      {/* <DialogContent>
                     <DialogContentText>
                         Keep watching?
                     </DialogContentText>
@@ -127,9 +121,9 @@ function VideoOff({ src }) {
                     </ButtonM>
                 </DialogActions>
             </Dialog> */}
-            <div ref={endRef} />
-        </div>
-    )
+      <div ref={endRef} />
+    </div>
+  );
 }
 
-export default VideoOff
+export default VideoOff;

@@ -178,7 +178,7 @@ const Confirm = () => {
             </ButtonM>
             <Link
               underline="none"
-              href={localStorage.getItem("lottery") >= 0.95 ? "lotw" : "lotl"}
+              href={localStorage.getItem("lottery") === "lotteryWin" ? "lotw" : "lotl"}
             >
               <ButtonM color="success" onClick={handleClose} autoFocus>
                 <strong>Confirm</strong>

@@ -1,100 +1,97 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
-import './video.css'
+import React, { useRef, useState, useMemo, useEffect } from "react";
+import "./video.css";
 
+function Video({ src }) {
+  // const [mute, setMute] = useState(0);
+  // const [count, setCount] = useState(0);
 
-function Video({src}) {
-    // const [mute, setMute] = useState(0);
-    // const [count, setCount] = useState(0);
-    
-    // const [playing,setPlaying] = useState(false);
-    const videoRef = useRef(null);
-    const endRef = useRef(null);
+  // const [playing,setPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const endRef = useRef(null);
 
-    const [isVisible, setIsVisible] = useState(false);
-    const callbackFunction = entries => {
-        const[entry] = entries; // const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
-    }
+  const [isVisible, setIsVisible] = useState(false);
+  const callbackFunction = (entries) => {
+    const [entry] = entries; // const entry = entries[0];
+    setIsVisible(entry.isIntersecting);
+  };
 
-    const options = useMemo(()=> {
-        return {
-            root: null,
-            rootMargin:'0px',
-            threshold: 0.1,
-        }
-    }, []);
-
-
-    useEffect(()=> {
-        const observer = new IntersectionObserver(callbackFunction,options);
-        const currentTarget = videoRef.current;
-        if(currentTarget) observer.observe(currentTarget); 
-        return() => {
-            if(currentTarget) observer.unobserve(currentTarget);
-        }
-    }, [videoRef, options]);
-
-    const playVideo = () =>  {
-        if (videoRef !== null && videoRef.current !== null)
-        {
-        videoRef.current.play();
-        // setPlaying(true);
-        //setMute(0);
-        }
+  const options = useMemo(() => {
+    return {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
     };
+  }, []);
 
-    const stopVideo = () =>  {
-        if (videoRef !== null && videoRef.current !== null)
-        {
-        videoRef.current.pause();
-        // setPlaying(false);
-        //setMute(1);
-    }
+  useEffect(() => {
+    const observer = new IntersectionObserver(callbackFunction, options);
+    const currentTarget = videoRef.current;
+    if (currentTarget) observer.observe(currentTarget);
+    return () => {
+      if (currentTarget) observer.unobserve(currentTarget);
     };
+  }, [videoRef, options]);
 
-    // const onVideoPress = () => {
-    //     // if (videoRef !== null)
-    //     //     setMute(1);
-    //     //& count !== 0      
-    //     if (playing){
-    //         videoRef.current.pause();
-    //         setPlaying(false);
-    //         console.log("play status: " + playing)
-    //     } else {
-    //         videoRef.current.play();
-    //         setPlaying(true);
-    //         console.log("play status: " + playing)
-    //     }
-    // };
+  const playVideo = () => {
+    if (videoRef !== null && videoRef.current !== null) {
+      videoRef.current.play();
+      localStorage.setItem("activeTab", "Leisure");
+      // setPlaying(true);
+      //setMute(0);
+    }
+  };
 
-    const handleVideoEnded = () => {
-        console.log('Video ended!');
-        endRef.current.scrollIntoView({ behavior: "smooth" });
-        // videoRef.current.scrollIntoView(false);
-      };
+  const stopVideo = () => {
+    if (videoRef !== null && videoRef.current !== null) {
+      videoRef.current.pause();
+      localStorage.setItem("activeTab", "Labor");
+      // setPlaying(false);
+      //setMute(1);
+    }
+  };
 
-    return (
-    <div className='video'>
-             {!isVisible ? stopVideo() :  playVideo()}
-        <video 
+  // const onVideoPress = () => {
+  //     // if (videoRef !== null)
+  //     //     setMute(1);
+  //     //& count !== 0
+  //     if (playing){
+  //         videoRef.current.pause();
+  //         setPlaying(false);
+  //         console.log("play status: " + playing)
+  //     } else {
+  //         videoRef.current.play();
+  //         setPlaying(true);
+  //         console.log("play status: " + playing)
+  //     }
+  // };
+
+  const handleVideoEnded = () => {
+    console.log("Video ended!");
+    endRef.current.scrollIntoView({ behavior: "smooth" });
+    // videoRef.current.scrollIntoView(false);
+  };
+
+  return (
+    <div className="video">
+      {!isVisible ? stopVideo() : playVideo()}
+      <video
         // playsInline
         // autoPlay
         //muted
         // onClick={!playing ? playVideo : stopVideo}
-           controls={true}
+        controls={true}
         // controlsList="nofullscreen nodownload"
         // disablePictureInPicture
-        className='video__player' 
-        ref={videoRef}  
+        className="video__player"
+        ref={videoRef}
         // loop
-        src={src} type='video/mp4'
+        src={src}
+        type="video/mp4"
         onEnded={handleVideoEnded}
-        ></video>
-        <div ref={endRef} />
+      ></video>
+      <div ref={endRef} />
     </div>
-  )
+  );
 }
 
-
-
-export default Video
+export default Video;

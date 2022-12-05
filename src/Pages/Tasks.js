@@ -30,29 +30,20 @@ const Tasks = () => {
       setRefresh(localStorage.getItem("clickedOKtoswitch2"));
     }, 1000);
     return () => {
-      document.addEventListener("visibilitychange", (event) => {
-        if (document.visibilityState === "visible") {
-          console.log("isVisible")
-          localStorage.setItem("visible", "isVisible")
-        }
-        else{
-          console.log("notVisible")
-          localStorage.setItem("visible", "notVisible")
-        }
-      });
       clearInterval(myInterval);
     };
   });
-
-
-
 
   return (
     <div className="Pagetasks">
       <Container className="p-1" fluid="sm">
         <Timer
-          initialMinute={window.localStorage.getItem("lastmin")}
-          initialSeconds={window.localStorage.getItem("lastsec")}
+          initialMinute={localStorage.getItem("lastmin")}
+          initialSeconds={localStorage.getItem("lastsec")}
+          initialLabor={localStorage.getItem("laborTime")}
+          initialLeisure={localStorage.getItem("leisureTime")}
+          initialLaborNot={localStorage.getItem("inactiveLabor")}
+          initialLeisureNot={localStorage.getItem("inactiveLeisure")}
         />
         <Typography variant="h6" color="secondary" className="center">
           Choose Task

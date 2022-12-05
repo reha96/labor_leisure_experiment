@@ -1,37 +1,43 @@
-import React, {useEffect} from 'react'; 
-import Typography from '@mui/material/Typography';
-import ButtonM from '@mui/material/Button';
-import Container from 'react-bootstrap/Container';
-import axios from 'axios';
-  
+import React, { useEffect } from "react";
+import Typography from "@mui/material/Typography";
+import Container from "react-bootstrap/Container";
+import axios from "axios";
+
 const End = () => {
+  useEffect(() => {
+    if (parseInt(localStorage.getItem("leisureTime")) > 0) {
+      localStorage.setItem("clickedOKtoswitch2", "yes");
+    } else {
+      localStorage.setItem("clickedOKtoswitch2", "no");
+    }
+    let passvalue = {
+      "browser.timespentTyping": localStorage.getItem("laborTime"),
+      "browser.timespentWatching": localStorage.getItem("leisureTime"),
+      "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
+      "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
+      "clikcedOkToSwitch.secondPopUp":
+        localStorage.getItem("clickedOKtoswitch2"),
+    };
 
-useEffect(() => {
-  let passvalue = {
-    "browser.timespentTyping": localStorage.getItem("laborTime"),
-    "browser.timespentWatching": localStorage.getItem("leisureTime"),
-    "browser.timespentNotTyping":localStorage.getItem("inactiveLabor"),
-    "browser.timespentNotWatching":localStorage.getItem("inactiveLeisure"),
-  };
+    const link = "/api/" + localStorage.getItem("ID");
 
-  const link = "/api/" + localStorage.getItem("ID");
-
-  axios
-    .patch(link, passvalue)
-    .then(() => {
-      console.log("Update TimeSpent in both tasks");
-    })
-    .catch((e) => {
-      console.log("Unable to update TimeSpent in both tasks: ", e);
-    });
-
-}, [])
-
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Update time spent and second popup in both tasks");
+      })
+      .catch((e) => {
+        console.log(
+          "Unable to update time spent and second popup in both tasks: ",
+          e
+        );
+      });
+  }, []);
 
   return (
-    <div className='Page'>
-    <style type="text/css">
-      {`
+    <div className="Page">
+      <style type="text/css">
+        {`
       .container-sm{
           background-color: white ;
           padding-top:5vh!important;
@@ -61,24 +67,33 @@ useEffect(() => {
           margin-bottom: auto;
         }
         `}
-    </style>
-    <Container className="p-1" fluid='sm'>
-        <Typography variant='h6' className="center">End Survey</Typography>
+      </style>
+      <Container className="p-1" fluid="sm">
+        <Typography variant="h6" className="center">
+          End Survey
+        </Typography>
         <p className="HomePage_p">
-          Please <a href="https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq">click here</a> to complete the end survey.
-          
+          Please{" "}
+          <a href="https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq">
+            click here
+          </a>{" "}
+          to complete the end survey.
         </p>
 
-        <Typography variant='h6' className="center">Contact Information</Typography>
-        <p className="HomePage_p">This study is conducted by Reha Tuncer, PhD student at the University of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy and Dr. Ernesto Reuben.
-          The objective is to better understand individual decision-making.
-          Please contact <strong>reha.tuncer@uni.lu</strong> if you have any questions about the study.
+        <Typography variant="h6" className="center">
+          Contact Information
+        </Typography>
+        <p className="HomePage_p">
+          This study is conducted by Reha Tuncer, PhD student at the University
+          of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy
+          and Dr. Ernesto Reuben. The objective is to better understand
+          individual decision-making. Please contact{" "}
+          <strong>reha.tuncer@uni.lu</strong> if you have any questions about
+          the study.
         </p>
-        
-    </Container>
+      </Container>
     </div>
+  );
+};
 
-  )
-}
-  
-export default End
+export default End;

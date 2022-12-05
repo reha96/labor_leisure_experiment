@@ -21,8 +21,8 @@ const Lottery = () => {
   localStorage.setItem("leisureTime", 0);
   localStorage.setItem("inactiveLabor", 0);
   localStorage.setItem("inactiveLeisure", 0);
-  localStorage.setItem("activeTab", "");
-  localStorage.setItem("visible", "");
+  localStorage.setItem("activeTab", "Labor");
+  localStorage.setItem("visible", "isVisible");
   localStorage.setItem("clickedOKtoswitch2", "no");
   localStorage.setItem("localcount", 0);
   localStorage.setItem("lastmin", 11);
@@ -38,6 +38,8 @@ const Lottery = () => {
   useEffect(() => {
     let passvalue = {
       timeChoice: localStorage.getItem("time_choice"),
+      "clikcedOkToSwitch.secondPopUp":
+        localStorage.getItem("clickedOKtoswitch2"),
     };
     const link = "/api/" + localStorage.getItem("ID");
     axios
