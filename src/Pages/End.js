@@ -15,7 +15,7 @@ const End = () => {
       "browser.timespentWatching": localStorage.getItem("leisureTime"),
       "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
       "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
-      "browser.VideoPausedFor": localStorage.getItem("VideoPausedFor"),
+      "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
       "clikcedOkToSwitch.secondPopUp":
         localStorage.getItem("clickedOKtoswitch2"),
     };
