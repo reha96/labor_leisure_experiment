@@ -58,11 +58,10 @@ const Timer = (props) => {
         if (localStorage.getItem("activeTab") === "Leisure") {
           setLeisurecount(parseInt(leisurecount) + 1);
         }
-        if (
-          localStorage.getItem("activeTab") === "Leisure" &&
-          localStorage.getItem("videoPaused") === "yes"
-        ) {
-          setVideoPausedFor(parseInt(videoPausedFor) + 1);
+        if (localStorage.getItem("activeTab") === "Leisure") {
+          if (localStorage.getItem("videoPaused") === "yes") {
+            setVideoPausedFor(parseInt(videoPausedFor) + 1);
+          }
         }
       }
       if (document.visibilityState !== "visible") {
