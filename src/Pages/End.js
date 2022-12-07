@@ -15,6 +15,7 @@ const End = () => {
       "browser.timespentWatching": localStorage.getItem("leisureTime"),
       "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
       "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
+      "browser.VideoPausedFor": localStorage.getItem("VideoPausedFor"),
       "clikcedOkToSwitch.secondPopUp":
         localStorage.getItem("clickedOKtoswitch2"),
     };
@@ -33,6 +34,11 @@ const End = () => {
         );
       });
   }, []);
+
+  window.setTimeout(function () {
+    window.location.href =
+      "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
+  }, 15000);
 
   return (
     <div className="Page">
@@ -73,11 +79,11 @@ const End = () => {
           End Survey
         </Typography>
         <p className="HomePage_p">
-          Please{" "}
+          You will be redirected to the end survey page in 15 seconds. Please{" "}
           <a href="https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq">
             click here
           </a>{" "}
-          to complete the end survey.
+          to skip directly to the end survey.
         </p>
 
         <Typography variant="h6" className="center">
