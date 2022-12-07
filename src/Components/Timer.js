@@ -80,7 +80,7 @@ const Timer = (props) => {
       localStorage.setItem("leisureTime", leisurecount);
       localStorage.setItem("inactiveLabor", inactivelabor);
       localStorage.setItem("inactiveLeisure", inactiveleisure);
-      localStorage.setItem("VideoPausedFor", videoPausedFor);
+      localStorage.setItem("videoPausedFor", videoPausedFor);
       window.localStorage.setItem("lastmin", minutes);
       window.localStorage.setItem("lastsec", seconds);
       window.localStorage.setItem(
