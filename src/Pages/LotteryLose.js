@@ -24,7 +24,7 @@ const Lottery = () => {
   localStorage.setItem("activeTab", "Labor");
   localStorage.setItem("visible", "isVisible");
   localStorage.setItem("clickedOKtoswitch2", "no");
-  localStorage.setItem("videoPaused", "no");
+  localStorage.setItem("videoPaused", "yes");
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("localcount", 0);
   localStorage.setItem("lastmin", 11);

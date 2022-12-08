@@ -23,6 +23,12 @@ const Tasks = () => {
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
+      if (localStorage.getItem("treatment") === "autoplayOn") {
+        localStorage.setItem("videoPaused", "no");
+      }
+      if (localStorage.getItem("treatment") === "autoplayOff") {
+        localStorage.setItem("videoPaused", "yes");
+      }
     }
   };
 

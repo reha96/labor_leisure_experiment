@@ -4,9 +4,27 @@ import VideoOff from "./VideoOff";
 import "./Leisure.css";
 
 const Leisure = () => {
+  const handleClick = () => {
+    if (localStorage.getItem("treatment") === "autoplayOn") {
+      if (localStorage.getItem("videoPaused") === "yes") {
+        localStorage.setItem("videoPaused", "no");
+      } else {
+        localStorage.setItem("videoPaused", "yes");
+      }
+      console.log(localStorage.getItem("videoPaused"));
+    }
+
+    if (localStorage.getItem("treatment") === "autoplayOff") {
+      if (localStorage.getItem("videoPaused") === "yes") {
+        localStorage.setItem("videoPaused", "no");
+      }
+      localStorage.setItem("videoPaused", "yes");
+    }
+  };
+
   return (
     <div className="Leisure">
-      <div className="video__app">
+      <div className="video__app" onClick={handleClick}>
         {localStorage.getItem("treatment") === "autoplayOn" ? (
           <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid50.mp4"} />
         ) : (
