@@ -10,8 +10,6 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-
-
 // import { useParams} from "react-router";
 
 const Home1 = () => {
@@ -20,7 +18,7 @@ const Home1 = () => {
 
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
-  
+
   // const [error, setError] = useState(null);
   // console.log(typedValue)
 
@@ -29,9 +27,9 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
 
-  const onClick = async (e) => {
+  const onClick = (e) => {
     // use only when need to stop page from loading next page
-
+    localStorage.setItem("participantCreated", "no");
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());

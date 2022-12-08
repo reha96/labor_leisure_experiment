@@ -39,7 +39,9 @@ const Home2 = () => {
       laborTime: 0,
       transcription: {},
     };
-    axios
+    if(localStorage.getItem("participantCreated") === "no"){
+      localStorage.setItem("participantCreated", "yes")
+      axios
       .post("/api", passvalue)
       .then(() => {
         console.log("new participant added");
@@ -47,6 +49,8 @@ const Home2 = () => {
       .catch((e) => {
         console.log("Unable to add new participant: ", e);
       });
+    }
+    
   }, []);
 
   var Fail = 0;

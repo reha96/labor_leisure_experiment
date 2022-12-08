@@ -5,7 +5,7 @@ function Video({ src }) {
   // const [mute, setMute] = useState(0);
   // const [count, setCount] = useState(0);
 
-  // const [playing,setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
   const endRef = useRef(null);
 
@@ -35,8 +35,6 @@ function Video({ src }) {
   const playVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.play();
-        localStorage.setItem("videoPaused", "no");
-      // setPlaying(true);
       //setMute(0);
     }
   };
@@ -44,26 +42,9 @@ function Video({ src }) {
   const stopVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
-        localStorage.setItem("videoPaused", "yes");
-      // setPlaying(false);
       //setMute(1);
     }
   };
-
-  // const onVideoPress = () => {
-  //     // if (videoRef !== null)
-  //     //     setMute(1);
-  //     //& count !== 0
-  //     if (playing){
-  //         videoRef.current.pause();
-  //         setPlaying(false);
-  //         console.log("play status: " + playing)
-  //     } else {
-  //         videoRef.current.play();
-  //         setPlaying(true);
-  //         console.log("play status: " + playing)
-  //     }
-  // };
 
   const handleVideoEnded = () => {
     console.log("Video ended!");
@@ -74,11 +55,8 @@ function Video({ src }) {
   return (
     <div className="video">
       {!isVisible ? stopVideo() : playVideo()}
+      {/* {videoRef.current.paused ? localStorage.setItem("videoPaused", "yes") : localStorage.setItem("videoPaused", "no")} */}
       <video
-        // playsInline
-        // autoPlay
-        //muted
-        // onClick={!playing ? playVideo : stopVideo}
         controls={true}
         // controlsList="nofullscreen nodownload"
         // disablePictureInPicture

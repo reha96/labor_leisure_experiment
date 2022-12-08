@@ -29,62 +29,36 @@ function VideoOff({ src }) {
     };
   }, [videoRef, options]);
 
-  const playVideo = () => {
-    if (videoRef !== null && videoRef.current !== null) {
-      //   localStorage.setItem("activeTab", "Leisure");
-      localStorage.setItem("videoPaused", "no");
-      // videoRef.current.play();
-      // setPlaying(true);
-      //setMute(0);
-    }
-  };
+//   const playVideo = () => {
+//     if (videoRef !== null && videoRef.current !== null) {
+//     localStorage.setItem("videoPaused", "no");
+//     videoRef.current.play();
+//     }
+//   };
 
   const stopVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
-      //   localStorage.setItem("activeTab", "Labor");
       localStorage.setItem("videoPaused", "yes");
       // setPlaying(false);
       //setMute(1);
     }
   };
 
-  // const onVideoPress = () => {
-  //     if (playing){
-  //         setPlaying(false);
-  //         console.log("play status: " + playing)
-  //         videoRef.current.pause();
-
-  //     } else {
-  //         setPlaying(true);
-  //         console.log("play status: " + playing)
-  //         videoRef.current.play();
-  //     }
-  // };
-
   const handleVideoEnded = () => {
     console.log("Video ended!");
     endRef.current.scrollIntoView({ behavior: "smooth" });
+    localStorage.setItem("videoPaused", "yes");
     // setOpen(true)
   };
 
-  // const handleClose = () => {
-  //     setOpen(false)
-  // };
-
-  // const handleCloseReplay = () => {
-  //     setOpen(false);
-  //     videoRef.current.play();
-  // };
-
-  // const handleCloseNext = () => {
-  //     setOpen(false);
-  //     endRef.current.scrollIntoView({ behavior: "smooth" });
-  // };
+  const onPlay = () => {
+    localStorage.setItem("videoPaused", "no");
+  };
 
   return (
     <div className="video">
-      {!isVisible ? stopVideo() : playVideo()}
+      {!isVisible ? stopVideo() : null}
       <video
         // playsInline
         //autoPlay
@@ -95,34 +69,11 @@ function VideoOff({ src }) {
         ref={videoRef}
         // loop
         src={src}
+        playing={playing}
         type="video/mp4"
         onEnded={handleVideoEnded}
+        onPlay={onPlay}
       ></video>
-
-      {/* <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="responsive-dialog-title"
-                disableRestoreFocus
-                disableScrollLock 
-            >
-                {/* <DialogTitle id="responsive-dialog-title">
-                    {"Keep watching?"}
-                </DialogTitle> */}
-      {/* <DialogContent>
-                    <DialogContentText>
-                        Keep watching?
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <ButtonM autoFocus onClick={handleCloseReplay}>
-                        Play again
-                    </ButtonM>
-                    <ButtonM onClick={handleCloseNext} autoFocus>
-                        Next
-                    </ButtonM>
-                </DialogActions>
-            </Dialog> */}
       <div ref={endRef} />
     </div>
   );
