@@ -43,6 +43,7 @@ const Tasks = () => {
 
   const handleClose = () => {
     setOpen(false);
+    handleSelect("1")
     if (localStorage.getItem("activeTab") === "Labor") {
       setKey("1");
     }
@@ -52,22 +53,22 @@ const Tasks = () => {
   };
 
   const handleClose2 = () => {
-    setOpen2(false);
     localStorage.setItem("clickedOKtoswitch2", "yes");
+    console.log("handleclose key", key)
     if (localStorage.getItem("activeTab") === "Labor") {
       setKey("1");
     }
     if (localStorage.getItem("activeTab") === "Leisure") {
       setKey("2");
     }
+    setOpen2(false);
   };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (
-        parseInt(localStorage.getItem("inactiveLabor")) +
-          parseInt(localStorage.getItem("laborTime") - 120) ===
-        3
+        (parseInt(localStorage.getItem("lastmin")) === 10) && 
+          (parseInt(localStorage.getItem("lastsec")) === 1)
       ) {
         setOpen2(true);
       }
