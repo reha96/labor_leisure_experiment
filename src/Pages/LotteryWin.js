@@ -1,16 +1,47 @@
 import * as React from "react";
 import "../App.css";
+import Link from "@mui/material/Link";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ConfirmUpdate from "../Components/ConfirmUpdate";
+import Box from "@mui/material/Box";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormLabel from "@mui/material/FormLabel";
+import ButtonM from "@mui/material/Button";
 
 const LotteryWin = () => {
-  const [divi, setDivi] = useState(window.localStorage.getItem("time_choice"));
+  var input = [];
+  localStorage.setItem("laborTime", 0);
+  localStorage.setItem("leisureTime", 0);
+  localStorage.setItem("inactiveLabor", 0);
+  localStorage.setItem("inactiveLeisure", 0);
+  localStorage.setItem("activeTab", "Labor");
+  localStorage.setItem("visible", "isVisible");
+  localStorage.setItem("clickedOKtoswitch2", "no");
+  localStorage.setItem("videoPaused", "yes");
+  localStorage.setItem("videoPausedFor", 0);
+  localStorage.setItem("localcount", 0);
+  localStorage.setItem("lastmin", 11);
+  localStorage.setItem("lastsec", 59);
+  localStorage.setItem("transc", JSON.stringify(input));
+  window.localStorage.setItem("progress", 0);
+  const [counter, setCounter] = useState(
+    parseInt(window.localStorage.getItem("attentionFail2"))
+  );
+
+  var Fail = 0;
 
   useEffect(() => {
     let passvalue = {
       timeChoice: localStorage.getItem("time_choice"),
+      "clikcedOkToSwitch.secondPopUp":
+        localStorage.getItem("clickedOKtoswitch2"),
     };
     const link = "/api/" + localStorage.getItem("ID");
     axios
@@ -23,6 +54,68 @@ const LotteryWin = () => {
       });
   }, []);
 
+  const [value, setValue] = React.useState("");
+  const [error, setError] = React.useState(false);
+  const [helperText, setHelperText] = React.useState(
+    "You have 2 opportunities to get this question right."
+  );
+
+  const handleRadioChange = (event) => {
+    setValue(event.target.value);
+    // console.log(event.target.value);
+
+    if (event.target.value === "true") {
+      setHelperText("You got it!");
+      setError(false);
+      localStorage.setItem("stop2", "true");
+      // console.log(localStorage.getItem("stop2"));
+    } else if (event.target.value === "1" || event.target.value === "fast") {
+      setHelperText("Sorry, wrong answer!");
+      setError(true);
+      // Fail = parseInt(counter) + 1;
+      // setCounter(Fail);
+      // localStorage.setItem('attentionFail2', Fail);
+      localStorage.setItem("stop2", "false");
+    } else {
+      setHelperText("Please select an option.");
+      setError(true);
+      localStorage.setItem("stop2", "false");
+    }
+    setHelperText(" ");
+    setError(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (value === "true") {
+      setHelperText("You got it!");
+    } else if (value === "1" || value === "0") {
+      setHelperText("Sorry, wrong answer!");
+      setError(true);
+      Fail = parseInt(counter) + 1;
+      setCounter(Fail);
+      localStorage.setItem("attentionFail2", Fail);
+    } else {
+      setHelperText("Please select an option.");
+      setError(true);
+    }
+
+    let passvalue = {
+      attention2: localStorage.getItem("attentionFail2"),
+    };
+
+    const link = "/api/" + localStorage.getItem("ID");
+
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Update AttentionFail2");
+      })
+      .catch((e) => {
+        console.log("Unable to update AttentionFail2: ", e);
+      });
+  };
   return (
     <div className="Page2">
       <style type="text/css">
@@ -59,40 +152,89 @@ const LotteryWin = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <Typography variant="h6" className="center">
-          You have won the lottery!
+          Lottery Outcome
         </Typography>
         <p className="HomePage_p">
-          The study ends here for you. Thank you for your participation.
-        </p>
-        <p className="HomePage_p">
+          You won the lottery. Your Time Choice is binding.
           <strong>
-            Your total earning is{" "}
-            {(
-              ((divi / 100) * 600 * 0.75) / 100 +
-              (((100 - divi) / 100) * 600 * 0.25) / 100 +
-              3
-            ).toPrecision(2)}{" "}
-            €.
+            {" "}
+            Therefore your bonus is equal to you how much you decided to Type
+            and whether it meets the quality criteria.
           </strong>
         </p>
+        <Typography variant="h6" className="center">
+          Time Choice
+        </Typography>
+
+        <ConfirmUpdate />
 
         <Typography variant="h6" className="center">
-          Contact Information
+          Attention
         </Typography>
         <p className="HomePage_p">
-          This study is conducted by Reha Tuncer, PhD student at the University
-          of Luxembourg, under the supervision of Dr. Kerstin Bongard-Blanchy,
-          Dr. Ernesto Reuben, and Dr. Vincent Koenig. The objective is to better
-          understand individual decision-making. Please contact{" "}
-          <strong>reha.tuncer@uni.lu</strong> if you have any questions about
-          the study.
+          On the next page you will spend 12 minutes.
+          <strong> For the first 2 minutes, you are obliged to type. </strong>
+          Then, in the remaining 10 minutes, you switch between the tasks as you
+          please. However, you cannot spend more time the tasks than what is
+          indicated in your Time Choice.
+          {/* <hr></hr> */}
         </p>
 
-        {/* <div className='center'>
-                    <ButtonM color="secondary" variant='contained' type="button" onClick={nextPage}>
-                        <strong>Begin Study</strong>
-                    </ButtonM>
-                </div> */}
+        <Box className="center" sx={{ display: "flex" }}>
+          <form onSubmit={handleSubmit}>
+            <FormControl sx={{ m: 3 }} error={error} variant="standard">
+              <FormLabel id="demo-error-radios">
+                My typing bonus depends on ...
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-error-radios"
+                name="quiz2"
+                value={value}
+                onChange={handleRadioChange}
+              >
+                <FormControlLabel
+                  value="0"
+                  control={<Radio />}
+                  label="only on my time choice in the past page."
+                />
+                <FormControlLabel
+                  value="true"
+                  control={<Radio />}
+                  label="on my time choice and whether my typing meets the quality criteria."
+                />
+                <FormControlLabel
+                  value="1"
+                  control={<Radio />}
+                  label="how much time I predict I will type."
+                />
+              </RadioGroup>
+              <FormHelperText>{helperText}</FormHelperText>
+            </FormControl>
+          </form>
+
+          {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
+                        Check Answer
+                    </ButtonM> */}
+        </Box>
+
+        <div className="center">
+          {!(localStorage.getItem("stop2") === "true") ? (
+            <ButtonM
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={handleSubmit}
+            >
+              <strong>begin</strong>
+            </ButtonM>
+          ) : (
+            <Link underline="none" href={"tasks"}>
+              <ButtonM variant="contained" color="secondary" type="button">
+                <strong>begin</strong>
+              </ButtonM>
+            </Link>
+          )}
+        </div>
       </Container>
     </div>
   );

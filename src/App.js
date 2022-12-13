@@ -36,13 +36,12 @@ function App() {
           </Route>
           <Route path=":userId/confirm" element={<Confirm />} />
           <Route path=":userId/lotl" element={<LotteryLose />} />
+          <Route path=":userId/lotw" element={<LotteryWin />} />
           <Route path=":userId/tasks" element={<Tasks />}>
             <Route path=":userId/tasks/leisure" element={<Leisure />} />
             <Route path=":userId/tasks/labor" element={<Labor />} />
           </Route>
           <Route path=":userId/end" element={<End />} />
-          <Route path=":userId/lotwin" element={<LotteryWin />} />
-          <Route path=":userId/lotl" element={<LotteryLose />} />
         </Routes>
       </Router>
     </div>

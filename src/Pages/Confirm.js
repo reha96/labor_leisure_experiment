@@ -35,10 +35,7 @@ const Confirm = () => {
         console.log("Succesfully recorded the click to close practice popup");
       })
       .catch((e) => {
-        console.log(
-          "Unable to record the click to close practice popup: ",
-          e
-        );
+        console.log("Unable to record the click to close practice popup: ", e);
       });
   }, []);
 
@@ -138,15 +135,17 @@ const Confirm = () => {
           Lottery
         </Typography>
         <p className="HomePage_p">
-          We will now randomly select 1 out of each 20 participants and pay them
-          the above indicated sum.
+          We will now randomly select 1 out of each 20 participants and make
+          their Time Choice binding.{" "}
           <strong>
             {" "}
-            If you are among the selected participants your bonus is paid
-            immediately as if you have worked for the above chosen time.{" "}
+            If you are among the selected participants you will have to work for
+            the above chosen duration.{" "}
           </strong>
-          All remaining participants get a bonus equal to the amount they will
-          work meeting the quality criteria.
+          <br></br>
+          <br></br>
+          For the remaining participants Time Choice is not binding and their bonus is equal to the amount
+          they will work meeting the quality criteria.
           {/* All remaining participants realize their choices themselves and get a bonus equal to the amount they work meeting the quality criteria.
            */}
         </p>
@@ -178,7 +177,11 @@ const Confirm = () => {
             </ButtonM>
             <Link
               underline="none"
-              href={localStorage.getItem("lottery") === "lotteryWin" ? "lotw" : "lotl"}
+              href={
+                localStorage.getItem("lottery") === "lotteryWin"
+                  ? "lotw"
+                  : "lotl"
+              }
             >
               <ButtonM color="success" onClick={handleClose} autoFocus>
                 <strong>Confirm</strong>

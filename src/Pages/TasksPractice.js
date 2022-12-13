@@ -1,25 +1,53 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import '../App.css';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import TimerPractice from '../Components/TimerPractice';
-import LaborPractice from '../Components/LaborPractice';
-import LeisurePractice from '../Components/LeisurePractice';
-import Typography from '@mui/material/Typography';
-import KeyboardOutlinedIcon from '@mui/icons-material/KeyboardOutlined';
-import SlowMotionVideoOutlinedIcon from '@mui/icons-material/SlowMotionVideoOutlined';
-
+import React, { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import "../App.css";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import TimerPractice from "../Components/TimerPractice";
+import LaborPractice from "../Components/LaborPractice";
+import LeisurePractice from "../Components/LeisurePractice";
+import Typography from "@mui/material/Typography";
+import KeyboardOutlinedIcon from "@mui/icons-material/KeyboardOutlined";
+import SlowMotionVideoOutlinedIcon from "@mui/icons-material/SlowMotionVideoOutlined";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
 
 const TasksPractice = () => {
-  
-  return (
+  const [key, setKey] = useState("1");
+  const [open, setOpen] = useState(false);
 
-    <div className='Pagetasks'>
-      <Container className="p-1" fluid='sm'>
-        <TimerPractice initialMinute={window.localStorage.getItem('lastmin')} initialSeconds={window.localStorage.getItem('lastsec')} />
-        <Typography variant='h6' color='secondary' className="center">Practice Session</Typography>
+  const handleClose = () => {
+    localStorage.setItem("clickedOKtoswitch", "yes");
+    setKey("2")
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      if ((localStorage.getItem("lastmin") === "1") && (localStorage.getItem("lastsec") === "1")) {
+        setOpen(true);
+      }
+    }, 500);
+
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
+
+  return (
+    <div className="Pagetasks">
+      <Container className="p-1" fluid="sm">
+        <TimerPractice
+          initialMinute={window.localStorage.getItem("lastmin")}
+          initialSeconds={window.localStorage.getItem("lastsec")}
+        />
+        <Typography variant="h6" color="secondary" className="center">
+          Practice Session
+        </Typography>
         <style type="text/css">
           {`
         .bg-info {
@@ -82,38 +110,96 @@ const TasksPractice = () => {
 
         `}
         </style>
-          <Tabs
-            // defaultActiveKey={'1'}
-            defaultActiveKey={(localStorage.getItem('lastmin') >= 1) ? "1" : "2"}
-            id="mytab"
-            className="mb-0"
-            fill
+        <Tabs
+          // defaultActiveKey={'1'}
+          activeKey={key}
+          defaultActiveKey={(k) => setKey(k)}
+          id="mytab"
+          className="mb-0"
+          fill
           // mountOnEnter='true' can be interesting for future
-          >{(localStorage.getItem('lastmin') >= 1) ?
-            <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} >
+        >
+          {localStorage.getItem("lastmin") >= 1 ? (
+            <Tab
+              eventKey="1"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <KeyboardOutlinedIcon /> Type
+                </Typography>
+              }
+            >
               <LaborPractice />
             </Tab>
-            : <Tab eventKey="1" title={<Typography variant='h6'> <KeyboardOutlinedIcon /> Type</Typography>} disabled>
+          ) : (
+            <Tab
+              eventKey="1"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <KeyboardOutlinedIcon /> Type
+                </Typography>
+              }
+              disabled
+            >
               <LaborPractice />
-            </Tab>}
+            </Tab>
+          )}
 
-            {(localStorage.getItem('lastmin') >= 1) ?
-              <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} disabled>
-                <LeisurePractice />
-              </Tab>
-              : <Tab eventKey="2" title={<Typography variant='h6'> <SlowMotionVideoOutlinedIcon /> Watch </Typography>} >
-                <LeisurePractice />
-              </Tab>
-            }
+          {localStorage.getItem("lastmin") >= 1 ? (
+            <Tab
+              eventKey="2"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <SlowMotionVideoOutlinedIcon /> Watch{" "}
+                </Typography>
+              }
+              disabled
+            >
+              <LeisurePractice />
+            </Tab>
+          ) : (
+            <Tab
+              eventKey="2"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <SlowMotionVideoOutlinedIcon /> Watch{" "}
+                </Typography>
+              }
+            >
+              <LeisurePractice />
+            </Tab>
+          )}
 
-            {/* window.location.reload(true)  */}
-          </Tabs>
+          {/* window.location.reload(true)  */}
+        </Tabs>
         <Outlet />
-
+        <Dialog
+        open={open}
+        onClose={null}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        {/* <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle> */}
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Click to switch to the next task.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Button onClick={handleClose}>Disagree</Button> */}
+          <Button onClick={handleClose} autoFocus>
+            Continue
+          </Button>
+        </DialogActions>
+      </Dialog>
       </Container>
     </div>
+  );
+};
 
-  )
-}
-
-export default TasksPractice
+export default TasksPractice;

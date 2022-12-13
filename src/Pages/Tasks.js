@@ -11,18 +11,27 @@ import Leisure from "../Components/Leisure";
 import Typography from "@mui/material/Typography";
 import KeyboardOutlinedIcon from "@mui/icons-material/KeyboardOutlined";
 import SlowMotionVideoOutlinedIcon from "@mui/icons-material/SlowMotionVideoOutlined";
+import ButtonM from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContentText from "@mui/material/DialogContentText";
 
 const Tasks = () => {
-  const [refresh, setRefresh] = useState(
-    localStorage.getItem("clickedOKtoswitch2")
-  );
+  const [key, setKey] = useState("1");
+
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const handleSelect = (key) => {
     if (key === "1") {
       localStorage.setItem("activeTab", "Labor");
+      setKey("1");
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
+      setKey("2");
       if (localStorage.getItem("treatment") === "autoplayOn") {
         localStorage.setItem("videoPaused", "no");
       }
@@ -32,18 +41,63 @@ const Tasks = () => {
     }
   };
 
-  // const onClickLabor = (event) => {
-  //   localStorage.setItem("activeTab", "Labor");
-  // };
+  const handleClose = () => {
+    setOpen(false);
+    if (localStorage.getItem("activeTab") === "Labor") {
+      setKey("1");
+    }
+    if (localStorage.getItem("activeTab") === "Leisure") {
+      setKey("2");
+    }
+  };
 
-  // const onClickLeisure = (event) => {
-  //   localStorage.setItem("activeTab", "Leisure");
-  // };
+  const handleClose2 = () => {
+    setOpen2(false);
+    localStorage.setItem("clickedOKtoswitch2", "yes");
+    if (localStorage.getItem("activeTab") === "Labor") {
+      setKey("1");
+    }
+    if (localStorage.getItem("activeTab") === "Leisure") {
+      setKey("2");
+    }
+  };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      setRefresh(localStorage.getItem("clickedOKtoswitch2"));
-    }, 1000);
+      if (
+        parseInt(localStorage.getItem("inactiveLabor")) +
+          parseInt(localStorage.getItem("laborTime") - 120) ===
+        3
+      ) {
+        setOpen2(true);
+      }
+
+      if (localStorage.getItem("lottery") === "lotteryWin") {
+        if (
+          parseInt(localStorage.getItem("inactiveLabor")) +
+            parseInt(localStorage.getItem("laborTime") - 120) ===
+          parseInt(localStorage.getItem("time_choice")) * 6
+        ) {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            localStorage.setItem("timesUp", "timesUpLabor");
+            setOpen(true);
+            localStorage.setItem("activeTab", "Leisure");
+          }
+        }
+        if (
+          parseInt(localStorage.getItem("inactiveLeisure")) +
+            parseInt(localStorage.getItem("leisureTime")) ===
+          parseInt(100 - localStorage.getItem("time_choice")) * 6
+        ) {
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            localStorage.setItem("timesUp", "timesUpLeisure");
+            setOpen(true);
+            localStorage.setItem("activeTab", "Labor");
+          }
+        }
+      }
+    }, 500);
+
     return () => {
       clearInterval(myInterval);
     };
@@ -127,26 +181,46 @@ const Tasks = () => {
         `}
         </style>
         <Tabs
-          defaultActiveKey="1"
+          activeKey={key}
+          defaultActiveKey={
+            (k) => setKey(k)
+            // localStorage.getItem("clickedOKtoswitch2") === "timesUpLabor"
+            //   ? "2"
+            //   : "1"
+          }
           id="mytab"
           className="mb-0"
           fill
           onSelect={handleSelect}
-          // mountOnEnter='true' can be interesting for future
         >
-          <Tab
-            eventKey="1"
-            title={
-              <Typography variant="h6">
-                {" "}
-                <KeyboardOutlinedIcon /> Type
-              </Typography>
-            }
-            // onClick={onClickLabor}
-          >
-            <Labor />
-          </Tab>
-          {localStorage.getItem("lastmin") >= 10 ? (
+          {localStorage.getItem("timesUp") === "timesUpLabor" ? (
+            <Tab
+              eventKey="1"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <KeyboardOutlinedIcon /> Type
+                </Typography>
+              }
+              disabled
+            >
+              <Labor />
+            </Tab>
+          ) : (
+            <Tab
+              eventKey="1"
+              title={
+                <Typography variant="h6">
+                  {" "}
+                  <KeyboardOutlinedIcon /> Type
+                </Typography>
+              }
+            >
+              <Labor />
+            </Tab>
+          )}
+          {localStorage.getItem("lastmin") >= 10 ||
+          localStorage.getItem("timesUp") === "timesUpLeisure" ? (
             <Tab
               eventKey="2"
               title={
@@ -168,13 +242,54 @@ const Tasks = () => {
                   <SlowMotionVideoOutlinedIcon /> Watch{" "}
                 </Typography>
               }
-              // onClick={onClickLeisure}
             >
               <Leisure />
             </Tab>
           )}
         </Tabs>
         <Outlet />
+
+        <Dialog
+          open={open}
+          onClose={null}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Time is up!"}</DialogTitle>
+          <DialogContent>
+            {" "}
+            <DialogContentText id="alert-dialog-description">
+              Now you need to spend time on the other task.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <ButtonM onClick={handleClose} autoFocus>
+              <strong>Confirm</strong>
+            </ButtonM>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={open2}
+          onClose={null}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          {/* <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle> */}
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Now you can switch freely between tasks.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* <Button onClick={handleClose}>Disagree</Button> */}
+            <ButtonM onClick={handleClose2} autoFocus>
+              Continue
+            </ButtonM>
+          </DialogActions>
+        </Dialog>
       </Container>
     </div>
   );

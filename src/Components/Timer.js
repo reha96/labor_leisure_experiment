@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import QueryBuilderRoundedIcon from "@mui/icons-material/QueryBuilderRounded";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
+// import Button from "@mui/material/Button";
+// import Dialog from "@mui/material/Dialog";
+// import DialogActions from "@mui/material/DialogActions";
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
 
 const Timer = (props) => {
   localStorage.setItem("visible", "isVisible");
@@ -30,10 +30,10 @@ const Timer = (props) => {
   const [inactiveleisure, setInactiveleisure] = useState(initialLeisureNot);
   const [videoPausedFor, setVideoPausedFor] = useState(initialVideoPausedFor);
 
-  const handleClose = () => {
-    setOpen(false);
-    localStorage.setItem("clickedOKtoswitch2", "intermediate");
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  //   localStorage.setItem("clickedOKtoswitch2", "intermediate");
+  // };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -48,7 +48,7 @@ const Timer = (props) => {
           setSeconds(59);
         }
         if (minutes === 10) {
-          setOpen(true);
+          // setOpen(true);
         }
       }
       if (document.visibilityState === "visible") {
@@ -116,27 +116,6 @@ const Timer = (props) => {
           {seconds < 10 ? `0${seconds}` : seconds} &nbsp;
         </Typography>
       )}
-      <Dialog
-        open={open}
-        onClose={null}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        {/* <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle> */}
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Now you can switch freely between tasks.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          {/* <Button onClick={handleClose}>Disagree</Button> */}
-          <Button onClick={handleClose} autoFocus>
-            Continue
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

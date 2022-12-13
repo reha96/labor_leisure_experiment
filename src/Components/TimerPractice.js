@@ -3,27 +3,11 @@ import { useState, useEffect } from "react";
 import QueryBuilderRoundedIcon from "@mui/icons-material/QueryBuilderRounded";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 
 const TimerPractice = (props) => {
   const { initialMinute = 0, initialSeconds = 0 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
-  const [open, setOpen] = useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  const handleClose = () => {
-    localStorage.setItem("clickedOKtoswitch", "yes");
-    setOpen(false);
-    window.location.reload(true);
-  };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -36,8 +20,6 @@ const TimerPractice = (props) => {
         } else {
           setMinutes(minutes - 1);
           setSeconds(59);
-          setOpen(true);
-          // localStorage.setItem('popup', true);
         }
       }
     }, 1000);
@@ -81,32 +63,6 @@ const TimerPractice = (props) => {
         )
         // <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', }}>  {minutes}:{seconds < 10 ? `0${seconds}` : seconds} &nbsp; </p>
       }
-
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Open alert dialog
-        
-      </Button> */}
-      <Dialog
-        open={open}
-        onClose={null}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        {/* <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle> */}
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Click to switch to the next task.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          {/* <Button onClick={handleClose}>Disagree</Button> */}
-          <Button onClick={handleClose} autoFocus>
-            Continue
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };
