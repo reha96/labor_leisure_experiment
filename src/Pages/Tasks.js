@@ -264,7 +264,7 @@ const Tasks = () => {
           </DialogContent>
           <DialogActions>
             <ButtonM onClick={handleClose} autoFocus>
-              <strong>Confirm</strong>
+              <strong>Continue</strong>
             </ButtonM>
           </DialogActions>
         </Dialog>
