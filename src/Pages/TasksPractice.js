@@ -17,12 +17,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
 const TasksPractice = () => {
-  const [key, setKey] = useState("1");
+  const [key, setKey] = useState(localStorage.getItem("activePage"));
   const [open, setOpen] = useState(false);
   const [refresh, setRefresh] = useState(false)
 
   const handleClose = () => {
     localStorage.setItem("clickedOKtoswitch", "yes");
+    localStorage.setItem("activePage", 2)
     setKey("2")
     setOpen(false);
     setRefresh(true)

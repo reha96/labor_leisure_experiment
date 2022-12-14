@@ -14,7 +14,8 @@ const Home3 = () => {
     localStorage.setItem("clickedOKtoswitch2", "no");
     localStorage.setItem("clickedOKtoswitch", "no");
     localStorage.setItem("lastmin", 1);
-    localStorage.setItem("lastsec", 2); // testtt timer change
+    localStorage.setItem("lastsec", 59); // testtt timer change
+    localStorage.setItem("activePage", 1);
     localStorage.setItem("transc", JSON.stringify(input));
     window.localStorage.setItem("progress", 0);
   };

@@ -68,11 +68,11 @@ function Video({ src }) {
         // controlsList="nofullscreen nodownload"
         // disablePictureInPicture
         className="video__player"
-        ref={videoRef}
-        // loop
-        src={src}
-        type="video/mp4"
-        onEnded={handleVideoEnded}
+        ref={videoRef} 
+        // loop 
+        src={src} 
+        type="video/mp4" 
+        onEnded={handleVideoEnded} 
       ></video>
       <div ref={endRef} />
     </div>

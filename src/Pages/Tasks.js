@@ -19,8 +19,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContentText from "@mui/material/DialogContentText";
 
 const Tasks = () => {
-  const [key, setKey] = useState("1");
-  const [refresh, setRefresh] = useState(false)
+  const [key, setKey] = useState(localStorage.getItem("activePage"));
+  const [refresh, setRefresh] = useState(false);
 
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -29,10 +29,14 @@ const Tasks = () => {
     if (key === "1") {
       localStorage.setItem("activeTab", "Labor");
       setKey("1");
+      setRefresh(true);
+      localStorage.setItem("activePage", 1);
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
       setKey("2");
+      // setRefresh(true)
+      localStorage.setItem("activePage", 2);
       if (localStorage.getItem("treatment") === "autoplayOn") {
         localStorage.setItem("videoPaused", "no");
       }
@@ -46,24 +50,27 @@ const Tasks = () => {
     setOpen(false);
     if (localStorage.getItem("activeTab") === "Labor") {
       setKey("1");
+      localStorage.setItem("activePage", 1);
     }
     if (localStorage.getItem("activeTab") === "Leisure") {
       setKey("2");
+      localStorage.setItem("activePage", 2);
     }
   };
 
   const handleClose2 = () => {
     setOpen2(false);
     localStorage.setItem("clickedOKtoswitch2", "yes");
+    localStorage.setItem("activePage", 1);
     setKey("1"); // if state changes it works, if state remains it does not rerender
-    setRefresh(true)
+    setRefresh(true);
   };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (
-        (parseInt(localStorage.getItem("lastmin")) === 10) && 
-          (parseInt(localStorage.getItem("lastsec")) === 1)
+        parseInt(localStorage.getItem("lastmin")) === 10 &&
+        parseInt(localStorage.getItem("lastsec")) === 0
       ) {
         setOpen2(true);
       }
@@ -179,7 +186,12 @@ const Tasks = () => {
         <Tabs
           activeKey={key}
           defaultActiveKey={
-            (k) => setKey(k)
+            localStorage.getItem("lottery") === "lotteryWin"
+              ? localStorage.getItem("clickedOKtoswitch2") === "timesUpLabor"
+                ? "2"
+                : "1"
+              : localStorage.getItem("activePage")
+            // (k) => setKey(k)
             // localStorage.getItem("clickedOKtoswitch2") === "timesUpLabor"
             //   ? "2"
             //   : "1"
@@ -216,7 +228,7 @@ const Tasks = () => {
               <Labor />
             </Tab>
           )}
-          {localStorage.getItem("lastmin") >= 10 || 
+          {localStorage.getItem("lastmin") >= 10 ||
           localStorage.getItem("timesUp") === "timesUpLeisure" ? (
             <Tab
               eventKey="2"
