@@ -412,13 +412,14 @@ const Labor = () => {
 
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
-  // console.log(typedValue)
+  console.log(localStorage.getItem(typedValue))
 
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("localcount"))
   );
 
   const handleSubmit = (event) => {
+    // event.preventDefault()
     setInput([...input, typedValue]);
     const items = JSON.parse(localStorage.getItem("transc"));
     const newItems = JSON.stringify([...items, typedValue]);
@@ -483,7 +484,7 @@ const Labor = () => {
         type="text"
         value={typedValue}
         onChange={(event) => setTypedValue(event.target.value)}
-        placeholder=""
+        placeholder={localStorage.getItem("lastString")}
       />
       <div className="container">
         <p style={{ display: "flex", justifyContent: "center" }}>

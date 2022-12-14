@@ -63,7 +63,6 @@ const Tasks = () => {
     localStorage.setItem("clickedOKtoswitch2", "yes");
     localStorage.setItem("activePage", 1);
     setKey("1"); // if state changes it works, if state remains it does not rerender
-    setRefresh(true);
   };
 
   useEffect(() => {
@@ -78,7 +77,7 @@ const Tasks = () => {
       if (localStorage.getItem("lottery") === "lotteryWin") {
         if (
           parseInt(localStorage.getItem("inactiveLabor")) +
-            parseInt(localStorage.getItem("laborTime") - 120) ===
+            parseInt(localStorage.getItem("laborTime") - 12) ===
           parseInt(localStorage.getItem("time_choice")) * 6
         ) {
           if (localStorage.getItem("activeTab") === "Labor") {
@@ -200,7 +199,7 @@ const Tasks = () => {
           className="mb-0"
           fill
           onSelect={handleSelect}
-          key={refresh}
+          // key={refresh}
         >
           {localStorage.getItem("timesUp") === "timesUpLabor" ? (
             <Tab
