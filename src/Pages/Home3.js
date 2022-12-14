@@ -10,21 +10,14 @@ const Home3 = () => {
   var input = [];
 
   const nextPage = (event) => {
-    // setOpen(true);
     localStorage.setItem("localcount", 0);
     localStorage.setItem("clickedOKtoswitch2", "no");
     localStorage.setItem("clickedOKtoswitch", "no");
     localStorage.setItem("lastmin", 1);
-    localStorage.setItem("lastsec", 59);
+    localStorage.setItem("lastsec", 2); // testtt timer change
     localStorage.setItem("transc", JSON.stringify(input));
     window.localStorage.setItem("progress", 0);
   };
-
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
 
   return (
     <div className="Page2">

@@ -20,6 +20,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 
 const Tasks = () => {
   const [key, setKey] = useState("1");
+  const [refresh, setRefresh] = useState(false)
 
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -43,7 +44,6 @@ const Tasks = () => {
 
   const handleClose = () => {
     setOpen(false);
-    handleSelect("1")
     if (localStorage.getItem("activeTab") === "Labor") {
       setKey("1");
     }
@@ -53,15 +53,10 @@ const Tasks = () => {
   };
 
   const handleClose2 = () => {
-    localStorage.setItem("clickedOKtoswitch2", "yes");
-    console.log("handleclose key", key)
-    if (localStorage.getItem("activeTab") === "Labor") {
-      setKey("1");
-    }
-    if (localStorage.getItem("activeTab") === "Leisure") {
-      setKey("2");
-    }
     setOpen2(false);
+    localStorage.setItem("clickedOKtoswitch2", "yes");
+    setKey("1"); // if state changes it works, if state remains it does not rerender
+    setRefresh(true)
   };
 
   useEffect(() => {
@@ -193,6 +188,7 @@ const Tasks = () => {
           className="mb-0"
           fill
           onSelect={handleSelect}
+          key={refresh}
         >
           {localStorage.getItem("timesUp") === "timesUpLabor" ? (
             <Tab
@@ -220,7 +216,7 @@ const Tasks = () => {
               <Labor />
             </Tab>
           )}
-          {localStorage.getItem("lastmin") >= 10 ||
+          {localStorage.getItem("lastmin") >= 10 || 
           localStorage.getItem("timesUp") === "timesUpLeisure" ? (
             <Tab
               eventKey="2"

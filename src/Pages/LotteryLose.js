@@ -27,8 +27,8 @@ const Lottery = () => {
   localStorage.setItem("videoPaused", "yes");
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("localcount", 0);
-  localStorage.setItem("lastmin", 11);
-  localStorage.setItem("lastsec", 59);
+  localStorage.setItem("lastmin", 10); // change time TESTT
+  localStorage.setItem("lastsec", 9); // change time TESTT
   localStorage.setItem("transc", JSON.stringify(input));
   window.localStorage.setItem("progress", 0);
   const [counter, setCounter] = useState(

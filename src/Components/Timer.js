@@ -22,7 +22,7 @@ const Timer = (props) => {
   } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
   const [laborcount, setLaborcount] = useState(initialLabor);
   const [leisurecount, setLeisurecount] = useState(initialLeisure);

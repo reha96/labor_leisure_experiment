@@ -19,16 +19,18 @@ import DialogContentText from "@mui/material/DialogContentText";
 const TasksPractice = () => {
   const [key, setKey] = useState("1");
   const [open, setOpen] = useState(false);
+  const [refresh, setRefresh] = useState(false)
 
   const handleClose = () => {
     localStorage.setItem("clickedOKtoswitch", "yes");
     setKey("2")
     setOpen(false);
+    setRefresh(true)
   };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if ((localStorage.getItem("lastmin") === "1") && (localStorage.getItem("lastsec") === "1")) {
+      if ((localStorage.getItem("lastmin") === "1") && (localStorage.getItem("lastsec") === "0")) {
         setOpen(true);
       }
     }, 500);
@@ -111,15 +113,13 @@ const TasksPractice = () => {
         `}
         </style>
         <Tabs
-          // defaultActiveKey={'1'}
-          activeKey={key}
-          defaultActiveKey={(k) => setKey(k)}
+          activeKey={localStorage.getItem("clickedOKtoswitch") === "yes" ? 2 : 1}
           id="mytab"
           className="mb-0"
           fill
-          // mountOnEnter='true' can be interesting for future
+          key={refresh}
         >
-          {localStorage.getItem("lastmin") >= 1 ? (
+          {localStorage.getItem("lastmin") >= 1 ? ( 
             <Tab
               eventKey="1"
               title={
@@ -146,7 +146,7 @@ const TasksPractice = () => {
             </Tab>
           )}
 
-          {localStorage.getItem("lastmin") >= 1 ? (
+          {localStorage.getItem("lastmin") >= 1 || refresh ? (
             <Tab
               eventKey="2"
               title={
