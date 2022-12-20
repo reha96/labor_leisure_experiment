@@ -55,6 +55,15 @@ margin-right: auto;
   align-items: center;
 }
 
+.pricelist {
+  margin-left: 10%!important;
+  margin-right: 10%!important;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+}
+
+
 .slider{
   margin-left: 5%;
   margin-right: 5%;

@@ -12,6 +12,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import axios from "axios";
+import PriceList from "../Components/PriceList";
 
 const Confirm = () => {
   const nextPage = (event) => {
@@ -96,6 +97,12 @@ const Confirm = () => {
           like to spend the next <strong>10 minutes</strong> based on what you
           saw in the practice session.
         </p>
+
+        <Typography variant="h6" className="center">
+          List
+        </Typography>
+
+        <PriceList/>
 
         <Typography variant="h6" className="center">
           Time Choice
