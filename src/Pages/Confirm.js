@@ -92,29 +92,55 @@ const Confirm = () => {
       </style>
       <Container className="p-1" fluid="sm">
         {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
+        <p className="HomePage_p">The practice session is over.</p>
         <p className="HomePage_p">
-          The practice session is over. We now ask you to decide how you would
-          like to spend the next <strong>10 minutes</strong> based on what you
-          saw in the practice session.
+          {" "}
+          Based on your experience in the practice session, we now ask you to
+          decide how you would like to spend the next{" "}
+          <strong>10 minutes</strong>. Note that you will have{" "}
+          <strong>2 additional minutes of Typing before </strong> you can switch
+          between tasks.
         </p>
 
-        <Typography variant="h6" className="center">
-          List
-        </Typography>
-
-        <PriceList/>
+        {/* <Typography variant="h6" className="center"> */}
+        {/* List */}
+        {/* </Typography> */}
+        {/* <PriceList /> */}
 
         <Typography variant="h6" className="center">
           Time Choice
         </Typography>
         <p className="HomePage_p">
-          Please indicate how much of the <strong>10 minutes</strong> you have
+          Please indicate how much of your <strong>10 minutes </strong>
           you want to spend on <strong>Typing</strong> and on{" "}
-          <strong>Watching Videos</strong>.
-          {/* Distribute your time however you like using the slider below. */}
+          <strong>Watching Videos</strong>. Note that for 1 out of every 20
+          participant the Time Choice will be binding.{" "}
         </p>
         <p className="HomePage_p">
-          You can <strong>move the slider</strong> to change your choice.
+          <strong>
+            <ul class="a">
+              <li>
+                {" "}
+                If you are among the selected participants you have to Type for
+                your chosen duration.
+              </li>
+              <li>
+                {" "}
+                If you are not selected, you spend your time freely across both
+                tasks.{" "}
+              </li>
+              <li>
+                In both cases, switching between tasks is only available after 2
+                minutes of Typing.
+              </li>
+            </ul>{" "}
+          </strong>
+        </p>
+        <p className="HomePage_p">
+          <strong></strong>
+        </p>
+        <p className="HomePage_p">
+          Please <strong>move the slider</strong> to change your Time Choice.
         </p>
         <Box
           sx={{
@@ -123,7 +149,6 @@ const Confirm = () => {
           }}
         >
           <Slider
-            // className="HomePage_p"
             aria-label="Small steps"
             defaultValue={50}
             getAriaValueText={valuetext}
@@ -138,23 +163,8 @@ const Confirm = () => {
 
         <ConfirmUpdate />
 
-        <Typography variant="h6" className="center">
-          Lottery
-        </Typography>
         <p className="HomePage_p">
-          We will now randomly select 1 out of each 20 participants and make
-          their Time Choice binding.{" "}
-          <strong>
-            {" "}
-            If you are among the selected participants you will have to work for
-            the above chosen duration.{" "}
-          </strong>
-          <br></br>
-          <br></br>
-          For the remaining participants Time Choice is not binding and their bonus is equal to the amount
-          they will work meeting the quality criteria.
-          {/* All remaining participants realize their choices themselves and get a bonus equal to the amount they work meeting the quality criteria.
-           */}
+          On the next page you will learn whether your Time Choice is binding.
         </p>
 
         <div className="center">

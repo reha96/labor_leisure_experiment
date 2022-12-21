@@ -10,17 +10,9 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-// import { useParams} from "react-router";
-
 const Home1 = () => {
-  // const { userId } = useParams()
-  // console.log(userId)
-
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
-
-  // const [error, setError] = useState(null);
-  // console.log(typedValue)
 
   const handleChange = async (event) => {
     setChecked(event.target.checked);
@@ -85,13 +77,24 @@ const Home1 = () => {
         <Typography variant="h6" className="center">
           Your Consent
         </Typography>
+        <p className="HomePage_p">I have been informed about:</p>
         <p className="HomePage_p">
-          I have been informed in writing on how the study will be carried out.
-          I have also been informed about the anonymity of my personal data and
-          processing of it without revealing my identity, under the conditions
-          detailed in the GDPR. I am aware that I may withdraw my consent any
-          time and I do not need to give reasons for my withdrawal and that
-          there will be no negative consequences.
+          <ul class="a">
+            <li>how the study will be carried out,</li>
+            <li>the anonymity of my personal data,</li>
+            <li>
+              processing of my personal data without revealing my identity
+            </li>
+          </ul>
+          according to the conditions detailed in the GDPR.
+        </p>
+        <p className="HomePage_p">
+          <br></br>I am aware that:
+          <ul class="a">
+            <li>I may withdraw my consent any time,</li>
+            <li>I do not need to give reasons for my withdrawal,</li>
+            <li>there will be no negative consequences for my withdrawal.</li>
+          </ul>
         </p>
 
         <FormGroup className="center">

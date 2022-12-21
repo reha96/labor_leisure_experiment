@@ -118,12 +118,6 @@ const Lottery = () => {
       });
   };
 
-  //   const [open, setOpen] = React.useState(false);
-
-  // const handleClose = () => {
-  //     setOpen(false);
-  // };
-
   return (
     <div className="Page2">
       <style type="text/css">
@@ -159,30 +153,28 @@ const Lottery = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
-          Lottery Outcome
-        </Typography>
-        <p className="HomePage_p">
-          You did not win the lottery.
-          <strong>
-            {" "}
-            Therefore your bonus will depend on your actions in the next page.
-          </strong>
-        </p>
+        {/* <Typography variant="h6" className="center">
+          Outcome
+        </Typography> */}
+      
         <Typography variant="h6" className="center">
           Time Choice
         </Typography>
+        <p className="HomePage_p">
+          Your Time Choice is not binding. You spend your time freely across both
+          tasks.
+        </p>
 
         <ConfirmUpdate />
 
         <Typography variant="h6" className="center">
-          Attention
+          Recap
         </Typography>
         <p className="HomePage_p">
           On the next page you will spend 12 minutes.
-          <strong> For the first 2 minutes, you are obliged to type. </strong>
-          Then, in the remaining 10 minutes, you switch between the tasks as you
-          please. Your bonus is equal to the amount you type meeting the quality
+          <strong> For the first 2 minutes, you have to Type and cannot switch between tasks. </strong>
+          In the remaining 10 minutes, you spend your time between the tasks as you
+          please. Your bonus payment is higher if you Type and meet the quality
           criteria.
           {/* <hr></hr> */}
         </p>
@@ -191,7 +183,7 @@ const Lottery = () => {
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ m: 3 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
-                My typing bonus depends on ...
+                My bonus payment is ...
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
@@ -202,17 +194,17 @@ const Lottery = () => {
                 <FormControlLabel
                   value="0"
                   control={<Radio />}
-                  label="my time choice in the past page."
+                  label="equal to my Time Choice in the past page."
                 />
                 <FormControlLabel
                   value="true"
                   control={<Radio />}
-                  label="how much time I will actually spend typing while meeting the quality criteria."
+                  label="higher if I spend time Typing while meeting the quality criteria."
                 />
                 <FormControlLabel
                   value="1"
                   control={<Radio />}
-                  label="how much time I predict I will type."
+                  label="equal to how much time I predict I will Type."
                 />
               </RadioGroup>
               <FormHelperText>{helperText}</FormHelperText>

@@ -97,7 +97,7 @@ const PriceList = (props) => {
                 value="noAutoplay1"
                 sx={{ pb: 2.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
             </RadioGroup>
@@ -120,7 +120,7 @@ const PriceList = (props) => {
                 value="noAutoplay1"
                 sx={{ pb: 2.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
             </RadioGroup>
@@ -143,7 +143,7 @@ const PriceList = (props) => {
                 value="noAutoplay1"
                 sx={{ pb: 0.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
             </RadioGroup>
@@ -182,7 +182,7 @@ const PriceList = (props) => {
                 value="autoplay1"
                 sx={{ pr: 5, pb: 0.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
               <FormControlLabel
@@ -205,7 +205,7 @@ const PriceList = (props) => {
                 value="autoplay1"
                 sx={{ pr: 5, pb: 0.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
               <FormControlLabel
@@ -228,7 +228,7 @@ const PriceList = (props) => {
                 value="autoplay1"
                 sx={{ pr: 5, pb: 0.5 }}
                 control={<Radio />}
-                label=""
+                label="+ 0£"
                 labelPlacement="bottom"
               />
               <FormControlLabel

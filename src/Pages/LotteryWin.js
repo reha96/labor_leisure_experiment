@@ -154,31 +154,27 @@ const LotteryWin = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <Typography variant="h6" className="center">
-          Lottery Outcome
-        </Typography>
-        <p className="HomePage_p">
-          You won the lottery. Your Time Choice is binding.
-          <strong>
-            {" "}
-            Therefore your bonus is equal to you how much you decided to Type
-            and whether it meets the quality criteria.
-          </strong>
-        </p>
-        <Typography variant="h6" className="center">
           Time Choice
         </Typography>
-
+        <p className="HomePage_p">
+          Your Time Choice is binding. You have to Type for your chosen
+          duration.
+        </p>
         <ConfirmUpdate />
 
         <Typography variant="h6" className="center">
-          Attention
+          Recap
         </Typography>
         <p className="HomePage_p">
           On the next page you will spend 12 minutes.
-          <strong> For the first 2 minutes, you are obliged to type. </strong>
-          Then, in the remaining 10 minutes, you switch between the tasks as you
-          please. However, you cannot spend more time the tasks than what is
-          indicated in your Time Choice.
+          <strong>
+            {" "}
+            For the first 2 minutes, you have to Type and cannot switch between
+            tasks.{" "}
+          </strong>
+          In the remaining 10 minutes, you can switch between tasks but
+          cannot spend more than the total duration indicated by your Time Choice for each task. Your bonus
+          payment is equal to your Time Choice if your Typing meets the quality criteria.
           {/* <hr></hr> */}
         </p>
 
@@ -186,7 +182,7 @@ const LotteryWin = () => {
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ m: 3 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
-                My typing bonus depends on ...
+                My typing bonus is equal to...
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
@@ -197,17 +193,17 @@ const LotteryWin = () => {
                 <FormControlLabel
                   value="0"
                   control={<Radio />}
-                  label="only on my time choice in the past page."
+                  label="my Time Choice in the past page."
                 />
                 <FormControlLabel
                   value="true"
                   control={<Radio />}
-                  label="on my time choice and whether my typing meets the quality criteria."
+                  label="my Time Choice and whether my Typing meets the quality criteria."
                 />
                 <FormControlLabel
                   value="1"
                   control={<Radio />}
-                  label="how much time I predict I will type."
+                  label="how much time I predict I will Type."
                 />
               </RadioGroup>
               <FormHelperText>{helperText}</FormHelperText>

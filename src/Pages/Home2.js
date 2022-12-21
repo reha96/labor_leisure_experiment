@@ -16,8 +16,6 @@ import axios from "axios";
 import * as Bowser from "bowser";
 
 const Home2 = () => {
-  // const { userId } = useParams()
-  // console.log(userId)
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail1"))
   );
@@ -39,18 +37,17 @@ const Home2 = () => {
       laborTime: 0,
       transcription: {},
     };
-    if(localStorage.getItem("participantCreated") === "no"){
-      localStorage.setItem("participantCreated", "yes")
+    if (localStorage.getItem("participantCreated") === "no") {
+      localStorage.setItem("participantCreated", "yes");
       axios
-      .post("/api", passvalue)
-      .then(() => {
-        console.log("new participant added");
-      })
-      .catch((e) => {
-        console.log("Unable to add new participant: ", e);
-      });
+        .post("/api", passvalue)
+        .then(() => {
+          console.log("new participant added");
+        })
+        .catch((e) => {
+          console.log("Unable to add new participant: ", e);
+        });
     }
-    
   }, []);
 
   var Fail = 0;
@@ -151,29 +148,30 @@ const Home2 = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <p className="HomePage_p">
-          In this study there are two tasks that you can choose to do for 10
-          minutes.
+          In this study you have 12 minutes during which you will do 2
+          different tasks.
         </p>
         <Typography variant="h6" className="center">
           Task 1: Typing
         </Typography>
         <p className="HomePage_p">
-          You type sentences taken from Homer’s Iliad in English.
+          You type sentences from Homer’s Iliad in English.
         </p>
         <p className="HomePage_p">
           <strong>
-            Each second you work on this task will be paid as a bonus fixed at
-            0.5 cents per second, if the quality criteria are met:
+            Each second you spend on this task your bonus payment increases by
+            0.6p.{" "}
+          </strong>
+        </p>
+        <p className="HomePage_p">
+          {" "}
+          <strong>
+            You are paid your seconds of work only if the following quality are
+            met at the end of the 12 minutes:
           </strong>
           <ul class="a">
-            <li>Type at least 1 sentence per minute you spend on this task.</li>
-            <li>
-              Each submitted sentence has at least 70 percent accuracy.{" "}
-              <br></br>
-              For example, if a sentence contains a total of 10 characters
-              (letters and punctuation marks), you should correctly retype at
-              least 7.
-            </li>
+            <li>Type at least 1 sentence per minute you spent on this task.</li>
+            <li>Have an overall accuracy of at least 70 percent. </li>
           </ul>
           <strong>
             Typing faster in this task will not earn you a higher bonus.
@@ -184,20 +182,19 @@ const Home2 = () => {
           Task 2: Watching Videos
         </Typography>
         <p className="HomePage_p">
-          You watch popular short videos from TikTok and YouTube. You will not
-          able to skip or switch between videos yourself.<br></br>
+          You watch popular short videos from TikTok and YouTube.
         </p>
         <p className="HomePage_p">
           <strong>
-            Each second you spend on this task will earn you 0.25 cents per
-            second.
+            Each second you spend on this task your bonus payment increases by
+            0.2p.{" "}
           </strong>
         </p>
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ m: 3 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
-                To get the typing bonus ...
+                I am paid my seconds of work only if I ...
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
