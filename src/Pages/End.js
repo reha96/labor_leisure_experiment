@@ -86,7 +86,7 @@ const End = () => {
           to skip directly to the end survey.
         </p>
 
-        <Typography variant="h6" className="center">
+        {/* <Typography variant="h6" className="center">
           Contact Information
         </Typography>
         <p className="HomePage_p">
@@ -96,7 +96,7 @@ const End = () => {
           individual decision-making. Please contact{" "}
           <strong>reha.tuncer@uni.lu</strong> if you have any questions about
           the study.
-        </p>
+        </p> */}
       </Container>
     </div>
   );
