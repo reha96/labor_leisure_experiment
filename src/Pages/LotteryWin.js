@@ -29,8 +29,8 @@ const LotteryWin = () => {
   localStorage.setItem("videoPaused", "yes");
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("localcount", 0);
-  localStorage.setItem("lastmin", 10); //  testtt timer
-  localStorage.setItem("lastsec", 3); // testt timer
+  localStorage.setItem("lastmin", 11); //  testtt timer
+  localStorage.setItem("lastsec", 59); // testt timer
   localStorage.setItem("transc", JSON.stringify(input));
   window.localStorage.setItem("progress", 0);
   const [counter, setCounter] = useState(
