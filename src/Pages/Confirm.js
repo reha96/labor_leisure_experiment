@@ -92,14 +92,16 @@ const Confirm = () => {
       </style>
       <Container className="p-1" fluid="sm">
         {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
-        <p className="HomePage_p">The practice session is over.</p>
+        {/* <p className="HomePage_p">The practice session is over.</p> */}
         <p className="HomePage_p">
           {" "}
           Based on your experience in the practice session, we now ask you to
-          decide how you would like to spend the next{" "}
-          <strong>10 minutes</strong>. Note that you will have{" "}
-          <strong>2 additional minutes of Typing before </strong> you can switch
-          between tasks.
+          decide how long you would like to spend on each task.
+        </p>
+        <p className="HomePage_p">
+          On the next page, you will have{" "}
+          <strong>2 minutes of Typing before </strong> you can switch
+          between tasks for <strong>10 minutes</strong>.
         </p>
 
         {/* <Typography variant="h6" className="center"> */}
@@ -111,36 +113,39 @@ const Confirm = () => {
           Time Choice
         </Typography>
         <p className="HomePage_p">
-          Please indicate how much of your <strong>10 minutes </strong>
+          Please decide how much of your <strong>10 minutes </strong>
           you want to spend on <strong>Typing</strong> and on{" "}
-          <strong>Watching Videos</strong>. Note that for 1 out of every 20
-          participant the Time Choice will be binding.{" "}
+          <strong>Watching Videos</strong>.
         </p>
         <p className="HomePage_p">
-          <strong>
-            <ul class="a">
-              <li>
-                {" "}
-                If you are among the selected participants you have to Type for
-                your chosen duration.
-              </li>
-              <li>
-                {" "}
-                If you are not selected, you spend your time freely across both
-                tasks.{" "}
-              </li>
-              <li>
-                In both cases, switching between tasks is only available after 2
-                minutes of Typing.
-              </li>
-            </ul>{" "}
-          </strong>
+          For 1 out of every 20 participant the <strong>Time Choice</strong>{" "}
+          decision will be binding:{" "}
         </p>
         <p className="HomePage_p">
-          <strong></strong>
+          <ul class="a">
+            <li>
+              {" "}
+              If you are among the selected participants you will have to{" "}
+              <strong>Type</strong> for your chosen duration.
+            </li>
+            <li>
+              {" "}
+              If you are not selected, you spend your time freely across both
+              tasks.{" "}
+            </li>
+
+            <li>
+              <strong>
+                In both cases, switching between tasks will only be available
+                after 2 minutes of Typing.
+              </strong>
+            </li>
+          </ul>{" "}
         </p>
+        <p className="HomePage_p"></p>
         <p className="HomePage_p">
-          Please <strong>move the slider</strong> to change your Time Choice.
+          Please <strong>move the slider</strong> to indicate your{" "}
+          <strong>Time Choice</strong>:
         </p>
         <Box
           sx={{

@@ -233,7 +233,7 @@ const Home2 = () => {
               <strong>Continue</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={"nextb"}>
+            <Link underline="none" href={"next2"}>
               <ButtonM variant="contained" color="secondary" type="button">
                 <strong>Continue</strong>
               </ButtonM>

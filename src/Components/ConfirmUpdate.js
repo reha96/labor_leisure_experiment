@@ -18,7 +18,7 @@ const ConfirmUpdate = (props) => {
     <div className="timer">
       <Alert sx={{mb:3}} severity="info" variant="outlined" className="HomePage_p">
 
-        You spend <strong>{divi}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - divi}%</strong> of your time on <strong>Watching Videos</strong>: <br></br>
+        You decide to spend <strong>{divi}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - divi}%</strong> of your time on <strong>Watching Videos</strong>. <br></br>
 
         You earn 	<strong>£{((((divi / 100) * 720 * 0.6) / 100) + ((((100 - divi) / 100) * 600 * 0.2) / 100) + 1).toPrecision(3)}</strong>. <br></br>
 
