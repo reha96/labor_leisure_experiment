@@ -83,7 +83,7 @@ const Home1 = () => {
             <li>how the study will be carried out,</li>
             <li>the anonymity of my personal data,</li>
             <li>
-              processing of my personal data without revealing my identity
+              processing of my personal data without revealing my identity,
             </li>
           </ul>
           according to the conditions detailed in the GDPR.

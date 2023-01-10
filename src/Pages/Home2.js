@@ -148,14 +148,14 @@ const Home2 = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <p className="HomePage_p">
-          In this study you have 12 minutes during which you will do 2
-          different tasks.
+          In this study you have 12 minutes during which you will do 2 different
+          tasks.
         </p>
         <Typography variant="h6" className="center">
           Task 1: Typing
         </Typography>
         <p className="HomePage_p">
-          You type sentences from Homer’s Iliad in English.
+          You type various sentences that look like CAPTCHA's.
         </p>
         <p className="HomePage_p">
           <strong>
@@ -182,7 +182,7 @@ const Home2 = () => {
           Task 2: Watching Videos
         </Typography>
         <p className="HomePage_p">
-          You watch popular short videos from TikTok and YouTube.
+          You watch funny animal videos from TikTok and YouTube.
         </p>
         <p className="HomePage_p">
           <strong>
@@ -233,7 +233,7 @@ const Home2 = () => {
               <strong>Continue</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={"next2"}>
+            <Link underline="none" href={"nextb"}>
               <ButtonM variant="contained" color="secondary" type="button">
                 <strong>Continue</strong>
               </ButtonM>
