@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
 import "../App.css";
 import Container from "react-bootstrap/Container";
 import ButtonM from "@mui/material/Button";
@@ -18,6 +17,7 @@ const Home3 = () => {
     localStorage.setItem("activePage", 1);
     localStorage.setItem("transc", JSON.stringify(input));
     window.localStorage.setItem("progress", 0);
+    window.location.replace("practice");
   };
 
   return (
@@ -77,16 +77,14 @@ const Home3 = () => {
         </Alert>
 
         <div className="center">
-          <Link underline="none" href={"practice"}>
-            <ButtonM
-              color="secondary"
-              variant="contained"
-              type="button"
-              onClick={nextPage}
-            >
-              <strong>Begin Practice</strong>
-            </ButtonM>
-          </Link>
+          <ButtonM
+            color="secondary"
+            variant="contained"
+            type="button"
+            onClick={nextPage}
+          >
+            <strong>Begin Practice</strong>
+          </ButtonM>
         </div>
       </Container>
     </div>

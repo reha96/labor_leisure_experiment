@@ -20,6 +20,7 @@ import "@fontsource/roboto/700.css";
 import LotteryWin from "./Pages/LotteryWin";
 import LotteryLose from "./Pages/LotteryLose";
 import Home1 from "./Pages/Home1";
+import MPL from "./Pages/MPL";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path=":userId/leisure" element={<LeisurePractice />} />
             <Route path=":userId/labor" element={<LaborPractice />} />
           </Route>
+          <Route path=":userId/mpl" element={<MPL />} />
           <Route path=":userId/confirm" element={<Confirm />} />
           <Route path=":userId/lotl" element={<LotteryLose />} />
           <Route path=":userId/lotw" element={<LotteryWin />} />

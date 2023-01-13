@@ -1,5 +1,4 @@
 import "../App.css";
-import Link from "@mui/material/Link";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
@@ -80,6 +79,10 @@ const Home2 = () => {
     setError(false);
   };
 
+  const nextPage = (event) => {
+    window.location.replace("next2")
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -155,7 +158,7 @@ const Home2 = () => {
           Task 1: Typing
         </Typography>
         <p className="HomePage_p">
-          You type various sentences that look like CAPTCHA's.
+          You type CAPTCHA's.
         </p>
         <p className="HomePage_p">
           <strong>
@@ -233,11 +236,11 @@ const Home2 = () => {
               <strong>Continue</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={"next2"}>
-              <ButtonM variant="contained" color="secondary" type="button">
+            // <Link underline="none" href={"next2"}>
+              <ButtonM variant="contained" color="secondary" type="button" onClick={nextPage}>
                 <strong>Continue</strong>
               </ButtonM>
-            </Link>
+            // </Link>
           )}
         </div>
       </Container>

@@ -1,6 +1,5 @@
 import * as React from "react";
 import "../App.css";
-import Link from "@mui/material/Link";
 import Container from "react-bootstrap/Container";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
@@ -14,6 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import ButtonM from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
 
 const LotteryWin = () => {
   var input = [];
@@ -87,6 +87,10 @@ const LotteryWin = () => {
     setError(false);
   };
 
+  const nextPage = (event) => {
+    window.location.replace("tasks");
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -157,8 +161,10 @@ const LotteryWin = () => {
           Time Choice
         </Typography>
         <p className="HomePage_p">
-          Your Time Choice is binding. You have to Type for your chosen
-          duration.
+          <Alert sx={{ mb: 2 }} severity="success">
+            Your Time Choice is binding. You have to Type for your chosen
+            duration.
+          </Alert>
         </p>
         <ConfirmUpdate />
 
@@ -172,9 +178,10 @@ const LotteryWin = () => {
             For the first 2 minutes, you have to Type and cannot switch between
             tasks.{" "}
           </strong>
-          In the remaining 10 minutes, you can switch between tasks but
-          cannot spend more than the total duration indicated by your Time Choice for each task. Your bonus
-          payment is equal to your Time Choice if your Typing meets the quality criteria.
+          In the remaining 10 minutes, you can switch between tasks but cannot
+          spend more than the total duration indicated by your Time Choice for
+          each task. Your bonus payment is equal to your Time Choice if your
+          Typing meets the quality criteria.
           {/* <hr></hr> */}
         </p>
 
@@ -226,11 +233,16 @@ const LotteryWin = () => {
               <strong>begin</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={"tasks"}>
-              <ButtonM variant="contained" color="secondary" type="button">
-                <strong>begin</strong>
-              </ButtonM>
-            </Link>
+            // <Link underline="none" href={"tasks"}>
+            <ButtonM
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={nextPage}
+            >
+              <strong>begin</strong>
+            </ButtonM>
+            // </Link>
           )}
         </div>
       </Container>

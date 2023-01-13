@@ -21,7 +21,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 const Tasks = () => {
   const [key, setKey] = useState(localStorage.getItem("activePage"));
   const [refresh, setRefresh] = useState(false);
-
+  const [counter, setCounter] = useState(parseInt(localStorage.getItem("tabCounter")));
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
 
@@ -31,10 +31,14 @@ const Tasks = () => {
       setKey("1");
       setRefresh(true);
       localStorage.setItem("activePage", 1);
+      setCounter(counter+1)
+      localStorage.setItem("tabCounter", counter)
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
       setKey("2");
+      setCounter(counter+1)
+      localStorage.setItem("tabCounter", counter)
       // setRefresh(true)
       localStorage.setItem("activePage", 2);
       if (localStorage.getItem("treatment") === "autoplayOn") {

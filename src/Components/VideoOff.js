@@ -46,7 +46,7 @@ function VideoOff({ src }) {
   };
 
   const handleVideoEnded = () => {
-    console.log("Video ended!");
+    // console.log("Video ended!");
     endRef.current.scrollIntoView({ behavior: "smooth" });
     localStorage.setItem("videoPaused", "yes");
     // setOpen(true)

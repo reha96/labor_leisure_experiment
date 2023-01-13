@@ -47,7 +47,11 @@ const TimerPractice = (props) => {
       />
       {
         minutes <= 0 && seconds <= 0 ? (
-          window.location.replace("confirm")
+          localStorage.getItem("treatment") === "MPL" ? (
+            window.location.replace("MPL")
+          ) : (
+            window.location.replace("confirm")
+          )
         ) : (
           <Typography
             variant="h6"

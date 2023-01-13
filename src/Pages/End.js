@@ -16,6 +16,8 @@ const End = () => {
       "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
       "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
       "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
+      "browser.tabCounter": localStorage.getItem("tabCounter"),
+      "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
       "clikcedOkToSwitch.secondPopUp":
         localStorage.getItem("clickedOKtoswitch2"),
     };

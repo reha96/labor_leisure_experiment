@@ -27,10 +27,18 @@ const Home1 = () => {
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
     localStorage.setItem("ID", typedValue);
-    if (localStorage.getItem("treatment") >= 0.5) {
+    // const treatment = ["autoplayOn", "autoplayOff", "MPL"]
+    // const random = Math.floor(Math.random() * treatment.length);
+    // localStorage.setItem("treatment", Math.random());
+    if (localStorage.getItem("treatment") <= 0.33) {
       localStorage.setItem("treatment", "autoplayOn");
-    } else {
+    } else if (
+      localStorage.getItem("treatment") >= 0.33 &&
+      localStorage.getItem("treatment") <= 0.67
+    ) {
       localStorage.setItem("treatment", "autoplayOff");
+    } else {
+      localStorage.setItem("treatment", "MPL");
     }
     if (localStorage.getItem("lottery") >= 0.95) {
       localStorage.setItem("lottery", "lotteryWin");

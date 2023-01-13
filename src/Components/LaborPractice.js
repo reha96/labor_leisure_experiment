@@ -8,7 +8,7 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 const LaborPractice = () => {
   const data = [
     {
-      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_59.jpeg",
+      src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_99.jpeg",
       key: 0,
     },
     {

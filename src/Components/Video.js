@@ -48,7 +48,7 @@ function Video({ src }) {
 
   const handleVideoEnded = () => {
     console.log("Video ended!");
-    if (localStorage.getItem("treatment") === "autoplayOn") {
+    if (localStorage.getItem("treatment").includes("On")) {
         localStorage.setItem("videoPaused", "no");
       } else {
         localStorage.setItem("videoPaused", "yes");

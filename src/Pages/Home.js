@@ -61,9 +61,10 @@ const Home = () => {
         <p className="HomePage_p">
           The total duration of the study is about <strong>22 minutes.</strong>{" "}
           <br></br>
-          You receive <strong>£2.2</strong> for your participation and can earn
-          up to <strong>£5.32</strong> depending on the time you choose to spend
-          on each task.
+          You receive <strong>£1</strong> for your participation and earn a
+          bonus payment of at least <strong>£1.2</strong> to{" "}
+          <strong>£3.32</strong> depending on the time you choose to spend on
+          each task.
         </p>
 
         <Typography variant="h6" className="center">
@@ -73,14 +74,13 @@ const Home = () => {
           In this study, we collect information about yourself, i.e. birth year,
           gender, marital status, income, employment, educational background,
           and the device you use to participate. All your personal data will be
-          anonymized and will be stored in a secured server at the
-          University of Luxembourg. Only the researchers working on this study
-          will have the access to this data. Data collected during the
-          study will only be used for the research project without personally
-          identifying you.
+          anonymized and will be stored in a secured server at the University of
+          Luxembourg. Only the researchers working on this study will have the
+          access to this data. Data collected during the study will only be used
+          for the research project without personally identifying you.
         </p>
         <div className="center">
-          <Link underline="none" href="/id">
+          <Link underline="none" href="/id" replace>
             <ButtonM variant="contained" color="secondary" type="button">
               <strong>Continue</strong>
             </ButtonM>

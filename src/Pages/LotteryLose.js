@@ -1,5 +1,4 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
 import "../App.css";
 import Container from "react-bootstrap/Container";
 import ConfirmUpdate from "../Components/ConfirmUpdate";
@@ -14,6 +13,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Alert from "@mui/material/Alert";
 
 const Lottery = () => {
   var input = [];
@@ -117,7 +117,9 @@ const Lottery = () => {
         console.log("Unable to update AttentionFail2: ", e);
       });
   };
-
+  const nextPage = (event) => {
+    window.location.replace("tasks");
+  };
   return (
     <div className="Page2">
       <style type="text/css">
@@ -156,13 +158,14 @@ const Lottery = () => {
         {/* <Typography variant="h6" className="center">
           Outcome
         </Typography> */}
-      
         <Typography variant="h6" className="center">
           Time Choice
         </Typography>
         <p className="HomePage_p">
-          Your Time Choice is not binding. You spend your time freely across both
-          tasks.
+          <Alert sx={{ mb: 2 }} severity="success">
+            Your Time Choice is not binding. You spend your time freely across
+            both tasks.
+          </Alert>
         </p>
 
         <ConfirmUpdate />
@@ -172,10 +175,14 @@ const Lottery = () => {
         </Typography>
         <p className="HomePage_p">
           On the next page you will spend 12 minutes.
-          <strong> For the first 2 minutes, you have to Type and cannot switch between tasks. </strong>
-          In the remaining 10 minutes, you spend your time between the tasks as you
-          please. Your bonus payment is higher if you Type and meet the quality
-          criteria.
+          <strong>
+            {" "}
+            For the first 2 minutes, you have to Type and cannot switch between
+            tasks.{" "}
+          </strong>
+          In the remaining 10 minutes, you spend your time between the tasks as
+          you please. Your bonus payment is higher if you Type and meet the
+          quality criteria.
           {/* <hr></hr> */}
         </p>
 
@@ -227,11 +234,14 @@ const Lottery = () => {
               <strong>begin</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={"tasks"}>
-              <ButtonM variant="contained" color="secondary" type="button">
-                <strong>begin</strong>
-              </ButtonM>
-            </Link>
+            <ButtonM
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={nextPage}
+            >
+              <strong>begin</strong>
+            </ButtonM>
           )}
         </div>
       </Container>
