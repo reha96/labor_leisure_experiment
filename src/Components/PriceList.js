@@ -48,7 +48,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange1 = () => {
     setCurrentButtonVariant1("contained");
     setCurrentButtonVariant1b("outlined");
-    localStorage.setItem("MPL1", "Autoplay +2£");
+    localStorage.setItem("MPL1", "Autoplay +1£");
   };
   const handleButtonVariantChange1b = () => {
     setCurrentButtonVariant1b("contained");
@@ -58,7 +58,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange2 = () => {
     setCurrentButtonVariant2("contained");
     setCurrentButtonVariant2b("outlined");
-    localStorage.setItem("MPL2", "Autoplay +1.5£");
+    localStorage.setItem("MPL2", "Autoplay +0.75£");
   };
   const handleButtonVariantChange2b = () => {
     setCurrentButtonVariant2b("contained");
@@ -68,7 +68,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange3 = () => {
     setCurrentButtonVariant3("contained");
     setCurrentButtonVariant3b("outlined");
-    localStorage.setItem("MPL3", "Autoplay +1£");
+    localStorage.setItem("MPL3", "Autoplay +0.5£");
   };
   const handleButtonVariantChange3b = () => {
     setCurrentButtonVariant3b("contained");
@@ -78,7 +78,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange4 = () => {
     setCurrentButtonVariant4("contained");
     setCurrentButtonVariant4b("outlined");
-    localStorage.setItem("MPL4", "Autoplay +0.5£");
+    localStorage.setItem("MPL4", "Autoplay +0.25£");
   };
   const handleButtonVariantChange4b = () => {
     setCurrentButtonVariant4b("contained");
@@ -103,7 +103,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange6b = () => {
     setCurrentButtonVariant6b("contained");
     setCurrentButtonVariant6("outlined");
-    localStorage.setItem("MPL6", "No Autoplay +0.5£");
+    localStorage.setItem("MPL6", "No Autoplay +0.25£");
   };
   const handleButtonVariantChange7 = () => {
     setCurrentButtonVariant7("contained");
@@ -113,7 +113,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange7b = () => {
     setCurrentButtonVariant7b("contained");
     setCurrentButtonVariant7("outlined");
-    localStorage.setItem("MPL7", "No Autoplay +1£");
+    localStorage.setItem("MPL7", "No Autoplay +0.5£");
   };
   const handleButtonVariantChange8 = () => {
     setCurrentButtonVariant8("contained");
@@ -123,7 +123,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange8b = () => {
     setCurrentButtonVariant8b("contained");
     setCurrentButtonVariant8("outlined");
-    localStorage.setItem("MPL8", "No Autoplay +1.5£");
+    localStorage.setItem("MPL8", "No Autoplay +0.75£");
   };
   const handleButtonVariantChange9 = () => {
     setCurrentButtonVariant9("contained");
@@ -133,19 +133,28 @@ const PriceList = (props) => {
   const handleButtonVariantChange9b = () => {
     setCurrentButtonVariant9b("contained");
     setCurrentButtonVariant9("outlined");
-    localStorage.setItem("MPL9", "No Autoplay +2£");
+    localStorage.setItem("MPL9", "No Autoplay +1£");
   };
 
   if (
-    ((currentButtonVariant1 === "contained") || (currentButtonVariant1b === "contained"))  &&
-    ((currentButtonVariant2 === "contained") || (currentButtonVariant2b === "contained"))  &&
-    ((currentButtonVariant3 === "contained") || (currentButtonVariant3b === "contained"))  &&
-    ((currentButtonVariant4 === "contained") || (currentButtonVariant4b === "contained"))  &&
-    ((currentButtonVariant5 === "contained") || (currentButtonVariant5b === "contained"))  &&
-    ((currentButtonVariant6 === "contained") || (currentButtonVariant6b === "contained"))  &&
-    ((currentButtonVariant7 === "contained") || (currentButtonVariant7b === "contained"))  &&
-    ((currentButtonVariant8 === "contained") || (currentButtonVariant8b === "contained"))  &&
-    ((currentButtonVariant9 === "contained") || (currentButtonVariant9b === "contained"))
+    (currentButtonVariant1 === "contained" ||
+      currentButtonVariant1b === "contained") &&
+    (currentButtonVariant2 === "contained" ||
+      currentButtonVariant2b === "contained") &&
+    (currentButtonVariant3 === "contained" ||
+      currentButtonVariant3b === "contained") &&
+    (currentButtonVariant4 === "contained" ||
+      currentButtonVariant4b === "contained") &&
+    (currentButtonVariant5 === "contained" ||
+      currentButtonVariant5b === "contained") &&
+    (currentButtonVariant6 === "contained" ||
+      currentButtonVariant6b === "contained") &&
+    (currentButtonVariant7 === "contained" ||
+      currentButtonVariant7b === "contained") &&
+    (currentButtonVariant8 === "contained" ||
+      currentButtonVariant8b === "contained") &&
+    (currentButtonVariant9 === "contained" ||
+      currentButtonVariant9b === "contained")
   ) {
     localStorage.setItem("MPLdisable", false);
   }
@@ -170,7 +179,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant1}
               onClick={handleButtonVariantChange1}
             >
-              Autoplay +2£
+              Autoplay +£1
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -178,7 +187,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant1b}
               onClick={handleButtonVariantChange1b}
             >
-              No Autoplay +0£
+              No Autoplay +£0
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -188,7 +197,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant2}
               onClick={handleButtonVariantChange2}
             >
-              Autoplay +1.5£
+              Autoplay +£0.75
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -196,7 +205,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant2b}
               onClick={handleButtonVariantChange2b}
             >
-              No Autoplay +0£
+              No Autoplay +£0
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -206,7 +215,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant3}
               onClick={handleButtonVariantChange3}
             >
-              Autoplay +1£
+              Autoplay +£0.5
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -214,7 +223,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant3b}
               onClick={handleButtonVariantChange3b}
             >
-              No Autoplay +0£
+              No Autoplay +£0
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -224,7 +233,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant4}
               onClick={handleButtonVariantChange4}
             >
-              Autoplay +0.5£
+              Autoplay +£0.25
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -232,7 +241,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant4b}
               onClick={handleButtonVariantChange4b}
             >
-              No Autoplay +0£
+              No Autoplay +£0
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -242,7 +251,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant5}
               onClick={handleButtonVariantChange5}
             >
-              Autoplay +0£
+              Autoplay +£0
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -250,7 +259,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant5b}
               onClick={handleButtonVariantChange5b}
             >
-              No Autoplay +0£
+              No Autoplay +£0
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -260,7 +269,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant6}
               onClick={handleButtonVariantChange6}
             >
-              Autoplay +0£
+              Autoplay +£0
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -268,7 +277,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant6b}
               onClick={handleButtonVariantChange6b}
             >
-              No Autoplay +0.5£
+              No Autoplay +£0.25
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -278,7 +287,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant7}
               onClick={handleButtonVariantChange7}
             >
-              Autoplay +0£
+              Autoplay +£0£
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -286,7 +295,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant7b}
               onClick={handleButtonVariantChange7b}
             >
-              No Autoplay +1£
+              No Autoplay +£0.5
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -296,7 +305,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant8}
               onClick={handleButtonVariantChange8}
             >
-              Autoplay +0£
+              Autoplay +£0
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -304,7 +313,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant8b}
               onClick={handleButtonVariantChange8b}
             >
-              No Autoplay +1.5£
+              No Autoplay +£0.75
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -314,7 +323,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant9}
               onClick={handleButtonVariantChange9}
             >
-              Autoplay +0£
+              Autoplay +£0
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -322,7 +331,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant9b}
               onClick={handleButtonVariantChange9b}
             >
-              No Autoplay +2£
+              No Autoplay +£1
             </Button>
           </ButtonGroup>
         </Stack>

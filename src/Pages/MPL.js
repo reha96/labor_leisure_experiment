@@ -85,23 +85,24 @@ const MPL = () => {
               play them.{" "}
             </strong>
           </p>
+          {/* <p className="HomePage_p">
+            In the list below, you are asked to make 9 decisions. 
+          </p> */}
+          {/* For each row,
+            you pick the option you prefer regarding the Autoplay setting and
+            the additional bonus payment. */}
           <p className="HomePage_p">
-            In the list below, you are asked to make 9 decisions. For each row,
-            you to pick the option you prefer regarding the Autoplay setting and
-            the additional bonus payment.
-          </p>
-          <p className="HomePage_p">
-            Once you are done, we will randomly implement one option you picked.{" "}
+            In the list below, you are asked to make 9 decisions. Once you are
+            done, we will randomly implement one option you picked.{" "}
             <strong>
-              You will receive a bonus payment and can watch videos with the chosen
-              Autoplay setting for the upcoming 10 minutes.
+              You will receive the bonus payment and watch videos with the
+              chosen Autoplay setting for the upcoming 10 minutes.
             </strong>
           </p>
           <p className="HomePage_p">
             <strong>Consider for example the first decision. </strong>
-            If this was chosen and you preferred the Autoplay, you would
-            have Autoplay and receive £2 additional bonus
-            payment.
+            If this was chosen and you preferred the Autoplay, you would have
+            Autoplay and receive £1 additional bonus payment.
           </p>
 
           <PriceList />
