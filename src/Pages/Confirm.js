@@ -47,10 +47,12 @@ const Confirm = () => {
       .catch((e) => {
         console.log("Unable to record the click to close practice popup: ", e);
       });
-    if (localStorage.getItem("MPLthatcounts").includes("No")) {
-      localStorage.setItem("treatment", "autoplayOffMPL");
-    } else {
-      localStorage.setItem("treatment", "autoplayOnMPL");
+    if (localStorage.getItem("treatment") === "MPL") {
+      if (localStorage.getItem("MPLthatcounts").includes("No")) {
+        localStorage.setItem("treatment", "autoplayOffMPL");
+      } else {
+        localStorage.setItem("treatment", "autoplayOnMPL");
+      }
     }
   }, []);
 
