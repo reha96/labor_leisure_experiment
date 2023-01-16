@@ -48,7 +48,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange1 = () => {
     setCurrentButtonVariant1("contained");
     setCurrentButtonVariant1b("outlined");
-    localStorage.setItem("MPL1", "Autoplay +1£");
+    localStorage.setItem("MPL1", "Autoplay +0.5£");
   };
   const handleButtonVariantChange1b = () => {
     setCurrentButtonVariant1b("contained");
@@ -58,7 +58,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange2 = () => {
     setCurrentButtonVariant2("contained");
     setCurrentButtonVariant2b("outlined");
-    localStorage.setItem("MPL2", "Autoplay +0.75£");
+    localStorage.setItem("MPL2", "Autoplay +0.375£");
   };
   const handleButtonVariantChange2b = () => {
     setCurrentButtonVariant2b("contained");
@@ -68,7 +68,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange3 = () => {
     setCurrentButtonVariant3("contained");
     setCurrentButtonVariant3b("outlined");
-    localStorage.setItem("MPL3", "Autoplay +0.5£");
+    localStorage.setItem("MPL3", "Autoplay +0.25£");
   };
   const handleButtonVariantChange3b = () => {
     setCurrentButtonVariant3b("contained");
@@ -78,7 +78,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange4 = () => {
     setCurrentButtonVariant4("contained");
     setCurrentButtonVariant4b("outlined");
-    localStorage.setItem("MPL4", "Autoplay +0.25£");
+    localStorage.setItem("MPL4", "Autoplay +0.125£");
   };
   const handleButtonVariantChange4b = () => {
     setCurrentButtonVariant4b("contained");
@@ -103,7 +103,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange6b = () => {
     setCurrentButtonVariant6b("contained");
     setCurrentButtonVariant6("outlined");
-    localStorage.setItem("MPL6", "No Autoplay +0.25£");
+    localStorage.setItem("MPL6", "No Autoplay +0.125£");
   };
   const handleButtonVariantChange7 = () => {
     setCurrentButtonVariant7("contained");
@@ -113,7 +113,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange7b = () => {
     setCurrentButtonVariant7b("contained");
     setCurrentButtonVariant7("outlined");
-    localStorage.setItem("MPL7", "No Autoplay +0.5£");
+    localStorage.setItem("MPL7", "No Autoplay +0.25£");
   };
   const handleButtonVariantChange8 = () => {
     setCurrentButtonVariant8("contained");
@@ -123,7 +123,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange8b = () => {
     setCurrentButtonVariant8b("contained");
     setCurrentButtonVariant8("outlined");
-    localStorage.setItem("MPL8", "No Autoplay +0.75£");
+    localStorage.setItem("MPL8", "No Autoplay +0.375£");
   };
   const handleButtonVariantChange9 = () => {
     setCurrentButtonVariant9("contained");
@@ -133,7 +133,7 @@ const PriceList = (props) => {
   const handleButtonVariantChange9b = () => {
     setCurrentButtonVariant9b("contained");
     setCurrentButtonVariant9("outlined");
-    localStorage.setItem("MPL9", "No Autoplay +1£");
+    localStorage.setItem("MPL9", "No Autoplay +0.5£");
   };
 
   if (
