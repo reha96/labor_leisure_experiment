@@ -7,6 +7,9 @@ const End = () => {
   useEffect(() => {
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {
       localStorage.setItem("clickedOKtoswitch2", "yes");
+      if(parseInt(localStorage.getItem("tabCounter") === 0)){
+        localStorage.setItem("tabCounter", 1);
+      }
     } else {
       localStorage.setItem("clickedOKtoswitch2", "no");
     }
@@ -38,6 +41,7 @@ const End = () => {
   }, []);
 
   window.setTimeout(function () {
+    localStorage.clear()
     window.location.href =
       "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
   }, 15000);

@@ -7,6 +7,9 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
+  const nextPage = (event) => {
+    window.location.replace("/id");
+  };
   return (
     <div className="Page">
       <style type="text/css">
@@ -80,11 +83,14 @@ const Home = () => {
           for the research project without personally identifying you.
         </p>
         <div className="center">
-          <Link underline="none" href="/id" replace>
-            <ButtonM variant="contained" color="secondary" type="button">
-              <strong>Continue</strong>
-            </ButtonM>
-          </Link>
+          <ButtonM
+            variant="contained"
+            color="secondary"
+            type="button"
+            onClick={nextPage}
+          >
+            <strong>Continue</strong>
+          </ButtonM>
         </div>
       </Container>
     </div>

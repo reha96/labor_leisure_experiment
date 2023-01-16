@@ -82,10 +82,26 @@ const Leisure = () => {
         )}
 
         {localStorage.getItem("treatment").includes("On") ? (
+          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"} />
+        ) : (
+          <VideoOff
+            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"}
+          />
+        )}
+
+        {localStorage.getItem("treatment").includes("On") ? (
           <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid60.mp4"} />
         ) : (
           <VideoOff
             src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid60.mp4"}
+          />
+        )}
+
+        {localStorage.getItem("treatment").includes("On") ? (
+          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"} />
+        ) : (
+          <VideoOff
+            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"}
           />
         )}
 
@@ -298,10 +314,10 @@ const Leisure = () => {
         )}
 
         {localStorage.getItem("treatment").includes("On") ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid21.mp4"} />
+          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_40.mp4"} />
         ) : (
           <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid21.mp4"}
+            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_40.mp4"}
           />
         )}
 
