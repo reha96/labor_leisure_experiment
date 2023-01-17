@@ -10,8 +10,8 @@ const End = () => {
       if (parseInt(localStorage.getItem("tabCounter")) === 0) {
         localStorage.setItem("tabCounter", 1);
       }
-    } else {
-      localStorage.setItem("clickedOKtoswitch2", "no");
+    } else if (parseInt(localStorage.getItem("laborTime")) === 718) {
+      localStorage.setItem("clickedOKtoswitch2", "yes");
     }
     let passvalue = {
       "browser.timespentTyping": localStorage.getItem("laborTime"),
@@ -21,6 +21,15 @@ const End = () => {
       "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
       "browser.tabCounter": localStorage.getItem("tabCounter"),
       "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
+      "browser.MPL1": localStorage.getItem("MPL1"),
+      "browser.MPL2": localStorage.getItem("MPL2"),
+      "browser.MPL3": localStorage.getItem("MPL3"),
+      "browser.MPL4": localStorage.getItem("MPL4"),
+      "browser.MPL5": localStorage.getItem("MPL5"),
+      "browser.MPL6": localStorage.getItem("MPL6"),
+      "browser.MPL7": localStorage.getItem("MPL7"),
+      "browser.MPL8": localStorage.getItem("MPL8"),
+      "browser.MPL9": localStorage.getItem("MPL9"),
       "clikcedOkToSwitch.secondPopUp":
         localStorage.getItem("clickedOKtoswitch2"),
     };
