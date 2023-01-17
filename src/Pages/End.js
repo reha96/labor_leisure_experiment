@@ -5,13 +5,10 @@ import axios from "axios";
 
 const End = () => {
   useEffect(() => {
-    if (parseInt(localStorage.getItem("leisureTime")) > 0) {
-      localStorage.setItem("clickedOKtoswitch2", "yes");
+    if (parseInt(localStorage.getItem("leisureTime")) > 0) {      
       if (parseInt(localStorage.getItem("tabCounter")) === 0) {
         localStorage.setItem("tabCounter", 1);
       }
-    } else if (parseInt(localStorage.getItem("laborTime")) === 718) {
-      localStorage.setItem("clickedOKtoswitch2", "yes");
     }
     let passvalue = {
       "browser.timespentTyping": localStorage.getItem("laborTime"),

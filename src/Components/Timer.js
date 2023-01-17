@@ -32,7 +32,6 @@ const Timer = (props) => {
 
   // const handleClose = () => {
   //   setOpen(false);
-  //   localStorage.setItem("clickedOKtoswitch2", "intermediate");
   // };
 
   useEffect(() => {

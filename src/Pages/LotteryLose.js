@@ -41,8 +41,6 @@ const Lottery = () => {
   useEffect(() => {
     let passvalue = {
       timeChoice: localStorage.getItem("time_choice"),
-      "clikcedOkToSwitch.secondPopUp":
-        localStorage.getItem("clickedOKtoswitch2"),
     };
     const link = "/api/" + localStorage.getItem("ID");
     axios

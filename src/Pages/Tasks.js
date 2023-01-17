@@ -190,12 +190,11 @@ const Tasks = () => {
           activeKey={key}
           defaultActiveKey={
             localStorage.getItem("lottery") === "lotteryWin"
-              ? localStorage.getItem("clickedOKtoswitch2") === "timesUpLabor"
+              ? localStorage.getItem("timesUp") === "timesUpLabor"
                 ? "2"
                 : "1"
               : localStorage.getItem("activePage")
             // (k) => setKey(k)
-            // localStorage.getItem("clickedOKtoswitch2") === "timesUpLabor"
             //   ? "2"
             //   : "1"
           }
