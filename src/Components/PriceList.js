@@ -179,7 +179,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant1}
               onClick={handleButtonVariantChange1}
             >
-              Autoplay +£1
+              Autoplay +£0.5
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -197,7 +197,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant2}
               onClick={handleButtonVariantChange2}
             >
-              Autoplay +£0.75
+              Autoplay +£0.375
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -215,7 +215,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant3}
               onClick={handleButtonVariantChange3}
             >
-              Autoplay +£0.5
+              Autoplay +£0.25
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -233,7 +233,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant4}
               onClick={handleButtonVariantChange4}
             >
-              Autoplay +£0.25
+              Autoplay +£0.125
             </Button>
             <Button
               startIcon={<PlayDisabledSharpIcon fontSize="large" />}
@@ -277,7 +277,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant6b}
               onClick={handleButtonVariantChange6b}
             >
-              No Autoplay +£0.25
+              No Autoplay +£0.125
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -295,7 +295,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant7b}
               onClick={handleButtonVariantChange7b}
             >
-              No Autoplay +£0.5
+              No Autoplay +£0.25
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -313,7 +313,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant8b}
               onClick={handleButtonVariantChange8b}
             >
-              No Autoplay +£0.75
+              No Autoplay +£0.375
             </Button>
           </ButtonGroup>
           <ButtonGroup variant="outlined" aria-label="outlined button group">
@@ -331,7 +331,7 @@ const PriceList = (props) => {
               variant={currentButtonVariant9b}
               onClick={handleButtonVariantChange9b}
             >
-              No Autoplay +£1
+              No Autoplay +£0.5
             </Button>
           </ButtonGroup>
         </Stack>
