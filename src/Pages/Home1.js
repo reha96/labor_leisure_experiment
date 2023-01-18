@@ -1,4 +1,3 @@
-import Link from "@mui/material/Link";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import "../App.css";
@@ -9,16 +8,17 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import Alert from "@mui/material/Alert";
+import * as Bowser from "bowser";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
-
+  const browser = Bowser.parse(window.navigator.userAgent);
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
   };
-
   const onClick = (e) => {
     // use only when need to stop page from loading next page
     localStorage.setItem("participantCreated", "no");
@@ -45,6 +45,7 @@ const Home1 = () => {
     } else {
       localStorage.setItem("lottery", "lotteryLose");
     }
+    window.location.replace(typedValue.toString() + "/next");
   };
 
   return (
@@ -126,6 +127,14 @@ const Home1 = () => {
             onChange={(event) => setTypedValue(event.target.value)}
           />
         </Box>
+        {browser["browser"]["name"] === "Chrome" ? null : (
+          <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+            {" "}
+            <strong>
+              Please switch to a Chromium (Chrome, Brave, Edge) based browser. 
+            </strong> Other browsers are not allowed for this study.
+          </Alert>
+        )}
 
         <div className="center">
           {typedValue === "" ? (
@@ -138,17 +147,15 @@ const Home1 = () => {
               <strong>Continue</strong>
             </ButtonM>
           ) : (
-            <Link underline="none" href={typedValue.toString() + "/next"}>
-              <ButtonM
-                disabled={!checked}
-                variant="contained"
-                color="secondary"
-                type="button"
-                onClick={onClick}
-              >
-                <strong>Continue</strong>
-              </ButtonM>
-            </Link>
+            <ButtonM
+              disabled={!checked || browser["browser"]["name"] !== "Chrome"}
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={onClick}
+            >
+              <strong>Continue</strong>
+            </ButtonM>
           )}
         </div>
       </Container>

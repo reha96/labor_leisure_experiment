@@ -80,8 +80,8 @@ const Home2 = () => {
   };
 
   const nextPage = (event) => {
-    window.location.replace("next2")
-  }
+    window.location.replace("next2");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -157,9 +157,7 @@ const Home2 = () => {
         <Typography variant="h6" className="center">
           Task 1: Typing
         </Typography>
-        <p className="HomePage_p">
-          You type CAPTCHA's.
-        </p>
+        <p className="HomePage_p">You type CAPTCHA's.</p>
         <p className="HomePage_p">
           <strong>
             Each second you spend on this task your bonus payment increases by
@@ -237,9 +235,14 @@ const Home2 = () => {
             </ButtonM>
           ) : (
             // <Link underline="none" href={"next2"}>
-              <ButtonM variant="contained" color="secondary" type="button" onClick={nextPage}>
-                <strong>Continue</strong>
-              </ButtonM>
+            <ButtonM
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={nextPage}
+            >
+              <strong>Continue</strong>
+            </ButtonM>
             // </Link>
           )}
         </div>
