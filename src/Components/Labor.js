@@ -1,12 +1,13 @@
 import React from "react";
 import "./Labor.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import axios from "axios";
 
 const Labor = () => {
+  const [imgsLoaded, setImgsLoaded] = useState(false);
   const data = [
     {
       src: "https://d26ctpn7twdgoy.cloudfront.net/transc/trcp_0.jpeg",
@@ -412,11 +413,25 @@ const Labor = () => {
 
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
-  console.log(localStorage.getItem(typedValue))
+  console.log(localStorage.getItem(typedValue));
 
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("localcount"))
   );
+
+  useEffect(() => {
+    const loadImage = (image) => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = image.url;
+        resolve(image.url);
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+    Promise.all(data.map((image) => loadImage(image)))
+      .then(() => setImgsLoaded(true))
+      .catch((err) => console.log("Failed to load images", err));
+  }, []);
 
   const handleSubmit = (event) => {
     // event.preventDefault()
@@ -470,7 +485,11 @@ const Labor = () => {
           <div>
             {counter === key ? (
               <Container>
-                <img src={src} alt={key} className="photo" />
+                {imgsLoaded ? (
+                  <img src={src} alt={key} className="photo" />
+                ) : (
+                  <p className="photo">Loading image ...</p>
+                )}
               </Container>
             ) : null}
           </div>

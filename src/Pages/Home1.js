@@ -15,6 +15,7 @@ const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
+  const [chromium, setChromium] = useState(browser["browser"]["name"] !== "Chrome" || "Microsoft Edge")
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
@@ -127,7 +128,7 @@ const Home1 = () => {
             onChange={(event) => setTypedValue(event.target.value)}
           />
         </Box>
-        {browser["browser"]["name"] === "Chrome" ? null : (
+        {chromium ? null : (
           <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
             {" "}
             <strong>
@@ -148,7 +149,7 @@ const Home1 = () => {
             </ButtonM>
           ) : (
             <ButtonM
-              disabled={!checked || browser["browser"]["name"] !== "Chrome"}
+              disabled={(!checked || !chromium)}
               variant="contained"
               color="secondary"
               type="button"
