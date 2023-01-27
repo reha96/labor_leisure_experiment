@@ -73,7 +73,7 @@ const Confirm = () => {
       label: "No Typing",
     },
     {
-      value: 100,
+      value: 720,
       label: "Only Typing",
     },
   ];
@@ -133,19 +133,12 @@ const Confirm = () => {
           task.
         </p>
         <p className="HomePage_p">
-          In this part, you will have <strong> 2 minutes of Typing </strong>
-          before you can switch between tasks for <strong>10 minutes</strong>.
+          In this part you will have <strong> 12 minutes</strong>.
         </p>
 
-        {/* <Typography variant="h6" className="center"> */}
-        {/* List */}
-        {/* </Typography> */}
-        {/* <PriceList /> */}
-
         <p className="HomePage_p">
-          Please decide how much of your <strong>10 minutes </strong>
-          you want to spend on <strong>Typing</strong> and on{" "}
-          <strong>Watching Videos</strong>.
+          Please decide how much time you want to spend on{" "}
+          <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p>
         <p className="HomePage_p">
           Note that for 1 out of every 20 participant the{" "}
@@ -163,13 +156,6 @@ const Confirm = () => {
               If you are not selected, you spend your time freely across both
               tasks.{" "}
             </li>
-
-            <li>
-              <strong>
-                In both cases, switching between tasks will be available only
-                after 2 minutes of Typing.
-              </strong>
-            </li>
           </ul>{" "}
         </p>
         <p className="HomePage_p"></p>
@@ -186,14 +172,14 @@ const Confirm = () => {
         >
           <Slider
             aria-label="Small steps"
-            defaultValue={50}
+            defaultValue={360}
             getAriaValueText={valuetext}
-            step={1}
+            step={5}
             track="normal"
             marks={marks}
             min={0}
-            max={100}
-            valueLabelDisplay={clicked ? "off" : "on"}
+            max={720}
+            valueLabelDisplay="off"
             disabled={clicked}
           />
         </Box>
@@ -243,18 +229,9 @@ const Confirm = () => {
             <ButtonM color="error" onClick={handleClose}>
               <strong>Change</strong>
             </ButtonM>
-            {/* <Link
-              underline="none"
-              href={
-                localStorage.getItem("lottery") === "lotteryWin"
-                  ? "lotw"
-                  : "lotl"
-              }
-            > */}
             <ButtonM color="success" onClick={handleClose} autoFocus>
               <strong>Confirm</strong>
             </ButtonM>
-            {/* </Link> */}
           </DialogActions>
         </Dialog>
       </Container>

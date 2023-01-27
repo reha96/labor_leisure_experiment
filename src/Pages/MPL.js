@@ -102,7 +102,7 @@ const MPL = () => {
           <p className="HomePage_p">
             <strong>Consider for example the first decision. </strong>
             If you preferred the Autoplay and this decision was implemented, you would have
-            Autoplay and receive £1 additional bonus payment.
+            Autoplay and receive £0.5 additional bonus payment.
           </p>
 
           <PriceList />

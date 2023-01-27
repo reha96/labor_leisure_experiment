@@ -161,7 +161,7 @@ const Home2 = () => {
         <p className="HomePage_p">
           <strong>
             Each second you spend on this task your bonus payment increases by
-            0.6p.{" "}
+            0.5p.{" "}
           </strong>
         </p>
         <p className="HomePage_p">
@@ -188,7 +188,7 @@ const Home2 = () => {
         <p className="HomePage_p">
           <strong>
             Each second you spend on this task your bonus payment increases by
-            0.2p.{" "}
+            0.1p.{" "}
           </strong>
         </p>
         <Box className="center" sx={{ display: "flex" }}>

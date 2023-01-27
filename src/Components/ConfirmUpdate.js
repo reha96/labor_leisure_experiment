@@ -1,34 +1,49 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import Alert from '@mui/material/Alert';
+import React from "react";
+import { useState, useEffect } from "react";
+import Alert from "@mui/material/Alert";
 
 const ConfirmUpdate = (props) => {
-
-  const [divi, setDivi] = useState(window.localStorage.getItem('time_choice'));
+  const [divi, setDivi] = useState(window.localStorage.getItem("time_choice"));
   useEffect(() => {
-
     let myInterval = setInterval(() => {
-      setDivi(window.localStorage.getItem('time_choice'));
-    }, 500)
+      setDivi(window.localStorage.getItem("time_choice"));
+    }, 500);
     return () => {
       clearInterval(myInterval);
     };
   });
+const min = Math.round(Math.floor(divi / 60))
+const sec = Math.round(divi % 60)
+const min2 = Math.round(Math.floor((720 - divi) / 60))
+const sec2 = Math.round((720 - divi) % 60)
+// can remove minutes and seconds in STR var by IF checks
   return (
     <div className="timer">
-      <Alert sx={{mb:3}} severity="info" variant="outlined" className="HomePage_p">
-
-        You decide to spend <strong>{divi}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - divi}%</strong> of your time on <strong>Watching Videos</strong>. <br></br>
-
-        You earn 	<strong>£{((((divi / 100) * 720 * 0.6) / 100) + ((((100 - divi) / 100) * 600 * 0.2) / 100) + 1).toPrecision(3)}</strong>. <br></br>
-
-        You get <strong>{Math.floor((Math.round(((divi / 100)) * 600)) / 60)+2}</strong> minutes <strong>{((Math.round(((divi / 100)) * 600)) % 60)}</strong> seconds to <strong>Type.</strong> <br></br>
-
-        You get <strong>{Math.floor((Math.round((1 - (divi / 100)) * 600)) / 60)}</strong> minutes <strong>{((Math.round((1 - (divi / 100)) * 600)) % 60)}</strong> seconds to <strong>Watch Videos.</strong> <br></br>
+      <Alert
+        sx={{ mb: 3 }}
+        severity="info"
+        variant="outlined"
+        className="HomePage_p"
+      >
+        {/* You decide to spend <strong>{divi}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - divi}%</strong> of your time on <strong>Watching Videos</strong>. <br></br> */}
+        You decide to spend{" "}
+        <strong>{min === 0 ? null : min}</strong>{" "}
+        minutes <strong>{sec === 0 ? null : sec}</strong> seconds
+        to <strong>Type.</strong> <br></br>
+        You decide to spend{" "}
+        <strong>
+          {min2 === 0 ? null : min2}
+        </strong>{" "}
+        minutes <strong>{sec2 === 0 ? null : sec2}</strong>{" "}
+        seconds to <strong>Watch Videos.</strong> <br></br>
+        Your bonus payment is{" "}
+        <strong>
+          £{((divi * 0.5) / 100 + ((720 - divi) * 0.1) / 100).toPrecision(3)}
+        </strong>
+        . <br></br>
       </Alert>
-
     </div>
-  )
-}
+  );
+};
 
 export default ConfirmUpdate;

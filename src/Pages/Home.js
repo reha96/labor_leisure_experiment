@@ -44,12 +44,6 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
-          {" "}
-          Please use a Chromium (Chrome, Brave, Edge) based browser.{" "}
-          <strong>Safari and Firefox are not allowed for this study. </strong>
-        </Alert>
-
         <Typography variant="h6" className="center">
           Study Description
         </Typography>
@@ -63,9 +57,9 @@ const Home = () => {
         <p className="HomePage_p">
           The total duration of the study is about <strong>22 minutes.</strong>{" "}
           <br></br>
-          You receive <strong>£1</strong> for your participation and earn a
-          bonus payment between <strong>£1.2</strong> and{" "}
-          <strong>£4.82</strong> depending on the time you choose to spend on
+          You receive <strong>£2.2</strong> for your participation and earn a
+          bonus payment between <strong>£0.72</strong> and{" "}
+          <strong>£3.6</strong> depending on the time you choose to spend on
           each task.
         </p>
 
@@ -81,6 +75,11 @@ const Home = () => {
           access to this data. Data collected during the study will only be used
           for the research project without personally identifying you.
         </p>
+        <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
+          {" "}
+          Using the Back button in this study is disabled and doing so will take you back to this page.
+        </Alert>
+
         <div className="center">
           <ButtonM
             variant="contained"
