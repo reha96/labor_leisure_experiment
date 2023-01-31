@@ -15,9 +15,8 @@ const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
-  const [chromium, setChromium] = useState(
-    browser["browser"]["name"] !== "Chrome" || "Microsoft Edge"
-  );
+  const chromium = ((browser["browser"]["name"] === "Chrome") || (browser["browser"]["name"] === "Microsoft Edge"));
+  const desktop = browser["platform"]["type"] === "desktop";
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
@@ -31,9 +30,9 @@ const Home1 = () => {
     localStorage.setItem("lottery", Math.random());
     localStorage.setItem("ID", typedValue);
     // const treatment = ["autoplayOn", "autoplayOff", "MPL"]
-    const treatment = ["autoplayOn", "autoplayOff"]
+    const treatment = ["autoplayOn", "autoplayOff"];
     const random = Math.floor(Math.random() * treatment.length);
-    console.log(treatment[random])
+    console.log(treatment[random]);
     localStorage.setItem("treatment", treatment[random]);
     // if (localStorage.getItem("treatment") <= 0.33) {
     //   localStorage.setItem("treatment", "autoplayOn");
@@ -133,7 +132,7 @@ const Home1 = () => {
             onChange={(event) => setTypedValue(event.target.value)}
           />
         </Box>
-        {chromium ? null : (
+        {!chromium ? (
           <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
             {" "}
             <strong>
@@ -141,7 +140,15 @@ const Home1 = () => {
             </strong>{" "}
             Other browsers are not allowed for this study.
           </Alert>
-        )}
+        ) : null}
+
+        {!desktop ? (
+          <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+            {" "}
+            <strong>Please switch to a desktop device.</strong> Mobile devices
+            are not allowed for this study.
+          </Alert>
+        ) : null}
 
         <div className="center">
           {typedValue === "" ? (
@@ -155,7 +162,7 @@ const Home1 = () => {
             </ButtonM>
           ) : (
             <ButtonM
-              disabled={!checked || !chromium}
+              disabled={!checked || !chromium || !desktop}
               variant="contained"
               color="secondary"
               type="button"
