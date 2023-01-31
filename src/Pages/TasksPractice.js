@@ -19,19 +19,22 @@ import DialogContentText from "@mui/material/DialogContentText";
 const TasksPractice = () => {
   const [key, setKey] = useState(localStorage.getItem("activePage"));
   const [open, setOpen] = useState(false);
-  const [refresh, setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
 
   const handleClose = () => {
     localStorage.setItem("clickedOKtoswitch", "yes");
-    localStorage.setItem("activePage", 2)
-    setKey("2")
+    localStorage.setItem("activePage", 2);
+    setKey("2");
     setOpen(false);
-    setRefresh(true)
+    setRefresh(true);
   };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if ((localStorage.getItem("lastmin") === "1") && (localStorage.getItem("lastsec") === "0")) {
+      if (
+        localStorage.getItem("lastmin") === "1" &&
+        localStorage.getItem("lastsec") === "0"
+      ) {
         setOpen(true);
       }
     }, 500);
@@ -48,9 +51,9 @@ const TasksPractice = () => {
           initialMinute={window.localStorage.getItem("lastmin")}
           initialSeconds={window.localStorage.getItem("lastsec")}
         />
-        <Typography variant="h6" color="secondary" className="center">
+        {/* <Typography variant="h6" color="secondary" className="center">
           Practice Session
-        </Typography>
+        </Typography> */}
         <style type="text/css">
           {`
         .bg-info {
@@ -114,13 +117,15 @@ const TasksPractice = () => {
         `}
         </style>
         <Tabs
-          activeKey={localStorage.getItem("clickedOKtoswitch") === "yes" ? 2 : 1}
+          activeKey={
+            localStorage.getItem("clickedOKtoswitch") === "yes" ? 2 : 1
+          }
           id="mytab"
           className="mb-0"
           fill
           key={refresh}
         >
-          {localStorage.getItem("lastmin") >= 1 ? ( 
+          {localStorage.getItem("lastmin") >= 1 ? (
             <Tab
               eventKey="1"
               title={
@@ -178,26 +183,26 @@ const TasksPractice = () => {
         </Tabs>
         <Outlet />
         <Dialog
-        open={open}
-        onClose={null}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        {/* <DialogTitle id="alert-dialog-title">
+          open={open}
+          onClose={null}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          {/* <DialogTitle id="alert-dialog-title">
           {"Use Google's location service?"}
         </DialogTitle> */}
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Click to switch to the next task.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          {/* <Button onClick={handleClose}>Disagree</Button> */}
-          <Button onClick={handleClose} autoFocus>
-            Continue
-          </Button>
-        </DialogActions>
-      </Dialog>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Click to switch to the next task.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* <Button onClick={handleClose}>Disagree</Button> */}
+            <Button onClick={handleClose} autoFocus>
+              Continue
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </div>
   );

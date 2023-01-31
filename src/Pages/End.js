@@ -36,21 +36,21 @@ const End = () => {
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update time spent and second popup in both tasks");
+        console.log("Update time spent in tasks");
       })
       .catch((e) => {
         console.log(
-          "Unable to update time spent and second popup in both tasks: ",
+          "Unable to update time spent in tasks: ",
           e
         );
       });
   }, []);
 
-  window.setTimeout(function () {
-    localStorage.clear();
-    window.location.href =
-      "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  }, 15000);
+  // window.setTimeout(function () {
+  //   localStorage.clear();
+  //   window.location.href =
+  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
+  // }, 15000);
 
   return (
     <div className="Page">

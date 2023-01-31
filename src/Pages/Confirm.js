@@ -14,7 +14,6 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
-  localStorage.setItem("clickTimeChoice", false);
   localStorage.setItem("tabCounter", 0);
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")
@@ -65,6 +64,10 @@ const Confirm = () => {
     } else {
       window.location.replace("lotl");
     }
+  };
+
+  const handleChange = () => {
+    setOpen(false);
   };
 
   const marks = [
@@ -129,17 +132,17 @@ const Confirm = () => {
         {/* <p className="HomePage_p">The practice session is over.</p> */}
         <p className="HomePage_p">
           {" "}
-          We now ask you to decide how long you would like to spend on each
-          task.
-        </p>
-        <p className="HomePage_p">
-          In this part you will have <strong> 12 minutes</strong>.
-        </p>
-
-        <p className="HomePage_p">
-          Please decide how much time you want to spend on{" "}
+          We now ask you to decide how long you would like to spend on{" "}
           <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p>
+        <p className="HomePage_p">
+          In this part you have <strong> 12 minutes</strong>.
+        </p>
+
+        {/* <p className="HomePage_p">
+          Please decide how much time you want to spend on{" "}
+          <strong>Typing</strong> and on <strong>Watching Videos</strong>.
+        </p> */}
         <p className="HomePage_p">
           Note that for 1 out of every 20 participant the{" "}
           <strong>Time Choice</strong> decision will be binding:{" "}
@@ -158,7 +161,6 @@ const Confirm = () => {
             </li>
           </ul>{" "}
         </p>
-        <p className="HomePage_p"></p>
         <p className="HomePage_p">
           Please <strong>click on the slider</strong> and indicate your{" "}
           <strong>Time Choice</strong>:
@@ -183,9 +185,9 @@ const Confirm = () => {
             disabled={clicked}
           />
         </Box>
-
+        <p className="HomePage_p">
         {clicked ? null : <ConfirmUpdate />}
-
+        </p>
         <p className="HomePage_p">
           On the next page you will learn whether your Time Choice is binding.
         </p>
@@ -226,7 +228,7 @@ const Confirm = () => {
             <ConfirmUpdate />
           </DialogContent>
           <DialogActions>
-            <ButtonM color="error" onClick={handleClose}>
+            <ButtonM color="error" onClick={handleChange}>
               <strong>Change</strong>
             </ButtonM>
             <ButtonM color="success" onClick={handleClose} autoFocus>

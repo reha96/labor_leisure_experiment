@@ -21,9 +21,10 @@ import DialogContentText from "@mui/material/DialogContentText";
 const Tasks = () => {
   const [key, setKey] = useState(localStorage.getItem("activePage"));
   const [refresh, setRefresh] = useState(false);
-  const [counter, setCounter] = useState(parseInt(localStorage.getItem("tabCounter")));
+  const [counter, setCounter] = useState(
+    parseInt(localStorage.getItem("tabCounter"))
+  );
   const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
 
   const handleSelect = (key) => {
     if (key === "1") {
@@ -31,14 +32,14 @@ const Tasks = () => {
       setKey("1");
       setRefresh(true);
       localStorage.setItem("activePage", 1);
-      setCounter(counter+1)
-      localStorage.setItem("tabCounter", counter)
+      setCounter(counter + 1);
+      localStorage.setItem("tabCounter", counter);
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
       setKey("2");
-      setCounter(counter+1)
-      localStorage.setItem("tabCounter", counter)
+      setCounter(counter + 1);
+      localStorage.setItem("tabCounter", counter);
       // setRefresh(true)
       localStorage.setItem("activePage", 2);
       if (localStorage.getItem("treatment") === "autoplayOn") {
@@ -62,21 +63,21 @@ const Tasks = () => {
     }
   };
 
-  const handleClose2 = () => {
-    setOpen2(false);
-    localStorage.setItem("clickedOKtoswitch2", "yes");
-    localStorage.setItem("activePage", 1);
-    setKey("1"); // if state changes it works, if state remains it does not rerender
-  };
+  // const handleClose2 = () => {
+  //   setOpen2(false);
+  //   localStorage.setItem("clickedOKtoswitch2", "yes");
+  //   localStorage.setItem("activePage", 1);
+  //   setKey("1"); // if state changes it works, if state remains it does not rerender
+  // };
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if (
-        parseInt(localStorage.getItem("lastmin")) === 10 &&
-        parseInt(localStorage.getItem("lastsec")) === 0
-      ) {
-        setOpen2(true);
-      }
+      // if (
+      //   parseInt(localStorage.getItem("lastmin")) === 10 &&
+      //   parseInt(localStorage.getItem("lastsec")) === 0
+      // ) {
+      //   setOpen2(true);
+      // }
 
       if (localStorage.getItem("lottery") === "lotteryWin") {
         if (
@@ -121,9 +122,9 @@ const Tasks = () => {
           initialLeisureNot={localStorage.getItem("inactiveLeisure")}
           initialVideoPausedFor={localStorage.getItem("videoPausedFor")}
         />
-        <Typography variant="h6" color="secondary" className="center">
+        {/* <Typography variant="h6" color="secondary" className="center">
           Choose Task
-        </Typography>
+        </Typography> */}
         <style type="text/css">
           {`
         .bg-info {
@@ -230,8 +231,7 @@ const Tasks = () => {
               <Labor />
             </Tab>
           )}
-          {localStorage.getItem("lastmin") >= 10 ||
-          localStorage.getItem("timesUp") === "timesUpLeisure" ? (
+          {localStorage.getItem("timesUp") === "timesUpLeisure" ? (
             <Tab
               eventKey="2"
               title={
@@ -276,28 +276,6 @@ const Tasks = () => {
           <DialogActions>
             <ButtonM onClick={handleClose} autoFocus>
               <strong>Continue</strong>
-            </ButtonM>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open2}
-          onClose={null}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          {/* <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle> */}
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Now you can switch freely between tasks.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            {/* <Button onClick={handleClose}>Disagree</Button> */}
-            <ButtonM onClick={handleClose2} autoFocus>
-              Continue
             </ButtonM>
           </DialogActions>
         </Dialog>

@@ -5,6 +5,7 @@ import ButtonM from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import PriceList from "../Components/PriceList";
 import { useState, useEffect } from "react";
+import { Typography } from "@mui/material";
 
 const MPL = () => {
   localStorage.setItem("MPLdisable", true);
@@ -75,6 +76,9 @@ const MPL = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <div className="center">
+          <Typography variant="h6" className="center">
+            Autoplay On or Off?
+          </Typography>
           <p className="HomePage_p">
             In the practice session videos played automatically thanks to{" "}
             <strong> Autoplay</strong>. There is another version of the same
@@ -101,8 +105,8 @@ const MPL = () => {
           </p>
           <p className="HomePage_p">
             <strong>Consider for example the first decision. </strong>
-            If you preferred the Autoplay and this decision was implemented, you would have
-            Autoplay and receive £0.5 additional bonus payment.
+            If you preferred the Autoplay and this decision was implemented, you
+            would have Autoplay and receive £0.5 additional bonus payment.
           </p>
 
           <PriceList />

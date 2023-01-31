@@ -1,7 +1,6 @@
 import * as React from "react";
 import "../App.css";
 import Container from "react-bootstrap/Container";
-import ConfirmUpdate from "../Components/ConfirmUpdate";
 import ButtonM from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -156,31 +155,23 @@ const Lottery = () => {
         {/* <Typography variant="h6" className="center">
           Outcome
         </Typography> */}
-        <Typography variant="h6" className="center">
+        {/* <Typography variant="h6" className="center">
           Time Choice
-        </Typography>
+        </Typography> */}
         <p className="HomePage_p">
-          <Alert sx={{ mb: 2 }} severity="success">
+          <Alert sx={{ mb: 2 }} severity="info">
             Your Time Choice is not binding. You spend your time freely across
             both tasks.
           </Alert>
         </p>
-
-        <ConfirmUpdate />
 
         <Typography variant="h6" className="center">
           Recap
         </Typography>
         <p className="HomePage_p">
           On the next page you will spend 12 minutes.
-          <strong>
-            {" "}
-            For the first 2 minutes, you have to Type and cannot switch between
-            tasks.{" "}
-          </strong>
-          In the remaining 10 minutes, you spend your time between the tasks as
-          you please. Your bonus payment is higher if you Type and meet the
-          quality criteria.
+          You can switch between tasks as you please. Your bonus payment depends on how you actually spend your time between the tasks and whether your
+          Typing meets the quality criteria.
           {/* <hr></hr> */}
         </p>
 
@@ -204,12 +195,12 @@ const Lottery = () => {
                 <FormControlLabel
                   value="true"
                   control={<Radio />}
-                  label="higher if I spend time Typing while meeting the quality criteria."
+                  label="depends on the time I spend on each task."
                 />
                 <FormControlLabel
                   value="1"
                   control={<Radio />}
-                  label="equal to how much time I predict I will Type."
+                  label="does not depend on how much time I spend on each task."
                 />
               </RadioGroup>
               <FormHelperText>{helperText}</FormHelperText>

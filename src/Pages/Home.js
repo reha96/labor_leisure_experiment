@@ -77,7 +77,7 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the Back button in this study is disabled and doing so will take you back to this page.
+          Using the Back button in this study is disabled. <strong>Doing so will take you back to this page.</strong>
         </Alert>
 
         <div className="center">

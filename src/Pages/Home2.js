@@ -166,30 +166,17 @@ const Home2 = () => {
         </p>
         <p className="HomePage_p">
           {" "}
-          <strong>
+          {/* <strong> */}
             You are paid your seconds of work only if the following quality are
             met at the end of the 12 minutes:
-          </strong>
+          {/* </strong> */}
           <ul class="a">
             <li>Type at least 1 sentence per minute you spent on this task.</li>
             <li>Have an overall accuracy of at least 70 percent. </li>
           </ul>
-          <strong>
+          {/* <strong> */}
             Typing faster in this task will not earn you a higher bonus.
-          </strong>
-        </p>
-
-        <Typography variant="h6" className="center">
-          Task 2: Watching Videos
-        </Typography>
-        <p className="HomePage_p">
-          You watch funny animal videos from TikTok and YouTube.
-        </p>
-        <p className="HomePage_p">
-          <strong>
-            Each second you spend on this task your bonus payment increases by
-            0.1p.{" "}
-          </strong>
+          {/* </strong> */}
         </p>
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
@@ -223,6 +210,19 @@ const Home2 = () => {
             </FormControl>
           </form>
         </Box>
+        <Typography variant="h6" className="center">
+          Task 2: Watching Videos
+        </Typography>
+        <p className="HomePage_p">
+          You watch funny animal videos from TikTok and YouTube.
+        </p>
+        <p className="HomePage_p">
+          <strong>
+            Each second you spend on this task your bonus payment increases by
+            0.1p.{" "}
+          </strong>
+        </p>
+
         <div className="center">
           {!(localStorage.getItem("stop") === "true") ? (
             <ButtonM
