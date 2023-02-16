@@ -15,8 +15,11 @@ const Home1 = () => {
   const [checked, setChecked] = useState(false);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
-  const chromium = ((browser["browser"]["name"] === "Chrome") || (browser["browser"]["name"] === "Microsoft Edge"));
+  const chromium =
+    browser["browser"]["name"] === "Chrome" ||
+    browser["browser"]["name"] === "Microsoft Edge";
   const desktop = browser["platform"]["type"] === "desktop";
+  // console.log(chromium, desktop)
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);

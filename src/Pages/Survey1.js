@@ -1,40 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 
-const End = () => {
+const Survey1 = () => {
+  const [typedValue, setTypedValue] = useState("");
   useEffect(() => {
-    localStorage.setItem("emptyField?", "");
-    if (parseInt(localStorage.getItem("leisureTime")) > 0) {
-      if (parseInt(localStorage.getItem("tabCounter")) === 0) {
-        localStorage.setItem("tabCounter", 1);
-      }
-    }
-    let passvalue = {
-      "browser.timespentTyping": localStorage.getItem("laborTime"),
-      "browser.timespentWatching": localStorage.getItem("leisureTime"),
-      "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
-      "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
-      "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
-      "browser.tabCounter": localStorage.getItem("tabCounter"),
-      "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
-      "browser.MPL1": localStorage.getItem("MPL1"),
-      "browser.MPL2": localStorage.getItem("MPL2"),
-      "browser.MPL3": localStorage.getItem("MPL3"),
-      "browser.MPL4": localStorage.getItem("MPL4"),
-      "browser.MPL5": localStorage.getItem("MPL5"),
-      "browser.MPL6": localStorage.getItem("MPL6"),
-      "browser.MPL7": localStorage.getItem("MPL7"),
-      "browser.MPL8": localStorage.getItem("MPL8"),
-      "browser.MPL9": localStorage.getItem("MPL9"),
-      "clikcedOkToSwitch.secondPopUp":
-        localStorage.getItem("clickedOKtoswitch2"),
-    };
+    let passvalue = {};
 
     const link = "/api/" + localStorage.getItem("ID");
-
     axios
       .patch(link, passvalue)
       .then(() => {
@@ -45,9 +22,8 @@ const End = () => {
       });
   }, []);
   const onClick = (e) => {
-    window.location.assign("s1");
-  }
-  
+    window.location.assign("s2");
+  };
   // window.setTimeout(function () {
   //   localStorage.clear();
   //   window.location.href =
@@ -89,21 +65,42 @@ const End = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
-          End Survey
+        <Typography variant="h5" className="center">
+          What is your birthyear?
         </Typography>
-        <p className="center">
-          First part of the study is finished. You may now continue with the survey.
-        </p>
-
+        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
+          <TextField
+            id="outlined-basic"
+            label="Birthyear"
+            type="number"
+            variant="outlined"
+            onChange={(event) => setTypedValue(event.target.value)}
+          />
+        </Box>
         <div className="center">
-          <Button variant="contained" color="secondary" type="button" onClick={onClick}>
-            <strong>Continue</strong>
-          </Button>
+          {typedValue === "" ? (
+            <Button
+              disabled
+              variant="contained"
+              color="secondary"
+              type="button"
+            >
+              <strong>Continue</strong>
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={onClick}
+            >
+              <strong>Continue</strong>
+            </Button>
+          )}
         </div>
       </Container>
     </div>
   );
 };
 
-export default End;
+export default Survey1;

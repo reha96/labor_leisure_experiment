@@ -21,6 +21,13 @@ import LotteryWin from "./Pages/LotteryWin";
 import LotteryLose from "./Pages/LotteryLose";
 import Home1 from "./Pages/Home1";
 import MPL from "./Pages/MPL";
+import Survey1 from "./Pages/Survey1";
+import Survey2 from "./Pages/Survey2";
+import Survey3 from "./Pages/Survey3";
+import Survey4 from "./Pages/Survey4";
+import Survey5 from "./Pages/Survey5";
+import EndSurvey from "./Pages/EndSurvey";
+import Survey6 from "./Pages/Survey6";
 
 function App() {
   return (
@@ -44,6 +51,13 @@ function App() {
             <Route path=":userId/tasks/labor" element={<Labor />} />
           </Route>
           <Route path=":userId/end" element={<End />} />
+          <Route path=":userId/s1" element={<Survey1 />} />
+          <Route path=":userId/s2" element={<Survey2 />} />
+          <Route path=":userId/s3" element={<Survey3 />} />
+          <Route path=":userId/s4" element={<Survey4 />} />
+          <Route path=":userId/s5" element={<Survey5 />} />
+          <Route path=":userId/s6" element={<Survey6 />} />
+          <Route path=":userId/endsurvey" element={<EndSurvey />} />
         </Routes>
       </Router>
     </div>

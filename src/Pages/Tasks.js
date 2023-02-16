@@ -82,8 +82,8 @@ const Tasks = () => {
       if (localStorage.getItem("lottery") === "lotteryWin") {
         if (
           parseInt(localStorage.getItem("inactiveLabor")) +
-            parseInt(localStorage.getItem("laborTime") - 12) ===
-          parseInt(localStorage.getItem("time_choice")) * 6
+            parseInt(localStorage.getItem("laborTime")) ===
+          parseInt(localStorage.getItem("time_choice"))
         ) {
           if (localStorage.getItem("activeTab") === "Labor") {
             localStorage.setItem("timesUp", "timesUpLabor");
@@ -94,7 +94,7 @@ const Tasks = () => {
         if (
           parseInt(localStorage.getItem("inactiveLeisure")) +
             parseInt(localStorage.getItem("leisureTime")) ===
-          parseInt(100 - localStorage.getItem("time_choice")) * 6
+          parseInt(720 - localStorage.getItem("time_choice"))
         ) {
           if (localStorage.getItem("activeTab") === "Leisure") {
             localStorage.setItem("timesUp", "timesUpLeisure");
