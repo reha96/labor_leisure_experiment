@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
-import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import Box from "@mui/material/Box";
+import axios from "axios";
 
 const EndSurvey = () => {
-  localStorage.clear();
+  useEffect(() => {
+    let passvalue = {
+      "browser.strategy": localStorage.getItem("strategy"),
+      "browser.feedback": localStorage.getItem("feedback"),
+    };
+
+    const link = "/api/" + localStorage.getItem("ID");
+    axios
+      .patch(link, passvalue)
+      .then(() => {
+        console.log("Recorded strategy and feedback");
+      })
+      .catch((e) => {
+        console.log("Unable to record strategy and feedback: ", e);
+      });
+
+    localStorage.clear();
+  }, []);
+
   return (
     <div className="Page">
       <style type="text/css">
@@ -46,11 +59,11 @@ const EndSurvey = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <Typography variant="h6" className="center">
-          Thank you
+          Thank you for participating!
         </Typography>
-        <p className="center">
+        <p className="Homepage_p">
           This study is conducted by Reha Tuncer, PhD student at the University
-          of Luxembourg. Please contact reha.tuncer@uni.lu if you have any
+          of Luxembourg. Please contact <strong> reha.tuncer@uni.lu </strong> if you have any
           questions about the study.
         </p>
         <Typography variant="h6" className="center">

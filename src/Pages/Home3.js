@@ -56,7 +56,7 @@ const Home3 = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Practice
         </Typography>
         <p className="HomePage_p">
@@ -79,6 +79,7 @@ const Home3 = () => {
 
         <div className="center">
           <ButtonM
+            sx={{ mt: 2.5 }}
             color="secondary"
             variant="contained"
             type="button"

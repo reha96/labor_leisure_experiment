@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
-import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
 const Survey1 = () => {
-  const [typedValue, setTypedValue] = useState("");
-  useEffect(() => {
-    let passvalue = {};
+  const [typedValue, setTypedValue] = useState(
+    localStorage.getItem("birthyear")
+  );
 
-    const link = "/api/" + localStorage.getItem("ID");
-    axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Update time spent in tasks");
-      })
-      .catch((e) => {
-        console.log("Unable to update time spent in tasks: ", e);
-      });
-  }, []);
   const onClick = (e) => {
+    localStorage.setItem("birthyear", typedValue);
     window.location.assign("s2");
   };
   // window.setTimeout(function () {

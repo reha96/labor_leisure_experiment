@@ -5,6 +5,12 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 
 const End = () => {
+  localStorage.setItem("birthyear", "");
+  localStorage.setItem("gender", "");
+  localStorage.setItem("education", "");
+  localStorage.setItem("marital", "");
+  localStorage.setItem("employment", "");
+  localStorage.setItem("income", "");
   useEffect(() => {
     localStorage.setItem("emptyField?", "");
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {
@@ -19,6 +25,7 @@ const End = () => {
       "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
       "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
       "browser.tabCounter": localStorage.getItem("tabCounter"),
+      "browser.typeCount": localStorage.getItem("localcount"),
       "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
       "browser.MPL1": localStorage.getItem("MPL1"),
       "browser.MPL2": localStorage.getItem("MPL2"),
@@ -46,8 +53,8 @@ const End = () => {
   }, []);
   const onClick = (e) => {
     window.location.assign("s1");
-  }
-  
+  };
+
   // window.setTimeout(function () {
   //   localStorage.clear();
   //   window.location.href =
@@ -89,15 +96,22 @@ const End = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
-          End Survey
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+          Survey
         </Typography>
         <p className="center">
-          First part of the study is finished. You may now continue with the survey.
+          You completed the first part of the study. You may now continue with
+          the survey.
         </p>
 
         <div className="center">
-          <Button variant="contained" color="secondary" type="button" onClick={onClick}>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ mt: 2.5 }}
+            type="button"
+            onClick={onClick}
+          >
             <strong>Continue</strong>
           </Button>
         </div>

@@ -46,21 +46,20 @@ function Video({ src }) {
     }
   };
 
-  const handleVideoEnded = () => {
-    console.log("Video ended!");
+  const handleVideoEnded = () => {   
+    localStorage.setItem("watchedVideo", parseInt(localStorage.getItem("watchedVideo"))+1);
+    console.log("Video watched " + localStorage.getItem("watchedVideo"));
     if (localStorage.getItem("treatment").includes("On")) {
-        localStorage.setItem("videoPaused", "no");
-      } else {
-        localStorage.setItem("videoPaused", "yes");
-      }
+      localStorage.setItem("videoPaused", "no");
+    } else {
+      localStorage.setItem("videoPaused", "yes");
+    }
     endRef.current.scrollIntoView({ behavior: "smooth" });
     // videoRef.current.scrollIntoView(false);
   };
 
   return (
-    <div
-      className="video"
-    >
+    <div className="video">
       {!isVisible ? stopVideo() : playVideo()}
       {/* {videoRef.current.paused ? localStorage.setItem("videoPaused", "yes") : localStorage.setItem("videoPaused", "no")} */}
       <video
@@ -68,11 +67,11 @@ function Video({ src }) {
         // controlsList="nofullscreen nodownload"
         // disablePictureInPicture
         className="video__player"
-        ref={videoRef} 
-        // loop 
-        src={src} 
-        type="video/mp4" 
-        onEnded={handleVideoEnded} 
+        ref={videoRef}
+        // loop
+        src={src}
+        type="video/mp4"
+        onEnded={handleVideoEnded}
       ></video>
       <div ref={endRef} />
     </div>

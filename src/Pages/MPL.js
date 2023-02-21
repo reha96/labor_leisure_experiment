@@ -76,8 +76,8 @@ const MPL = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <div className="center">
-          <Typography variant="h6" className="center">
-            Autoplay On or Off?
+          <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+            Autoplay on or off?
           </Typography>
           <p className="HomePage_p">
             In the practice session videos played automatically thanks to{" "}
@@ -123,6 +123,7 @@ const MPL = () => {
           )}
           <ButtonM
             color="secondary"
+            sx={{ mt: 2 }}
             variant="contained"
             type="button"
             onClick={nextPage}

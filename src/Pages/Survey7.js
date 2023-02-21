@@ -3,38 +3,35 @@ import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-const Survey6 = () => {
-  const [value, setValue] = useState(localStorage.getItem("income"));
+const Survey7 = () => {
+  const [typedValue, setTypedValue] = useState("");
+  const [typedValue2, setTypedValue2] = useState("");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const onClick = (e) => {
+    localStorage.setItem("strategy", typedValue);
+    localStorage.setItem("feedback", typedValue2);
+    window.location.assign("endsurvey");
   };
 
   useEffect(() => {
     let passvalue = {
-      "browser.employment": localStorage.getItem("employment"),
+      "browser.income": localStorage.getItem("income"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update employment");
+        console.log("Update income");
       })
       .catch((e) => {
-        console.log("Unable to update employment: ", e);
+        console.log("Unable to update income: ", e);
       });
   }, []);
-  const onClick = (e) => {
-    localStorage.setItem("income", value);
-    window.location.assign("s7");
-  };
+
   // window.setTimeout(function () {
   //   localStorage.clear();
   //   window.location.href =
@@ -76,65 +73,36 @@ const Survey6 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h5" className="center">
-          What is your annual personal income?
+        <Typography sx={{ mx: 5, justifyContent: 'center'}} variant="h5">
+          With a few words, how would you describe your reasoning when switching between the two tasks?   
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
-          <FormControl>
-            {/* <FormLabel id="demo-controlled-radio-buttons-group">
-              Choose gender
-            </FormLabel> */}
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={value}
-              onChange={handleChange}
-            >
-              <FormControlLabel
-                value="0-10"
-                control={<Radio />}
-                label="£10,000 or less"
-              />
-              <FormControlLabel
-                value="10-12"
-                control={<Radio />}
-                label="£10,000 to £12,000"
-              />
-              <FormControlLabel
-                value="12-15"
-                control={<Radio />}
-                label="£12,000 to £15,000"
-              />
-              <FormControlLabel
-                value="15-20"
-                control={<Radio />}
-                label="£15,000 to £20,000"
-              />
-              <FormControlLabel
-                value="20-30"
-                control={<Radio />}
-                label="£20,000 to £30,000"
-              />
-              <FormControlLabel
-                value="30-50"
-                control={<Radio />}
-                label="£30,000 to £50,000"
-              />
-              <FormControlLabel
-                value="50-70"
-                control={<Radio />}
-                label="£50,000 to £70,000"
-              />
-              <FormControlLabel
-                value="70+"
-                control={<Radio />}
-                label="£70,000 or more"
-              />
-            </RadioGroup>
-          </FormControl>
+          <TextField
+            id="outlined-basic"
+            label="Reasoning"
+            multiline
+            rows={4}
+            fullWidth
+            variant="outlined"
+            onChange={(event) => setTypedValue(event.target.value)}
+          />
+        </Box>
+        <Typography variant="h5" className="center">
+          Any other feedback you would like to give to researchers?   
+        </Typography>
+        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
+          <TextField 
+            id="outlined-basic"
+            label="Feedback (Optional)"
+            multiline
+            rows={4}
+            fullWidth
+            variant="outlined"
+            onChange={(event) => setTypedValue2(event.target.value)}
+          />
         </Box>
         <div className="center">
-          {value === "" ? (
+          {typedValue === "" ? (
             <Button
               disabled
               variant="contained"
@@ -159,4 +127,4 @@ const Survey6 = () => {
   );
 };
 
-export default Survey6;
+export default Survey7;

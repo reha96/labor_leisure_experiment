@@ -125,7 +125,7 @@ const Confirm = () => {
           </p>
         ) : null}
 
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Time Choice
         </Typography>
         {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
@@ -144,8 +144,8 @@ const Confirm = () => {
           <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p> */}
         <p className="HomePage_p">
-          For 1 out of every 20 participant the{" "}
-          <strong>Time Choice</strong> decision will be binding:{" "}
+          For 1 out of every 20 participant the <strong>Time Choice</strong>{" "}
+          decision will be binding:{" "}
         </p>
         <p className="HomePage_p">
           <ul class="a">
@@ -185,16 +185,16 @@ const Confirm = () => {
             disabled={clicked}
           />
         </Box>
+        <p className="HomePage_p">{clicked ? null : <ConfirmUpdate />}</p>
         <p className="HomePage_p">
-        {clicked ? null : <ConfirmUpdate />}
-        </p>
-        <p className="HomePage_p">
-          On the next page you will learn whether your Time Choice is binding.
+          On the next page you will learn whether your{" "}
+          <strong>Time Choice</strong> is binding.
         </p>
 
         <div className="center">
           {clicked ? (
             <ButtonM
+              sx={{ mt: 2.5 }}
               color="secondary"
               variant="contained"
               type="button"
@@ -205,6 +205,7 @@ const Confirm = () => {
             </ButtonM>
           ) : (
             <ButtonM
+              sx={{ mt: 2.5 }}
               color="secondary"
               variant="contained"
               type="button"

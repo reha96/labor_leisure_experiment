@@ -10,26 +10,29 @@ import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 
 const Survey3 = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(localStorage.getItem("education"));
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
   useEffect(() => {
-    let passvalue = {};
+    let passvalue = {
+      "browser.gender": localStorage.getItem("gender")
+    };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update time spent in tasks");
+        console.log("Update gender");
       })
       .catch((e) => {
-        console.log("Unable to update time spent in tasks: ", e);
+        console.log("Unable to update gender: ", e);
       });
   }, []);
   const onClick = (e) => {
+    localStorage.setItem("education", value)
     window.location.assign("s4");
   };
   // window.setTimeout(function () {
@@ -73,7 +76,7 @@ const Survey3 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h5" className="center">
+        <Typography sx={{ mx: 5, justifyContent: 'center'}} variant="h5" className="center">
           What is the highest level of education you have completed?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">

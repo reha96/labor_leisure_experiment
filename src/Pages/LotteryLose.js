@@ -160,18 +160,19 @@ const Lottery = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-            Your Time Choice is not binding. You spend your time freely across
-            both tasks.
+            Your <strong>Time Choice</strong> is not binding. You spend your
+            time freely across both tasks.
           </Alert>
         </p>
 
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Recap
         </Typography>
         <p className="HomePage_p">
-          On the next page you will spend 12 minutes.
-          You can switch between tasks as you please. Your bonus payment depends on how you actually spend your time between the tasks and whether your
-          Typing meets the quality criteria.
+          On the next page you will spend 12 minutes. You can switch between
+          tasks as you please. Your bonus payment depends on how you actually
+          spend your time between the tasks and whether your{" "}
+          <strong> Typing</strong> meets the quality criteria.
           {/* <hr></hr> */}
         </p>
 
@@ -215,6 +216,7 @@ const Lottery = () => {
         <div className="center">
           {!(localStorage.getItem("stop2") === "true") ? (
             <ButtonM
+              sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
               type="button"
@@ -224,6 +226,7 @@ const Lottery = () => {
             </ButtonM>
           ) : (
             <ButtonM
+              sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
               type="button"

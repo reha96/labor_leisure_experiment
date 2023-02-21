@@ -17,7 +17,7 @@ const LeisurePractice = () => {
       setAplay("off");
     }
     if (localStorage.getItem("treatment") === "MPL") {
-      setAplay("off");
+      setAplay("on");
     }
     if (localStorage.getItem("treatment") === "autoplayOn") {
       setAplay("on");

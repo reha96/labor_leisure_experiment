@@ -44,7 +44,7 @@ const Home = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Study Description
         </Typography>
         <p className="HomePage_p">In this study you will:</p>
@@ -58,12 +58,11 @@ const Home = () => {
           The total duration of the study is about <strong>22 minutes.</strong>{" "}
           <br></br>
           You receive <strong>£2.2</strong> for your participation and earn a
-          bonus payment between <strong>£0.72</strong> and{" "}
-          <strong>£3.6</strong> depending on the time you choose to spend on
-          each task.
+          bonus payment between <strong>£0.72</strong> and <strong>£3.6</strong>{" "}
+          depending on the time you choose to spend on each task.
         </p>
 
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Data Collected
         </Typography>
         <p className="HomePage_p">
@@ -77,11 +76,13 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the Back button in this study is disabled. <strong>Doing so will take you back to this page.</strong>
+          Using the Back button in this study is disabled.{" "}
+          <strong>Doing so will take you back to this page.</strong>
         </Alert>
 
         <div className="center">
           <ButtonM
+            sx={{ mt: 2 }}
             variant="contained"
             color="secondary"
             type="button"

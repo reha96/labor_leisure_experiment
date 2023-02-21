@@ -19,7 +19,6 @@ const Home1 = () => {
     browser["browser"]["name"] === "Chrome" ||
     browser["browser"]["name"] === "Microsoft Edge";
   const desktop = browser["platform"]["type"] === "desktop";
-  // console.log(chromium, desktop)
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
@@ -27,31 +26,30 @@ const Home1 = () => {
   const onClick = (e) => {
     // use only when need to stop page from loading next page
     localStorage.setItem("participantCreated", "no");
+    localStorage.setItem("watchedVideo", 0);
     localStorage.setItem("attentionFail1", 0);
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
     localStorage.setItem("ID", typedValue);
-    // const treatment = ["autoplayOn", "autoplayOff", "MPL"]
-    const treatment = ["autoplayOn", "autoplayOff"];
-    const random = Math.floor(Math.random() * treatment.length);
-    console.log(treatment[random]);
-    localStorage.setItem("treatment", treatment[random]);
-    // if (localStorage.getItem("treatment") <= 0.33) {
-    //   localStorage.setItem("treatment", "autoplayOn");
-    // } else if (
-    //   localStorage.getItem("treatment") >= 0.33 &&
-    //   localStorage.getItem("treatment") <= 0.67
-    // ) {
-    //   localStorage.setItem("treatment", "autoplayOff");
-    // }
-    // else {
-    // localStorage.setItem("treatment", "MPL");
-    // }
+    // set MPL treatment here
+    localStorage.setItem("secondWave", "yes");
+    if (localStorage.getItem("secondWave") === "no") {
+      const treatment = ["autoplayOn", "autoplayOff"];
+      const random = Math.floor(Math.random() * treatment.length);
+      console.log(treatment[random]);
+      localStorage.setItem("treatment", treatment[random]);
+    } else {
+      localStorage.setItem("treatment", "MPL");
+    }
+    if (localStorage.getItem("secondWave") === "no") {
     if (localStorage.getItem("lottery") >= 0.95) {
       localStorage.setItem("lottery", "lotteryWin");
     } else {
       localStorage.setItem("lottery", "lotteryLose");
+    }}
+    else{
+      localStorage.setItem("lottery", "lotteryLose")
     }
     window.location.replace(typedValue.toString() + "/next");
   };
@@ -91,7 +89,7 @@ const Home1 = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Your Consent
         </Typography>
         <p className="HomePage_p">I have been informed about:</p>
@@ -127,7 +125,7 @@ const Home1 = () => {
           />
         </FormGroup>
 
-        <Box className="center" sx={{ m: 2.5 }} noValidate autoComplete="off">
+        <Box className="center" sx={{ m: 3.5 }} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
             label="Prolific ID"

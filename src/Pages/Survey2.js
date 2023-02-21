@@ -10,26 +10,29 @@ import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 
 const Survey2 = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(localStorage.getItem("gender"));
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
   useEffect(() => {
-    let passvalue = {};
+    let passvalue = {
+      "browser.birthyear": localStorage.getItem("birthyear")
+    };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update time spent in tasks");
+        console.log("Update birthyear");
       })
       .catch((e) => {
-        console.log("Unable to update time spent in tasks: ", e);
+        console.log("Unable to update birthyear: ", e);
       });
   }, []);
   const onClick = (e) => {
+    localStorage.setItem("gender", value)
     window.location.assign("s3");
   };
   // window.setTimeout(function () {

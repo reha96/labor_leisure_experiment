@@ -154,7 +154,7 @@ const Home2 = () => {
           In this study you have 12 minutes during which you will do 2 different
           tasks.
         </p>
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Task 1: Typing
         </Typography>
         <p className="HomePage_p">You type CAPTCHA's.</p>
@@ -167,20 +167,20 @@ const Home2 = () => {
         <p className="HomePage_p">
           {" "}
           {/* <strong> */}
-            You are paid your seconds of work only if the following quality are
-            met at the end of the 12 minutes:
+          You are paid your seconds of work only if the following quality are
+          met at the end of the 12 minutes:
           {/* </strong> */}
           <ul class="a">
             <li>Type at least 1 sentence per minute you spent on this task.</li>
             <li>Have an overall accuracy of at least 70 percent. </li>
           </ul>
           {/* <strong> */}
-            Typing faster in this task will not earn you a higher bonus.
+          Typing faster in this task will not earn you a higher bonus.
           {/* </strong> */}
         </p>
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
-            <FormControl sx={{ m: 3 }} error={error} variant="standard">
+            <FormControl sx={{ m: 1.5 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
                 I am paid my seconds of work only if I ...
               </FormLabel>
@@ -210,7 +210,7 @@ const Home2 = () => {
             </FormControl>
           </form>
         </Box>
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Task 2: Watching Videos
         </Typography>
         <p className="HomePage_p">
@@ -226,6 +226,7 @@ const Home2 = () => {
         <div className="center">
           {!(localStorage.getItem("stop") === "true") ? (
             <ButtonM
+              sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
               type="button"
@@ -236,6 +237,7 @@ const Home2 = () => {
           ) : (
             // <Link underline="none" href={"next2"}>
             <ButtonM
+              sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
               type="button"

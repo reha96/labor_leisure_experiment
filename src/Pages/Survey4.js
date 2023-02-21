@@ -10,26 +10,29 @@ import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 
 const Survey4 = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(localStorage.getItem("marital"));
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
   useEffect(() => {
-    let passvalue = {};
+    let passvalue = {
+      "browser.education": localStorage.getItem("education")
+    };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update time spent in tasks");
+        console.log("Update education");
       })
       .catch((e) => {
-        console.log("Unable to update time spent in tasks: ", e);
+        console.log("Unable to update education: ", e);
       });
   }, []);
   const onClick = (e) => {
+    localStorage.setItem("marital", value)
     window.location.assign("s5");
   };
   // window.setTimeout(function () {

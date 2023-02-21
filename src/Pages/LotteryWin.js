@@ -161,20 +161,20 @@ const LotteryWin = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-            Your Time Choice is binding. You have to Type for your chosen
+            Your <strong>Time Choice</strong> is binding. You have to <strong>Type</strong> for your chosen
             duration.
           </Alert>
         </p>
 
-        <Typography variant="h6" className="center">
+        <Typography variant="h5" sx={{ my: 2.5}} className="center">
           Recap
         </Typography>
         <p className="HomePage_p">
           On the next page you will spend 12 minutes.
           You can switch between tasks as you please but cannot spend 
-          more than the total duration indicated in your Time Choice for
-          each task. Your bonus payment is equal to your Time Choice if your
-          Typing meets the quality criteria.
+          more than the total duration indicated in your <strong>Time Choice</strong> for
+          each task. Your bonus payment is equal to your <strong>Time Choice</strong> if your
+          <strong> Typing</strong> meets the quality criteria.
           {/* <hr></hr> */}
         </p>
 

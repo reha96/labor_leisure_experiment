@@ -5,6 +5,8 @@ import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlineRounded";
 import axios from "axios";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
 
 const Labor = () => {
   const [imgsLoaded, setImgsLoaded] = useState(false);
@@ -413,7 +415,7 @@ const Labor = () => {
 
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
-  console.log(localStorage.getItem(typedValue));
+  // console.log(localStorage.getItem(typedValue));
 
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("localcount"))
@@ -454,13 +456,13 @@ const Labor = () => {
     setCounter(Image);
     console.log(Image + "  Image value after submit");
     window.localStorage.setItem("localcount", Image);
-    console.log(
-      window.localStorage.getItem("localcount") +
-        "  localcount value after submit"
-    );
-    console.log(
-      window.localStorage.getItem("transc") + "  transc value after submit"
-    );
+    // console.log(
+    //   window.localStorage.getItem("localcount") +
+    //     "  localcount value after submit"
+    // );
+    // console.log(
+    //   window.localStorage.getItem("transc") + "  transc value after submit"
+    // );
 
     let passvalue = {
       "browser.userTranscription": localStorage.getItem("transc"),
@@ -495,16 +497,21 @@ const Labor = () => {
           </div>
         );
       })}
-      <p style={{ display: "flex", justifyContent: "center" }}>
+      {/* <p style={{ display: "flex", justifyContent: "center" }}>
         Type the sentence:
-      </p>
-      <textarea
-        className="textarea"
-        type="text"
-        value={typedValue}
-        onChange={(event) => setTypedValue(event.target.value)}
-        placeholder={localStorage.getItem("lastString")}
-      />
+      </p> */}
+      <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
+        <TextField
+          id="outlined-basic"
+          label="Type the sentence"
+          multiline
+          rows={4}
+          fullWidth
+          variant="outlined"
+          value={typedValue}
+          onChange={(event) => setTypedValue(event.target.value)}
+        />
+      </Box>
       <div className="container">
         <p style={{ display: "flex", justifyContent: "center" }}>
           {" "}

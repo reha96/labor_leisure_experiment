@@ -58,7 +58,7 @@ const Leisure = () => {
             }
             sx={{ mb: 0, mt: 1 }}
           >
-            Click on videos to start watching.
+            Click on the video to start watching
           </Alert>
         </Collapse>
       )}
