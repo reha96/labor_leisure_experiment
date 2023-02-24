@@ -88,7 +88,7 @@ const Survey7 = () => {
           />
         </Box>
         <Typography variant="h5" className="center">
-          Any other feedback you would like to give to researchers?   
+          Any other feedback you would like to give the researchers?   
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <TextField 
