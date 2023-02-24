@@ -33,7 +33,7 @@ const Home1 = () => {
     localStorage.setItem("lottery", Math.random());
     localStorage.setItem("ID", typedValue);
     // set MPL treatment here
-    localStorage.setItem("secondWave", "yes");
+    localStorage.setItem("secondWave", "no");
     if (localStorage.getItem("secondWave") === "no") {
       const treatment = ["autoplayOn", "autoplayOff"];
       const random = Math.floor(Math.random() * treatment.length);

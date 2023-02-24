@@ -48,7 +48,7 @@ function Video({ src }) {
 
   const handleVideoEnded = () => {   
     localStorage.setItem("watchedVideo", parseInt(localStorage.getItem("watchedVideo"))+1);
-    console.log("Video watched " + localStorage.getItem("watchedVideo"));
+    // console.log("Video watched " + localStorage.getItem("watchedVideo"));
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
     } else {

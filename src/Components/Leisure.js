@@ -27,7 +27,7 @@ const Leisure = () => {
       } else {
         localStorage.setItem("videoPaused", "yes");
       }
-      console.log(localStorage.getItem("videoPaused"));
+      // console.log(localStorage.getItem("videoPaused"));
     }
 
     if (aplay === "off") {

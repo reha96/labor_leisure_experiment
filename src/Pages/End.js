@@ -26,6 +26,7 @@ const End = () => {
       "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
       "browser.tabCounter": localStorage.getItem("tabCounter"),
       "browser.typeCount": localStorage.getItem("localcount"),
+      "browser.watchedVideo": localStorage.getItem("watchedVideo"),
       "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
       "browser.MPL1": localStorage.getItem("MPL1"),
       "browser.MPL2": localStorage.getItem("MPL2"),

@@ -19,9 +19,11 @@ const EndSurvey = () => {
       .catch((e) => {
         console.log("Unable to record strategy and feedback: ", e);
       });
-
-    localStorage.clear();
   }, []);
+
+  setTimeout(() => {
+    localStorage.clear();
+  }, "5000")
 
   return (
     <div className="Page">
@@ -70,15 +72,15 @@ const EndSurvey = () => {
           Prolific Completion Link
         </Typography>
         <p className="center">
-          <a href="https://app.prolific.co/submissions/complete?cc=LINKHERE">
+          <a href="https://app.prolific.co/submissions/complete?cc=C7A8ID8Z">
             {" "}
-            https://app.prolific.co/submissions/complete?cc=LINKHERE{" "}
+            https://app.prolific.co/submissions/complete?cc=C7A8ID8Z{" "}
           </a>
         </p>
         <Typography variant="h6" className="center">
           Prolific Completion Code
         </Typography>
-        <p className="center">CODE</p>
+        <p className="center">C7A8ID8Z</p>
       </Container>
     </div>
   );

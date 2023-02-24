@@ -180,7 +180,7 @@ const Home2 = () => {
         </p>
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
-            <FormControl sx={{ m: 1.5 }} error={error} variant="standard">
+            <FormControl sx={{ mt: 1.5 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
                 I am paid my seconds of work only if I ...
               </FormLabel>
@@ -214,7 +214,7 @@ const Home2 = () => {
           Task 2: Watching Videos
         </Typography>
         <p className="HomePage_p">
-          You watch funny animal videos from TikTok and YouTube.
+          You watch funny animal videos compiled from TikTok and YouTube.
         </p>
         <p className="HomePage_p">
           <strong>
