@@ -55,9 +55,9 @@ const Home = () => {
           </ul>
         </p>
         <p className="HomePage_p">
-          The total duration of the study is about <strong>22 minutes.</strong>{" "}
+          The total duration of the study is about <strong>20 minutes.</strong>{" "}
           <br></br>
-          You receive <strong>£2.2</strong> for your participation and earn a
+          You receive <strong>£2</strong> for your participation and earn a
           bonus payment between <strong>£0.72</strong> and <strong>£3.6</strong>{" "}
           depending on the time you choose to spend on each task.
         </p>
