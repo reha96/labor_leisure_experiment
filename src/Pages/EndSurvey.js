@@ -74,7 +74,7 @@ const EndSurvey = () => {
         <p className="center">
           <a href="https://app.prolific.co/submissions/complete?cc=C4Y4D45N">
             {" "}
-            https://app.prolific.co/submissions/complete?cc=C7A8ID8Z{" "}
+            https://app.prolific.co/submissions/complete?cc=C4Y4D45N{" "}
           </a>
         </p>
         <Typography variant="h6" className="center">
