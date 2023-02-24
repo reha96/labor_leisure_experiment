@@ -144,7 +144,7 @@ const Confirm = () => {
           <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p> */}
         <p className="HomePage_p">
-          For 1 out of every 20 participant the <strong>Time Choice</strong>{" "}
+          For 1 out of every 20 participants the <strong>Time Choice</strong>{" "}
           decision will be binding:{" "}
         </p>
         <p className="HomePage_p">

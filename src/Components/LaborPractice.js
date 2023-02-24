@@ -162,12 +162,11 @@ const LaborPractice = () => {
         );
       })}
       {/* <p style={{ display: "flex", justifyContent: "center" }}>
-        Type the sentence:
       </p> */}
       <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
         <TextField
           id="outlined-basic"
-          label="Type the sentence"
+          label="Type the CAPTCHA"
           multiline
           rows={4}
           fullWidth
@@ -183,7 +182,7 @@ const LaborPractice = () => {
           <strong>
             &nbsp;{window.localStorage.getItem("localcount")}&nbsp;
           </strong>{" "}
-          sentences submitted{" "}
+          CAPTCHA's submitted{" "}
         </p>
       </div>
       <div className="container">
