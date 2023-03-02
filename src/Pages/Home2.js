@@ -161,7 +161,7 @@ const Home2 = () => {
         <p className="HomePage_p">
           <strong>
             Each second you spend on this task your bonus payment increases by
-            0.5p.{" "}
+            0.2p.{" "}
           </strong>
         </p>
         <p className="HomePage_p">
@@ -203,7 +203,7 @@ const Home2 = () => {
                 <FormControlLabel
                   value="1-70"
                   control={<Radio />}
-                  label="type at least 1 CAPTCHA per minute with 70 percent accuracy."
+                  label="type at least 1 CAPTCHA per minute with overall 70 percent accuracy."
                 />
               </RadioGroup>
               <FormHelperText>{helperText}</FormHelperText>

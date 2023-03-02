@@ -35,7 +35,7 @@ const ConfirmUpdate = (props) => {
         This would earn you{" "}
         <strong>
           £
-          {(2 + (divi * 0.5) / 100 + ((720 - divi) * 0.1) / 100).toPrecision(
+          {(2 + (divi * 0.2) / 100 + ((720 - divi) * 0.1) / 100).toPrecision(
             3
           )}
         </strong>

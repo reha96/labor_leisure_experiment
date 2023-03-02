@@ -58,7 +58,7 @@ const Home = () => {
           The total duration of the study is about <strong>20 minutes.</strong>{" "}
           <br></br>
           You receive <strong>£2</strong> for your participation and earn a
-          bonus payment between <strong>£0.72</strong> and <strong>£3.6</strong>{" "}
+          bonus payment between <strong>£0.72</strong> and <strong>£1.44</strong>{" "}
           depending on the time you choose to spend on each task.
         </p>
 
