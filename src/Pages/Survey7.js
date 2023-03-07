@@ -18,17 +18,17 @@ const Survey7 = () => {
 
   useEffect(() => {
     let passvalue = {
-      "browser.income": localStorage.getItem("income"),
+      "browser.connection": localStorage.getItem("connection"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update income");
+        console.log("Update connection");
       })
       .catch((e) => {
-        console.log("Unable to update income: ", e);
+        console.log("Unable to update connection: ", e);
       });
   }, []);
 
@@ -73,8 +73,9 @@ const Survey7 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography sx={{ mx: 5, justifyContent: 'center'}} variant="h5">
-          With a few words, how would you describe your reasoning when switching between the two tasks?   
+        <Typography sx={{ mx: 5, justifyContent: "center" }} variant="h5">
+          With a few words, how would you describe your reasoning when switching
+          between the two tasks?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <TextField
@@ -88,10 +89,10 @@ const Survey7 = () => {
           />
         </Box>
         <Typography variant="h5" className="center">
-          Any other feedback you would like to give the researchers?   
+          Any other feedback you would like to give the researchers?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
-          <TextField 
+          <TextField
             id="outlined-basic"
             label="Feedback (Optional)"
             multiline

@@ -7,6 +7,10 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Labor = () => {
   const [imgsLoaded, setImgsLoaded] = useState(false);
@@ -412,7 +416,7 @@ const Labor = () => {
       key: 99,
     },
   ];
-
+  const [open, setOpen] = useState(true);
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
   // console.log(localStorage.getItem(typedValue));
@@ -487,6 +491,28 @@ const Labor = () => {
           <div>
             {counter === key ? (
               <Container>
+                {localStorage.getItem("tabCounter") !== "0" ? null : (
+                  <Collapse in={open}>
+                    <Alert
+                      severity="info"
+                      action={
+                        <IconButton
+                          aria-label="close"
+                          color="inherit"
+                          size="small"
+                          onClick={() => {
+                            setOpen(false);
+                          }}
+                        >
+                          <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                      }
+                      sx={{ mt: 1 }}
+                    >
+                      You can switch tasks by clicking on a tab
+                    </Alert>
+                  </Collapse>
+                )}
                 {imgsLoaded ? (
                   <img src={src} alt={key} className="photo" />
                 ) : (

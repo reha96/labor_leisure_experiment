@@ -11,7 +11,6 @@ import CloseIcon from "@mui/icons-material/Close";
 const LeisurePractice = () => {
   const [aplay, setAplay] = useState();
   const [open, setOpen] = useState(true);
-  
   useEffect(() => {
     if (localStorage.getItem("treatment") === "autoplayOff") {
       setAplay("off");

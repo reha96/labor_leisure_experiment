@@ -3,11 +3,6 @@ import { useState, useEffect } from "react";
 import QueryBuilderRoundedIcon from "@mui/icons-material/QueryBuilderRounded";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
-// import Dialog from "@mui/material/Dialog";
-// import DialogActions from "@mui/material/DialogActions";
-// import DialogContent from "@mui/material/DialogContent";
-// import DialogContentText from "@mui/material/DialogContentText";
 
 const Timer = (props) => {
   localStorage.setItem("visible", "isVisible");
@@ -22,7 +17,6 @@ const Timer = (props) => {
   } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
-  // const [open, setOpen] = React.useState(false);
 
   const [laborcount, setLaborcount] = useState(initialLabor);
   const [leisurecount, setLeisurecount] = useState(initialLeisure);

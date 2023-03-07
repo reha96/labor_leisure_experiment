@@ -11,6 +11,7 @@ const End = () => {
   localStorage.setItem("marital", "");
   localStorage.setItem("employment", "");
   localStorage.setItem("income", "");
+  localStorage.setItem("connection", "")
   useEffect(() => {
     localStorage.setItem("emptyField?", "");
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {

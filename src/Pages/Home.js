@@ -4,8 +4,27 @@ import Container from "react-bootstrap/Container";
 import "../App.css";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
+import * as Bowser from "bowser";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
+  useEffect(() => {
+    const browser = Bowser.parse(window.navigator.userAgent);
+    let passvalue = {
+      platform: browser["platform"],
+      browser: browser["browser"],
+    };
+    axios
+      .post("/api", passvalue)
+      .then(() => {
+        console.log("new visitor added");
+      })
+      .catch((e) => {
+        console.log("Unable to add new visitor: ", e);
+      });
+  }, []);
+
   const nextPage = (event) => {
     window.location.replace("/id");
   };
@@ -58,8 +77,9 @@ const Home = () => {
           The total duration of the study is about <strong>20 minutes.</strong>{" "}
           <br></br>
           You receive <strong>£2</strong> for your participation and earn a
-          bonus payment between <strong>£0.72</strong> and <strong>£1.44</strong>{" "}
-          depending on the time you choose to spend on each task.
+          bonus payment between <strong>£0.72</strong> and{" "}
+          <strong>£1.44</strong> depending on the time you choose to spend on
+          each task.
         </p>
 
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">

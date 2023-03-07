@@ -39,7 +39,7 @@ const Home2 = () => {
     if (localStorage.getItem("participantCreated") === "no") {
       localStorage.setItem("participantCreated", "yes");
       axios
-        .post("/api", passvalue)
+        .patch("/api", passvalue)
         .then(() => {
           console.log("new participant added");
         })

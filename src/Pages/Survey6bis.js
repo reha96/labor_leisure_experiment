@@ -3,43 +3,39 @@ import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import Box from "@mui/material/Box";
 
-const Survey6 = () => {
-  const [value, setValue] = useState(localStorage.getItem("income"));
+const Survey6bis = () => {
+ const [value, setValue] = useState(localStorage.getItem("connection"));
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
+  const onClick = (e) => {
+    localStorage.setItem("connection", value);
+    window.location.assign("s7");
+  };
+
   useEffect(() => {
     let passvalue = {
-      "browser.employment": localStorage.getItem("employment"),
+      "browser.income": localStorage.getItem("income"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update employment");
+        console.log("Update income");
       })
       .catch((e) => {
-        console.log("Unable to update employment: ", e);
+        console.log("Unable to update income: ", e);
       });
   }, []);
-  const onClick = (e) => {
-    localStorage.setItem("income", value);
-    window.location.assign("s6b");
-  };
-  // window.setTimeout(function () {
-  //   localStorage.clear();
-  //   window.location.href =
-  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  // }, 15000);
 
   return (
     <div className="Page">
@@ -76,63 +72,34 @@ const Survey6 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
+        
+
         <Typography variant="h5" className="center">
-          What is your annual personal income?
+         Did you have connection issues while watching videos?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <FormControl>
-            {/* <FormLabel id="demo-controlled-radio-buttons-group">
-              Choose gender
-            </FormLabel> */}
             <RadioGroup
+              row
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
               value={value}
               onChange={handleChange}
             >
               <FormControlLabel
-                value="0-10"
+                value="connectionGood"
                 control={<Radio />}
-                label="£10,000 or less"
+                label="No"
               />
               <FormControlLabel
-                value="10-12"
+                value="connectionBad"
                 control={<Radio />}
-                label="£10,000 to £12,000"
-              />
-              <FormControlLabel
-                value="12-15"
-                control={<Radio />}
-                label="£12,000 to £15,000"
-              />
-              <FormControlLabel
-                value="15-20"
-                control={<Radio />}
-                label="£15,000 to £20,000"
-              />
-              <FormControlLabel
-                value="20-30"
-                control={<Radio />}
-                label="£20,000 to £30,000"
-              />
-              <FormControlLabel
-                value="30-50"
-                control={<Radio />}
-                label="£30,000 to £50,000"
-              />
-              <FormControlLabel
-                value="50-70"
-                control={<Radio />}
-                label="£50,000 to £70,000"
-              />
-              <FormControlLabel
-                value="70+"
-                control={<Radio />}
-                label="£70,000 or more"
+                label="Yes"
               />
             </RadioGroup>
           </FormControl>
         </Box>
+
         <div className="center">
           {value === "" ? (
             <Button
@@ -159,4 +126,4 @@ const Survey6 = () => {
   );
 };
 
-export default Survey6;
+export default Survey6bis;

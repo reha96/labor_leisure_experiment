@@ -24,7 +24,6 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
   const onClick = (e) => {
-    // use only when need to stop page from loading next page
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
     localStorage.setItem("attentionFail1", 0);

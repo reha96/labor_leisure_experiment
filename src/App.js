@@ -29,6 +29,7 @@ import Survey5 from "./Pages/Survey5";
 import EndSurvey from "./Pages/EndSurvey";
 import Survey6 from "./Pages/Survey6";
 import Survey7 from "./Pages/Survey7";
+import Survey6bis from "./Pages/Survey6bis";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path=":userId/s4" element={<Survey4 />} />
           <Route path=":userId/s5" element={<Survey5 />} />
           <Route path=":userId/s6" element={<Survey6 />} />
+          <Route path=":userId/s6b" element={<Survey6bis />} />
           <Route path=":userId/s7" element={<Survey7 />} />
           <Route path=":userId/endsurvey" element={<EndSurvey />} />
         </Routes>

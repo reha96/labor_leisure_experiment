@@ -72,7 +72,7 @@ const updateParticipant = async (req, res) => {
   // }
 
   const participant = await Participant.findOneAndUpdate(
-    { ID: id },
+    { _id: id }, // _id was ID
     {
       ...req.body,
     }
