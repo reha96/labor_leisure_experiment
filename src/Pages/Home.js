@@ -12,8 +12,18 @@ const Home = () => {
   useEffect(() => {
     const browser = Bowser.parse(window.navigator.userAgent);
     let passvalue = {
+      attention1: "",
+      attention2: "",
+      treatment: "",
+      lottery: "",
       platform: browser["platform"],
       browser: browser["browser"],
+      ID: localStorage.getItem("ID"),
+      clikcedOkToSwitch: {},
+      timeChoice: 0,
+      leisureTime: 0,
+      laborTime: 0,
+      transcription: {},
     };
     axios
       .post("/api", passvalue)
