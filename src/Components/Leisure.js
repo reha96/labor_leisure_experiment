@@ -13,6 +13,14 @@ const Leisure = () => {
   const [count, setCount] = useState(
     parseInt(localStorage.getItem("watchedVideo"))
   );
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      setCount(localStorage.getItem("watchedVideo"));
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
 
   useEffect(() => {
     if (localStorage.getItem("treatment").includes("On")) {
@@ -73,8 +81,6 @@ const Leisure = () => {
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_6.mp4"} />
-        {/* load next 10 vids when count > 5 */}
-
         {count > 3 ? (
           <>
             <Video
