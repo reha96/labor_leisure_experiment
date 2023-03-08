@@ -9,7 +9,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const Leisure = () => {
   const [aplay, setAplay] = useState();
-  localStorage.setItem("aplay", aplay);
   const [open, setOpen] = useState(true);
   const [count, setCount] = useState(
     parseInt(localStorage.getItem("watchedVideo"))
@@ -18,8 +17,10 @@ const Leisure = () => {
   useEffect(() => {
     if (localStorage.getItem("treatment").includes("On")) {
       setAplay("on");
+      localStorage.setItem("aplay", aplay);
     } else {
       setAplay("off");
+      localStorage.setItem("aplay", aplay);
     }
   }, []);
   const handleClick = () => {
@@ -65,20 +66,36 @@ const Leisure = () => {
           </Alert>
         </Collapse>
       )}
-      {/* load first 10 vids first */}
+      {/* load first 5 vids first */}
       <div className="video__app" onClick={handleClick}>
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid30.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_6.mp4"} />
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_6.mp4"} />
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid32.mp4"} />
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"} />
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"} />
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_30.mp4"} />
         {/* load next 10 vids when count > 5 */}
-        {count > 5 ? (
+
+        {count > 3 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_6.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid32.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_30.mp4"}
+            />
+          </>
+        ) : null}
+
+        {count > 8 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid17.mp4"}
@@ -113,7 +130,7 @@ const Leisure = () => {
           </>
         ) : null}
 
-        {count > 15 ? (
+        {count > 18 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_14.mp4"}
@@ -148,7 +165,7 @@ const Leisure = () => {
           </>
         ) : null}
 
-        {count > 25 ? (
+        {count > 28 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_22.mp4"}
@@ -183,7 +200,7 @@ const Leisure = () => {
           </>
         ) : null}
 
-        {count > 35 ? (
+        {count > 38 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid31.mp4"}
@@ -218,7 +235,7 @@ const Leisure = () => {
           </>
         ) : null}
 
-        {count > 45 ? (
+        {count > 48 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid61.mp4"}
