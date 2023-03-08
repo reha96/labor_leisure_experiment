@@ -1,6 +1,5 @@
 import React from "react";
 import Video from "./Video";
-import VideoOff from "./VideoOff";
 import "./Leisure.css";
 import { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
@@ -10,31 +9,13 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const Leisure = () => {
   const [aplay, setAplay] = useState();
+  localStorage.setItem("aplay", aplay);
   const [open, setOpen] = useState(true);
-  const [videoFilePath, setVideoFilePath] = useState(null);
+  const [count, setCount] = useState(
+    parseInt(localStorage.getItem("watchedVideo"))
+  );
+
   useEffect(() => {
-    // xml blob request
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-      "GET",
-      "https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4",
-      true
-    );
-    xhr.responseType = "blob";
-
-    xhr.addEventListener(
-      "load",
-      function () {
-        if (xhr.status === 200) {
-          var URL = window.URL || window.webkitURL;
-          setVideoFilePath(URL.createObjectURL(xhr.response));
-        } else {
-        }
-      },
-      false
-    );
-    xhr.send();
-
     if (localStorage.getItem("treatment").includes("On")) {
       setAplay("on");
     } else {
@@ -84,500 +65,193 @@ const Leisure = () => {
           </Alert>
         </Collapse>
       )}
+      {/* load first 10 vids first */}
       <div className="video__app" onClick={handleClick}>
-        {aplay === "on" ? (
-          <Video src={videoFilePath} />
-        ) : (
-          <VideoOff src={videoFilePath} />
-        )}
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid30.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_6.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_6.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid32.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"} />
+        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_30.mp4"} />
+        {/* load next 10 vids when count > 5 */}
+        {count > 5 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid17.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_7.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_8.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_9.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_9.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_12.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_11.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_13.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid46.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_12.mp4"}
+            />
+          </>
+        ) : null}
 
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid30.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid30.mp4"}
-          />
-        )}
+        {count > 15 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_14.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_13.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_15.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_14.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_16.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_15.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_17.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_28.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid13.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_16.mp4"}
+            />
+          </>
+        ) : null}
 
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"}
-          />
-        )}
+        {count > 25 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_22.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_23.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_17.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_18.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_40.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_19.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_21.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid38.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_22.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_24.mp4"}
+            />
+          </>
+        ) : null}
 
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"}
-          />
-        )}
+        {count > 35 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid31.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_24.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_25.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_36.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_26.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_27.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid39.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_29.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid22.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_31.mp4"}
+            />
+          </>
+        ) : null}
 
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_5.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_5.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_6.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_6.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_6.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_6.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid32.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid32.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_41.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_43.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_30.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_30.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid17.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid17.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_7.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_7.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_8.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_8.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_8.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_8.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_9.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_9.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_9.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_9.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_12.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_12.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_11.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_11.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_13.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_13.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid46.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid46.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_12.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_12.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_14.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_14.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_13.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_13.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_15.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_15.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_14.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_14.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_16.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_16.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_15.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_15.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_17.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_17.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_28.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_28.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid13.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid13.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_16.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_16.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_22.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_22.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_23.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_23.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_17.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_17.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_18.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_18.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_40.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_40.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_19.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_19.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_21.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_21.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid38.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid38.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_22.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_22.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_24.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_24.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid31.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid31.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_24.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_24.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_25.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_25.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_36.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_36.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_26.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_26.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_27.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_27.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid39.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid39.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_29.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_29.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid22.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid22.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_31.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_31.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid61.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid61.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_32.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_32.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid35.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid35.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_33.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_33.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid6.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid6.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid63.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid63.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid57.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid57.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid60.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid60.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid43.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid43.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_7.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_7.mp4"}
-          />
-        )}
+        {count > 45 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid61.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_32.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid35.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_33.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid6.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid63.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid57.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid60.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid43.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_7.mp4"}
+            />
+          </>
+        ) : null}
       </div>
     </div>
   );
