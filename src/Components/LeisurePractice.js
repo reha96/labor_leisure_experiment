@@ -68,7 +68,7 @@ const LeisurePractice = () => {
 
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid37.mp4"} />
 
-        {count > 2 ? (
+        {count > 1 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_3.mp4"}
@@ -83,7 +83,7 @@ const LeisurePractice = () => {
           </>
         ) : null}
 
-        {count > 4 ? (
+        {count > 3 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_4.mp4"}
