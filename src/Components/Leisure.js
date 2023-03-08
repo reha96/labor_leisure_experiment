@@ -64,14 +64,6 @@ const Leisure = () => {
       )}
       <div className="video__app" onClick={handleClick}>
         {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
-        ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"}
-          />
-        )}
-
-        {aplay === "on" ? (
           <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4"} />
         ) : (
           <VideoOff
@@ -92,6 +84,14 @@ const Leisure = () => {
         ) : (
           <VideoOff
             src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_34.mp4"}
+          />
+        )}
+
+        {aplay === "on" ? (
+          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"} />
+        ) : (
+          <VideoOff
+            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_5.mp4"}
           />
         )}
 

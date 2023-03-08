@@ -12,7 +12,6 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
-import * as Bowser from "bowser";
 
 const Home2 = () => {
   const [counter, setCounter] = useState(
