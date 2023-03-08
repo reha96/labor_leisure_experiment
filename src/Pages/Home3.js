@@ -9,6 +9,7 @@ const Home3 = () => {
   var input = [];
 
   const nextPage = (event) => {
+    localStorage.setItem("ID", localStorage.getItem("prolificID"));
     localStorage.setItem("clickTimeChoice", false);
     localStorage.setItem("localcount", 0);
     localStorage.setItem("clickedOKtoswitch2", "no");

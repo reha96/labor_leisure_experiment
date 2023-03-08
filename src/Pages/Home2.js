@@ -19,34 +19,32 @@ const Home2 = () => {
     parseInt(window.localStorage.getItem("attentionFail1"))
   );
 
-  const browser = Bowser.parse(window.navigator.userAgent);
-
   useEffect(() => {
     let passvalue = {
       attention1: localStorage.getItem("attentionFail1"),
       attention2: localStorage.getItem("attentionFail2"),
       treatment: localStorage.getItem("treatment"),
       lottery: localStorage.getItem("lottery"),
-      platform: browser["platform"],
-      browser: browser["browser"],
-      ID: localStorage.getItem("ID"),
+      ID: localStorage.getItem("prolificID"),
       clikcedOkToSwitch: {},
       timeChoice: 0,
       leisureTime: 0,
       laborTime: 0,
       transcription: {},
+
     };
-    if (localStorage.getItem("participantCreated") === "no") {
-      localStorage.setItem("participantCreated", "yes");
+    const link = "/api/" + localStorage.getItem("ID");
+    if (localStorage.getItem("updateOnce") === "no") {
+      localStorage.setItem("updateOnce", "yes");
       axios
-        .patch("/api", passvalue)
+        .patch(link, passvalue)
         .then(() => {
-          console.log("new participant added");
+          console.log("New participant update");
         })
         .catch((e) => {
-          console.log("Unable to add new participant: ", e);
+          console.log("Unable to update new participant: ", e);
         });
-    }
+      }
   }, []);
 
   var Fail = 0;

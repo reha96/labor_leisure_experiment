@@ -5,11 +5,12 @@ import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import * as Bowser from "bowser";
+import axios from "axios";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
@@ -23,20 +24,43 @@ const Home1 = () => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
   };
+  localStorage.setItem("updateOnce", "no");
+
+  useEffect(() => {
+    let passvalue = {
+      attention1: localStorage.getItem("attentionFail1"),
+      attention2: localStorage.getItem("attentionFail2"),
+      treatment: localStorage.getItem("treatment"),
+      lottery: localStorage.getItem("lottery"),
+      platform: browser["platform"],
+      browser: browser["browser"],
+      ID: localStorage.getItem("ID"),
+      clikcedOkToSwitch: {},
+      timeChoice: 0,
+      leisureTime: 0,
+      laborTime: 0,
+      transcription: {},
+    };
+    if (localStorage.getItem("participantCreated") === "no") {
+      localStorage.setItem("participantCreated", "yes");
+      axios
+        .post("/api", passvalue)
+        .then(() => {
+          console.log("New participant added");
+        })
+        .catch((e) => {
+          console.log("Unable to add new participant: ", e);
+        });
+    }
+  }, []);
   const onClick = (e) => {
-    localStorage.setItem("participantCreated", "no");
-    localStorage.setItem("watchedVideo", 0);
-    localStorage.setItem("attentionFail1", 0);
-    localStorage.setItem("attentionFail2", 0);
-    localStorage.setItem("treatment", Math.random());
-    localStorage.setItem("lottery", Math.random());
-    localStorage.setItem("ID", typedValue);
+
+    localStorage.setItem("prolificID", typedValue);
     // set MPL treatment here
     localStorage.setItem("secondWave", "no");
     if (localStorage.getItem("secondWave") === "no") {
       const treatment = ["autoplayOn", "autoplayOff"];
       const random = Math.floor(Math.random() * treatment.length);
-      console.log(treatment[random]);
       localStorage.setItem("treatment", treatment[random]);
     } else {
       localStorage.setItem("treatment", "MPL");

@@ -5,38 +5,22 @@ import "../App.css";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import * as Bowser from "bowser";
-import { useEffect } from "react";
-import axios from "axios";
 
 const Home = () => {
-  useEffect(() => {
-    const browser = Bowser.parse(window.navigator.userAgent);
-    let passvalue = {
-      attention1: "",
-      attention2: "",
-      treatment: "",
-      lottery: "",
-      platform: browser["platform"],
-      browser: browser["browser"],
-      ID: localStorage.getItem("ID"),
-      clikcedOkToSwitch: {},
-      timeChoice: 0,
-      leisureTime: 0,
-      laborTime: 0,
-      transcription: {},
-    };
-    axios
-      .post("/api", passvalue)
-      .then(() => {
-        console.log("new visitor added");
-      })
-      .catch((e) => {
-        console.log("Unable to add new visitor: ", e);
-      });
-  }, []);
-
+  const browser = Bowser.parse(window.navigator.userAgent);
   const nextPage = (event) => {
+    
+    localStorage.setItem("participantCreated", "no");
+    localStorage.setItem("watchedVideo", 0);
+    localStorage.setItem("attentionFail1", 0);
+    localStorage.setItem("attentionFail2", 0);
+    localStorage.setItem("treatment", Math.random());
+    localStorage.setItem("lottery", Math.random());
+    localStorage.setItem("browserName", browser["browser"]["name"]);
+    localStorage.setItem("platformType", browser["platform"]["type"]);
+    localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
     window.location.replace("/id");
+
   };
   return (
     <div className="Page">
