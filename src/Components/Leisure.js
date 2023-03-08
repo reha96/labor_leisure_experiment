@@ -11,8 +11,30 @@ import CloseIcon from "@mui/icons-material/Close";
 const Leisure = () => {
   const [aplay, setAplay] = useState();
   const [open, setOpen] = useState(true);
-
+  const [videoFilePath, setVideoFilePath] = useState(null);
   useEffect(() => {
+    // xml blob request
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4",
+      true
+    );
+    xhr.responseType = "blob";
+
+    xhr.addEventListener(
+      "load",
+      function () {
+        if (xhr.status === 200) {
+          var URL = window.URL || window.webkitURL;
+          setVideoFilePath(URL.createObjectURL(xhr.response));
+        } else {
+        }
+      },
+      false
+    );
+    xhr.send();
+
     if (localStorage.getItem("treatment").includes("On")) {
       setAplay("on");
     } else {
@@ -64,11 +86,9 @@ const Leisure = () => {
       )}
       <div className="video__app" onClick={handleClick}>
         {aplay === "on" ? (
-          <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4"} />
+          <Video src={videoFilePath} />
         ) : (
-          <VideoOff
-            src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid27.mp4"}
-          />
+          <VideoOff src={videoFilePath} />
         )}
 
         {aplay === "on" ? (

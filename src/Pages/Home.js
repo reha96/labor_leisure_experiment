@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import "../App.css";
@@ -8,8 +8,8 @@ import * as Bowser from "bowser";
 
 const Home = () => {
   const browser = Bowser.parse(window.navigator.userAgent);
+
   const nextPage = (event) => {
-    
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
     localStorage.setItem("attentionFail1", 0);
@@ -20,7 +20,6 @@ const Home = () => {
     localStorage.setItem("platformType", browser["platform"]["type"]);
     localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
     window.location.replace("/id");
-
   };
   return (
     <div className="Page">
