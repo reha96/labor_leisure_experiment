@@ -10,6 +10,17 @@ import CloseIcon from "@mui/icons-material/Close";
 const LeisurePractice = () => {
   const [aplay, setAplay] = useState();
   const [open, setOpen] = useState(true);
+  const [count, setCount] = useState(
+    parseInt(localStorage.getItem("watchedVideo"))
+  );
+  useEffect(() => {
+    let myInterval = setInterval(() => {
+      setCount(localStorage.getItem("watchedVideo"));
+    }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
   useEffect(() => {
     if (localStorage.getItem("treatment") === "autoplayOff") {
       setAplay("off");
@@ -57,17 +68,35 @@ const LeisurePractice = () => {
 
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid37.mp4"} />
 
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_3.mp4"} />
+        {count > 2 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_3.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_3.mp4"}
+            />
 
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_3.mp4"} />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_4.mp4"}
+            />
+          </>
+        ) : null}
 
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_4.mp4"} />
+        {count > 4 ? (
+          <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_4.mp4"}
+            />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_1.mp4"}
+            />
 
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_4.mp4"} />
-
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_1.mp4"} />
-
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_2.mp4"} />
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_2.mp4"}
+            />
+          </>
+        ) : null}
       </div>
     </div>
   );
