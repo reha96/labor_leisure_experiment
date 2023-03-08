@@ -4,8 +4,7 @@ import "./video.css";
 function Video({ src }) {
   // const [mute, setMute] = useState(0);
   // const [count, setCount] = useState(0);
-  const [aplay, setAplay] = useState(localStorage.getItem("aplay")==="on");
-  console.log("aplay ", aplay)
+  const [aplay, setAplay] = useState(localStorage.getItem("treatment").includes("On"));
   // const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
   const endRef = useRef(null);
