@@ -33,21 +33,6 @@ const Leisure = () => {
   }, []);
   const handleClick = () => {
     setOpen(false);
-    if (aplay === "on") {
-      if (localStorage.getItem("videoPaused") === "yes") {
-        localStorage.setItem("videoPaused", "no");
-      } else {
-        localStorage.setItem("videoPaused", "yes");
-      }
-      // console.log(localStorage.getItem("videoPaused"));
-    }
-
-    if (aplay === "off") {
-      if (localStorage.getItem("videoPaused") === "yes") {
-        localStorage.setItem("videoPaused", "no");
-      }
-      localStorage.setItem("videoPaused", "yes");
-    }
   };
 
   return (

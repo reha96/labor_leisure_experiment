@@ -2,10 +2,10 @@ import React, { useRef, useState, useMemo, useEffect } from "react";
 import "./video.css";
 
 function Video({ src }) {
-  // const [mute, setMute] = useState(0);
-  // const [count, setCount] = useState(0);
-  const [aplay, setAplay] = useState(localStorage.getItem("treatment").includes("On"));
-  // const [playing, setPlaying] = useState(false);
+  const [aplay, setAplay] = useState(
+    localStorage.getItem("treatment").includes("On")
+  );
+
   const videoRef = useRef(null);
   const endRef = useRef(null);
 
@@ -34,10 +34,11 @@ function Video({ src }) {
 
   const playVideo = () => {
     if (aplay) {
-    if (videoRef !== null && videoRef.current !== null) {
-      videoRef.current.play();
-      //setMute(0);
-    }}
+      if (videoRef !== null && videoRef.current !== null) {
+        videoRef.current.play();
+        //setMute(0);
+      }
+    }
   };
 
   const stopVideo = () => {
@@ -47,8 +48,11 @@ function Video({ src }) {
     }
   };
 
-  const handleVideoEnded = () => {   
-    localStorage.setItem("watchedVideo", parseInt(localStorage.getItem("watchedVideo"))+1);
+  const handleVideoEnded = () => {
+    localStorage.setItem(
+      "watchedVideo",
+      parseInt(localStorage.getItem("watchedVideo")) + 1
+    );
     // console.log("Video watched " + localStorage.getItem("watchedVideo"));
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
@@ -59,16 +63,24 @@ function Video({ src }) {
     // videoRef.current.scrollIntoView(false);
   };
 
+  const onClick = () => {
+    if (videoRef.current.paused) {
+      localStorage.setItem("videoPaused", "no");
+    } else {
+      localStorage.setItem("videoPaused", "yes");
+    }
+  };
+
   return (
     <div className="video">
       {!isVisible ? stopVideo() : playVideo()}
-      {/* {videoRef.current.paused ? localStorage.setItem("videoPaused", "yes") : localStorage.setItem("videoPaused", "no")} */}
       <video
         controls={true}
         // controlsList="nofullscreen nodownload"
         // disablePictureInPicture
         className="video__player"
         ref={videoRef}
+        onClick={onClick}
         // loop
         src={src}
         type="video/mp4"

@@ -46,7 +46,7 @@ const Tasks = () => {
         localStorage.setItem("videoPaused", "no");
       }
       if (localStorage.getItem("treatment") === "autoplayOff") {
-        localStorage.setItem("videoPaused", "yes");
+        // localStorage.setItem("videoPaused", "yes");
       }
     }
   };

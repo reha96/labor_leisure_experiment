@@ -89,8 +89,8 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the Back button in this study is disabled.{" "}
-          <strong>Doing so will take you back to this page.</strong>
+          Using the Back button in this study 
+           will take you back to this page.
         </Alert>
 
         <div className="center">
