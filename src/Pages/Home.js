@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import "../App.css";
@@ -8,7 +8,6 @@ import * as Bowser from "bowser";
 
 const Home = () => {
   const browser = Bowser.parse(window.navigator.userAgent);
-
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
@@ -21,6 +20,8 @@ const Home = () => {
     localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
     window.location.replace("/id");
   };
+  const connection = navigator.connection.effectiveType;
+  localStorage.setItem(connection, "connection");
   return (
     <div className="Page">
       <style type="text/css">
@@ -89,8 +90,7 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the Back button in this study 
-           will take you back to this page.
+          Using the Back button in this study will take you back to this page.
         </Alert>
 
         <div className="center">

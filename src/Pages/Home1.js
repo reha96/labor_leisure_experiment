@@ -14,6 +14,7 @@ import axios from "axios";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
+  const [badcon, setBadcon] = useState(navigator.connection.downlink < 10);
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -32,8 +33,8 @@ const Home1 = () => {
       attention2: localStorage.getItem("attentionFail2"),
       treatment: localStorage.getItem("treatment"),
       lottery: localStorage.getItem("lottery"),
-      platform: browser["platform"],
-      browser: browser["browser"],
+      platform: browser,
+      browser: {},
       ID: localStorage.getItem("ID"),
       clikcedOkToSwitch: {},
       timeChoice: 0,
@@ -54,7 +55,6 @@ const Home1 = () => {
     }
   }, []);
   const onClick = (e) => {
-
     localStorage.setItem("prolificID", typedValue);
     // set MPL treatment here
     localStorage.setItem("secondWave", "no");
@@ -66,13 +66,13 @@ const Home1 = () => {
       localStorage.setItem("treatment", "MPL");
     }
     if (localStorage.getItem("secondWave") === "no") {
-    if (localStorage.getItem("lottery") >= 0.95) {
-      localStorage.setItem("lottery", "lotteryWin");
+      if (localStorage.getItem("lottery") >= 0.95) {
+        localStorage.setItem("lottery", "lotteryWin");
+      } else {
+        localStorage.setItem("lottery", "lotteryLose");
+      }
     } else {
       localStorage.setItem("lottery", "lotteryLose");
-    }}
-    else{
-      localStorage.setItem("lottery", "lotteryLose")
     }
     window.location.replace(typedValue.toString() + "/next");
   };
@@ -156,6 +156,14 @@ const Home1 = () => {
             onChange={(event) => setTypedValue(event.target.value)}
           />
         </Box>
+
+        {badcon ? (
+          <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+            {" "}
+            Your connection speed is too low for participation in this study.{" "}
+          </Alert>
+        ) : null}
+
         {!chromium ? (
           <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
             {" "}
@@ -186,7 +194,7 @@ const Home1 = () => {
             </ButtonM>
           ) : (
             <ButtonM
-              disabled={!checked || !chromium || !desktop}
+              disabled={!checked || !chromium || !desktop || badcon}
               variant="contained"
               color="secondary"
               type="button"

@@ -75,7 +75,7 @@ const Survey6bis = () => {
         
 
         <Typography variant="h5" className="center">
-         Did you have connection issues while watching videos?
+         Did you have connection issues while watching the videos?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <FormControl>

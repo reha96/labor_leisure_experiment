@@ -38,6 +38,7 @@ const End = () => {
       "browser.MPL7": localStorage.getItem("MPL7"),
       "browser.MPL8": localStorage.getItem("MPL8"),
       "browser.MPL9": localStorage.getItem("MPL9"),
+      "browser.connection": localStorage.getItem("connection"),
       "clikcedOkToSwitch.secondPopUp":
         localStorage.getItem("clickedOKtoswitch2"),
     };
