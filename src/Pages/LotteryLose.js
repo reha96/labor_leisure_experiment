@@ -160,7 +160,7 @@ const Lottery = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-            Your <strong>Time Choice</strong> is not binding. You spend your
+          <strong>Your Time Choice is not binding.</strong> You spend your
             time freely across both tasks.
           </Alert>
         </p>

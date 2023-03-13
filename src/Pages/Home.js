@@ -66,7 +66,7 @@ const Home = () => {
           <br></br>
           You receive <strong>£2</strong> for your participation and earn a
           bonus payment between <strong>£0.72</strong> and{" "}
-          <strong>£1.44</strong> depending on the time you choose to spend on
+          <strong>£1.08</strong> depending on the time you choose to spend on
           each task.
         </p>
 
@@ -84,7 +84,7 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the Back button in this study will take you back to this page.
+          Using the Back button in this study will take you back to this page and impact your progress.
         </Alert>
 
         <div className="center">

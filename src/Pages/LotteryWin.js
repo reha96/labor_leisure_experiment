@@ -161,7 +161,7 @@ const LotteryWin = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-            Your <strong>Time Choice</strong> is binding. You have to <strong>Type</strong> for your chosen
+          <strong>Your Time Choice is binding.</strong> You have to <strong>Type</strong> for your chosen
             duration.
           </Alert>
         </p>

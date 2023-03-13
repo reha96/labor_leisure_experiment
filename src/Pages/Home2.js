@@ -158,7 +158,7 @@ const Home2 = () => {
         <p className="HomePage_p">
           <strong>
             Each second you spend on this task your bonus payment increases by
-            0.2p.{" "}
+            0.15p.{" "}
           </strong>
         </p>
         <p className="HomePage_p">
