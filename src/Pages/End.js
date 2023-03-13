@@ -11,7 +11,8 @@ const End = () => {
   localStorage.setItem("marital", "");
   localStorage.setItem("employment", "");
   localStorage.setItem("income", "");
-  localStorage.setItem("connection", "")
+  localStorage.setItem("connection", "");
+  localStorage.setItem("trueWatch", "");
   useEffect(() => {
     localStorage.setItem("emptyField?", "");
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {
@@ -20,27 +21,24 @@ const End = () => {
       }
     }
     let passvalue = {
-      "browser.timespentTyping": localStorage.getItem("laborTime"),
-      "browser.timespentWatching": localStorage.getItem("leisureTime"),
-      "browser.timespentNotTyping": localStorage.getItem("inactiveLabor"),
-      "browser.timespentNotWatching": localStorage.getItem("inactiveLeisure"),
-      "browser.videoPausedFor": localStorage.getItem("videoPausedFor"),
-      "browser.tabCounter": localStorage.getItem("tabCounter"),
-      "browser.typeCount": localStorage.getItem("localcount"),
-      "browser.watchedVideo": localStorage.getItem("watchedVideo"),
-      "browser.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
-      "browser.MPL1": localStorage.getItem("MPL1"),
-      "browser.MPL2": localStorage.getItem("MPL2"),
-      "browser.MPL3": localStorage.getItem("MPL3"),
-      "browser.MPL4": localStorage.getItem("MPL4"),
-      "browser.MPL5": localStorage.getItem("MPL5"),
-      "browser.MPL6": localStorage.getItem("MPL6"),
-      "browser.MPL7": localStorage.getItem("MPL7"),
-      "browser.MPL8": localStorage.getItem("MPL8"),
-      "browser.MPL9": localStorage.getItem("MPL9"),
-      "browser.connection": localStorage.getItem("connection"),
-      "clikcedOkToSwitch.secondPopUp":
-        localStorage.getItem("clickedOKtoswitch2"),
+      "platform.typing": localStorage.getItem("laborTime"),
+      "platform.watching": localStorage.getItem("leisureTime"),
+      "platform.notTyping": localStorage.getItem("inactiveLabor"),
+      "platform.notWatching": localStorage.getItem("inactiveLeisure"),
+      "platform.videoPausedFor": localStorage.getItem("videoPausedFor"),
+      "platform.tabCounter": localStorage.getItem("tabCounter"),
+      "platform.typeCount": localStorage.getItem("localcount"),
+      "platform.watchedVideo": localStorage.getItem("watchedVideo"),
+      "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
+      "platform.MPL1": localStorage.getItem("MPL1"),
+      "platform.MPL2": localStorage.getItem("MPL2"),
+      "platform.MPL3": localStorage.getItem("MPL3"),
+      "platform.MPL4": localStorage.getItem("MPL4"),
+      "platform.MPL5": localStorage.getItem("MPL5"),
+      "platform.MPL6": localStorage.getItem("MPL6"),
+      "platform.MPL7": localStorage.getItem("MPL7"),
+      "platform.MPL8": localStorage.getItem("MPL8"),
+      "platform.MPL9": localStorage.getItem("MPL9"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");

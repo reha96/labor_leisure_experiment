@@ -469,7 +469,7 @@ const Labor = () => {
     // );
 
     let passvalue = {
-      "browser.userTranscription": localStorage.getItem("transc"),
+      "platform.userTranscription": localStorage.getItem("transc"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
@@ -477,10 +477,10 @@ const Labor = () => {
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update browser.userTranscription");
+        console.log("Update platform.userTranscription");
       })
       .catch((e) => {
-        console.log("Unable to update browser.userTranscription: ", e);
+        console.log("Unable to update platform.userTranscription: ", e);
       });
   };
 

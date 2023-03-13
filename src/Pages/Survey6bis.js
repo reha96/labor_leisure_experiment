@@ -8,22 +8,29 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import { Alert } from "@mui/material";
 
 const Survey6bis = () => {
- const [value, setValue] = useState(localStorage.getItem("connection"));
+  const [value, setValue] = useState(localStorage.getItem("connection"));
+  const [value2, setValue2] = useState(localStorage.getItem("trueWatch"));
+  const disabled = value === "" || value2 === "";
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  const handleChange2 = (event) => {
+    setValue2(event.target.value);
+  };
 
   const onClick = (e) => {
     localStorage.setItem("connection", value);
+    localStorage.setItem("trueWatch", value2);
     window.location.assign("s7");
   };
 
   useEffect(() => {
     let passvalue = {
-      "browser.income": localStorage.getItem("income"),
+      "platform.income": localStorage.getItem("income"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
@@ -72,10 +79,27 @@ const Survey6bis = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        
-
         <Typography variant="h5" className="center">
-         Did you have connection issues while watching the videos?
+          Debriefing
+        </Typography>
+        <p className="HomePage_p">
+          This study is about the effects of autoplay on planned behavior. We
+          are interested in measuring how much you deviate from your
+          <strong> Time Choice</strong> when videos played automatically instead
+          of by clicking to play.
+        </p>
+        <p className="HomePage_p">
+          <Alert severity="info">
+            Please answer the following questions <strong> honestly </strong> as
+            they impact our findings.{" "}
+            <strong>
+              {" "}
+              Your answers do not affect your participation or bonus payments.
+            </strong>
+          </Alert>
+        </p>
+        <Typography variant="h5" sx={{ mx: 7.5 }} className="center">
+          Did you have connection issues while watching the videos?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <FormControl>
@@ -100,8 +124,34 @@ const Survey6bis = () => {
           </FormControl>
         </Box>
 
+        <Typography variant="h5" className="center" sx={{ mx: 7.5 }}>
+          Were you occupied with other activities while you were watching
+          videos?
+        </Typography>
+        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={value2}
+              onChange={handleChange2}
+            >
+              <FormControlLabel
+                value="watchTrue"
+                control={<Radio />}
+                label="No"
+              />
+              <FormControlLabel
+                value="watchFalse"
+                control={<Radio />}
+                label="Yes"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Box>
         <div className="center">
-          {value === "" ? (
+          {disabled ? (
             <Button
               disabled
               variant="contained"

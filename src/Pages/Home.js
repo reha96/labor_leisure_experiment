@@ -4,10 +4,8 @@ import Container from "react-bootstrap/Container";
 import "../App.css";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
-import * as Bowser from "bowser";
 
 const Home = () => {
-  const browser = Bowser.parse(window.navigator.userAgent);
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
@@ -15,13 +13,9 @@ const Home = () => {
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
-    localStorage.setItem("browserName", browser["browser"]["name"]);
-    localStorage.setItem("platformType", browser["platform"]["type"]);
     localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
     window.location.replace("/id");
   };
-  const connection = navigator.connection.effectiveType;
-  localStorage.setItem(connection, "connection");
   return (
     <div className="Page">
       <style type="text/css">

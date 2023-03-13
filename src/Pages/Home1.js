@@ -14,7 +14,7 @@ import axios from "axios";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
-  const [badcon, setBadcon] = useState(navigator.connection.downlink < 10);
+  const badcon = navigator.connection.downlink < 10;
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -26,7 +26,7 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
   localStorage.setItem("updateOnce", "no");
-
+  const speed = navigator.connection.downlink;
   useEffect(() => {
     let passvalue = {
       attention1: localStorage.getItem("attentionFail1"),
@@ -34,7 +34,7 @@ const Home1 = () => {
       treatment: localStorage.getItem("treatment"),
       lottery: localStorage.getItem("lottery"),
       platform: browser,
-      browser: {},
+      browser: speed,
       ID: localStorage.getItem("ID"),
       clikcedOkToSwitch: {},
       timeChoice: 0,

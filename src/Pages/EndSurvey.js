@@ -6,8 +6,8 @@ import axios from "axios";
 const EndSurvey = () => {
   useEffect(() => {
     let passvalue = {
-      "browser.strategy": localStorage.getItem("strategy"),
-      "browser.feedback": localStorage.getItem("feedback"),
+      "platform.strategy": localStorage.getItem("strategy"),
+      "platform.feedback": localStorage.getItem("feedback"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
@@ -63,7 +63,7 @@ const EndSurvey = () => {
         <Typography variant="h6" className="center">
           Thank you for participating!
         </Typography>
-        <p className="Homepage_p">
+        <p className="Homepage_p" >
           This study is conducted by Reha Tuncer, PhD student at the University
           of Luxembourg. Please contact <strong> reha.tuncer@uni.lu </strong> if you have any
           questions about the study.

@@ -38,10 +38,10 @@ const Home2 = () => {
       axios
         .patch(link, passvalue)
         .then(() => {
-          console.log("New participant update");
+          console.log("Prolific ID update");
         })
         .catch((e) => {
-          console.log("Unable to update new participant: ", e);
+          console.log("Unable to update prolific ID: ", e);
         });
       }
   }, []);
@@ -100,7 +100,7 @@ const Home2 = () => {
       attention1: localStorage.getItem("attentionFail1"),
     };
 
-    const link = "/api/" + localStorage.getItem("ID");
+    const link = "/api/" + localStorage.getItem("prolificID");
 
     axios
       .patch(link, passvalue)

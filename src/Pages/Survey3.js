@@ -18,7 +18,7 @@ const Survey3 = () => {
 
   useEffect(() => {
     let passvalue = {
-      "browser.gender": localStorage.getItem("gender")
+      "platform.gender": localStorage.getItem("gender")
     };
 
     const link = "/api/" + localStorage.getItem("ID");
