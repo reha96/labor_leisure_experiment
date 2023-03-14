@@ -23,6 +23,34 @@ function Video({ src }) {
     };
   }, []);
 
+  const handleKeyDown = (event) => {
+    if (localStorage.getItem("activeTab") === "Leisure") {
+      event.preventDefault();
+    }
+    if (event.metaKey) {
+      event.preventDefault();
+      console.log("CMD key press")
+    }
+    if (event.ctrlKey) {
+      event.preventDefault();
+      console.log("CTRL key press")
+    }
+    if (event.altKey) {
+      event.preventDefault();
+      console.log("ALT key press")
+    }
+
+
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    !isVisible ? stopVideo() : playVideo();
+  }, [isVisible]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(callbackFunction, options);
     const currentTarget = videoRef.current;
@@ -63,25 +91,23 @@ function Video({ src }) {
     // videoRef.current.scrollIntoView(false);
   };
 
-  const onClick = () => {
+  const onClick = (e) => {
     if (videoRef.current.paused) {
       localStorage.setItem("videoPaused", "no");
+      videoRef.current.play();
     } else {
       localStorage.setItem("videoPaused", "yes");
+      videoRef.current.pause();
     }
   };
 
   return (
     <div className="video">
-      {!isVisible ? stopVideo() : playVideo()}
       <video
-        controls={true}
-        // controlsList="nofullscreen nodownload"
-        // disablePictureInPicture
+        onContextMenu={(e) => e.preventDefault()}
         className="video__player"
         ref={videoRef}
         onClick={onClick}
-        // loop
         src={src}
         type="video/mp4"
         onEnded={handleVideoEnded}
