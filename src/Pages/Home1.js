@@ -14,7 +14,7 @@ import axios from "axios";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
-  const badcon = navigator.connection.downlink < 10;
+  const badcon = navigator.connection.downlink < 8;
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -160,7 +160,7 @@ const Home1 = () => {
         {badcon ? (
           <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
             {" "}
-            Your connection speed is too low for participation in this study.{" "}
+            Your connection speed is too slow for participation in this study.{" "}
           </Alert>
         ) : null}
 
