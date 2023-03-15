@@ -29,6 +29,18 @@ const TasksPractice = () => {
     setRefresh(true);
   };
 
+  const handleSelect = (key) => {
+    if (key === "1") {
+      localStorage.setItem("activeTab", "Labor");
+      setKey("1");
+      setRefresh(true);
+    }
+    if (key === "2") {
+      localStorage.setItem("activeTab", "Leisure");
+      setKey("2");
+    }
+  };
+
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (
@@ -134,6 +146,7 @@ const TasksPractice = () => {
                   <KeyboardOutlinedIcon /> Type
                 </Typography>
               }
+              onSelect={handleSelect}
             >
               <LaborPractice />
             </Tab>

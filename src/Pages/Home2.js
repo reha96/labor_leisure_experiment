@@ -220,6 +220,10 @@ const Home2 = () => {
           </strong>
         </p>
 
+        <p className="HomePage_p">
+          You are paid your seconds of watching only if you correctly answer randomized questions about video content.
+        </p>
+
         <div className="center">
           {!(localStorage.getItem("stop") === "true") ? (
             <ButtonM

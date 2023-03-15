@@ -25,6 +25,10 @@ const Tasks = () => {
     parseInt(localStorage.getItem("tabCounter"))
   );
   const [open, setOpen] = useState(false);
+  // const [open2, setOpen2] = useState(false);
+  const [count, setCount] = useState(
+    parseInt(localStorage.getItem("watchedVideo"))
+  );
 
   const handleSelect = (key) => {
     if (key === "1") {
@@ -63,22 +67,9 @@ const Tasks = () => {
     }
   };
 
-  // const handleClose2 = () => {
-  //   setOpen2(false);
-  //   localStorage.setItem("clickedOKtoswitch2", "yes");
-  //   localStorage.setItem("activePage", 1);
-  //   setKey("1"); // if state changes it works, if state remains it does not rerender
-  // };
-
   useEffect(() => {
     let myInterval = setInterval(() => {
-      // if (
-      //   parseInt(localStorage.getItem("lastmin")) === 10 &&
-      //   parseInt(localStorage.getItem("lastsec")) === 0
-      // ) {
-      //   setOpen2(true);
-      // }
-
+      setCount(parseInt(localStorage.getItem("watchedVideo")))
       if (localStorage.getItem("lottery") === "lotteryWin") {
         if (
           parseInt(localStorage.getItem("inactiveLabor")) +
@@ -104,11 +95,22 @@ const Tasks = () => {
         }
       }
     }, 500);
-
     return () => {
       clearInterval(myInterval);
     };
   });
+
+  // useEffect(() => {
+  //   if (count === 1) {
+  //     setOpen2(true);
+  //     localStorage.setItem("popQuestion", "yes");
+  //   }
+  // }, [count]);
+
+  // const handleClose2 = () => {
+  //   localStorage.setItem("popQuestion", "no");
+  //   setOpen2(false);
+  // };
 
   return (
     <div className="Pagetasks">

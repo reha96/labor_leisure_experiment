@@ -30,40 +30,42 @@ const Timer = (props) => {
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      }
-      if (seconds === 0) {
-        if (minutes === 0) {
-          clearInterval(myInterval);
-        } else {
-          setMinutes(minutes - 1);
-          setSeconds(59);
+      if (localStorage.getItem("popQuestion") === "no") {
+        if (seconds > 0) {
+          setSeconds(seconds - 1);
         }
-        if (minutes === 10) {
-          // setOpen(true);
-        }
-      }
-      if (document.visibilityState === "visible") {
-        if (localStorage.getItem("activeTab") === "Labor") {
-          setLaborcount(parseInt(laborcount) + 1);
-        }
-        if (localStorage.getItem("activeTab") === "Leisure") {
-          setLeisurecount(parseInt(leisurecount) + 1);
-        }
-        if (localStorage.getItem("activeTab") === "Leisure") {
-          if (localStorage.getItem("videoPaused") === "yes") {
-            setVideoPausedFor(parseInt(videoPausedFor) + 1);
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(myInterval);
+          } else {
+            setMinutes(minutes - 1);
+            setSeconds(59);
+          }
+          if (minutes === 10) {
+            // setOpen(true);
           }
         }
-      }
-      if (document.visibilityState !== "visible") {
-        if (localStorage.getItem("activeTab") === "Labor") {
-          setInactivelabor(parseInt(inactivelabor) + 1);
+        if (document.visibilityState === "visible") {
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setLaborcount(parseInt(laborcount) + 1);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            setLeisurecount(parseInt(leisurecount) + 1);
+          }
+          if (localStorage.getItem("activeTab") === "Leisure") {
+            if (localStorage.getItem("videoPaused") === "yes") {
+              setVideoPausedFor(parseInt(videoPausedFor) + 1);
+            }
+          }
         }
         if (document.visibilityState !== "visible") {
-          if (localStorage.getItem("activeTab") === "Leisure")
-            setInactiveleisure(parseInt(inactiveleisure) + 1);
+          if (localStorage.getItem("activeTab") === "Labor") {
+            setInactivelabor(parseInt(inactivelabor) + 1);
+          }
+          if (document.visibilityState !== "visible") {
+            if (localStorage.getItem("activeTab") === "Leisure")
+              setInactiveleisure(parseInt(inactiveleisure) + 1);
+          }
         }
       }
     }, 1000);

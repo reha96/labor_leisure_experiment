@@ -30,8 +30,36 @@ import EndSurvey from "./Pages/EndSurvey";
 import Survey6 from "./Pages/Survey6";
 import Survey7 from "./Pages/Survey7";
 import Survey6bis from "./Pages/Survey6bis";
+import { useEffect } from "react";
 
 function App() {
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
+  const handleKeyDown = (event) => {
+    if (localStorage.getItem("activeTab") === "Leisure") {
+      event.preventDefault();
+    }
+    if (event.metaKey) {
+      event.preventDefault();
+      localStorage.setItem("cheatKey", "CMD");
+    }
+    if (event.ctrlKey) {
+      event.preventDefault();
+      localStorage.setItem("cheatKey", "CTRL");
+    }
+    if (event.altKey) {
+      event.preventDefault();
+      localStorage.setItem("cheatKey", "ALT");
+    }
+    if (event.keyCode === 123) {
+      event.preventDefault();
+      localStorage.setItem("cheatKey", "F12");
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <div className="App">
       <Router>

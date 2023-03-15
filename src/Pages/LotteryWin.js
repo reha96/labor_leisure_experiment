@@ -20,6 +20,8 @@ const LotteryWin = () => {
   localStorage.setItem("leisureTime", 0);
   localStorage.setItem("inactiveLabor", 0);
   localStorage.setItem("inactiveLeisure", 0);
+  localStorage.setItem("popQuestion", "no");
+  localStorage.setItem("watchedVideo", 0);
   localStorage.setItem("activeTab", "Labor");
   localStorage.setItem("visible", "isVisible");
   localStorage.setItem("clickedOKtoswitch2", "no");
@@ -161,19 +163,19 @@ const LotteryWin = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-          <strong>Your Time Choice is binding.</strong> You have to <strong>Type</strong> for your chosen
-            duration.
+            <strong>Your Time Choice is binding.</strong> You have to{" "}
+            <strong>Type</strong> for your chosen duration.
           </Alert>
         </p>
 
-        <Typography variant="h5" sx={{ my: 2.5}} className="center">
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Recap
         </Typography>
         <p className="HomePage_p">
-          On the next page you will spend 12 minutes.
-          You can switch between tasks as you please but cannot spend 
-          more than the total duration indicated in your <strong>Time Choice</strong> for
-          each task. Your bonus payment is equal to your <strong>Time Choice</strong> if your
+          On the next page you will spend 12 minutes. You can switch between
+          tasks as you please but cannot spend more than the total duration
+          indicated in your <strong>Time Choice</strong> for each task. Your
+          bonus payment is equal to your <strong>Time Choice</strong> if your
           <strong> Typing</strong> meets the quality criteria.
           {/* <hr></hr> */}
         </p>

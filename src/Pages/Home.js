@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
+  localStorage.clear();
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
@@ -16,6 +17,7 @@ const Home = () => {
     localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
     window.location.replace("/id");
   };
+  
   return (
     <div className="Page">
       <style type="text/css">
@@ -84,7 +86,8 @@ const Home = () => {
         </p>
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
-          Using the <strong>Back </strong>button in this study will take you back to this page and reset your progress.
+          Using the <strong>Back </strong>button in this study will take you
+          back to this page and reset your progress.
         </Alert>
 
         <div className="center">

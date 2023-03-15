@@ -19,6 +19,8 @@ const Lottery = () => {
   localStorage.setItem("laborTime", 0);
   localStorage.setItem("leisureTime", 0);
   localStorage.setItem("inactiveLabor", 0);
+  localStorage.setItem("watchedVideo", 0);
+  localStorage.setItem("popQuestion", "no");
   localStorage.setItem("inactiveLeisure", 0);
   localStorage.setItem("activeTab", "Labor");
   localStorage.setItem("visible", "isVisible");
@@ -160,7 +162,7 @@ const Lottery = () => {
         </Typography> */}
         <p className="HomePage_p">
           <Alert sx={{ mb: 2 }} severity="info">
-          <strong>Your Time Choice is not binding.</strong> You spend your
+            <strong>Your Time Choice is not binding.</strong> You spend your
             time freely across both tasks.
           </Alert>
         </p>

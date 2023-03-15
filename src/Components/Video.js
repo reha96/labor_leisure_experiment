@@ -1,15 +1,22 @@
 import React, { useRef, useState, useMemo, useEffect } from "react";
 import "./video.css";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContentText from "@mui/material/DialogContentText";
+import ButtonM from "@mui/material/Button";
 
 function Video({ src }) {
   const [aplay, setAplay] = useState(
     localStorage.getItem("treatment").includes("On")
   );
-
+  const [open, setOpen] = useState(false);
   const videoRef = useRef(null);
   const endRef = useRef(null);
 
   const [isVisible, setIsVisible] = useState(false);
+
   const callbackFunction = (entries) => {
     const [entry] = entries; // const entry = entries[0];
     setIsVisible(entry.isIntersecting);
@@ -23,32 +30,12 @@ function Video({ src }) {
     };
   }, []);
 
-  const handleKeyDown = (event) => {
-    if (localStorage.getItem("activeTab") === "Leisure") {
-      event.preventDefault();
-    }
-    if (event.metaKey) {
-      event.preventDefault();
-      console.log("CMD key press")
-    }
-    if (event.ctrlKey) {
-      event.preventDefault();
-      console.log("CTRL key press")
-    }
-    if (event.altKey) {
-      event.preventDefault();
-      console.log("ALT key press")
-    }
-
-
-  };
-
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    !isVisible ? stopVideo() : playVideo();
+    if (!isVisible) {
+      stopVideo();
+    } else {
+      playVideo();
+    }
   }, [isVisible]);
 
   useEffect(() => {
@@ -64,7 +51,9 @@ function Video({ src }) {
     if (aplay) {
       if (videoRef !== null && videoRef.current !== null) {
         videoRef.current.play();
-        //setMute(0);
+        if (parseInt(localStorage.getItem("watchedVideo")) === 1) {
+          setOpen(true);
+        }
       }
     }
   };
@@ -72,7 +61,6 @@ function Video({ src }) {
   const stopVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
-      //setMute(1);
     }
   };
 
@@ -81,14 +69,14 @@ function Video({ src }) {
       "watchedVideo",
       parseInt(localStorage.getItem("watchedVideo")) + 1
     );
-    // console.log("Video watched " + localStorage.getItem("watchedVideo"));
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
     } else {
       localStorage.setItem("videoPaused", "yes");
     }
-    endRef.current.scrollIntoView({ behavior: "smooth" });
-    // videoRef.current.scrollIntoView(false);
+    if (!open) {
+      endRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const onClick = (e) => {
@@ -99,6 +87,14 @@ function Video({ src }) {
       localStorage.setItem("videoPaused", "yes");
       videoRef.current.pause();
     }
+    if (parseInt(localStorage.getItem("watchedVideo")) === 1) {
+      setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    localStorage.setItem("popQuestion", "no");
+    setOpen(false);
   };
 
   return (
@@ -111,8 +107,35 @@ function Video({ src }) {
         src={src}
         type="video/mp4"
         onEnded={handleVideoEnded}
+        style={{ cursor: "pointer" }}
+        loop={open}
       ></video>
       <div ref={endRef} />
+
+      <Dialog
+        open={open}
+        onClose={null}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"This video is about ..."}
+        </DialogTitle>
+        <DialogContent>
+          {" "}
+          <DialogContentText id="alert-dialog-description">
+            ... a dog barking at the neighbors.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <ButtonM onClick={handleClose} autoFocus>
+            <strong>No</strong>
+          </ButtonM>
+          <ButtonM onClick={handleClose} autoFocus>
+            <strong>Yes</strong>
+          </ButtonM>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

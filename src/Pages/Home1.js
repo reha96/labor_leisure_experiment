@@ -14,7 +14,7 @@ import axios from "axios";
 
 const Home1 = () => {
   const [checked, setChecked] = useState(false);
-  const badcon = navigator.connection.downlink < 8;
+  const badcon = navigator.connection.downlink < 1.4; //SURE ABOUT THIS?
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -33,7 +33,7 @@ const Home1 = () => {
       attention2: localStorage.getItem("attentionFail2"),
       treatment: localStorage.getItem("treatment"),
       lottery: localStorage.getItem("lottery"),
-      platform: browser,
+      platform: browser, //CHANGE?
       browser: speed,
       ID: localStorage.getItem("ID"),
       clikcedOkToSwitch: {},

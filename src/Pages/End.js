@@ -13,6 +13,7 @@ const End = () => {
   localStorage.setItem("income", "");
   localStorage.setItem("connection", "");
   localStorage.setItem("trueWatch", "");
+  localStorage.setItem("activeTab", "");
   useEffect(() => {
     localStorage.setItem("emptyField?", "");
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {

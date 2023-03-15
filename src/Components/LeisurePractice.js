@@ -6,10 +6,17 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContentText from "@mui/material/DialogContentText";
+import ButtonM from "@mui/material/Button";
 
 const LeisurePractice = () => {
   const [aplay, setAplay] = useState();
   const [open, setOpen] = useState(true);
+  const [open2, setOpen2] = useState(true);
   const [count, setCount] = useState(
     parseInt(localStorage.getItem("watchedVideo"))
   );
