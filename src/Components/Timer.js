@@ -45,7 +45,10 @@ const Timer = (props) => {
             // setOpen(true);
           }
         }
-        if (document.visibilityState === "visible") {
+        if (
+          document.visibilityState === "visible" ||
+          localStorage.getItem("mouseout") === "false"
+        ) {
           if (localStorage.getItem("activeTab") === "Labor") {
             setLaborcount(parseInt(laborcount) + 1);
           }
@@ -58,14 +61,15 @@ const Timer = (props) => {
             }
           }
         }
-        if (document.visibilityState !== "visible") {
+        if (
+          document.visibilityState !== "visible" ||
+          localStorage.getItem("mouseout") === "true"
+        ) {
           if (localStorage.getItem("activeTab") === "Labor") {
             setInactivelabor(parseInt(inactivelabor) + 1);
           }
-          if (document.visibilityState !== "visible") {
-            if (localStorage.getItem("activeTab") === "Leisure")
-              setInactiveleisure(parseInt(inactiveleisure) + 1);
-          }
+          if (localStorage.getItem("activeTab") === "Leisure")
+            setInactiveleisure(parseInt(inactiveleisure) + 1);
         }
       }
     }, 1000);

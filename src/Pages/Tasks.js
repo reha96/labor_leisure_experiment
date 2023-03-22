@@ -19,6 +19,22 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContentText from "@mui/material/DialogContentText";
 
 const Tasks = () => {
+  // MOUSE OUT LISTENER
+  window.addEventListener("mouseout", function (event) {
+    if (
+      event.clientY <= 0 ||
+      event.clientX <= 0 ||
+      event.clientX >= window.innerWidth ||
+      event.clientY >= window.innerHeight
+    ) {
+      localStorage.setItem("mouseout", true);
+    }
+  });
+  //MOUSE IN LISTENER
+  const mouseEnter = () => {
+    localStorage.setItem("mouseout", false);
+  };
+
   const [key, setKey] = useState(localStorage.getItem("activePage"));
   const [refresh, setRefresh] = useState(false);
   const [counter, setCounter] = useState(
@@ -69,7 +85,7 @@ const Tasks = () => {
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      setCount(parseInt(localStorage.getItem("watchedVideo")))
+      setCount(parseInt(localStorage.getItem("watchedVideo")));
       if (localStorage.getItem("lottery") === "lotteryWin") {
         if (
           parseInt(localStorage.getItem("inactiveLabor")) +
@@ -113,7 +129,7 @@ const Tasks = () => {
   // };
 
   return (
-    <div className="Pagetasks">
+    <div className="Pagetasks" onMouseEnter={mouseEnter}>
       <Container className="p-1" fluid="sm">
         <Timer
           initialMinute={localStorage.getItem("lastmin")}

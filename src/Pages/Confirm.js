@@ -15,6 +15,7 @@ import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
   localStorage.setItem("tabCounter", 0);
+  localStorage.setItem("videoAttention", 0);
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")
   );
@@ -132,11 +133,13 @@ const Confirm = () => {
         {/* <p className="HomePage_p">The practice session is over.</p> */}
         <p className="HomePage_p">
           {" "}
-          We now ask you to decide how long you would like to spend on{" "}
-          <strong>Typing</strong> and on <strong>Watching Videos</strong>.
+          We now ask how long you would like to spend on <strong>
+            Typing
+          </strong>{" "}
+          and on <strong>Watching Videos</strong>.
         </p>
         <p className="HomePage_p">
-          In this part you have <strong> 12 minutes</strong>.
+          In this part you will have <strong> 12 minutes</strong>.
         </p>
 
         {/* <p className="HomePage_p">
@@ -144,23 +147,10 @@ const Confirm = () => {
           <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p> */}
         <p className="HomePage_p">
-          For 1 out of every 20 participants the <strong>Time Choice</strong>{" "}
-          decision will be binding:{" "}
+          1 out of every 20 participant will be <strong>binded</strong> by
+          the choice they made here.
         </p>
-        <p className="HomePage_p">
-          <ul class="a">
-            <li>
-              {" "}
-              If you are among the selected participants you will have to{" "}
-              <strong>Type</strong> for your chosen duration.
-            </li>
-            <li>
-              {" "}
-              If you are not selected, you spend your time freely across both
-              tasks.{" "}
-            </li>
-          </ul>{" "}
-        </p>
+
         <p className="HomePage_p">
           Please <strong>click on the slider</strong> and indicate your{" "}
           <strong>Time Choice</strong>:

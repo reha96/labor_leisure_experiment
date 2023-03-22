@@ -168,7 +168,7 @@ const Home2 = () => {
           met at the end of the 12 minutes:
           {/* </strong> */}
           <ul class="a">
-            <li>Type at least 1 CAPTCHA per minute you spent on this task.</li>
+            <li>Submit at least 1 CAPTCHA per minute you spent typing.</li>
             <li>Have an overall accuracy of at least 70 percent. </li>
           </ul>
           {/* <strong> */}

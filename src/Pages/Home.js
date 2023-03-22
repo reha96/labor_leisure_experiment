@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import "../App.css";
@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
-  localStorage.clear();
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
@@ -14,10 +13,38 @@ const Home = () => {
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
-    localStorage.setItem("ID", Math.random() * (9999999 - 1) + 1);
+    localStorage.setItem("ID", Math.random() * (9999999999999 - 1) + 1);
     window.location.replace("/id");
   };
-  
+
+  const [open, setOpen] = useState(true);
+
+  var userImageLink =
+    "https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png";
+  var time_start, end_time;
+
+  // The size in bytes
+  var downloadSize = 7400000;
+  var downloadImgSrc = new Image();
+
+  downloadImgSrc.onload = function () {
+    end_time = new Date().getTime();
+    displaySpeed();
+  };
+  time_start = new Date().getTime();
+  downloadImgSrc.src = userImageLink;
+
+  function displaySpeed() {
+    var timeDuration = (end_time - time_start) / 1000;
+    var loadedBits = downloadSize * 8;
+    /* Converts a number into string
+                     using toFixed(2) rounding to 2 */
+    var bps = (loadedBits / timeDuration).toFixed(2);
+    var speedInKbps = (bps / 1024).toFixed(2);
+    var speedInMbps = (speedInKbps / 1024).toFixed(2);
+    localStorage.setItem("speed", speedInMbps);
+    setOpen(false);
+  }
   return (
     <div className="Page">
       <style type="text/css">
@@ -90,8 +117,16 @@ const Home = () => {
           back to this page and reset your progress.
         </Alert>
 
+        {open ? (
+          <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+            {" "}
+            Please wait while we check for your network speed.
+          </Alert>
+        ) : null}
+
         <div className="center">
           <ButtonM
+            disabled={open}
             sx={{ mt: 2 }}
             variant="contained"
             color="secondary"

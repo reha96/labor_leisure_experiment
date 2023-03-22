@@ -27,12 +27,12 @@ const ConfirmUpdate = (props) => {
         // className="HomePage_p"
       >
         {/* You decide to spend <strong>{divi}%</strong> of your time on <strong>Typing</strong> and <strong>{100 - divi}%</strong> of your time on <strong>Watching Videos</strong>. <br></br> */}
-        You decide to spend <strong>{min}</strong> minutes{" "}
+        You choose to spend <strong>{min}</strong> minutes{" "}
         <strong>{sec}</strong> seconds to <strong>Type.</strong> <br></br>
-        You decide to spend <strong>{min2}</strong> minutes{" "}
+        You choose to spend <strong>{min2}</strong> minutes{" "}
         <strong>{sec2}</strong> seconds to <strong>Watch Videos.</strong>{" "}
         <br></br>
-        This would earn you{" "}
+        You would earn{" "}
         <strong>
           £
           {(2 + (divi * 0.15) / 100 + ((720 - divi) * 0.1) / 100).toPrecision(

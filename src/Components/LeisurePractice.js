@@ -6,17 +6,10 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContentText from "@mui/material/DialogContentText";
-import ButtonM from "@mui/material/Button";
 
 const LeisurePractice = () => {
   const [aplay, setAplay] = useState();
   const [open, setOpen] = useState(true);
-  const [open2, setOpen2] = useState(true);
   const [count, setCount] = useState(
     parseInt(localStorage.getItem("watchedVideo"))
   );
@@ -73,13 +66,18 @@ const LeisurePractice = () => {
 
         <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_2.mp4"} />
 
-        <Video src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid37.mp4"} />
-
-        {count > 1 ? (
+        {count >= 1 ? (
           <>
+            <Video
+              src={"https://d26ctpn7twdgoy.cloudfront.net/vids/vid37.mp4"}
+            />
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_3.mp4"}
             />
+          </>
+        ) : null}
+        {count >= 3 ? (
+          <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_3.mp4"}
             />
@@ -90,7 +88,7 @@ const LeisurePractice = () => {
           </>
         ) : null}
 
-        {count > 3 ? (
+        {count >= 5 ? (
           <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_4.mp4"}
@@ -98,7 +96,11 @@ const LeisurePractice = () => {
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a2_1.mp4"}
             />
+          </>
+        ) : null}
 
+        {count >= 7 ? (
+          <>
             <Video
               src={"https://d26ctpn7twdgoy.cloudfront.net/vids/a1_2.mp4"}
             />

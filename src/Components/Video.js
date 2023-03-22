@@ -8,9 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import ButtonM from "@mui/material/Button";
 
 function Video({ src }) {
-  const [aplay, setAplay] = useState(
-    localStorage.getItem("treatment").includes("On")
-  );
+  const aplay = localStorage.getItem("treatment").includes("On");
   const [open, setOpen] = useState(false);
   const videoRef = useRef(null);
   const endRef = useRef(null);
@@ -51,10 +49,14 @@ function Video({ src }) {
     if (aplay) {
       if (videoRef !== null && videoRef.current !== null) {
         videoRef.current.play();
-        if (parseInt(localStorage.getItem("watchedVideo")) === 1) {
-          setOpen(true);
+        // FOR AUTOPLAY POPUP OPEN
+        if (parseInt(localStorage.getItem("watchedVideo")) === 4) {
+          setTimeout(() => {
+            setOpen(true);
+          }, "3000");
         }
       }
+      console.log(videoRef.current.duration);
     }
   };
 
@@ -69,6 +71,7 @@ function Video({ src }) {
       "watchedVideo",
       parseInt(localStorage.getItem("watchedVideo")) + 1
     );
+    console.log(videoRef.current.currentTime);
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
     } else {
@@ -81,20 +84,78 @@ function Video({ src }) {
 
   const onClick = (e) => {
     if (videoRef.current.paused) {
+      console.log(videoRef.current.duration);
       localStorage.setItem("videoPaused", "no");
       videoRef.current.play();
+      // FOR NO AUTOPLAY POPUP OPEN
+      if (parseInt(localStorage.getItem("watchedVideo")) === 4) {
+        setTimeout(() => {
+          setOpen(true);
+        }, "3000");
+      }
     } else {
       localStorage.setItem("videoPaused", "yes");
       videoRef.current.pause();
     }
-    if (parseInt(localStorage.getItem("watchedVideo")) === 1) {
-      setOpen(true);
-    }
   };
 
+  // ATTENTION TIMEOUT
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        localStorage.setItem("videoAttention", 1);
+        stopVideo();
+        setOpen(false);
+        localStorage.setItem(
+          "watchedVideo",
+          parseInt(localStorage.getItem("watchedVideo")) + 1
+        );
+        if (localStorage.getItem("treatment").includes("On")) {
+          localStorage.setItem("videoPaused", "no");
+        } else {
+          localStorage.setItem("videoPaused", "yes");
+        }
+        endRef.current.scrollIntoView({ behavior: "smooth" });
+      }, "10000");
+    }
+  }, [open]);
+
+  // NORMAL CLOSING BEHAVIOR
   const handleClose = () => {
     localStorage.setItem("popQuestion", "no");
+    localStorage.setItem("videoAttention", 0);
+    // SCROLL TO NEXT VIDEO
+    stopVideo();
     setOpen(false);
+    localStorage.setItem(
+      "watchedVideo",
+      parseInt(localStorage.getItem("watchedVideo")) + 1
+    );
+    if (localStorage.getItem("treatment").includes("On")) {
+      localStorage.setItem("videoPaused", "no");
+    } else {
+      localStorage.setItem("videoPaused", "yes");
+    }
+    endRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // WRONG CLOSING BEHAVIOR
+  const handleKicked = () => {
+    localStorage.setItem("popQuestion", "no");
+    // SCROLL TO NEXT VIDEO
+    localStorage.setItem("videoAttention", 1);
+    stopVideo();
+    setOpen(false);
+    localStorage.setItem(
+      "watchedVideo",
+      parseInt(localStorage.getItem("watchedVideo")) + 1
+    );
+    if (localStorage.getItem("treatment").includes("On")) {
+      localStorage.setItem("videoPaused", "no");
+    } else {
+      localStorage.setItem("videoPaused", "yes");
+    }
+    endRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -119,7 +180,7 @@ function Video({ src }) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"This video is about ..."}
+          {"The current video is about ..."}
         </DialogTitle>
         <DialogContent>
           {" "}
@@ -131,7 +192,7 @@ function Video({ src }) {
           <ButtonM onClick={handleClose} autoFocus>
             <strong>No</strong>
           </ButtonM>
-          <ButtonM onClick={handleClose} autoFocus>
+          <ButtonM onClick={handleKicked} autoFocus>
             <strong>Yes</strong>
           </ButtonM>
         </DialogActions>
