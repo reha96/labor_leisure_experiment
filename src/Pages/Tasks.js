@@ -101,7 +101,7 @@ const Tasks = () => {
         if (
           parseInt(localStorage.getItem("inactiveLeisure")) +
             parseInt(localStorage.getItem("leisureTime")) ===
-          parseInt(720 - localStorage.getItem("time_choice"))
+          parseInt(600 - localStorage.getItem("time_choice"))
         ) {
           if (localStorage.getItem("activeTab") === "Leisure") {
             localStorage.setItem("timesUp", "timesUpLeisure");

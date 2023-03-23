@@ -16,6 +16,7 @@ import Alert from "@mui/material/Alert";
 const Confirm = () => {
   localStorage.setItem("tabCounter", 0);
   localStorage.setItem("videoAttention", 0);
+  localStorage.setItem("watchtime", 0);
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")
   );
@@ -77,7 +78,11 @@ const Confirm = () => {
       label: "No Typing",
     },
     {
-      value: 720,
+      value: 300,
+      label: "Equal split",
+    },
+    {
+      value: 600,
       label: "Only Typing",
     },
   ];
@@ -139,7 +144,7 @@ const Confirm = () => {
           and on <strong>Watching Videos</strong>.
         </p>
         <p className="HomePage_p">
-          In this part you will have <strong> 12 minutes</strong>.
+          In this part you will have <strong> 10 minutes</strong>.
         </p>
 
         {/* <p className="HomePage_p">
@@ -147,8 +152,8 @@ const Confirm = () => {
           <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p> */}
         <p className="HomePage_p">
-          1 out of every 20 participant will be <strong>binded</strong> by
-          the choice they made here.
+          1 out of every 20 participant will be <strong>binded</strong> by the
+          choice they made here.
         </p>
 
         <p className="HomePage_p">
@@ -164,13 +169,13 @@ const Confirm = () => {
         >
           <Slider
             aria-label="Small steps"
-            defaultValue={360}
+            defaultValue={300}
             getAriaValueText={valuetext}
-            step={5}
+            step={10}
             track="normal"
             marks={marks}
             min={0}
-            max={720}
+            max={600}
             valueLabelDisplay="off"
             disabled={clicked}
           />

@@ -29,7 +29,7 @@ const Lottery = () => {
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("activePage", 1);
   localStorage.setItem("localcount", 0);
-  localStorage.setItem("lastmin", 11); // change time TESTT
+  localStorage.setItem("lastmin", 9); // change time TESTT
   localStorage.setItem("lastsec", 59); // change time TESTT
   localStorage.setItem("transc", JSON.stringify(input));
   window.localStorage.setItem("progress", 0);
@@ -171,7 +171,7 @@ const Lottery = () => {
           Recap
         </Typography>
         <p className="HomePage_p">
-          On the next page you will spend 12 minutes. You can switch between
+          On the next page you will spend 10 minutes. You can switch between
           tasks as you please. Your bonus payment depends on how you actually
           spend your time between the tasks and whether your{" "}
           <strong> Typing</strong> meets the quality criteria.

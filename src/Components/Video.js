@@ -53,10 +53,10 @@ function Video({ src }) {
         if (parseInt(localStorage.getItem("watchedVideo")) === 4) {
           setTimeout(() => {
             setOpen(true);
-          }, "3000");
+            localStorage.setItem("popQuestion", "yes");
+          }, (videoRef.current.duration - 4) * 1000);
         }
       }
-      console.log(videoRef.current.duration);
     }
   };
 
@@ -71,7 +71,10 @@ function Video({ src }) {
       "watchedVideo",
       parseInt(localStorage.getItem("watchedVideo")) + 1
     );
-    console.log(videoRef.current.currentTime);
+    localStorage.setItem(
+      "watchtime",
+      parseInt(localStorage.getItem("watchtime")) + videoRef.current.currentTime
+    );
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
     } else {
@@ -84,14 +87,13 @@ function Video({ src }) {
 
   const onClick = (e) => {
     if (videoRef.current.paused) {
-      console.log(videoRef.current.duration);
       localStorage.setItem("videoPaused", "no");
       videoRef.current.play();
       // FOR NO AUTOPLAY POPUP OPEN
       if (parseInt(localStorage.getItem("watchedVideo")) === 4) {
         setTimeout(() => {
           setOpen(true);
-        }, "3000");
+        }, (videoRef.current.duration - 4) * 1000);
       }
     } else {
       localStorage.setItem("videoPaused", "yes");
@@ -101,21 +103,27 @@ function Video({ src }) {
 
   // ATTENTION TIMEOUT
   useEffect(() => {
-    if (open) {
+    if (parseInt(localStorage.getItem("watchedVideo")) === 4) {
       setTimeout(() => {
-        localStorage.setItem("videoAttention", 1);
-        stopVideo();
-        setOpen(false);
-        localStorage.setItem(
-          "watchedVideo",
-          parseInt(localStorage.getItem("watchedVideo")) + 1
-        );
-        if (localStorage.getItem("treatment").includes("On")) {
-          localStorage.setItem("videoPaused", "no");
-        } else {
-          localStorage.setItem("videoPaused", "yes");
+        if (localStorage.getItem("popQuestion") === "yes") {
+          localStorage.setItem("popQuestion", "no");
+          localStorage.setItem(
+            "videoAttention",
+            parseInt(localStorage.getItem("videoAttention") + 1)
+          );
+          stopVideo();
+          setOpen(false);
+          localStorage.setItem(
+            "watchedVideo",
+            parseInt(localStorage.getItem("watchedVideo")) + 1
+          );
+          if (localStorage.getItem("treatment").includes("On")) {
+            localStorage.setItem("videoPaused", "no");
+          } else {
+            localStorage.setItem("videoPaused", "yes");
+          }
+          endRef.current.scrollIntoView({ behavior: "smooth" });
         }
-        endRef.current.scrollIntoView({ behavior: "smooth" });
       }, "10000");
     }
   }, [open]);

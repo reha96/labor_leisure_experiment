@@ -40,6 +40,8 @@ const End = () => {
       "platform.MPL7": localStorage.getItem("MPL7"),
       "platform.MPL8": localStorage.getItem("MPL8"),
       "platform.MPL9": localStorage.getItem("MPL9"),
+      "platform.finishTime": localStorage.getItem("watchtime"),
+      "platform.videoAttention": localStorage.getItem("videoAttention"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");

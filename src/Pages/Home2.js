@@ -148,7 +148,7 @@ const Home2 = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <p className="HomePage_p">
-          In this study you have 12 minutes during which you will do 2 different
+          In this study you have 10 minutes during which you will do 2 different
           tasks.
         </p>
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
@@ -165,7 +165,7 @@ const Home2 = () => {
           {" "}
           {/* <strong> */}
           You are paid your seconds of work only if the following quality are
-          met at the end of the 12 minutes:
+          met at the end of the 10 minutes:
           {/* </strong> */}
           <ul class="a">
             <li>Submit at least 1 CAPTCHA per minute you spent typing.</li>
@@ -211,7 +211,7 @@ const Home2 = () => {
           Task 2: Watching Videos
         </Typography>
         <p className="HomePage_p">
-          You watch funny animal videos compiled from TikTok and YouTube.
+          You watch funny/cute animal videos compiled from TikTok and YouTube.
         </p>
         <p className="HomePage_p">
           <strong>
