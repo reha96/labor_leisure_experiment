@@ -116,18 +116,6 @@ const Tasks = () => {
     };
   });
 
-  // useEffect(() => {
-  //   if (count === 1) {
-  //     setOpen2(true);
-  //     localStorage.setItem("popQuestion", "yes");
-  //   }
-  // }, [count]);
-
-  // const handleClose2 = () => {
-  //   localStorage.setItem("popQuestion", "no");
-  //   setOpen2(false);
-  // };
-
   return (
     <div className="Pagetasks" onMouseEnter={mouseEnter}>
       <Container className="p-1" fluid="sm">
@@ -140,9 +128,6 @@ const Tasks = () => {
           initialLeisureNot={localStorage.getItem("inactiveLeisure")}
           initialVideoPausedFor={localStorage.getItem("videoPausedFor")}
         />
-        {/* <Typography variant="h6" color="secondary" className="center">
-          Choose Task
-        </Typography> */}
         <style type="text/css">
           {`
         .bg-info {

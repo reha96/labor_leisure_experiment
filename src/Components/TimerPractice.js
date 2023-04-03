@@ -11,17 +11,15 @@ const TimerPractice = (props) => {
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if (localStorage.getItem("popQuestion") === "no") {
-        if (seconds > 0) {
-          setSeconds(seconds - 1);
-        }
-        if (seconds === 0) {
-          if (minutes === 0) {
-            clearInterval(myInterval);
-          } else {
-            setMinutes(minutes - 1);
-            setSeconds(59);
-          }
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(myInterval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
         }
       }
     }, 1000);

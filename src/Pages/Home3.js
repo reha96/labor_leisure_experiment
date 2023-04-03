@@ -18,7 +18,8 @@ const Home3 = () => {
     localStorage.setItem("lastsec", 59); // testtt timer change
     localStorage.setItem("activePage", 1);
     localStorage.setItem("transc", JSON.stringify(input));
-    localStorage.setItem("popQuestion", "no");
+    localStorage.setItem("keyTime", JSON.stringify(input));
+    localStorage.setItem("watchSess", JSON.stringify(input));
     localStorage.setItem("watchedVideo", 0);
     window.localStorage.setItem("progress", 0);
     window.location.replace("practice");

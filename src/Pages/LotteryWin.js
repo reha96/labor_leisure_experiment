@@ -20,10 +20,8 @@ const LotteryWin = () => {
   localStorage.setItem("leisureTime", 0);
   localStorage.setItem("inactiveLabor", 0);
   localStorage.setItem("inactiveLeisure", 0);
-  localStorage.setItem("popQuestion", "no");
   localStorage.setItem("watchedVideo", 0);
   localStorage.setItem("activeTab", "Labor");
-  localStorage.setItem("visible", "isVisible");
   localStorage.setItem("clickedOKtoswitch2", "no");
   localStorage.setItem("timesUp", "");
   localStorage.setItem("activePage", 1);

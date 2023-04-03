@@ -40,19 +40,15 @@ function App() {
     }
     if (event.metaKey) {
       event.preventDefault();
-      localStorage.setItem("cheatKey", "CMD");
     }
     if (event.ctrlKey) {
       event.preventDefault();
-      localStorage.setItem("cheatKey", "CTRL");
     }
     if (event.altKey) {
       event.preventDefault();
-      localStorage.setItem("cheatKey", "ALT");
     }
     if (event.keyCode === 123) {
       event.preventDefault();
-      localStorage.setItem("cheatKey", "F12");
     }
   };
 

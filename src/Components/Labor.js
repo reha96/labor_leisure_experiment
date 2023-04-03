@@ -419,7 +419,23 @@ const Labor = () => {
   const [open, setOpen] = useState(true);
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
-  // console.log(localStorage.getItem(typedValue));
+  const [sess, setSess] = useState([]);
+  const [diff, setDiff] = useState([]);
+
+  // DIFFERENCE BETWEEN EACH CHARACTER TYPED (SECONDS) --> LOOKING TO SEE FOR SYSTEMATIC BREAKS WHILE TYPING
+  useEffect(() => {
+    var input = typedValue;
+    var time = new Date().getTime();
+    var comb = [input, time];
+    setSess(sess.concat(comb));
+    var difference =
+      (parseInt(sess.slice(-1)) - parseInt(sess.slice(-3))) / 1000;
+    if (isNaN(difference)) {
+      difference = 0;
+    }
+    setDiff(diff.concat(difference));
+    localStorage.setItem("keyTime", diff);
+  }, [typedValue]);
 
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("localcount"))
@@ -440,13 +456,10 @@ const Labor = () => {
   }, []);
 
   const handleSubmit = (event) => {
-    // event.preventDefault()
     setInput([...input, typedValue]);
     const items = JSON.parse(localStorage.getItem("transc"));
     const newItems = JSON.stringify([...items, typedValue]);
     localStorage.setItem("transc", newItems);
-    console.log(input);
-
     setTypedValue("");
     if (isNaN(counter)) {
       var Image = 0;
@@ -458,22 +471,11 @@ const Labor = () => {
       }
     }
     setCounter(Image);
-    console.log(Image + "  Image value after submit");
-    window.localStorage.setItem("localcount", Image);
-    // console.log(
-    //   window.localStorage.getItem("localcount") +
-    //     "  localcount value after submit"
-    // );
-    // console.log(
-    //   window.localStorage.getItem("transc") + "  transc value after submit"
-    // );
-
+    localStorage.setItem("localcount", Image);
     let passvalue = {
       "platform.userTranscription": localStorage.getItem("transc"),
     };
-
     const link = "/api/" + localStorage.getItem("ID");
-
     axios
       .patch(link, passvalue)
       .then(() => {

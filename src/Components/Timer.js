@@ -5,7 +5,6 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 
 const Timer = (props) => {
-  localStorage.setItem("visible", "isVisible");
   const {
     initialMinute = 0,
     initialSeconds = 0,
@@ -17,20 +16,14 @@ const Timer = (props) => {
   } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
-
   const [laborcount, setLaborcount] = useState(initialLabor);
   const [leisurecount, setLeisurecount] = useState(initialLeisure);
   const [inactivelabor, setInactivelabor] = useState(initialLaborNot);
   const [inactiveleisure, setInactiveleisure] = useState(initialLeisureNot);
   const [videoPausedFor, setVideoPausedFor] = useState(initialVideoPausedFor);
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   useEffect(() => {
     let myInterval = setInterval(() => {
-      if (localStorage.getItem("popQuestion") === "no") {
         if (seconds > 0) {
           setSeconds(seconds - 1);
         }
@@ -46,6 +39,7 @@ const Timer = (props) => {
           }
         }
         if (
+          // CHECK PARTICIPANT ACTIVITY
           document.visibilityState === "visible" ||
           localStorage.getItem("mouseout") === "false"
         ) {
@@ -71,7 +65,6 @@ const Timer = (props) => {
           if (localStorage.getItem("activeTab") === "Leisure")
             setInactiveleisure(parseInt(inactiveleisure) + 1);
         }
-      }
     }, 1000);
     return () => {
       localStorage.setItem("laborTime", laborcount);

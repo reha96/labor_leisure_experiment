@@ -13,7 +13,7 @@ const Home = () => {
     localStorage.setItem("attentionFail2", 0);
     localStorage.setItem("treatment", Math.random());
     localStorage.setItem("lottery", Math.random());
-    localStorage.setItem("ID", Math.random() * (9999999999999 - 1) + 1);
+    localStorage.setItem("ID", Math.random() * (99999999999999999 - 1) + 1);
     window.location.replace("/id");
   };
 

@@ -15,7 +15,6 @@ import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
   localStorage.setItem("tabCounter", 0);
-  localStorage.setItem("videoAttention", 0);
   localStorage.setItem("watchtime", 0);
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")

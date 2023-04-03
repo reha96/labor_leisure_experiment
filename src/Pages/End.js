@@ -41,7 +41,8 @@ const End = () => {
       "platform.MPL8": localStorage.getItem("MPL8"),
       "platform.MPL9": localStorage.getItem("MPL9"),
       "platform.finishTime": localStorage.getItem("watchtime"),
-      "platform.videoAttention": localStorage.getItem("videoAttention"),
+      "platform.keyTime": localStorage.getItem("keyTime"),
+      "platform.duration_current_diff": localStorage.getItem("watchSess"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
