@@ -15,7 +15,7 @@ const End = () => {
   localStorage.setItem("trueWatch", "");
   localStorage.setItem("activeTab", "");
   useEffect(() => {
-    localStorage.setItem("emptyField?", "");
+    // COUNT A TAB SWITCH IF PARTICIPANT SPENT TIME WATCHING VIDEOS
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {
       if (parseInt(localStorage.getItem("tabCounter")) === 0) {
         localStorage.setItem("tabCounter", 1);
@@ -40,13 +40,11 @@ const End = () => {
       "platform.MPL7": localStorage.getItem("MPL7"),
       "platform.MPL8": localStorage.getItem("MPL8"),
       "platform.MPL9": localStorage.getItem("MPL9"),
-      "platform.finishTime": localStorage.getItem("watchtime"),
+      "platform.finishedVideo": localStorage.getItem("watchtime"),
       "platform.keyTime": localStorage.getItem("keyTime"),
       "platform.duration_current_diff": localStorage.getItem("watchSess"),
     };
-
     const link = "/api/" + localStorage.getItem("ID");
-
     axios
       .patch(link, passvalue)
       .then(() => {

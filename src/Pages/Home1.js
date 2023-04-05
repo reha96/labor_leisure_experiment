@@ -13,8 +13,11 @@ import * as Bowser from "bowser";
 import axios from "axios";
 
 const Home1 = () => {
+  const first = localStorage.getItem("version") === "first";
+  const second = localStorage.getItem("version") === "second";
+  const mpl = localStorage.getItem("version") === "mpl";
   const [checked, setChecked] = useState(false);
-  const badcon = parseFloat(localStorage.getItem("speed")) < 20; //SURE ABOUT THIS?
+  const badcon = parseFloat(localStorage.getItem("speed")) < 20; // NEED TO CHECK THIS WITH ACTUAL PARTICIPATNS
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -26,58 +29,97 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
   localStorage.setItem("updateOnce", "no");
+
+  if (second) {
+    // ASYNC GET COMMAND TO ACCESS FIRST VERSION TREATMENT, LOTTERY
+    const link = "/api/" + typedValue;
+    axios
+      .get(link)
+      .then(function (response) {
+        localStorage.setItem("ID", response.data[0]["ID"]);
+        localStorage.setItem("treatment", response.data[0]["treatment"]);
+        localStorage.setItem("lottery", response.data[0]["lottery"]);
+        localStorage.setItem("attentionFail1", response.data[0]["attention1"]);
+        localStorage.setItem("attentionFail2", response.data[0]["attention2"]);
+        localStorage.setItem(
+          "clickedOKtoswitch",
+          response.data[0]["clikcedOkToSwitch"]["Practice"]
+        );
+      })
+      .catch((e) => {
+        console.log("Unable to GET participant: ", e);
+      });
+  }
+
   useEffect(() => {
-    let passvalue = {
-      attention1: localStorage.getItem("attentionFail1"),
-      attention2: localStorage.getItem("attentionFail2"),
-      treatment: localStorage.getItem("treatment"),
-      lottery: localStorage.getItem("lottery"),
-      platform: {
-        browser: browser["browser"]["name"],
-        platform: browser["platform"]["type"],
-        os: browser["os"]["name"],
-      },
-      browser: { speed: localStorage.getItem("speed") },
-      ID: localStorage.getItem("ID"),
-      clikcedOkToSwitch: {},
-      timeChoice: 0,
-      leisureTime: 0,
-      laborTime: 0,
-      transcription: {},
-    };
-    if (localStorage.getItem("participantCreated") === "no") {
-      localStorage.setItem("participantCreated", "yes");
-      axios
-        .post("/api", passvalue)
-        .then(() => {
-          console.log("New participant added");
-        })
-        .catch((e) => {
-          console.log("Unable to add new participant: ", e);
-        });
+    // POST ONLY IN FIRST/MPL VERSION
+    if (first || mpl) {
+      // CREATION OF PARTICIPANT IN DB BEFORE PROLIFIC ID
+      let passvalue = {
+        attention1: localStorage.getItem("attentionFail1"),
+        attention2: localStorage.getItem("attentionFail2"),
+        treatment: localStorage.getItem("treatment"),
+        lottery: localStorage.getItem("lottery"),
+        platform: {
+          browser: browser["browser"]["name"],
+          platform: browser["platform"]["type"],
+          os: browser["os"]["name"],
+        },
+        browser: { speed: localStorage.getItem("speed") },
+        ID: localStorage.getItem("ID"),
+        clikcedOkToSwitch: {},
+        timeChoice: 0,
+        leisureTime: 0,
+        laborTime: 0,
+        transcription: {},
+      };
+      if (localStorage.getItem("participantCreated") === "no") {
+        localStorage.setItem("participantCreated", "yes");
+        axios
+          .post("/api", passvalue)
+          .then(() => {
+            console.log("New participant added");
+          })
+          .catch((e) => {
+            console.log("Unable to add new participant: ", e);
+          });
+      }
     }
   }, []);
-  const onClick = (e) => {
+  const onClick = async (e) => {
     localStorage.setItem("prolificID", typedValue);
-    // set MPL treatment here
-    localStorage.setItem("secondWave", "no");
-    if (localStorage.getItem("secondWave") === "no") {
+    // SETTING RANDOMIZED VALUES ONLY IN FIRST/MPL VERSION
+    if (first) {
+      // TREATMENT
       const treatment = ["autoplayOn", "autoplayOff"];
       const random = Math.floor(Math.random() * treatment.length);
       localStorage.setItem("treatment", treatment[random]);
-    } else {
-      localStorage.setItem("treatment", "MPL");
-    }
-    if (localStorage.getItem("secondWave") === "no") {
+      // 1 OUT 20 BINDING CHOICE
       if (localStorage.getItem("lottery") >= 0.95) {
         localStorage.setItem("lottery", "lotteryWin");
       } else {
         localStorage.setItem("lottery", "lotteryLose");
       }
-    } else {
-      localStorage.setItem("lottery", "lotteryLose");
+      // PROCEED WITH INSTRUCTIONS OR TASK ACCORDING TO VERSION
+      window.location.replace(typedValue.toString() + "/next");
     }
-    window.location.replace(typedValue.toString() + "/next");
+
+    if (mpl) {
+      localStorage.setItem("treatment", "MPL");
+      // 1 OUT 20 BINDING CHOICE
+      if (localStorage.getItem("lottery") >= 0.95) {
+        localStorage.setItem("lottery", "lotteryWin");
+      } else {
+        localStorage.setItem("lottery", "lotteryLose");
+      }
+      // PROCEED TO PAGE ACCORDING TO VERSION
+      window.location.replace(typedValue.toString() + "/next");
+    }
+
+    if (second) {
+      // SKIP TO LOTTERY OUTCOME AND START TASK
+      window.location.replace(typedValue.toString() + "/lot");
+    }
   };
 
   return (
@@ -115,42 +157,53 @@ const Home1 = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
-          Your Consent
-        </Typography>
-        <p className="HomePage_p">I have been informed about:</p>
-        <p className="HomePage_p">
-          <ul class="a">
-            <li>how the study will be carried out,</li>
-            <li>the anonymity of my personal data,</li>
-            <li>
-              processing of my personal data without revealing my identity,
-            </li>
-          </ul>
-          according to the conditions detailed in the GDPR.
-        </p>
-        <p className="HomePage_p">
-          <br></br>I am aware that:
-          <ul class="a">
-            <li>I may withdraw my consent any time,</li>
-            <li>I do not need to give reasons for my withdrawal,</li>
-            <li>there will be no negative consequences for my withdrawal.</li>
-          </ul>
-        </p>
+        {first || mpl ? (
+          <>
+            <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+              Your Consent
+            </Typography>
+            <p className="HomePage_p">I have been informed about:</p>
+            <p className="HomePage_p">
+              <ul class="a">
+                <li>how the study will be carried out,</li>
+                <li>the anonymity of my personal data,</li>
+                <li>
+                  processing of my personal data without revealing my identity,
+                </li>
+              </ul>
+              according to the conditions detailed in the GDPR.
+            </p>
+            <p className="HomePage_p">
+              <br></br>I am aware that:
+              <ul class="a">
+                <li>I may withdraw my consent any time,</li>
+                <li>I do not need to give reasons for my withdrawal,</li>
+                <li>
+                  there will be no negative consequences for my withdrawal.
+                </li>
+              </ul>
+            </p>
 
-        <FormGroup className="center">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ "aria-label": "controlled" }}
+            <FormGroup className="center">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={checked}
+                    onChange={handleChange}
+                    inputProps={{ "aria-label": "controlled" }}
+                  />
+                }
+                label="Yes, I give consent."
               />
-            }
-            label="Yes, I give consent."
-          />
-        </FormGroup>
-
+            </FormGroup>
+          </>
+        ) : (
+          <>
+            <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+              Please enter your Prolific ID:
+            </Typography>
+          </>
+        )}
         <Box className="center" sx={{ m: 3.5 }} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
@@ -185,28 +238,53 @@ const Home1 = () => {
           </Alert>
         ) : null}
 
-        <div className="center">
-          {typedValue === "" ? (
-            <ButtonM
-              disabled
-              variant="contained"
-              color="secondary"
-              type="button"
-            >
-              <strong>Continue</strong>
-            </ButtonM>
-          ) : (
-            <ButtonM
-              disabled={!checked || !chromium || !desktop || badcon}
-              variant="contained"
-              color="secondary"
-              type="button"
-              onClick={onClick}
-            >
-              <strong>Continue</strong>
-            </ButtonM>
-          )}
-        </div>
+        {first || mpl ? (
+          <div className="center">
+            {typedValue === "" ? (
+              <ButtonM
+                disabled
+                variant="contained"
+                color="secondary"
+                type="button"
+              >
+                <strong>Continue</strong>
+              </ButtonM>
+            ) : (
+              <ButtonM
+                disabled={!checked || !chromium || !desktop || badcon}
+                variant="contained"
+                color="secondary"
+                type="button"
+                onClick={onClick}
+              >
+                <strong>Continue</strong>
+              </ButtonM>
+            )}
+          </div>
+        ) : (
+          <div className="center">
+            {typedValue === "" ? (
+              <ButtonM
+                disabled
+                variant="contained"
+                color="secondary"
+                type="button"
+              >
+                <strong>Continue</strong>
+              </ButtonM>
+            ) : (
+              <ButtonM
+                disabled={!chromium || !desktop || badcon}
+                variant="contained"
+                color="secondary"
+                type="button"
+                onClick={onClick}
+              >
+                <strong>Continue</strong>
+              </ButtonM>
+            )}
+          </div>
+        )}
       </Container>
     </div>
   );

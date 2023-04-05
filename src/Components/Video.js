@@ -7,6 +7,7 @@ function Video({ src }) {
   const endRef = useRef(null);
   const page = localStorage.getItem("activeTab");
   const [watchSess, setWatchSess] = useState([]);
+  const [vidcount, setVidcount] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -73,10 +74,9 @@ function Video({ src }) {
       "watchedVideo",
       parseInt(localStorage.getItem("watchedVideo")) + 1
     );
-    localStorage.setItem(
-      "watchtime",
-      parseInt(localStorage.getItem("watchtime")) + videoRef.current.currentTime
-    );
+    setVidcount(vidcount.concat(videoRef.current.currentTime));
+    localStorage.setItem("watchtime", vidcount);
+
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
     } else {

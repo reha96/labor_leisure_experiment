@@ -15,6 +15,7 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 
 const Lottery = () => {
+  const lotlose = localStorage.getItem("lottery") === "lotteryLose";
   var input = [];
   localStorage.setItem("laborTime", 0);
   localStorage.setItem("leisureTime", 0);
@@ -30,6 +31,10 @@ const Lottery = () => {
   localStorage.setItem("lastmin", 9); // change time TESTT
   localStorage.setItem("lastsec", 59); // change time TESTT
   localStorage.setItem("transc", JSON.stringify(input));
+  localStorage.setItem("keyTime", JSON.stringify(input));
+  localStorage.setItem("watchSess", JSON.stringify(input));
+  localStorage.setItem("watchtime", JSON.stringify(input));
+  localStorage.setItem("tabCounter", 0);
   window.localStorage.setItem("progress", 0);
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail2"))
@@ -37,20 +42,20 @@ const Lottery = () => {
 
   var Fail = 0;
 
-  useEffect(() => {
-    let passvalue = {
-      timeChoice: localStorage.getItem("time_choice"),
-    };
-    const link = "/api/" + localStorage.getItem("ID");
-    axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Succesfully recorded time_choice (Typing Task)");
-      })
-      .catch((e) => {
-        console.log("Unable to record time_choice (Typing Task): ", e);
-      });
-  }, []);
+  // useEffect(() => {
+  //   let passvalue = {
+  //     timeChoice: localStorage.getItem("time_choice"),
+  //   };
+  //   const link = "/api/" + localStorage.getItem("ID");
+  //   axios
+  //     .patch(link, passvalue)
+  //     .then(() => {
+  //       console.log("Succesfully recorded time_choice (Typing Task)");
+  //     })
+  //     .catch((e) => {
+  //       console.log("Unable to record time_choice (Typing Task): ", e);
+  //     });
+  // }, []);
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -60,19 +65,13 @@ const Lottery = () => {
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    // console.log(event.target.value);
-
     if (event.target.value === "true") {
       setHelperText("You got it!");
       setError(false);
       localStorage.setItem("stop2", "true");
-      // console.log(localStorage.getItem("stop2"));
     } else if (event.target.value === "1" || event.target.value === "fast") {
       setHelperText("Sorry, wrong answer!");
       setError(true);
-      // Fail = parseInt(counter) + 1;
-      // setCounter(Fail);
-      // localStorage.setItem('attentionFail2', Fail);
       localStorage.setItem("stop2", "false");
     } else {
       setHelperText("Please select an option.");
@@ -152,29 +151,39 @@ const Lottery = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-        {/* <Typography variant="h6" className="center">
-          Outcome
-        </Typography> */}
-        {/* <Typography variant="h6" className="center">
-          Time Choice
-        </Typography> */}
         <p className="HomePage_p">
-          <Alert sx={{ mb: 2 }} severity="info">
-            <strong>Your Time Choice is not binding.</strong> You spend your
-            time freely across both tasks.
-          </Alert>
+          {lotlose ? (
+            <Alert sx={{ mb: 2 }} severity="info">
+              <strong>Your Time Choice is not binding.</strong> You spend your
+              time freely across both tasks.
+            </Alert>
+          ) : (
+            <Alert sx={{ mb: 2 }} severity="info">
+              <strong>Your Time Choice is binding.</strong> You have to{" "}
+              <strong>Type</strong> for your chosen duration.
+            </Alert>
+          )}
         </p>
 
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Recap
         </Typography>
-        <p className="HomePage_p">
-          On the next page you will spend 10 minutes. You can switch between
-          tasks as you please. Your bonus payment depends on how you actually
-          spend your time between the tasks and whether your{" "}
-          <strong> Typing</strong> meets the quality criteria.
-          {/* <hr></hr> */}
-        </p>
+        {lotlose ? (
+          <p className="HomePage_p">
+            On the next page you will spend 10 minutes. You can switch between
+            tasks as you please. Your bonus payment depends on how you actually
+            spend your time between the tasks and whether your{" "}
+            <strong> Typing</strong> meets the quality criteria.
+          </p>
+        ) : (
+          <p className="HomePage_p">
+            On the next page you will spend 10 minutes. You can switch between
+            tasks as you please but cannot spend more than the total duration
+            indicated in your <strong>Time Choice</strong> for each task. Your
+            bonus payment is equal to your <strong>Time Choice</strong> if your
+            <strong> Typing</strong> meets the quality criteria.
+          </p>
+        )}
 
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
@@ -207,10 +216,6 @@ const Lottery = () => {
               <FormHelperText>{helperText}</FormHelperText>
             </FormControl>
           </form>
-
-          {/* <ButtonM sx={{ mb: 1.5}} type="submit" variant="outlined" onClick={handleSubmit} >
-                        Check Answer
-                    </ButtonM> */}
         </Box>
 
         <div className="center">

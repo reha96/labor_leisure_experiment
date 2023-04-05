@@ -17,8 +17,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import LotteryWin from "./Pages/LotteryWin";
-import LotteryLose from "./Pages/LotteryLose";
+import Lottery from "./Pages/Lottery";
 import Home1 from "./Pages/Home1";
 import MPL from "./Pages/MPL";
 import Survey1 from "./Pages/Survey1";
@@ -70,8 +69,7 @@ function App() {
           </Route>
           <Route path=":userId/mpl" element={<MPL />} />
           <Route path=":userId/confirm" element={<Confirm />} />
-          <Route path=":userId/lotl" element={<LotteryLose />} />
-          <Route path=":userId/lotw" element={<LotteryWin />} />
+          <Route path=":userId/lot" element={<Lottery />} />
           <Route path=":userId/tasks" element={<Tasks />}>
             <Route path=":userId/tasks/leisure" element={<Leisure />} />
             <Route path=":userId/tasks/labor" element={<Labor />} />

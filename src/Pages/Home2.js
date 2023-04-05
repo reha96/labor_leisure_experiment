@@ -14,6 +14,9 @@ import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
 
 const Home2 = () => {
+  const first = localStorage.getItem("version") === "first";
+  const second = localStorage.getItem("version") === "second";
+  const mpl = localStorage.getItem("version") === "mpl";
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail1"))
   );
@@ -30,7 +33,6 @@ const Home2 = () => {
       leisureTime: 0,
       laborTime: 0,
       transcription: {},
-
     };
     const link = "/api/" + localStorage.getItem("ID");
     if (localStorage.getItem("updateOnce") === "no") {
@@ -43,7 +45,7 @@ const Home2 = () => {
         .catch((e) => {
           console.log("Unable to update prolific ID: ", e);
         });
-      }
+    }
   }, []);
 
   var Fail = 0;
@@ -148,8 +150,9 @@ const Home2 = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <p className="HomePage_p">
-          In this study you have 10 minutes during which you will do 2 different
-          tasks.
+          {first || mpl
+            ? "Next week, you will have 10 minutes during which you will do 2 different tasks."
+            : null}
         </p>
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Task 1: Typing
@@ -219,10 +222,6 @@ const Home2 = () => {
             0.1p.{" "}
           </strong>
         </p>
-
-        {/* <p className="HomePage_p">
-          You are paid your seconds of watching only if you correctly answer randomized questions about video content.
-        </p> */}
 
         <div className="center">
           {!(localStorage.getItem("stop") === "true") ? (

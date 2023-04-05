@@ -14,8 +14,9 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
-  localStorage.setItem("tabCounter", 0);
-  localStorage.setItem("watchtime", 0);
+  const first = localStorage.getItem("version") === "first";
+  const second = localStorage.getItem("version") === "second";
+  const mpl = localStorage.getItem("version") === "mpl";
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")
   );
@@ -60,10 +61,9 @@ const Confirm = () => {
 
   const handleClose = () => {
     setOpen(false);
-    if (localStorage.getItem("lottery") === "lotteryWin") {
-      window.location.replace("lotw");
-    } else {
-      window.location.replace("lotl");
+    // SEND TO ENDSURVEY
+    if (first || mpl){
+      window.location.replace("endsurvey");
     }
   };
 
@@ -135,15 +135,16 @@ const Confirm = () => {
         </Typography>
         {/* <Typography variant='h6' className="center">End of Practice</Typography> */}
         {/* <p className="HomePage_p">The practice session is over.</p> */}
+
         <p className="HomePage_p">
           {" "}
-          We now ask how long you would like to spend on <strong>
-            Typing
-          </strong>{" "}
-          and on <strong>Watching Videos</strong>.
+          Now decide how long you would like to spend{" "}
+          <strong>next week</strong> on <strong>Typing</strong> and on{" "}
+          <strong>Watching Videos</strong>.
         </p>
+
         <p className="HomePage_p">
-          In this part you will have <strong> 10 minutes</strong>.
+          Next week you will have <strong> 10 minutes</strong> for both tasks.
         </p>
 
         {/* <p className="HomePage_p">
@@ -152,7 +153,7 @@ const Confirm = () => {
         </p> */}
         <p className="HomePage_p">
           1 out of every 20 participant will be <strong>binded</strong> by the
-          choice they made here.
+          choice they made today.
         </p>
 
         <p className="HomePage_p">
@@ -170,7 +171,7 @@ const Confirm = () => {
             aria-label="Small steps"
             defaultValue={300}
             getAriaValueText={valuetext}
-            step={10}
+            step={20}
             track="normal"
             marks={marks}
             min={0}

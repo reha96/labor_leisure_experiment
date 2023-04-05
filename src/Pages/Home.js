@@ -6,6 +6,11 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
+  // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
+  localStorage.setItem("version", "first");
+  const first = localStorage.getItem("version") === "first";
+  const second = localStorage.getItem("version") === "second";
+  const mpl = localStorage.getItem("version") === "mpl";
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");
     localStorage.setItem("watchedVideo", 0);
@@ -16,29 +21,23 @@ const Home = () => {
     localStorage.setItem("ID", Math.random() * (99999999999999999 - 1) + 1);
     window.location.replace("/id");
   };
-
   const [open, setOpen] = useState(true);
 
+  // FUNCTION TO MEASURE NETWORK SPEED
   var userImageLink =
     "https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png";
   var time_start, end_time;
-
-  // The size in bytes
   var downloadSize = 7400000;
   var downloadImgSrc = new Image();
-
   downloadImgSrc.onload = function () {
     end_time = new Date().getTime();
     displaySpeed();
   };
   time_start = new Date().getTime();
   downloadImgSrc.src = userImageLink;
-
   function displaySpeed() {
     var timeDuration = (end_time - time_start) / 1000;
     var loadedBits = downloadSize * 8;
-    /* Converts a number into string
-                     using toFixed(2) rounding to 2 */
     var bps = (loadedBits / timeDuration).toFixed(2);
     var speedInKbps = (bps / 1024).toFixed(2);
     var speedInMbps = (speedInKbps / 1024).toFixed(2);
@@ -81,21 +80,38 @@ const Home = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
-          Study Description
+          Study Description:{" "}
+          {first || mpl ? " Session 1 of 2" : " Session 2 of 2"}
         </Typography>
-        <p className="HomePage_p">In this study you will:</p>
+
+        <p className="HomePage_p">
+          This study runs over a week. Your participation is required twice for
+          completion.
+        </p>
+
+        <p className="HomePage_p">Today you will:</p>
         <p className="HomePage_p">
           <ul class="a">
             <li>Watch videos and type text,</li>
-            <li>Complete a survey.</li>
+            {first || mpl ? (
+              <li>Decide how you want to spend your time next week.</li>
+            ) : (
+              <li>Complete a survey.</li>
+            )}
           </ul>
         </p>
         <p className="HomePage_p">
-          The total duration of the study is about <strong>17 minutes.</strong>{" "}
-          <br></br>
-          You receive <strong>£1.7</strong> for your participation and earn a
-          bonus payment between <strong>£0.6</strong> and <strong>£0.9</strong>{" "}
-          depending on the time you choose to spend on each task.
+          The entire duration of the study is <strong>17 minutes.</strong>{" "}
+        </p>
+        <p className="HomePage_p">
+          Today's session takes{" "}
+          <strong>{first || mpl ? "5 minutes." : "12 minutes."}</strong>
+        </p>
+        <p className="HomePage_p">
+          At the end of the 2 sessions, you receive <strong>£1.7</strong> for your
+          participation and earn a bonus payment between <strong>£0.6</strong>{" "}
+          and <strong>£0.9</strong> depending on the time you choose to spend on
+          each task.
         </p>
 
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">

@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
 
 const ConfirmUpdate = (props) => {
-  const [divi, setDivi] = useState(window.localStorage.getItem("time_choice"));
+  const [divi, setDivi] = useState(localStorage.getItem("time_choice"));
   useEffect(() => {
     let myInterval = setInterval(() => {
-      setDivi(window.localStorage.getItem("time_choice"));
+      setDivi(localStorage.getItem("time_choice"));
     }, 500);
     return () => {
       clearInterval(myInterval);
