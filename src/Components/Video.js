@@ -6,7 +6,6 @@ function Video({ src }) {
   const videoRef = useRef(null);
   const endRef = useRef(null);
   const page = localStorage.getItem("activeTab");
-  const [watchSess, setWatchSess] = useState([]);
   const [vidcount, setVidcount] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -45,6 +44,20 @@ function Video({ src }) {
     if (aplay) {
       if (videoRef !== null && videoRef.current !== null) {
         videoRef.current.play();
+        // GET TIMESTAMP AT EACH VIDEO START
+        var time = new Date().getTime() / 1000; // TIME IN SECONDS
+        var comb = JSON.stringify([
+          time +
+            " video " +
+            (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+            ": playing, duration: " +
+            videoRef.current.duration +
+            " remaining: " +
+            (videoRef.current.duration - videoRef.current.currentTime),
+        ]);
+        const items2 = JSON.parse(localStorage.getItem("session"));
+        const newItems2 = JSON.stringify([...items2, comb]);
+        localStorage.setItem("session", newItems2);
       }
     }
   };
@@ -52,20 +65,6 @@ function Video({ src }) {
   const stopVideo = () => {
     if (videoRef !== null && videoRef.current !== null) {
       videoRef.current.pause();
-      if (page === "Labor") {
-        var duration = videoRef.current.duration;
-        if (isNaN(duration)) {
-          duration = 0;
-        }
-        var current = videoRef.current.currentTime;
-        if (isNaN(current)) {
-          current = 0;
-        }
-        var diff = duration - current;
-        var unit = [duration, current, diff];
-        setWatchSess(watchSess.concat(unit));
-        localStorage.setItem("watchSess", watchSess);
-      }
     }
   };
 
@@ -74,8 +73,6 @@ function Video({ src }) {
       "watchedVideo",
       parseInt(localStorage.getItem("watchedVideo")) + 1
     );
-    setVidcount(vidcount.concat(videoRef.current.currentTime));
-    localStorage.setItem("watchtime", vidcount);
 
     if (localStorage.getItem("treatment").includes("On")) {
       localStorage.setItem("videoPaused", "no");
@@ -83,16 +80,48 @@ function Video({ src }) {
       localStorage.setItem("videoPaused", "yes");
     }
     endRef.current.scrollIntoView({ behavior: "smooth" });
+    // GET TIMESTAMP AT EACH VIDEO END
+    var time = new Date().getTime() / 1000; // TIME IN SECONDS
+    var comb = JSON.stringify([
+      time +
+        " video " +
+        parseInt(localStorage.getItem("watchedVideo")) +
+        ": ended",
+    ]);
+    const items2 = JSON.parse(localStorage.getItem("session"));
+    const newItems2 = JSON.stringify([...items2, comb]);
+    localStorage.setItem("session", newItems2);
   };
 
   const onClick = (e) => {
+    // GET TIMESTAMP AT EACH CLICK
+    var time = new Date().getTime() / 1000; // TIME IN SECONDS
+    var comb = JSON.stringify([" "]);
     if (videoRef.current.paused) {
+      // WHEN PLAYING
       localStorage.setItem("videoPaused", "no");
       videoRef.current.play();
+      comb = JSON.stringify([
+        time +
+          " video " +
+          (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+          ": playing",
+      ]);
     } else {
+      // WHEN PAUSED
       localStorage.setItem("videoPaused", "yes");
       videoRef.current.pause();
+      comb = JSON.stringify([
+        time +
+          " video " +
+          (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+          ": paused, remaining: " +
+          (videoRef.current.duration - videoRef.current.currentTime),
+      ]);
     }
+    const items2 = JSON.parse(localStorage.getItem("session"));
+    const newItems2 = JSON.stringify([...items2, comb]);
+    localStorage.setItem("session", newItems2);
   };
 
   return (

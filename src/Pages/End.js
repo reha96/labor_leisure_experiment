@@ -21,29 +21,42 @@ const End = () => {
         localStorage.setItem("tabCounter", 1);
       }
     }
-    let passvalue = {
-      "platform.typing": localStorage.getItem("laborTime"),
-      "platform.watching": localStorage.getItem("leisureTime"),
-      "platform.notTyping": localStorage.getItem("inactiveLabor"),
-      "platform.notWatching": localStorage.getItem("inactiveLeisure"),
-      "platform.videoPausedFor": localStorage.getItem("videoPausedFor"),
-      "platform.tabCounter": localStorage.getItem("tabCounter"),
-      "platform.typeCount": localStorage.getItem("localcount"),
-      "platform.watchedVideo": localStorage.getItem("watchedVideo"),
-      "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
-      "platform.MPL1": localStorage.getItem("MPL1"),
-      "platform.MPL2": localStorage.getItem("MPL2"),
-      "platform.MPL3": localStorage.getItem("MPL3"),
-      "platform.MPL4": localStorage.getItem("MPL4"),
-      "platform.MPL5": localStorage.getItem("MPL5"),
-      "platform.MPL6": localStorage.getItem("MPL6"),
-      "platform.MPL7": localStorage.getItem("MPL7"),
-      "platform.MPL8": localStorage.getItem("MPL8"),
-      "platform.MPL9": localStorage.getItem("MPL9"),
-      "platform.finishedVideo": localStorage.getItem("watchtime"),
-      "platform.keyTime": localStorage.getItem("keyTime"),
-      "platform.duration_current_diff": localStorage.getItem("watchSess"),
-    };
+    let passvalue = {};
+    if (localStorage.getItem("version") === "mpl") {
+      passvalue = {
+        "platform.typing": localStorage.getItem("laborTime"),
+        "platform.watching": localStorage.getItem("leisureTime"),
+        "platform.notTyping": localStorage.getItem("inactiveLabor"),
+        "platform.notWatching": localStorage.getItem("inactiveLeisure"),
+        "platform.videoPausedFor": localStorage.getItem("videoPausedFor"),
+        "platform.tabCounter": localStorage.getItem("tabCounter"),
+        "platform.typeCount": localStorage.getItem("localcount"),
+        "platform.watchedVideo": localStorage.getItem("watchedVideo"),
+        "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
+        "platform.MPL1": localStorage.getItem("MPL1"),
+        "platform.MPL2": localStorage.getItem("MPL2"),
+        "platform.MPL3": localStorage.getItem("MPL3"),
+        "platform.MPL4": localStorage.getItem("MPL4"),
+        "platform.MPL5": localStorage.getItem("MPL5"),
+        "platform.MPL6": localStorage.getItem("MPL6"),
+        "platform.MPL7": localStorage.getItem("MPL7"),
+        "platform.MPL8": localStorage.getItem("MPL8"),
+        "platform.MPL9": localStorage.getItem("MPL9"),
+        "platform.session": localStorage.getItem("session"),
+      };
+    } else {
+      passvalue = {
+        "platform.typing": localStorage.getItem("laborTime"),
+        "platform.watching": localStorage.getItem("leisureTime"),
+        "platform.notTyping": localStorage.getItem("inactiveLabor"),
+        "platform.notWatching": localStorage.getItem("inactiveLeisure"),
+        "platform.videoPausedFor": localStorage.getItem("videoPausedFor"),
+        "platform.tabCounter": localStorage.getItem("tabCounter"),
+        "platform.typeCount": localStorage.getItem("localcount"),
+        "platform.watchedVideo": localStorage.getItem("watchedVideo"),
+        "platform.session": localStorage.getItem("session"),
+      };
+    }
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)

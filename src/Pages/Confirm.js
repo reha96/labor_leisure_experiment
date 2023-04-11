@@ -62,7 +62,7 @@ const Confirm = () => {
   const handleClose = () => {
     setOpen(false);
     // SEND TO ENDSURVEY
-    if (first || mpl){
+    if (first || mpl) {
       window.location.replace("endsurvey");
     }
   };
@@ -77,11 +77,11 @@ const Confirm = () => {
       label: "No Typing",
     },
     {
-      value: 300,
+      value: 600,
       label: "Equal split",
     },
     {
-      value: 600,
+      value: 1200,
       label: "Only Typing",
     },
   ];
@@ -138,13 +138,14 @@ const Confirm = () => {
 
         <p className="HomePage_p">
           {" "}
-          Now decide how long you would like to spend{" "}
-          <strong>next week</strong> on <strong>Typing</strong> and on{" "}
-          <strong>Watching Videos</strong>.
+          Now decide how long you would like to spend <strong>
+            tomorrow
+          </strong>{" "}
+          on <strong>Typing</strong> and on <strong>Watching Videos</strong>.
         </p>
 
         <p className="HomePage_p">
-          Next week you will have <strong> 10 minutes</strong> for both tasks.
+          Tomorrow you will have <strong> 20 minutes</strong> for both tasks.
         </p>
 
         {/* <p className="HomePage_p">
@@ -169,21 +170,21 @@ const Confirm = () => {
         >
           <Slider
             aria-label="Small steps"
-            defaultValue={300}
+            defaultValue={600}
             getAriaValueText={valuetext}
             step={20}
             track="normal"
             marks={marks}
             min={0}
-            max={600}
+            max={1200}
             valueLabelDisplay="off"
             disabled={clicked}
           />
         </Box>
         <p className="HomePage_p">{clicked ? null : <ConfirmUpdate />}</p>
         <p className="HomePage_p">
-          On the next page you will learn whether your{" "}
-          <strong>Time Choice</strong> is binding.
+          Tomorrow you will learn whether your <strong>Time Choice</strong> is
+          binding.
         </p>
 
         <div className="center">

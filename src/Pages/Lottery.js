@@ -10,11 +10,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
+import * as Bowser from "bowser";
+import ConfirmUpdate from "../Components/ConfirmUpdate";
 
 const Lottery = () => {
+  const browser = Bowser.parse(window.navigator.userAgent);
   const lotlose = localStorage.getItem("lottery") === "lotteryLose";
   var input = [];
   localStorage.setItem("laborTime", 0);
@@ -28,12 +31,10 @@ const Lottery = () => {
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("activePage", 1);
   localStorage.setItem("localcount", 0);
-  localStorage.setItem("lastmin", 9); // change time TESTT
+  localStorage.setItem("lastmin", 19); // change time TESTT
   localStorage.setItem("lastsec", 59); // change time TESTT
   localStorage.setItem("transc", JSON.stringify(input));
-  localStorage.setItem("keyTime", JSON.stringify(input));
-  localStorage.setItem("watchSess", JSON.stringify(input));
-  localStorage.setItem("watchtime", JSON.stringify(input));
+  localStorage.setItem("session", JSON.stringify(input));
   localStorage.setItem("tabCounter", 0);
   window.localStorage.setItem("progress", 0);
   const [counter, setCounter] = useState(
@@ -42,20 +43,24 @@ const Lottery = () => {
 
   var Fail = 0;
 
-  // useEffect(() => {
-  //   let passvalue = {
-  //     timeChoice: localStorage.getItem("time_choice"),
-  //   };
-  //   const link = "/api/" + localStorage.getItem("ID");
-  //   axios
-  //     .patch(link, passvalue)
-  //     .then(() => {
-  //       console.log("Succesfully recorded time_choice (Typing Task)");
-  //     })
-  //     .catch((e) => {
-  //       console.log("Unable to record time_choice (Typing Task): ", e);
-  //     });
-  // }, []);
+  // SEND BROWSER INFO ONCE AGAIN TO DB (2ND SESSION)
+  let passvalue = {
+    platform: {
+      browser: browser["browser"]["name"],
+      platform: browser["platform"]["type"],
+      os: browser["os"]["name"],
+    },
+    browser: { speed: localStorage.getItem("speed") },
+  };
+  const link = "/api/" + localStorage.getItem("ID");
+  axios
+    .patch(link, passvalue)
+    .then(() => {
+      console.log("Succesfully recorded browser info");
+    })
+    .catch((e) => {
+      console.log("Unable to record browser info: ", e);
+    });
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -166,18 +171,25 @@ const Lottery = () => {
         </p>
 
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+          Time Choice from Session 1
+        </Typography>
+        <p className="HomePage_p">
+          <ConfirmUpdate />
+        </p>
+
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Recap
         </Typography>
         {lotlose ? (
           <p className="HomePage_p">
-            On the next page you will spend 10 minutes. You can switch between
+            On the next page you will spend 20 minutes. You can switch between
             tasks as you please. Your bonus payment depends on how you actually
             spend your time between the tasks and whether your{" "}
             <strong> Typing</strong> meets the quality criteria.
           </p>
         ) : (
           <p className="HomePage_p">
-            On the next page you will spend 10 minutes. You can switch between
+            On the next page you will spend 20 minutes. You can switch between
             tasks as you please but cannot spend more than the total duration
             indicated in your <strong>Time Choice</strong> for each task. Your
             bonus payment is equal to your <strong>Time Choice</strong> if your

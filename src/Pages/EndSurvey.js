@@ -97,8 +97,8 @@ const EndSurvey = () => {
               Thank you for participating in the first session!
             </Typography>
             <p className="HomePage_p">
-              The next session takes place seven days from today. We will send a
-              reminder message to you on Prolific the day before.
+              The next session takes place tomorrow. We will send a reminder
+              message to you on Prolific this evening for the next sesion.
             </p>
             <Typography variant="h6" className="center">
               Prolific Completion Link (Session 1 of 2)

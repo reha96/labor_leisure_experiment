@@ -14,8 +14,8 @@ const ConfirmUpdate = (props) => {
   });
   const min = Math.round(Math.floor(divi / 60));
   const sec = Math.round(divi % 60);
-  const min2 = Math.round(Math.floor((600 - divi) / 60));
-  const sec2 = Math.round((600 - divi) % 60);
+  const min2 = Math.round(Math.floor((1200 - divi) / 60));
+  const sec2 = Math.round((1200 - divi) % 60);
 
   // can remove minutes and seconds in STR var by IF checks
   return (
@@ -35,7 +35,7 @@ const ConfirmUpdate = (props) => {
         You would earn{" "}
         <strong>
           £
-          {(1.7 + (divi * 0.15) / 100 + ((600 - divi) * 0.1) / 100).toPrecision(
+          {(2.75 + (divi * 0.15) / 100 + ((1200 - divi) * 0.1) / 100).toPrecision(
             3
           )}
         </strong>

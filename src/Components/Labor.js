@@ -420,21 +420,16 @@ const Labor = () => {
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
   const [sess, setSess] = useState([]);
-  const [diff, setDiff] = useState([]);
 
-  // DIFFERENCE BETWEEN EACH CHARACTER TYPED (SECONDS) --> LOOKING TO SEE FOR SYSTEMATIC BREAKS WHILE TYPING
   useEffect(() => {
-    var input = typedValue;
-    var time = new Date().getTime();
-    var comb = [input, time];
-    setSess(sess.concat(comb));
-    var difference =
-      (parseInt(sess.slice(-1)) - parseInt(sess.slice(-3))) / 1000;
-    if (isNaN(difference)) {
-      difference = 0;
+    // GET TIMESTAMP AT EACH KEYSTROKE (LENGTH > 0)
+    if (typedValue.length > 0) {
+      var time = new Date().getTime() / 1000; // TIME IN SECONDS
+      var comb = JSON.stringify([time + " typing"]);
+      const items = JSON.parse(localStorage.getItem("session"));
+      const newItems = JSON.stringify([...items, comb]);
+      localStorage.setItem("session", newItems);
     }
-    setDiff(diff.concat(difference));
-    localStorage.setItem("keyTime", diff);
   }, [typedValue]);
 
   const [counter, setCounter] = useState(
@@ -442,6 +437,20 @@ const Labor = () => {
   );
 
   useEffect(() => {
+    // GET TIMESTAMP AT THE BEGINNING
+    var time = new Date().getTime() / 1000; // TIME IN SECONDS
+    localStorage.setItem("startTask", time);
+    if (localStorage.getItem("lastmin") === "19") {
+      if (parseInt(localStorage.getItem("lastsec")) > 55)
+        var comb = JSON.stringify([time + " start"]);
+    } else {
+      comb = JSON.stringify([time + " refresh"]);
+    }
+    const items = JSON.parse(localStorage.getItem("session"));
+    const newItems = JSON.stringify([...items, comb]);
+    localStorage.setItem("session", newItems);
+
+    // LOAD CAPTCHAS
     const loadImage = (image) => {
       return new Promise((resolve, reject) => {
         const loadImg = new Image();
@@ -456,6 +465,14 @@ const Labor = () => {
   }, []);
 
   const handleSubmit = (event) => {
+    // GET TIMESTAMP AT EACH CAPTHCA SUBMISSION
+    var time = new Date().getTime() / 1000; // TIME IN SECONDS
+    var comb = JSON.stringify([time + " submit"]);
+    const items2 = JSON.parse(localStorage.getItem("session"));
+    const newItems2 = JSON.stringify([...items2, comb]);
+    localStorage.setItem("session", newItems2);
+
+    // SET THE NEXT CAPTHCA IMAGE AND SAVE TRANSCRIPTION LOCALLY
     setInput([...input, typedValue]);
     const items = JSON.parse(localStorage.getItem("transc"));
     const newItems = JSON.stringify([...items, typedValue]);
@@ -472,8 +489,11 @@ const Labor = () => {
     }
     setCounter(Image);
     localStorage.setItem("localcount", Image);
+
+    // UPDATE TRANSCRIPTION IN DB
     let passvalue = {
       "platform.userTranscription": localStorage.getItem("transc"),
+      "platform.session": localStorage.getItem("session"),
     };
     const link = "/api/" + localStorage.getItem("ID");
     axios

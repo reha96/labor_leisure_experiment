@@ -54,6 +54,13 @@ const Tasks = () => {
       localStorage.setItem("activePage", 1);
       setCounter(counter + 1);
       localStorage.setItem("tabCounter", counter);
+
+      // GET TIMESTAMP AT EACH TASK CHANGE
+      var time = new Date().getTime() / 1000; // TIME IN SECONDS
+      var comb = JSON.stringify([time + " current_task:typing"]);
+      const items2 = JSON.parse(localStorage.getItem("session"));
+      const newItems2 = JSON.stringify([...items2, comb]);
+      localStorage.setItem("session", newItems2);
     }
     if (key === "2") {
       localStorage.setItem("activeTab", "Leisure");
@@ -62,6 +69,13 @@ const Tasks = () => {
       localStorage.setItem("tabCounter", counter);
       // setRefresh(true)
       localStorage.setItem("activePage", 2);
+
+      // GET TIMESTAMP AT EACH TASK CHANGE
+      time = new Date().getTime() / 1000; // TIME IN SECONDS
+      comb = JSON.stringify([time + " current_task:watching"]);
+      const items2 = JSON.parse(localStorage.getItem("session"));
+      const newItems2 = JSON.stringify([...items2, comb]);
+      localStorage.setItem("session", newItems2);
       if (localStorage.getItem("treatment") === "autoplayOn") {
         localStorage.setItem("videoPaused", "no");
       }

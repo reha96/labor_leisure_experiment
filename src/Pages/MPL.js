@@ -100,7 +100,7 @@ const MPL = () => {
             done, we will randomly implement one option you picked.{" "}
             <strong>
               You will receive the bonus payment and watch videos with the
-              chosen Autoplay setting for the upcoming 10 minutes.
+              chosen Autoplay setting for the upcoming 20 minutes.
             </strong>
           </p>
           <p className="HomePage_p">

@@ -151,7 +151,7 @@ const Home2 = () => {
       <Container className="p-1" fluid="sm">
         <p className="HomePage_p">
           {first || mpl
-            ? "Next week, you will have 10 minutes during which you will do 2 different tasks."
+            ? "Tomorrow, you will have 20 minutes during which you will do 2 different tasks."
             : null}
         </p>
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
@@ -168,7 +168,7 @@ const Home2 = () => {
           {" "}
           {/* <strong> */}
           You are paid your seconds of work only if the following quality are
-          met at the end of the 10 minutes:
+          met at the end of the 20 minutes:
           {/* </strong> */}
           <ul class="a">
             <li>Submit at least 1 CAPTCHA per minute you spent typing.</li>

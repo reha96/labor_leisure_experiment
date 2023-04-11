@@ -37,6 +37,7 @@ const Home1 = () => {
       .get(link)
       .then(function (response) {
         localStorage.setItem("ID", response.data[0]["ID"]);
+        localStorage.setItem("time_choice", response.data[0]["timeChoice"]);
         localStorage.setItem("treatment", response.data[0]["treatment"]);
         localStorage.setItem("lottery", response.data[0]["lottery"]);
         localStorage.setItem("attentionFail1", response.data[0]["attention1"]);
