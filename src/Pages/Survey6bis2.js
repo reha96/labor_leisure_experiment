@@ -93,10 +93,10 @@ const Survey6bis2 = () => {
       </style>
       <Container className="p-1" fluid="sm">
         <Typography variant="h5" className="center">
-          Content
+          Video Content
         </Typography>
         <p className="HomePage_p">
-          Based on the videos you watched, how much did you enjoy the content? Please <strong> click </strong> and move the slider.
+          Based on the videos you watched, how much did you enjoy the content? Please <strong> click on the slider </strong> and indicate your choice.
         </p>
         <Box
           sx={{

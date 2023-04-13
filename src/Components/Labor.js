@@ -553,7 +553,7 @@ const Labor = () => {
                   </Collapse>
                 )}
                 {imgsLoaded ? (
-                  <img src={src} alt={key} className="photo" />
+                  <img src={src} alt={key} draggable="false" className="photo" />
                 ) : (
                   <p className="photo">Loading image ...</p>
                 )}

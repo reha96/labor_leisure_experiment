@@ -202,7 +202,7 @@ const Lottery = () => {
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ m: 3 }} error={error} variant="standard">
               <FormLabel id="demo-error-radios">
-                My bonus payment is ...
+                My bonus payment ...
               </FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
@@ -213,7 +213,7 @@ const Lottery = () => {
                 <FormControlLabel
                   value="0"
                   control={<Radio />}
-                  label="equal to my Time Choice in the past page."
+                  label="is equal to my Time Choice in the past session."
                 />
                 <FormControlLabel
                   value="true"
