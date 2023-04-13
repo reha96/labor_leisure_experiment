@@ -36,6 +36,7 @@ const Lottery = () => {
   localStorage.setItem("transc", JSON.stringify(input));
   localStorage.setItem("session", JSON.stringify(input));
   localStorage.setItem("tabCounter", 0);
+  localStorage.setItem("vidCounter", 1);
   window.localStorage.setItem("progress", 0);
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail2"))

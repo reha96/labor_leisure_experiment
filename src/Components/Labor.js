@@ -419,7 +419,6 @@ const Labor = () => {
   const [open, setOpen] = useState(true);
   const [input, setInput] = useState([]);
   const [typedValue, setTypedValue] = useState("");
-  const [sess, setSess] = useState([]);
 
   useEffect(() => {
     // GET TIMESTAMP AT EACH KEYSTROKE (LENGTH > 0)
@@ -450,7 +449,8 @@ const Labor = () => {
     const newItems = JSON.stringify([...items, comb]);
     localStorage.setItem("session", newItems);
 
-    // LOAD CAPTCHAS
+    // LOAD CAPTCHAS: FIRST IMAGE
+    const d1 = data.slice(0, 1);
     const loadImage = (image) => {
       return new Promise((resolve, reject) => {
         const loadImg = new Image();
@@ -459,7 +459,7 @@ const Labor = () => {
         loadImg.onerror = (err) => reject(err);
       });
     };
-    Promise.all(data.map((image) => loadImage(image)))
+    Promise.all(d1.map((image) => loadImage(image)))
       .then(() => setImgsLoaded(true))
       .catch((err) => console.log("Failed to load images", err));
   }, []);
@@ -471,6 +471,23 @@ const Labor = () => {
     const items2 = JSON.parse(localStorage.getItem("session"));
     const newItems2 = JSON.stringify([...items2, comb]);
     localStorage.setItem("session", newItems2);
+
+    // LOAD CAPTCHAS IN BATCHES
+    const d1 = data.slice(
+      parseInt(localStorage.getItem("localcount")),
+      parseInt(localStorage.getItem("localcount")) + 1
+    );
+    const loadImage = (image) => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = image.url;
+        resolve(image.url);
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+    Promise.all(d1.map((image) => loadImage(image)))
+      .then(() => setImgsLoaded(true))
+      .catch((err) => console.log("Failed to load images", err));
 
     // SET THE NEXT CAPTHCA IMAGE AND SAVE TRANSCRIPTION LOCALLY
     setInput([...input, typedValue]);

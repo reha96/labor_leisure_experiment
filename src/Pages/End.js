@@ -15,6 +15,12 @@ const End = () => {
   localStorage.setItem("trueWatch", "");
   localStorage.setItem("activeTab", "");
   useEffect(() => {
+    // GET TIMESTAMP AT TASK END
+    var time = new Date().getTime() / 1000; // TIME IN SECONDS
+    var comb = JSON.stringify([time + " end"]);
+    const items2 = JSON.parse(localStorage.getItem("session"));
+    const newItems2 = JSON.stringify([...items2, comb]);
+    localStorage.setItem("session", newItems2);
     // COUNT A TAB SWITCH IF PARTICIPANT SPENT TIME WATCHING VIDEOS
     if (parseInt(localStorage.getItem("leisureTime")) > 0) {
       if (parseInt(localStorage.getItem("tabCounter")) === 0) {
@@ -70,12 +76,6 @@ const End = () => {
   const onClick = (e) => {
     window.location.assign("s1");
   };
-
-  // window.setTimeout(function () {
-  //   localStorage.clear();
-  //   window.location.href =
-  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  // }, 15000);
 
   return (
     <div className="Page">

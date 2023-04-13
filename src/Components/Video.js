@@ -5,9 +5,6 @@ function Video({ src }) {
   const aplay = localStorage.getItem("treatment").includes("On");
   const videoRef = useRef(null);
   const endRef = useRef(null);
-  const page = localStorage.getItem("activeTab");
-  const [vidcount, setVidcount] = useState([]);
-
   const [isVisible, setIsVisible] = useState(false);
 
   const callbackFunction = (entries) => {
@@ -52,7 +49,7 @@ function Video({ src }) {
             (parseInt(localStorage.getItem("watchedVideo")) + 1) +
             ": playing, duration: " +
             videoRef.current.duration +
-            " remaining: " +
+            ", remaining: " +
             (videoRef.current.duration - videoRef.current.currentTime),
         ]);
         const items2 = JSON.parse(localStorage.getItem("session"));

@@ -15,7 +15,6 @@ import axios from "axios";
 
 const Home2 = () => {
   const first = localStorage.getItem("version") === "first";
-  const second = localStorage.getItem("version") === "second";
   const mpl = localStorage.getItem("version") === "mpl";
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail1"))

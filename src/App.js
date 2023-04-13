@@ -29,6 +29,7 @@ import EndSurvey from "./Pages/EndSurvey";
 import Survey6 from "./Pages/Survey6";
 import Survey7 from "./Pages/Survey7";
 import Survey6bis from "./Pages/Survey6bis";
+import Survey6bis2 from "./Pages/Survey6bis2";
 import { useEffect } from "react";
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
           <Route path=":userId/s5" element={<Survey5 />} />
           <Route path=":userId/s6" element={<Survey6 />} />
           <Route path=":userId/s6b" element={<Survey6bis />} />
+          <Route path=":userId/s6b2" element={<Survey6bis2 />} />
           <Route path=":userId/s7" element={<Survey7 />} />
           <Route path=":userId/endsurvey" element={<EndSurvey />} />
         </Routes>

@@ -3,34 +3,59 @@ import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 
-const Survey7 = () => {
-  const [typedValue, setTypedValue] = useState("");
-  const [typedValue2, setTypedValue2] = useState("");
+const Survey6bis2 = () => {
+  const [clicked, setClicked] = useState(
+    false
+  );
+
+  function valuetext(value) {
+    localStorage.setItem("enjoyVideo", value);
+    return;
+  }
 
   const onClick = (e) => {
-    localStorage.setItem("strategy", typedValue);
-    localStorage.setItem("feedback", typedValue2);
-    window.location.assign("endsurvey");
+    window.location.assign("s7");
   };
+
+  const onClick2 = async (event) => {
+    setClicked(true);
+  };
+
 
   useEffect(() => {
     let passvalue = {
-      "platform.content": localStorage.getItem("enjoyVideo"),
+      "platform.connection": localStorage.getItem("connection"),
+      "platform.trueWatch": localStorage.getItem("trueWatch"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update content");
+        console.log("Update connection");
       })
       .catch((e) => {
-        console.log("Unable to update content: ", e);
+        console.log("Unable to update connection: ", e);
       });
-  }, []); 
+  }, []);
+
+  const marks = [
+    {
+      value: 0,
+      label: "Not at all",
+    },
+    {
+      value: 5,
+      label: "Neither like nor dislike",
+    },
+    {
+      value: 10,
+      label: "Very much",
+    },
+  ];
 
   return (
     <div className="Page">
@@ -67,37 +92,34 @@ const Survey7 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography sx={{ mx: 5, justifyContent: "center" }} variant="h5">
-          With a few words, how would you describe your reasoning when switching
-          between the two tasks?
-        </Typography>
-        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
-          <TextField
-            id="outlined-basic"
-            label="Reasoning"
-            multiline
-            rows={4}
-            fullWidth
-            variant="outlined"
-            onChange={(event) => setTypedValue(event.target.value)}
-          />
-        </Box>
         <Typography variant="h5" className="center">
-          Any other feedback you would like to give the researchers?
+          Content
         </Typography>
-        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
-          <TextField
-            id="outlined-basic"
-            label="Feedback (Optional)"
-            multiline
-            rows={4}
-            fullWidth
-            variant="outlined"
-            onChange={(event) => setTypedValue2(event.target.value)}
+        <p className="HomePage_p">
+          Based on the videos you watched, how much did you enjoy the content? Please <strong> click </strong> and move the slider.
+        </p>
+        <Box
+          sx={{
+            mx: 10,
+            my: 5,
+          }}
+          onClick={onClick2}
+        >
+          <Slider
+            aria-label="Small steps"
+            defaultValue={5}
+            getAriaValueText={valuetext}
+            step={1}
+            track="normal"
+            marks={marks}
+            min={0}
+            max={10}
+            valueLabelDisplay="off"
+            disabled={!clicked}
           />
         </Box>
         <div className="center">
-          {typedValue === "" ? (
+          {!clicked ? (
             <Button
               disabled
               variant="contained"
@@ -122,4 +144,4 @@ const Survey7 = () => {
   );
 };
 
-export default Survey7;
+export default Survey6bis2;

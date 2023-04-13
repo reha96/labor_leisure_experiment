@@ -25,7 +25,7 @@ const Survey6bis = () => {
   const onClick = (e) => {
     localStorage.setItem("connection", value);
     localStorage.setItem("trueWatch", value2);
-    window.location.assign("s7");
+    window.location.assign("s6b2");
   };
 
   useEffect(() => {

@@ -10,7 +10,6 @@ const Home = () => {
   localStorage.setItem("version", "second");
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
-  const second = localStorage.getItem("version") === "second";
   const mpl = localStorage.getItem("version") === "mpl";
 
   const nextPage = (event) => {
