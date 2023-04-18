@@ -12,11 +12,17 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import { useState } from "react";
 import axios from "axios";
-import Alert from "@mui/material/Alert";
 import * as Bowser from "bowser";
 import ConfirmUpdate from "../Components/ConfirmUpdate";
 
 const Lottery = () => {
+  const divi = localStorage.getItem("time_choice");
+  const min = Math.round(Math.floor(divi / 60));
+  const sec = Math.round(divi % 60);
+  const min2 = Math.round(Math.floor((1200 - divi) / 60));
+  const sec2 = Math.round((1200 - divi) % 60);
+
+
   const browser = Bowser.parse(window.navigator.userAgent);
   const lotlose = localStorage.getItem("lottery") === "lotteryLose";
   var input = [];
@@ -157,44 +163,37 @@ const Lottery = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
+
+
+        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+          Time Choice Recap
+        </Typography>
         <p className="HomePage_p">
-          {lotlose ? (
-            <Alert sx={{ mb: 2 }} severity="info">
-              <strong>Your Time Choice is not binding.</strong> You spend your
-              time freely across both tasks.
-            </Alert>
+          On the next page you will spend 20 minutes.
+        </p>
+
+        <p className="HomePage_p">
+          Yesterday you chose to spend {min} minutes {sec} seconds to Type. {lotlose ? (
+            <>
+              However, your Time Choice is not binding. <strong> You can spend your
+                time freely across both tasks.</strong>
+            </>
           ) : (
-            <Alert sx={{ mb: 2 }} severity="info">
-              <strong>Your Time Choice is binding.</strong> You have to{" "}
-              <strong>Type</strong> for your chosen duration.
-            </Alert>
+            <>
+              Your Time Choice is binding. <strong> You have to Type for your chosen duration.</strong>
+            </>
           )}
         </p>
 
-        {/* <Typography variant="h5" sx={{ my: 2.5 }} className="center">
-          Time Choice from Session 1
-        </Typography>
-        <p className="HomePage_p">
-          <ConfirmUpdate />
-        </p> */}
 
-        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
-          Recap
-        </Typography>
         {lotlose ? (
           <p className="HomePage_p">
-            On the next page you will spend 20 minutes. You can switch between
-            tasks as you please. Your bonus payment depends on how you actually
-            spend your time between the tasks and whether your{" "}
-            <strong> Typing</strong> meets the quality criteria.
+            Your bonus payment depends on how you actually spend your time between the tasks and whether you type at least 1 CAPTCHA per minute with overall 70 percent accuracy.
           </p>
         ) : (
           <p className="HomePage_p">
-            On the next page you will spend 20 minutes. You can switch between
-            tasks as you please but cannot spend more than the total duration
-            indicated in your <strong>Time Choice</strong> for each task. Your
-            bonus payment is equal to your <strong>Time Choice</strong> if your
-            <strong> Typing</strong> meets the quality criteria.
+            You can switch between tasks as you please but cannot spend more than {min} minutes {sec} seconds to Type. Your
+            bonus payment is equal to your Time Choice if you type at least 1 CAPTCHA per minute with overall 70 percent accuracy.
           </p>
         )}
 

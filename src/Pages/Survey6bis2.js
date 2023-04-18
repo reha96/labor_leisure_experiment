@@ -74,6 +74,11 @@ const Survey6bis2 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
+        <Typography variant="h5" sx={{ mx: 7.5, justifyContent: "center" }}>
+          Were you occupied with other activities while you were watching
+          videos?
+        </Typography>
+
         <p className="HomePage_p">
           <Alert severity="info">
             Please answer the following question <strong> honestly </strong> as
@@ -84,10 +89,6 @@ const Survey6bis2 = () => {
             </strong>
           </Alert>
         </p>
-        <Typography variant="h5" sx={{ mx: 7.5, justifyContent: "center" }}>
-          Were you occupied with other activities while you were watching
-          videos?
-        </Typography>
 
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <FormControl>
