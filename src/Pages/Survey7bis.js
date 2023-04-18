@@ -1,33 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
-import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
-const Survey7 = () => {
+const Survey7bis = () => {
   const [typedValue, setTypedValue] = useState("");
+
   const onClick = (e) => {
-    localStorage.setItem("strategy", typedValue);
-    window.location.assign("s7b");
+    localStorage.setItem("feedback", typedValue);
+    window.location.assign("endsurvey");
   };
-
-  useEffect(() => {
-    let passvalue = {
-      "platform.content": localStorage.getItem("enjoyVideo"),
-    };
-
-    const link = "/api/" + localStorage.getItem("ID");
-    axios
-      .patch(link, passvalue)
-      .then(() => {
-        console.log("Update content");
-      })
-      .catch((e) => {
-        console.log("Unable to update content: ", e);
-      });
-  }, []);
 
   return (
     <div className="Page">
@@ -64,14 +48,22 @@ const Survey7 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography sx={{ mx: 5, justifyContent: "center" }} variant="h5">
-          With a few words, how would you describe your reasoning when switching
-          between the two tasks?
+        <Typography variant="h5" className="center">
+          Debriefing
+        </Typography>
+        <p className="HomePage_p">
+          This study is about the effects of autoplaying media on planned behavior. We
+          are interested in measuring how much you deviate from your
+          <strong> Time Choice</strong> when videos played automatically instead
+          of by clicking to play.
+        </p>
+        <Typography variant="h5" className="center">
+          Any feedback you would like to give the researchers?
         </Typography>
         <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
-            label="Reasoning"
+            label="Feedback (Optional)"
             multiline
             rows={4}
             fullWidth
@@ -80,29 +72,18 @@ const Survey7 = () => {
           />
         </Box>
         <div className="center">
-          {typedValue === "" ? (
-            <Button
-              disabled
-              variant="contained"
-              color="secondary"
-              type="button"
-            >
-              <strong>Continue</strong>
-            </Button>
-          ) : (
-            <Button
-              variant="contained"
-              color="secondary"
-              type="button"
-              onClick={onClick}
-            >
-              <strong>Continue</strong>
-            </Button>
-          )}
+          <Button
+            onClick={onClick}
+            variant="contained"
+            color="secondary"
+            type="button"
+          >
+            <strong>Continue</strong>
+          </Button>
         </div>
       </Container>
     </div>
   );
 };
 
-export default Survey7;
+export default Survey7bis;

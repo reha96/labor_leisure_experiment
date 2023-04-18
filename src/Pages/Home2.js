@@ -166,8 +166,8 @@ const Home2 = () => {
         <p className="HomePage_p">
           {" "}
           {/* <strong> */}
-          You are paid your seconds of work only if the following quality are
-          met at the end of the 20 minutes:
+          You are paid your seconds of work only if the following quality criteria are
+          met:
           {/* </strong> */}
           <ul class="a">
             <li>Submit at least 1 CAPTCHA per minute you spent typing.</li>

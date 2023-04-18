@@ -49,13 +49,6 @@ const EndSurvey = () => {
       });
   }
 
-  setTimeout(() => {
-    localStorage.clear();
-    window.location.replace(
-      "https://app.prolific.co/submissions/complete?cc=CW35GTCG"
-    );
-  }, "60000");
-
   return (
     <div className="Page">
       <style type="text/css">
@@ -104,7 +97,7 @@ const EndSurvey = () => {
               Prolific Completion Link (Session 1 of 2)
             </Typography>
             <p className="center">
-              You will be automatically redirected in a minute.
+
               <a href="https://app.prolific.co/submissions/complete?cc=CW35GTCG">
                 {" "}
                 https://app.prolific.co/submissions/complete?cc=CW35GTCG{" "}
@@ -131,7 +124,7 @@ const EndSurvey = () => {
               Prolific Completion Link (Session 2 of 2)
             </Typography>
             <p className="center">
-              You will be automatically redirected in a minute.
+
               <a href="https://app.prolific.co/submissions/complete?cc=CW35GTCG">
                 {" "}
                 https://app.prolific.co/submissions/complete?cc=CW35GTCG{" "}

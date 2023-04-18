@@ -116,7 +116,7 @@ const End = () => {
           Survey
         </Typography>
         <p className="center">
-          You completed the first part of the study. You may now continue with
+          Your choices have been recorded. You may now continue with
           the survey.
         </p>
 

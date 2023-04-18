@@ -2,6 +2,8 @@ import React, { useRef, useState, useMemo, useEffect } from "react";
 import "./video.css";
 
 function Video({ src }) {
+  // VERSION VARIABLES 
+  const second = localStorage.getItem("version") === "second";
   const aplay = localStorage.getItem("treatment").includes("On");
   const videoRef = useRef(null);
   const endRef = useRef(null);
@@ -45,16 +47,18 @@ function Video({ src }) {
         var time = new Date().getTime() / 1000; // TIME IN SECONDS
         var comb = JSON.stringify([
           time +
-            " video " +
-            (parseInt(localStorage.getItem("watchedVideo")) + 1) +
-            ": playing, duration: " +
-            videoRef.current.duration +
-            ", remaining: " +
-            (videoRef.current.duration - videoRef.current.currentTime),
+          " video " +
+          (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+          ": playing, duration: " +
+          videoRef.current.duration +
+          ", remaining: " +
+          (videoRef.current.duration - videoRef.current.currentTime),
         ]);
-        const items2 = JSON.parse(localStorage.getItem("session"));
-        const newItems2 = JSON.stringify([...items2, comb]);
-        localStorage.setItem("session", newItems2);
+        if (second) {
+          const items2 = JSON.parse(localStorage.getItem("session"));
+          const newItems2 = JSON.stringify([...items2, comb]);
+          localStorage.setItem("session", newItems2);
+        }
       }
     }
   };
@@ -81,9 +85,9 @@ function Video({ src }) {
     var time = new Date().getTime() / 1000; // TIME IN SECONDS
     var comb = JSON.stringify([
       time +
-        " video " +
-        parseInt(localStorage.getItem("watchedVideo")) +
-        ": ended",
+      " video " +
+      parseInt(localStorage.getItem("watchedVideo")) +
+      ": ended",
     ]);
     const items2 = JSON.parse(localStorage.getItem("session"));
     const newItems2 = JSON.stringify([...items2, comb]);
@@ -100,9 +104,9 @@ function Video({ src }) {
       videoRef.current.play();
       comb = JSON.stringify([
         time +
-          " video " +
-          (parseInt(localStorage.getItem("watchedVideo")) + 1) +
-          ": playing",
+        " video " +
+        (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+        ": playing",
       ]);
     } else {
       // WHEN PAUSED
@@ -110,10 +114,10 @@ function Video({ src }) {
       videoRef.current.pause();
       comb = JSON.stringify([
         time +
-          " video " +
-          (parseInt(localStorage.getItem("watchedVideo")) + 1) +
-          ": paused, remaining: " +
-          (videoRef.current.duration - videoRef.current.currentTime),
+        " video " +
+        (parseInt(localStorage.getItem("watchedVideo")) + 1) +
+        ": paused, remaining: " +
+        (videoRef.current.duration - videoRef.current.currentTime),
       ]);
     }
     const items2 = JSON.parse(localStorage.getItem("session"));

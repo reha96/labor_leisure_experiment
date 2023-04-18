@@ -171,12 +171,12 @@ const Lottery = () => {
           )}
         </p>
 
-        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+        {/* <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Time Choice from Session 1
         </Typography>
         <p className="HomePage_p">
           <ConfirmUpdate />
-        </p>
+        </p> */}
 
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Recap

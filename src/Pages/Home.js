@@ -6,8 +6,10 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
+  // CLEAN LOCAL STORAGE
+  localStorage.clear();
   // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
-  localStorage.setItem("version", "second");
+  localStorage.setItem("version", "first");
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
   const mpl = localStorage.getItem("version") === "mpl";
@@ -86,8 +88,7 @@ const Home = () => {
         </Typography>
 
         <p className="HomePage_p">
-          This study runs over 2 days. Your participation is required twice for
-          completion.
+          This study runs over 2 days. {first || mpl ? "Your participation is required twice for completion." : null}
         </p>
 
         <p className="HomePage_p">Today you will:</p>
@@ -101,9 +102,10 @@ const Home = () => {
             )}
           </ul>
         </p>
-        <p className="HomePage_p">
+        {first || mpl ? <p className="HomePage_p">
           The entire duration of the study is <strong>27 minutes.</strong>{" "}
-        </p>
+        </p> : null}
+
         <p className="HomePage_p">
           Today's session takes{" "}
           <strong>{first || mpl ? "5 minutes." : "22 minutes."}</strong>
@@ -114,18 +116,18 @@ const Home = () => {
           <strong>£1.2</strong> and <strong>£1.8</strong> depending on the time
           you choose to spend on each task.
         </p>
-
-        <Typography variant="h5" sx={{ my: 2.5 }} className="center">
+        {first || mpl ? <><Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Data Collected
         </Typography>
-        <p className="HomePage_p">
-          In this study, we collect information about yourself and the device
-          you use to participate. All your personal data will be anonymized and
-          will be stored in a secured server at the University of Luxembourg.
-          Only the researchers working on this study will have the access to
-          this data. Data collected during the study will only be used for the
-          research project without personally identifying you.
-        </p>
+          <p className="HomePage_p">
+            In this study, we collect information about yourself and the device
+            you use to participate. All your personal data will be anonymized and
+            will be stored in a secured server at the University of Luxembourg.
+            Only the researchers working on this study will have the access to
+            this data. Data collected during the study will only be used for the
+            research project without personally identifying you.
+          </p></> : null}
+
         <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
           {" "}
           Using the <strong>Back </strong>button in this study will take you

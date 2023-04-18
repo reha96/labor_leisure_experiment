@@ -178,10 +178,7 @@ const Home1 = () => {
               <br></br>I am aware that:
               <ul class="a">
                 <li>I may withdraw my consent any time,</li>
-                <li>I do not need to give reasons for my withdrawal,</li>
-                <li>
-                  there will be no negative consequences for my withdrawal.
-                </li>
+                <li>I do not need to give reasons for my withdrawal.</li>
               </ul>
             </p>
 

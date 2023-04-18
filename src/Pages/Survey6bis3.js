@@ -1,43 +1,62 @@
+
 import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
+import Slider from "@mui/material/Slider";
 
+const Survey6bis3 = () => {
+  const [clicked, setClicked] = useState(
+    false
+  );
 
-const Survey6bis = () => {
-  const [value, setValue] = useState(localStorage.getItem("connection"));
-  const disabled = value === "";
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  function valuetext(value) {
+    localStorage.setItem("enjoyVideo", value);
+    return;
+  }
 
   const onClick = (e) => {
-    localStorage.setItem("connection", value);
-    window.location.assign("s6b2");
+    window.location.assign("s7");
   };
+
+  const onClick2 = async (event) => {
+    setClicked(true);
+  };
+
 
   useEffect(() => {
     let passvalue = {
-      "platform.income": localStorage.getItem("income"),
+      "platform.connection": localStorage.getItem("connection"),
+      "platform.trueWatch": localStorage.getItem("trueWatch"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update income");
+        console.log("Update connection");
       })
       .catch((e) => {
-        console.log("Unable to update income: ", e);
+        console.log("Unable to update connection: ", e);
       });
   }, []);
+
+  const marks = [
+    {
+      value: 0,
+      label: "Not at all",
+    },
+    {
+      value: 5,
+      label: "Neither like nor dislike",
+    },
+    {
+      value: 10,
+      label: "Very much",
+    },
+  ];
 
   return (
     <div className="Page">
@@ -74,34 +93,34 @@ const Survey6bis = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-
-        <Typography variant="h5" sx={{ mx: 7.5, justifyContent: "center" }} className="center">
-          Did you have connection issues while watching the videos?
+        <Typography variant="h5" className="center">
+          Video Content
         </Typography>
-        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
-          <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={value}
-              onChange={handleChange}
-            >
-              <FormControlLabel
-                value="connectionGood"
-                control={<Radio />}
-                label="No"
-              />
-              <FormControlLabel
-                value="connectionBad"
-                control={<Radio />}
-                label="Yes"
-              />
-            </RadioGroup>
-          </FormControl>
+        <p className="HomePage_p">
+          Based on the videos you watched, how much did you enjoy the content? Please <strong> click on the slider </strong> and indicate your choice.
+        </p>
+        <Box
+          sx={{
+            mx: 10,
+            my: 5,
+          }}
+          onClick={onClick2}
+        >
+          <Slider
+            aria-label="Small steps"
+            defaultValue={5}
+            getAriaValueText={valuetext}
+            step={1}
+            track="normal"
+            marks={marks}
+            min={0}
+            max={10}
+            valueLabelDisplay="off"
+            disabled={!clicked}
+          />
         </Box>
         <div className="center">
-          {disabled ? (
+          {!clicked ? (
             <Button
               disabled
               variant="contained"
@@ -126,4 +145,4 @@ const Survey6bis = () => {
   );
 };
 
-export default Survey6bis;
+export default Survey6bis3;

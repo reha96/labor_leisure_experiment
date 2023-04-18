@@ -4,58 +4,40 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import { Alert } from "@mui/material";
 
 const Survey6bis2 = () => {
-  const [clicked, setClicked] = useState(
-    false
-  );
+  const [value2, setValue2] = useState(localStorage.getItem("trueWatch"));
+  const disabled = value2 === "";
 
-  function valuetext(value) {
-    localStorage.setItem("enjoyVideo", value);
-    return;
-  }
+  const handleChange2 = (event) => {
+    setValue2(event.target.value);
+  };
 
   const onClick = (e) => {
-    window.location.assign("s7");
+    localStorage.setItem("trueWatch", value2);
+    window.location.assign("s6b3");
   };
-
-  const onClick2 = async (event) => {
-    setClicked(true);
-  };
-
 
   useEffect(() => {
     let passvalue = {
-      "platform.connection": localStorage.getItem("connection"),
-      "platform.trueWatch": localStorage.getItem("trueWatch"),
+      "platform.income": localStorage.getItem("income"),
     };
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
       .patch(link, passvalue)
       .then(() => {
-        console.log("Update connection");
+        console.log("Update income");
       })
       .catch((e) => {
-        console.log("Unable to update connection: ", e);
+        console.log("Unable to update income: ", e);
       });
   }, []);
-
-  const marks = [
-    {
-      value: 0,
-      label: "Not at all",
-    },
-    {
-      value: 5,
-      label: "Neither like nor dislike",
-    },
-    {
-      value: 10,
-      label: "Very much",
-    },
-  ];
 
   return (
     <div className="Page">
@@ -92,34 +74,45 @@ const Survey6bis2 = () => {
         `}
       </style>
       <Container className="p-1" fluid="sm">
-        <Typography variant="h5" className="center">
-          Video Content
-        </Typography>
         <p className="HomePage_p">
-          Based on the videos you watched, how much did you enjoy the content? Please <strong> click on the slider </strong> and indicate your choice.
+          <Alert severity="info">
+            Please answer the following question <strong> honestly </strong> as
+            it impacts our findings.{" "}
+            <strong>
+              {" "}
+              Your answer does not affect your participation or bonus payments.
+            </strong>
+          </Alert>
         </p>
-        <Box
-          sx={{
-            mx: 10,
-            my: 5,
-          }}
-          onClick={onClick2}
-        >
-          <Slider
-            aria-label="Small steps"
-            defaultValue={5}
-            getAriaValueText={valuetext}
-            step={1}
-            track="normal"
-            marks={marks}
-            min={0}
-            max={10}
-            valueLabelDisplay="off"
-            disabled={!clicked}
-          />
+        <Typography variant="h5" sx={{ mx: 7.5, justifyContent: "center" }}>
+          Were you occupied with other activities while you were watching
+          videos?
+        </Typography>
+
+        <Box className="center" sx={{ m: 5 }} noValidate autoComplete="off">
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={value2}
+              onChange={handleChange2}
+            >
+              <FormControlLabel
+                value="watchTrue"
+                control={<Radio />}
+                label="No"
+              />
+              <FormControlLabel
+                value="watchFalse"
+                control={<Radio />}
+                label="Yes"
+              />
+            </RadioGroup>
+          </FormControl>
         </Box>
         <div className="center">
-          {!clicked ? (
+          {disabled ? (
             <Button
               disabled
               variant="contained"

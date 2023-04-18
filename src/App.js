@@ -30,7 +30,9 @@ import Survey6 from "./Pages/Survey6";
 import Survey7 from "./Pages/Survey7";
 import Survey6bis from "./Pages/Survey6bis";
 import Survey6bis2 from "./Pages/Survey6bis2";
+import Survey7bis from "./Pages/Survey7bis";
 import { useEffect } from "react";
+import Survey6bis3 from "./Pages/Survey6bis3";
 
 function App() {
   document.addEventListener("contextmenu", (event) => event.preventDefault());
@@ -84,7 +86,9 @@ function App() {
           <Route path=":userId/s6" element={<Survey6 />} />
           <Route path=":userId/s6b" element={<Survey6bis />} />
           <Route path=":userId/s6b2" element={<Survey6bis2 />} />
+          <Route path=":userId/s6b3" element={<Survey6bis3 />} />
           <Route path=":userId/s7" element={<Survey7 />} />
+          <Route path=":userId/s7b" element={<Survey7bis />} />
           <Route path=":userId/endsurvey" element={<EndSurvey />} />
         </Routes>
       </Router>
