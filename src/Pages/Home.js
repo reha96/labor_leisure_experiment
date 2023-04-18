@@ -7,7 +7,7 @@ import Alert from "@mui/material/Alert";
 
 const Home = () => {
   // CLEAN LOCAL STORAGE
-  localStorage.clear();
+  // localStorage.clear();
   // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
   localStorage.setItem("version", "first");
   // VERSION VARIABLES 
