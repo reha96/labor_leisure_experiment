@@ -91,22 +91,22 @@ const EndSurvey = () => {
             </Typography>
             <p className="HomePage_p">
               The next session takes place tomorrow. We will send a reminder
-              message to you on Prolific this evening for the next sesion.
+              message to you on Prolific before the next sesion.
             </p>
             <Typography variant="h6" className="center">
               Prolific Completion Link (Session 1 of 2)
             </Typography>
             <p className="center">
 
-              <a href="https://app.prolific.co/submissions/complete?cc=CW35GTCG">
+              <a href="https://app.prolific.co/submissions/complete?cc=CMQNAAA8">
                 {" "}
-                https://app.prolific.co/submissions/complete?cc=CW35GTCG{" "}
+                https://app.prolific.co/submissions/complete?cc=CMQNAAA8{" "}
               </a>
             </p>
             <Typography variant="h6" className="center">
               Prolific Completion Code
             </Typography>
-            <p className="center">CW35GTCG</p>
+            <p className="center">CMQNAAA8</p>
           </>
         ) : null}
         {second ? (
