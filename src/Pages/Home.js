@@ -9,7 +9,7 @@ const Home = () => {
   // CLEAN LOCAL STORAGE
   // localStorage.clear();
   // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
-  localStorage.setItem("version", "first");
+  localStorage.setItem("version", "second");
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
   const mpl = localStorage.getItem("version") === "mpl";
