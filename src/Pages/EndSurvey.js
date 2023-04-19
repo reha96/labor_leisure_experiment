@@ -125,15 +125,15 @@ const EndSurvey = () => {
             </Typography>
             <p className="center">
 
-              <a href="https://app.prolific.co/submissions/complete?cc=CW35GTCG">
+              <a href="https://app.prolific.co/submissions/complete?cc=C128UT6K">
                 {" "}
-                https://app.prolific.co/submissions/complete?cc=CW35GTCG{" "}
+                https://app.prolific.co/submissions/complete?cc=C128UT6K{" "}
               </a>
             </p>
             <Typography variant="h6" className="center">
               Prolific Completion Code
             </Typography>
-            <p className="center">CW35GTCG</p>
+            <p className="center">C128UT6K</p>
           </>
         ) : null}
       </Container>
