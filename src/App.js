@@ -37,20 +37,21 @@ import Survey6bis3 from "./Pages/Survey6bis3";
 function App() {
   document.addEventListener("contextmenu", (event) => event.preventDefault());
   const handleKeyDown = (event) => {
+    // BLOCK KEY SHORTCUTS WHILE WATCHING 
     if (localStorage.getItem("activeTab") === "Leisure") {
       event.preventDefault();
-    }
-    if (event.metaKey) {
-      event.preventDefault();
-    }
-    if (event.ctrlKey) {
-      event.preventDefault();
-    }
-    if (event.altKey) {
-      event.preventDefault();
-    }
-    if (event.keyCode === 123) {
-      event.preventDefault();
+      if (event.metaKey) {
+        event.preventDefault();
+      }
+      if (event.ctrlKey) {
+        event.preventDefault();
+      }
+      if (event.altKey) {
+        event.preventDefault();
+      }
+      if (event.keyCode === 123) {
+        event.preventDefault();
+      }
     }
   };
 

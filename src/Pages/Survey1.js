@@ -14,11 +14,6 @@ const Survey1 = () => {
     localStorage.setItem("birthyear", typedValue);
     window.location.assign("s2");
   };
-  // window.setTimeout(function () {
-  //   localStorage.clear();
-  //   window.location.href =
-  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  // }, 15000);
 
   return (
     <div className="Page">

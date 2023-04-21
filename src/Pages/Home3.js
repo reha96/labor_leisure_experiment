@@ -12,7 +12,6 @@ const Home3 = () => {
     localStorage.setItem("ID", localStorage.getItem("prolificID"));
     localStorage.setItem("clickTimeChoice", false);
     localStorage.setItem("localcount", 0);
-    localStorage.setItem("clickedOKtoswitch2", "no");
     localStorage.setItem("clickedOKtoswitch", "no");
     localStorage.setItem("lastmin", 1);
     localStorage.setItem("lastsec", 59); // testtt timer change

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonM from "@mui/material/Button";
 import Container from "react-bootstrap/Container";
 import "../App.css";
@@ -6,10 +6,12 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 
 const Home = () => {
-  // CLEAN LOCAL STORAGE
-  // localStorage.clear();
+  // IGNORE COOKIE: TO CALL THINGS ONCE
+  localStorage.setItem('ignore', false)
+
   // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
   localStorage.setItem("version", "second");
+
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
   const mpl = localStorage.getItem("version") === "mpl";
@@ -26,27 +28,35 @@ const Home = () => {
   };
   const [open, setOpen] = useState(true);
 
-  // FUNCTION TO MEASURE NETWORK SPEED
-  var userImageLink =
-    "https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png";
-  var time_start, end_time;
-  var downloadSize = 7400000;
-  var downloadImgSrc = new Image();
-  downloadImgSrc.onload = function () {
-    end_time = new Date().getTime();
-    displaySpeed();
-  };
-  time_start = new Date().getTime();
-  downloadImgSrc.src = userImageLink;
-  function displaySpeed() {
-    var timeDuration = (end_time - time_start) / 1000;
-    var loadedBits = downloadSize * 8;
-    var bps = (loadedBits / timeDuration).toFixed(2);
-    var speedInKbps = (bps / 1024).toFixed(2);
-    var speedInMbps = (speedInKbps / 1024).toFixed(2);
-    localStorage.setItem("speed", speedInMbps);
-    setOpen(false);
-  }
+  // MEASURE NETWORK SPEED
+  useEffect(() => {
+    if (localStorage.getItem('ignore') === 'false') {
+      // GET TIMESTAMP TO AVOID NETWORK CACHE
+      var rand = new Date().getTime();
+      var userImageLink =
+        "https://upload.wikimedia.org/wikipedia/commons/6/6a/PNG_Test.png?" + rand;
+      var time_start, end_time;
+      var downloadSize = 7400000;
+      var downloadImgSrc = new Image();
+      downloadImgSrc.onload = function () {
+        end_time = new Date().getTime();
+        displaySpeed();
+      };
+      time_start = new Date().getTime();
+      downloadImgSrc.src = userImageLink;
+      function displaySpeed() {
+        var timeDuration = (end_time - time_start) / 1000;
+        var loadedBits = downloadSize * 8;
+        var bps = (loadedBits / timeDuration).toFixed(2);
+        var speedInKbps = (bps / 1024).toFixed(2);
+        var speedInMbps = (speedInKbps / 1024).toFixed(2);
+        localStorage.setItem("speed", speedInMbps);
+        setOpen(false);
+      }
+      localStorage.setItem('ignore', true)
+    }
+  }, []);
+
   return (
     <div className="Page">
       <style type="text/css">

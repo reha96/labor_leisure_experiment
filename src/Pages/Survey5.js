@@ -35,11 +35,6 @@ const Survey5 = () => {
     localStorage.setItem("employment", value)
     window.location.assign("s6");
   };
-  // window.setTimeout(function () {
-  //   localStorage.clear();
-  //   window.location.href =
-  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  // }, 15000);
 
   return (
     <div className="Page">

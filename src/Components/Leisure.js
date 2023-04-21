@@ -298,10 +298,8 @@ const Leisure = () => {
   useEffect(() => {
     if (localStorage.getItem("treatment").includes("On")) {
       setAplay("on");
-      localStorage.setItem("aplay", aplay);
     } else {
       setAplay("off");
-      localStorage.setItem("aplay", aplay);
     }
   }, []);
   const handleClick = () => {

@@ -17,7 +17,7 @@ const Home1 = () => {
   const second = localStorage.getItem("version") === "second";
   const mpl = localStorage.getItem("version") === "mpl";
   const [checked, setChecked] = useState(false);
-  const badcon = parseFloat(localStorage.getItem("speed")) < 20; // NEED TO CHECK THIS WITH ACTUAL PARTICIPATNS
+  const badcon = parseFloat(localStorage.getItem("speed")) < 20;
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
@@ -29,27 +29,32 @@ const Home1 = () => {
     localStorage.setItem("stop", false);
   };
   localStorage.setItem("updateOnce", "no");
+  const [dbCheck, setdbCheck] = useState(false);
 
   if (second) {
     // ASYNC GET COMMAND TO ACCESS FIRST VERSION TREATMENT, LOTTERY
-    const link = "/api/" + typedValue;
-    axios
-      .get(link)
-      .then(function (response) {
-        localStorage.setItem("ID", response.data[0]["ID"]);
-        localStorage.setItem("time_choice", response.data[0]["timeChoice"]);
-        localStorage.setItem("treatment", response.data[0]["treatment"]);
-        localStorage.setItem("lottery", response.data[0]["lottery"]);
-        localStorage.setItem("attentionFail1", response.data[0]["attention1"]);
-        localStorage.setItem("attentionFail2", response.data[0]["attention2"]);
-        localStorage.setItem(
-          "clickedOKtoswitch",
-          response.data[0]["clikcedOkToSwitch"]["Practice"]
-        );
-      })
-      .catch((e) => {
-        console.log("Unable to GET participant: ", e);
-      });
+    if (typedValue.length >= 24) {
+      const link = "/api/" + typedValue;
+      axios
+        .get(link)
+        .then(function (response) {
+          localStorage.setItem("ID", response.data[0]["ID"]);
+          localStorage.setItem("time_choice", response.data[0]["timeChoice"]);
+          localStorage.setItem("treatment", response.data[0]["treatment"]);
+          localStorage.setItem("lottery", response.data[0]["lottery"]);
+          localStorage.setItem("attentionFail1", response.data[0]["attention1"]);
+          localStorage.setItem("attentionFail2", response.data[0]["attention2"]);
+          localStorage.setItem(
+            "clickedOKtoswitch",
+            response.data[0]["clikcedOkToSwitch"]["Practice"]
+          );
+          setdbCheck(true)
+        })
+        .catch((e) => {
+          console.log("Unable to GET participant: ", e);
+          setdbCheck(false)
+        });
+    }
   }
 
   useEffect(() => {
@@ -87,6 +92,7 @@ const Home1 = () => {
       }
     }
   }, []);
+
   const onClick = async (e) => {
     localStorage.setItem("prolificID", typedValue);
     // SETTING RANDOMIZED VALUES ONLY IN FIRST/MPL VERSION
@@ -198,12 +204,28 @@ const Home1 = () => {
         ) : (
           <>
             <Typography variant="h5" sx={{ my: 2.5 }} className="center">
-              Please enter your Prolific ID:
+              Verification
             </Typography>
+            <p className="HomePage_p">Welcome back.
+              Please enter your Prolific ID to so we can verify your identity.
+            </p>
+            {dbCheck && typedValue.length >= 24 ?
+              <Alert sx={{ mb: 2 }} className="HomePage_p" severity="success">
+                {" "}
+                We were able to verify your identity. Enjoy the study!
+              </Alert> : null
+            }
+            {!dbCheck && typedValue.length >= 24 ?
+              <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+                {" "}
+                We could not find you in our database. Please check your Prolific ID or contact the researchers.
+              </Alert> : null
+            }
           </>
         )}
-        <Box className="center" sx={{ m: 3.5 }} noValidate autoComplete="off">
+        <Box className="center" sx={{ m: 3.5, mx: 25 }} noValidate autoComplete="off">
           <TextField
+            fullWidth
             id="outlined-basic"
             label="Prolific ID"
             variant="outlined"
@@ -238,7 +260,7 @@ const Home1 = () => {
 
         {first || mpl ? (
           <div className="center">
-            {typedValue === "" ? (
+            {typedValue.length < 24 ? (
               <ButtonM
                 disabled
                 variant="contained"
@@ -261,7 +283,7 @@ const Home1 = () => {
           </div>
         ) : (
           <div className="center">
-            {typedValue === "" ? (
+            {typedValue.length < 24 || !dbCheck ? (
               <ButtonM
                 disabled
                 variant="contained"

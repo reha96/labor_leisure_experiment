@@ -8,6 +8,16 @@ const EndSurvey = () => {
   const second = localStorage.getItem("version") === "second";
   const mpl = localStorage.getItem("version") === "mpl";
 
+  window.setTimeout(function () {
+    localStorage.removeItem('activePage');
+    localStorage.removeItem('speed');
+    localStorage.removeItem('updateOnce');
+    localStorage.removeItem('transc');
+    localStorage.removeItem('localcount');
+    localStorage.removeItem('stop2');
+    localStorage.removeItem('stop');
+  }, 2000);
+
   // FIRST WEEK / MPL ENDS HERE AND SAVES TO DB
   if (first || mpl) {
     let passvalue = {

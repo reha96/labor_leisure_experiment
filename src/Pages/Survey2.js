@@ -35,11 +35,6 @@ const Survey2 = () => {
     localStorage.setItem("gender", value)
     window.location.assign("s3");
   };
-  // window.setTimeout(function () {
-  //   localStorage.clear();
-  //   window.location.href =
-  //     "https://uvafeb.eu.qualtrics.com/jfe/form/SV_baAihrq8YjHVLkq";
-  // }, 15000);
 
   return (
     <div className="Page">

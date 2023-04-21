@@ -10,19 +10,21 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Alert from "@mui/material/Alert";
 import * as Bowser from "bowser";
-import ConfirmUpdate from "../Components/ConfirmUpdate";
 
 const Lottery = () => {
+  // IGNORE COOKIE: TO CALL THINGS ONCE
+  localStorage.setItem('ignore', false)
   const divi = localStorage.getItem("time_choice");
   const min = Math.round(Math.floor(divi / 60));
   const sec = Math.round(divi % 60);
-  const min2 = Math.round(Math.floor((1200 - divi) / 60));
-  const sec2 = Math.round((1200 - divi) % 60);
+  // const min2 = Math.round(Math.floor((1200 - divi) / 60));
+  // const sec2 = Math.round((1200 - divi) % 60);
 
-
+  const [dbfail, setDbfail] = useState(false);
   const browser = Bowser.parse(window.navigator.userAgent);
   const lotlose = localStorage.getItem("lottery") === "lotteryLose";
   var input = [];
@@ -32,7 +34,6 @@ const Lottery = () => {
   localStorage.setItem("watchedVideo", 0);
   localStorage.setItem("inactiveLeisure", 0);
   localStorage.setItem("activeTab", "Labor");
-  localStorage.setItem("clickedOKtoswitch2", "no");
   localStorage.setItem("videoPaused", "yes");
   localStorage.setItem("videoPausedFor", 0);
   localStorage.setItem("activePage", 1);
@@ -51,23 +52,32 @@ const Lottery = () => {
   var Fail = 0;
 
   // SEND BROWSER INFO ONCE AGAIN TO DB (2ND SESSION)
-  let passvalue = {
-    platform: {
-      browser: browser["browser"]["name"],
-      platform: browser["platform"]["type"],
-      os: browser["os"]["name"],
-    },
-    browser: { speed: localStorage.getItem("speed") },
-  };
-  const link = "/api/" + localStorage.getItem("ID");
-  axios
-    .patch(link, passvalue)
-    .then(() => {
-      console.log("Succesfully recorded browser info");
-    })
-    .catch((e) => {
-      console.log("Unable to record browser info: ", e);
-    });
+  useEffect(() => {
+    if (localStorage.getItem('ignore') === 'false') {
+      // GET TIMESTAMP TO AVOID NETWORK CACHE
+      let passvalue = {
+        platform: {
+          browser: browser["browser"]["name"],
+          platform: browser["platform"]["type"],
+          os: browser["os"]["name"],
+        },
+        browser: { speed: localStorage.getItem("speed") },
+      };
+      const link = "/api/" + localStorage.getItem("ID");
+      axios
+        .patch(link, passvalue)
+        .then(() => {
+          console.log("Succesfully recorded browser info");
+        })
+        .catch((e) => {
+          console.log("Unable to record browser info: ", e);
+          setDbfail(true);
+        });
+      localStorage.setItem('ignore', true)
+    }
+  }, []);
+
+
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -163,8 +173,6 @@ const Lottery = () => {
           `}
       </style>
       <Container className="p-1" fluid="sm">
-
-
         <Typography variant="h5" sx={{ my: 2.5 }} className="center">
           Time Choice Recap
         </Typography>
@@ -173,36 +181,42 @@ const Lottery = () => {
         </p>
 
         <p className="HomePage_p">
-          Yesterday you chose to spend {min} minutes {sec} seconds to Type. {lotlose ? (
+          Yesterday you chose to spend {min} minutes {sec} seconds to Type.{" "}
+          {lotlose ? (
             <>
-              However, your Time Choice is not binding. <strong> You can spend your
-                time freely across both tasks.</strong>
+              However, your Time Choice is not binding.{" "}
+              <strong>
+                {" "}
+                You can spend your time freely across both tasks.
+              </strong>
             </>
           ) : (
             <>
-              Your Time Choice is binding. <strong> You have to Type for your chosen duration.</strong>
+              Your Time Choice is binding.{" "}
+              <strong> You have to Type for your chosen duration.</strong>
             </>
           )}
         </p>
 
-
         {lotlose ? (
           <p className="HomePage_p">
-            Your bonus payment depends on how you actually spend your time between the tasks and whether you type at least 1 CAPTCHA per minute with overall 70 percent accuracy.
+            Your bonus payment depends on how you actually spend your time
+            between the tasks and whether you type at least 1 CAPTCHA per minute
+            with overall 70 percent accuracy.
           </p>
         ) : (
           <p className="HomePage_p">
-            You can switch between tasks as you please but cannot spend more than {min} minutes {sec} seconds to Type. Your
-            bonus payment is equal to your Time Choice if you type at least 1 CAPTCHA per minute with overall 70 percent accuracy.
+            You can switch between tasks as you please but cannot spend more
+            than {min} minutes {sec} seconds to Type. Your bonus payment is
+            equal to your Time Choice if you type at least 1 CAPTCHA per minute
+            with overall 70 percent accuracy.
           </p>
         )}
 
         <Box className="center" sx={{ display: "flex" }}>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ m: 3 }} error={error} variant="standard">
-              <FormLabel id="demo-error-radios">
-                My bonus payment ...
-              </FormLabel>
+              <FormLabel id="demo-error-radios">My bonus payment ...</FormLabel>
               <RadioGroup
                 aria-labelledby="demo-error-radios"
                 name="quiz2"
@@ -231,8 +245,15 @@ const Lottery = () => {
         </Box>
 
         <div className="center">
+          {dbfail ?
+            <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+              {" "}
+              There is a problem with the database connection. Please contact the researchers.
+            </Alert> : null
+          }
           {!(localStorage.getItem("stop2") === "true") ? (
             <ButtonM
+              disabled={dbfail}
               sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
@@ -243,6 +264,7 @@ const Lottery = () => {
             </ButtonM>
           ) : (
             <ButtonM
+              disabled={dbfail}
               sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"

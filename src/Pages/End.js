@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 
 const End = () => {
+  localStorage.setItem("activeTab", "");
   localStorage.setItem("birthyear", "");
   localStorage.setItem("gender", "");
   localStorage.setItem("education", "");
@@ -116,8 +117,7 @@ const End = () => {
           Survey
         </Typography>
         <p className="center">
-          Your choices have been recorded. You may now continue with
-          the survey.
+          Your choices have been recorded. You may now continue with the survey.
         </p>
 
         <div className="center">
