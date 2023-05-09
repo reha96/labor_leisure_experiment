@@ -85,7 +85,7 @@ function Video({ src }) {
     var time = new Date().getTime() / 1000; // TIME IN SECONDS
     var comb = JSON.stringify([
       time +
-      " video " +
+      " video" +
       parseInt(localStorage.getItem("watchedVideo")) +
       ": ended",
     ]);
@@ -114,7 +114,7 @@ function Video({ src }) {
       videoRef.current.pause();
       comb = JSON.stringify([
         time +
-        " video " +
+        " video" +
         (parseInt(localStorage.getItem("watchedVideo")) + 1) +
         ": paused: remaining: " +
         (videoRef.current.duration - videoRef.current.currentTime),

@@ -24,47 +24,52 @@ const Timer = (props) => {
 
   useEffect(() => {
     let myInterval = setInterval(() => {
-        if (seconds > 0) {
-          setSeconds(seconds - 1);
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(myInterval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
         }
-        if (seconds === 0) {
-          if (minutes === 0) {
-            clearInterval(myInterval);
-          } else {
-            setMinutes(minutes - 1);
-            setSeconds(59);
-          }
-          if (minutes === 10) {
-            // setOpen(true);
-          }
+      }
+      if (
+        // CHECK PARTICIPANT ACTIVITY
+        document.visibilityState === "visible" ||
+        localStorage.getItem("mouseout") === "false"
+      ) {
+        if (localStorage.getItem("activeTab") === "Labor") {
+          setLaborcount(parseInt(laborcount) + 1);
         }
-        if (
-          // CHECK PARTICIPANT ACTIVITY
-          document.visibilityState === "visible" ||
-          localStorage.getItem("mouseout") === "false"
-        ) {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setLaborcount(parseInt(laborcount) + 1);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            setLeisurecount(parseInt(leisurecount) + 1);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure") {
-            if (localStorage.getItem("videoPaused") === "yes") {
-              setVideoPausedFor(parseInt(videoPausedFor) + 1);
-            }
+        if (localStorage.getItem("activeTab") === "Leisure") {
+          setLeisurecount(parseInt(leisurecount) + 1);
+        }
+        if (localStorage.getItem("activeTab") === "Leisure") {
+          if (localStorage.getItem("videoPaused") === "yes") {
+            setVideoPausedFor(parseInt(videoPausedFor) + 1);
           }
         }
-        if (
-          document.visibilityState !== "visible" ||
-          localStorage.getItem("mouseout") === "true"
-        ) {
-          if (localStorage.getItem("activeTab") === "Labor") {
-            setInactivelabor(parseInt(inactivelabor) + 1);
-          }
-          if (localStorage.getItem("activeTab") === "Leisure")
-            setInactiveleisure(parseInt(inactiveleisure) + 1);
+      }
+      if (
+        document.visibilityState !== "visible" ||
+        localStorage.getItem("mouseout") === "true"
+      ) {
+        if (localStorage.getItem("activeTab") === "Labor") {
+          setInactivelabor(parseInt(inactivelabor) + 1);
         }
+        if (localStorage.getItem("activeTab") === "Leisure")
+          setInactiveleisure(parseInt(inactiveleisure) + 1);
+      }
+      if (localStorage.getItem("mouseout") === "true") {
+        // GET TIMESTAMP AT EACH MOUSEOUT (SUM EACH ENTRY FOR TOTAL IN SECONDS)
+        var t = new Date().getTime() / 1000; // TIME IN SECONDS
+        var c = JSON.stringify([t + " mouseout:true"]);
+        const items2 = JSON.parse(localStorage.getItem("session"));
+        const newItems2 = JSON.stringify([...items2, c]);
+        localStorage.setItem("session", newItems2);
+      }
     }, 1000);
     return () => {
       localStorage.setItem("laborTime", laborcount);
@@ -77,11 +82,11 @@ const Timer = (props) => {
       window.localStorage.setItem(
         "progress",
         100 -
-          Math.round(
-            (parseInt(window.localStorage.getItem("lastmin") * 60) +
-              parseInt(window.localStorage.getItem("lastsec"))) /
-              12
-          )
+        Math.round(
+          (parseInt(window.localStorage.getItem("lastmin") * 60) +
+            parseInt(window.localStorage.getItem("lastsec"))) /
+          20
+        )
       );
 
       clearInterval(myInterval);

@@ -30,7 +30,7 @@ const Tasks = () => {
       localStorage.setItem("mouseout", true);
     }
   });
-  //MOUSE IN LISTENER
+  // MOUSE IN LISTENER
   const mouseEnter = () => {
     localStorage.setItem("mouseout", false);
   };
