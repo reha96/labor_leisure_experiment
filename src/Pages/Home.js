@@ -113,12 +113,12 @@ const Home = () => {
           </ul>
         </p>
         {first || mpl ? <p className="HomePage_p">
-          The entire duration of the study is <strong>27 minutes.</strong>{" "}
+          The entire duration of the study is <strong>30 minutes.</strong>{" "}
         </p> : null}
 
         <p className="HomePage_p">
           Today's session takes{" "}
-          <strong>{first || mpl ? "5 minutes." : "22 minutes."}</strong>
+          <strong>{first || mpl ? "5 minutes." : "25 minutes."}</strong>
         </p>
         <p className="HomePage_p">
           At the end of the 2 sessions, you receive <strong>£2.75</strong> for
