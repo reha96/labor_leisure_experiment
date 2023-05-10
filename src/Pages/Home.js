@@ -10,7 +10,7 @@ const Home = () => {
   localStorage.setItem('ignore', false)
 
   // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
-  localStorage.setItem("version", "second");
+  localStorage.setItem("version", "first");
 
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
