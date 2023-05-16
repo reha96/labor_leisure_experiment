@@ -4,7 +4,7 @@ import "./video.css";
 function Video({ src }) {
   // VERSION VARIABLES 
   const second = localStorage.getItem("version") === "second";
-  const aplay = localStorage.getItem("treatment").includes("On");
+  const aplay = localStorage.getItem("treatment").includes("On") || localStorage.getItem("mpl") === 'true';
   const videoRef = useRef(null);
   const endRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);

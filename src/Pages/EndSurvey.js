@@ -6,7 +6,7 @@ import axios from "axios";
 const EndSurvey = () => {
   const first = localStorage.getItem("version") === "first";
   const second = localStorage.getItem("version") === "second";
-  const mpl = localStorage.getItem("version") === "mpl";
+  const mpl = localStorage.getItem("mpl") === 'true';
 
   window.setTimeout(function () {
     localStorage.removeItem('activePage');
@@ -16,6 +16,7 @@ const EndSurvey = () => {
     localStorage.removeItem('localcount');
     localStorage.removeItem('stop2');
     localStorage.removeItem('stop');
+    localStorage.removeItem('progress');
   }, 2000);
 
   // FIRST WEEK / MPL ENDS HERE AND SAVES TO DB
@@ -27,6 +28,16 @@ const EndSurvey = () => {
       timeChoice: localStorage.getItem("time_choice"),
       lottery: localStorage.getItem("lottery"),
       ID: localStorage.getItem("prolificID"),
+      "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
+      "platform.MPL1": localStorage.getItem("MPL1"),
+      "platform.MPL2": localStorage.getItem("MPL2"),
+      "platform.MPL3": localStorage.getItem("MPL3"),
+      "platform.MPL4": localStorage.getItem("MPL4"),
+      "platform.MPL5": localStorage.getItem("MPL5"),
+      "platform.MPL6": localStorage.getItem("MPL6"),
+      "platform.MPL7": localStorage.getItem("MPL7"),
+      "platform.MPL8": localStorage.getItem("MPL8"),
+      "platform.MPL9": localStorage.getItem("MPL9"),
       "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
     };
 

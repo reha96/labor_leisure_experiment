@@ -85,7 +85,7 @@ const Timer = (props) => {
         Math.round(
           (parseInt(window.localStorage.getItem("lastmin") * 60) +
             parseInt(window.localStorage.getItem("lastsec"))) /
-          20
+          12
         )
       );
 

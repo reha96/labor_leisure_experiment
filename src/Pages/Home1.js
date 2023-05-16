@@ -15,15 +15,15 @@ import axios from "axios";
 const Home1 = () => {
   const first = localStorage.getItem("version") === "first";
   const second = localStorage.getItem("version") === "second";
-  const mpl = localStorage.getItem("version") === "mpl";
+  const mpl = localStorage.getItem("mpl") === "true";
   const [checked, setChecked] = useState(false);
-  const badcon = parseFloat(localStorage.getItem("speed")) < 25;
+  const badcon = parseFloat(localStorage.getItem("speed")) < 30;
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
     browser["browser"]["name"] === "Chrome" ||
     browser["browser"]["name"] === "Microsoft Edge";
-  const desktop = browser["platform"]["type"] === "desktop";
+  const desktop = browser["platform"]["type"] === "desktop" || browser["os"]["name"] === 'Chrome OS';
   const handleChange = async (event) => {
     setChecked(event.target.checked);
     localStorage.setItem("stop", false);
@@ -59,7 +59,7 @@ const Home1 = () => {
 
   useEffect(() => {
     // POST ONLY IN FIRST/MPL VERSION
-    if (first || mpl) {
+    if (first) {
       // CREATION OF PARTICIPANT IN DB BEFORE PROLIFIC ID
       let passvalue = {
         attention1: localStorage.getItem("attentionFail1"),
@@ -96,21 +96,6 @@ const Home1 = () => {
   const onClick = async (e) => {
     localStorage.setItem("prolificID", typedValue);
     // SETTING RANDOMIZED VALUES ONLY IN FIRST/MPL VERSION
-    if (first) {
-      // TREATMENT
-      const treatment = ["autoplayOn", "autoplayOff"];
-      const random = Math.floor(Math.random() * treatment.length);
-      localStorage.setItem("treatment", treatment[random]);
-      // 1 OUT 20 BINDING CHOICE
-      if (localStorage.getItem("lottery") >= 0.95) {
-        localStorage.setItem("lottery", "lotteryWin");
-      } else {
-        localStorage.setItem("lottery", "lotteryLose");
-      }
-      // PROCEED WITH INSTRUCTIONS OR TASK ACCORDING TO VERSION
-      window.location.replace(typedValue.toString() + "/next");
-    }
-
     if (mpl) {
       localStorage.setItem("treatment", "MPL");
       // 1 OUT 20 BINDING CHOICE
@@ -120,6 +105,23 @@ const Home1 = () => {
         localStorage.setItem("lottery", "lotteryLose");
       }
       // PROCEED TO PAGE ACCORDING TO VERSION
+      window.location.replace(typedValue.toString() + "/next");
+    }
+
+    if (first) {
+      // TREATMENT
+      const treatment = ["autoplayOn", "autoplayOff"];
+      if (!mpl) {
+        const random = Math.floor(Math.random() * treatment.length);
+        localStorage.setItem("treatment", treatment[random]);
+      }
+      // 1 OUT 20 BINDING CHOICE
+      if (localStorage.getItem("lottery") >= 0.95) {
+        localStorage.setItem("lottery", "lotteryWin");
+      } else {
+        localStorage.setItem("lottery", "lotteryLose");
+      }
+      // PROCEED WITH INSTRUCTIONS OR TASK ACCORDING TO VERSION
       window.location.replace(typedValue.toString() + "/next");
     }
 
@@ -200,6 +202,12 @@ const Home1 = () => {
                 label="Yes, I give consent."
               />
             </FormGroup>
+            {typedValue.length >= 24 ?
+              <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
+                {" "}
+                Is <strong>{typedValue}</strong> your Prolific ID? Please change if you see a mistake.
+              </Alert> : null
+            }
           </>
         ) : (
           <>

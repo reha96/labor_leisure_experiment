@@ -9,12 +9,15 @@ const Home = () => {
   // IGNORE COOKIE: TO CALL THINGS ONCE
   localStorage.setItem('ignore', false)
 
-  // CHOOSE WEBSITE VERSION HERE (FIRST, MPL OR SECOND WEEK)
-  localStorage.setItem("version", "second");
+  // CHOOSE WEBSITE VERSION HERE (FIRST OR SECOND DAY)
+  localStorage.setItem("version", "first"); // SECOND
+
+  // CHOOSE MPL TRUE IN 1ST SESSION. FALSE IN 2ND
+  localStorage.setItem("mpl", true); // FALSE
 
   // VERSION VARIABLES 
   const first = localStorage.getItem("version") === "first";
-  const mpl = localStorage.getItem("version") === "mpl";
+  const mpl = localStorage.getItem("mpl") === "true";
 
   const nextPage = (event) => {
     localStorage.setItem("participantCreated", "no");

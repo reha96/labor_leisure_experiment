@@ -15,7 +15,7 @@ import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
   const first = localStorage.getItem("version") === "first";
-  const mpl = localStorage.getItem("version") === "mpl";
+  const mpl = localStorage.getItem("mpl") === 'true';
   const [clicked, setClicked] = useState(
     localStorage.getItem("clickTimeChoice")
   );
