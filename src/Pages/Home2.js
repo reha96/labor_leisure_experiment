@@ -247,7 +247,7 @@ const Home2 = () => {
           ) : (
             // <Link underline="none" href={"next2"}>
             <ButtonM
-              disabled={dbCheck}
+              disabled={!dbCheck}
               sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"
