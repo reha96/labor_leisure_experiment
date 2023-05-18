@@ -17,7 +17,7 @@ const Home1 = () => {
   const second = localStorage.getItem("version") === "second";
   const mpl = localStorage.getItem("mpl") === "true";
   const [checked, setChecked] = useState(false);
-  const badcon = parseFloat(localStorage.getItem("speed")) < 30;
+  const badcon = parseFloat(localStorage.getItem("speed")) < 35;
   const [typedValue, setTypedValue] = useState("");
   const browser = Bowser.parse(window.navigator.userAgent);
   const chromium =
