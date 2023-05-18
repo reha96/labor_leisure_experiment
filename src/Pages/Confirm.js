@@ -14,6 +14,7 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 
 const Confirm = () => {
+  localStorage.setItem("activePage", 1)
   const first = localStorage.getItem("version") === "first";
   const mpl = localStorage.getItem("mpl") === 'true';
   const [clicked, setClicked] = useState(

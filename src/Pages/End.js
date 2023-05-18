@@ -5,6 +5,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 
 const End = () => {
+  localStorage.setItem("activePage", 1)
   localStorage.setItem("activeTab", "");
   localStorage.setItem("birthyear", "");
   localStorage.setItem("gender", "");

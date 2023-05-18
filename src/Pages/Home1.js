@@ -30,6 +30,7 @@ const Home1 = () => {
   };
   localStorage.setItem("updateOnce", "no");
   const [dbCheck, setdbCheck] = useState(false);
+  const [dbCheck2, setdbCheck2] = useState(false);
 
   if (second) {
     // ASYNC GET COMMAND TO ACCESS FIRST VERSION TREATMENT, LOTTERY
@@ -85,9 +86,11 @@ const Home1 = () => {
           .post("/api", passvalue)
           .then(() => {
             console.log("New participant added");
+            setdbCheck2(true)
           })
           .catch((e) => {
             console.log("Unable to add new participant: ", e);
+            setdbCheck2(false)
           });
       }
     }
@@ -205,7 +208,13 @@ const Home1 = () => {
             {typedValue.length >= 24 ?
               <Alert sx={{ mb: 2 }} className="HomePage_p" severity="warning">
                 {" "}
-                Is <strong>{typedValue}</strong> your Prolific ID? Please change if you see a mistake.
+                Is <strong>{typedValue}</strong> your Prolific ID? Please verify.
+              </Alert> : null
+            }
+            {!dbCheck2 && typedValue.length >= 24 ?
+              <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+                {" "}
+                We could not add you in our database. Please contact the researchers.
               </Alert> : null
             }
           </>
@@ -268,7 +277,7 @@ const Home1 = () => {
 
         {first || mpl ? (
           <div className="center">
-            {typedValue.length < 24 ? (
+            {typedValue.length !== 24 || !dbCheck2 ? (
               <ButtonM
                 disabled
                 variant="contained"
@@ -291,7 +300,7 @@ const Home1 = () => {
           </div>
         ) : (
           <div className="center">
-            {typedValue.length < 24 || !dbCheck ? (
+            {typedValue.length !== 24 || !dbCheck ? (
               <ButtonM
                 disabled
                 variant="contained"

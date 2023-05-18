@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
+import Alert from "@mui/material/Alert";
 
 const Home2 = () => {
   const first = localStorage.getItem("version") === "first";
@@ -19,6 +20,7 @@ const Home2 = () => {
   const [counter, setCounter] = useState(
     parseInt(window.localStorage.getItem("attentionFail1"))
   );
+  const [dbCheck, setdbCheck] = useState(false);
 
   useEffect(() => {
     let passvalue = {
@@ -40,9 +42,11 @@ const Home2 = () => {
         .patch(link, passvalue)
         .then(() => {
           console.log("Prolific ID update");
+          setdbCheck(true)
         })
         .catch((e) => {
           console.log("Unable to update prolific ID: ", e);
+          setdbCheck(false)
         });
     }
   }, []);
@@ -222,6 +226,13 @@ const Home2 = () => {
           </strong>
         </p>
 
+        {dbCheck ?
+          <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
+            {" "}
+            We could not add you in our database. Please contact the researchers.
+          </Alert> : null
+        }
+
         <div className="center">
           {!(localStorage.getItem("stop") === "true") ? (
             <ButtonM
@@ -236,6 +247,7 @@ const Home2 = () => {
           ) : (
             // <Link underline="none" href={"next2"}>
             <ButtonM
+              disabled={dbCheck}
               sx={{ mt: 2.5 }}
               variant="contained"
               color="secondary"

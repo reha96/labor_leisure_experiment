@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 
 const MPL = () => {
   localStorage.setItem("MPLdisable", true);
+  localStorage.setItem("activePage", 1)
 
   const [disabled, setDisabled] = useState(true);
 
@@ -80,13 +81,10 @@ const MPL = () => {
             Autoplay on or off?
           </Typography>
           <p className="HomePage_p">
-            In the practice session videos played automatically thanks to{" "}
-            <strong> Autoplay</strong>. There is another version of the same
-            interface where{" "}
+            In the practice session videos played automatically with
+            <strong> Autoplay</strong>. There is another version
             <strong>
-              {" "}
-              Autoplay is off, meaning you would need to click on the videos to
-              play them.{" "}
+              {" "} where you need to click on videos to play them.
             </strong>
           </p>
           {/* <p className="HomePage_p">
@@ -96,17 +94,14 @@ const MPL = () => {
             you pick the option you prefer regarding the Autoplay setting and
             the additional bonus payment. */}
           <p className="HomePage_p">
-            In the list below, you are asked to make 9 decisions. Once you are
-            done, we will randomly implement one option you picked.{" "}
+            You need to make 9 decisions about Autoplay.
+            One of your decisions will be randomly chosen and implemented.
             <strong>
-              You will receive the bonus payment and watch videos with the
-              chosen Autoplay setting for the upcoming 20 minutes.
+              {" "} You will receive a bonus payment and watch videos with the chosen Autoplay setting.
             </strong>
           </p>
           <p className="HomePage_p">
-            <strong>Consider for example the first decision. </strong>
-            If you preferred the Autoplay and this decision was implemented, you
-            would have Autoplay and receive £0.5 additional bonus payment.
+            For example, if you choose Autoplay for the first decision and it is implemented, you will have Autoplay and receive an additional £0.5 bonus payment.
           </p>
 
           <PriceList />

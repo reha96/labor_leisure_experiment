@@ -38,7 +38,7 @@ function App() {
   document.addEventListener("contextmenu", (event) => event.preventDefault());
   const handleKeyDown = (event) => {
     // BLOCK KEY SHORTCUTS WHILE WATCHING 
-    if (localStorage.getItem("activeTab") === "Leisure") {
+    if (localStorage.getItem("activePage") === "2") {
       event.preventDefault();
       if (event.metaKey) {
         event.preventDefault();
