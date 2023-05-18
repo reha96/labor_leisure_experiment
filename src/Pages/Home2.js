@@ -226,7 +226,7 @@ const Home2 = () => {
           </strong>
         </p>
 
-        {dbCheck ?
+        {!dbCheck ?
           <Alert sx={{ mb: 2 }} className="HomePage_p" severity="error">
             {" "}
             We could not add you in our database. Please contact the researchers.
