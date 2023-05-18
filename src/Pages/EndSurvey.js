@@ -20,26 +20,40 @@ const EndSurvey = () => {
   }, 2000);
 
   // FIRST WEEK / MPL ENDS HERE AND SAVES TO DB
-  if (first || mpl) {
-    let passvalue = {
-      attention1: localStorage.getItem("attentionFail1"),
-      attention2: localStorage.getItem("attentionFail2"),
-      treatment: localStorage.getItem("treatment"),
-      timeChoice: localStorage.getItem("time_choice"),
-      lottery: localStorage.getItem("lottery"),
-      ID: localStorage.getItem("prolificID"),
-      "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
-      "platform.MPL1": localStorage.getItem("MPL1"),
-      "platform.MPL2": localStorage.getItem("MPL2"),
-      "platform.MPL3": localStorage.getItem("MPL3"),
-      "platform.MPL4": localStorage.getItem("MPL4"),
-      "platform.MPL5": localStorage.getItem("MPL5"),
-      "platform.MPL6": localStorage.getItem("MPL6"),
-      "platform.MPL7": localStorage.getItem("MPL7"),
-      "platform.MPL8": localStorage.getItem("MPL8"),
-      "platform.MPL9": localStorage.getItem("MPL9"),
-      "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
-    };
+  if (first) {
+    let passvalue = {}
+    if (mpl) {
+      passvalue = {
+        attention1: localStorage.getItem("attentionFail1"),
+        attention2: localStorage.getItem("attentionFail2"),
+        treatment: localStorage.getItem("treatment"),
+        timeChoice: localStorage.getItem("time_choice"),
+        lottery: localStorage.getItem("lottery"),
+        ID: localStorage.getItem("prolificID"),
+        "platform.MPLthatcounts": localStorage.getItem("MPLthatcounts"),
+        "platform.MPL1": localStorage.getItem("MPL1"),
+        "platform.MPL2": localStorage.getItem("MPL2"),
+        "platform.MPL3": localStorage.getItem("MPL3"),
+        "platform.MPL4": localStorage.getItem("MPL4"),
+        "platform.MPL5": localStorage.getItem("MPL5"),
+        "platform.MPL6": localStorage.getItem("MPL6"),
+        "platform.MPL7": localStorage.getItem("MPL7"),
+        "platform.MPL8": localStorage.getItem("MPL8"),
+        "platform.MPL9": localStorage.getItem("MPL9"),
+        "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
+      };
+    }
+    else {
+      passvalue = {
+        attention1: localStorage.getItem("attentionFail1"),
+        attention2: localStorage.getItem("attentionFail2"),
+        treatment: localStorage.getItem("treatment"),
+        timeChoice: localStorage.getItem("time_choice"),
+        lottery: localStorage.getItem("lottery"),
+        ID: localStorage.getItem("prolificID"),
+        "clikcedOkToSwitch.Practice": localStorage.getItem("clickedOKtoswitch"),
+      };
+    }
 
     const link = "/api/" + localStorage.getItem("ID");
     axios
